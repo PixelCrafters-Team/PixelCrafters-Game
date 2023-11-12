@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg4kh1ln48awq"]
+[gd_scene load_steps=3 format=3 uid="uid://cg4kh1ln48awq"]
 
 [ext_resource type="Script" path="res://helloWorld-Caroline.gd" id="1_13oi7"]
+[ext_resource type="Script" path="res://helloWorld-Yasmin.gd" id="2_djlml"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_13oi7")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("2_djlml")
