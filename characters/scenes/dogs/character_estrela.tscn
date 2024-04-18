@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://d1c5crkq3jomc"]
+[gd_scene load_steps=26 format=3 uid="uid://b8aemaewu78hi"]
 
-[ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_kxhly"]
-[ext_resource type="Texture2D" uid="uid://bkw6vqvigwusq" path="res://characters/assets/gatos_cachorros.png" id="2_sate4"]
+[ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_duxev"]
+[ext_resource type="Texture2D" uid="uid://bkw6vqvigwusq" path="res://characters/assets/gatos_cachorros.png" id="2_y8ct4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfk36"]
 size = Vector2(19, 5)
@@ -47,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [37]
+"values": [7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [12]
+"values": [18]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -103,7 +103,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [24]
+"values": [30]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -131,7 +131,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [43]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -160,7 +160,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [6, 7, 8]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -189,7 +189,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [12, 13, 14]
+"values": [18, 19, 20]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -218,7 +218,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [24, 25, 26]
+"values": [30, 31, 32]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -247,7 +247,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [36, 37, 38]
+"values": [42, 43, 44]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -330,19 +330,19 @@ states/Idle/position = Vector2(445.333, 74.4444)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ncmwf")
 states/Walk/position = Vector2(634.667, 73.7036)
 
-[node name="Character_brutus" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("1_kxhly")
+[node name="Character_estrela" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("1_duxev")
 animation_tree = NodePath("AnimationTree")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 show_behind_parent = true
-position = Vector2(0.5, 0.5)
+position = Vector2(0.5, -5.5)
 shape = SubResource("RectangleShape2D_tfk36")
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -18)
 scale = Vector2(0.110156, 0.110156)
-texture = ExtResource("2_sate4")
+texture = ExtResource("2_y8ct4")
 hframes = 12
 vframes = 8
 

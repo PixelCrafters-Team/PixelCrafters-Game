@@ -25,6 +25,7 @@ func move() -> void:
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_up", "move_down"),
 	)
+		
 	if direction != Vector2.ZERO:
 		animation_tree["parameters/Idle/blend_position"] = direction
 		animation_tree["parameters/Walk/blend_position"] = direction
