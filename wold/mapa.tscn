@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcxcd8tbjoekt"]
+
+[ext_resource type="Texture2D" uid="uid://smxr1mn756ar" path="res://wold/mundoJogo.svg" id="2_u4o3k"]
+
+[node name="mapa" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -1200.0
+offset_top = -1850.0
+offset_right = 459.0
+offset_bottom = 448.0
+texture = ExtResource("2_u4o3k")
+expand_mode = 1
+stretch_mode = 4
