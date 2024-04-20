@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq0p2n40u6nyr"
-path="res://.godot/imported/pracaCentral.svg-6d1eb60024fca1461c467c1a549858ba.ctex"
+uid="uid://cxuvtjt32orxt"
+path="res://.godot/imported/pracaCentral.svg-24a28e8ce1863d13159e8ad1fc673e96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wold/pracaCentral.svg"
-dest_files=["res://.godot/imported/pracaCentral.svg-6d1eb60024fca1461c467c1a549858ba.ctex"]
+source_file="res://wold/assets/pracaCentral.svg"
+dest_files=["res://.godot/imported/pracaCentral.svg-24a28e8ce1863d13159e8ad1fc673e96.ctex"]
 
 [params]
 
