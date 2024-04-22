@@ -19,7 +19,7 @@ func _physics_process(delta):
 	animate()
 	move_and_slide()
 	
-
+	
 func move() -> void:
 	var direction: Vector2 = Vector2(
 		Input.get_axis("move_left", "move_right"),

@@ -1,10 +1,10 @@
 [gd_scene load_steps=26 format=3 uid="uid://co4itvpd7wcc"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_0tov6"]
-[ext_resource type="Texture2D" uid="uid://bkw6vqvigwusq" path="res://characters/assets/gatos_cachorros.png" id="2_uiahc"]
+[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_uiahc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfk36"]
-size = Vector2(19, 5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ss5h"]
+radius = 14.0
 
 [sub_resource type="Animation" id="Animation_nwgkw"]
 length = 0.001
@@ -331,13 +331,15 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ncmwf")
 states/Walk/position = Vector2(634.667, 73.7036)
 
 [node name="Character_sombra" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree")]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_0tov6")
 animation_tree = NodePath("AnimationTree")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 show_behind_parent = true
-position = Vector2(0.5, -5.5)
-shape = SubResource("RectangleShape2D_tfk36")
+position = Vector2(1, -16)
+shape = SubResource("CapsuleShape2D_1ss5h")
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -18)
@@ -345,7 +347,7 @@ scale = Vector2(0.110156, 0.110156)
 texture = ExtResource("2_uiahc")
 hframes = 12
 vframes = 8
-frame = 53
+frame = 52
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {

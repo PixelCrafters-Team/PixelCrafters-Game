@@ -1,8 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcxcd8tbjoekt"]
+[gd_scene load_steps=7 format=3 uid="uid://bcxcd8tbjoekt"]
 
+[ext_resource type="Script" path="res://wold/scenes/mapa.gd" id="1_76obp"]
 [ext_resource type="Texture2D" uid="uid://c3yh337ohijev" path="res://wold/assets/mundoJogo.svg" id="1_s2sx6"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opoai"]
+size = Vector2(20, 286.555)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7tmq"]
+size = Vector2(20, 406.051)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybwus"]
+size = Vector2(411.111, 22.5587)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vssbh"]
+size = Vector2(148.447, 20)
+
 [node name="mapa" type="Node2D"]
+script = ExtResource("1_76obp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1200.0
@@ -12,3 +26,50 @@ offset_bottom = 448.0
 texture = ExtResource("1_s2sx6")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(231, 45)
+rotation = -0.470254
+shape = SubResource("RectangleShape2D_opoai")
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(-8, 2)
+rotation = 1.10802
+shape = SubResource("RectangleShape2D_r7tmq")
+
+[node name="Area2D3" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(120.801, 262.956)
+rotation = -0.457376
+shape = SubResource("RectangleShape2D_ybwus")
+
+[node name="Area2D4" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2(-168, 123)
+rotation = 1.12386
+shape = SubResource("RectangleShape2D_vssbh")
+
+[node name="Area2D5" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+position = Vector2(-88.6453, 290.172)
+rotation = 1.12386
+shape = SubResource("RectangleShape2D_vssbh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
