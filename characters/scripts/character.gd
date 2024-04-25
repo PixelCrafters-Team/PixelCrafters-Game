@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var state_machine
+var is_walking: bool = false
 
 @export_category("Variables")
 @export var move_speed: float = 64;
@@ -19,6 +20,14 @@ func _physics_process(delta):
 	animate()
 	move_and_slide()
 	
+	if Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up"):
+		if not is_walking:
+			is_walking = true
+			$TimerWalk.start(0.3)
+			$EffectWalk.play()
+	else:
+		is_walking = false
+	
 	
 func move() -> void:
 	var direction: Vector2 = Vector2(
@@ -31,13 +40,20 @@ func move() -> void:
 		animation_tree["parameters/Walk/blend_position"] = direction
 		velocity.x = lerp(velocity.x, direction.normalized().x * move_speed, acceleration)
 		velocity.y = lerp(velocity.y, direction.normalized().y * move_speed, acceleration)
+		
 		return
+	
 		
 	velocity.x = lerp(velocity.x, direction.normalized().x * move_speed, friction)
 	velocity.y = lerp(velocity.y, direction.normalized().y * move_speed, friction)
-
+		
+	
 func animate() -> void:
 	if velocity.length() > 2:
 		state_machine.travel("Walk")
 		return	
 	state_machine.travel("Idle")
+	
+
+func _on_timer_timeout():
+	is_walking = false

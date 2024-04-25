@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://c3o81eaherchw"]
+[gd_scene load_steps=27 format=3 uid="uid://c3o81eaherchw"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_2dt55"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_l1550"]
+[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/12_Step_wood_03.wav" id="3_yhwye"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1plq2"]
 radius = 17.0
@@ -361,3 +362,11 @@ anim_player = NodePath("../Animation")
 active = true
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="EffectWalk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yhwye")
+volume_db = 10.0
+
+[node name="TimerWalk" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
