@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://y61hurvn4hcq"]
+
+[ext_resource type="Script" path="res://screens/scenes/menu_screen.gd" id="1_3hrr8"]
+[ext_resource type="Texture2D" uid="uid://cpe360k00cc3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
+
+[sub_resource type="SystemFont" id="SystemFont_s6d52"]
+font_names = PackedStringArray("Cursive")
+font_weight = 999
+font_stretch = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_h6yjt"]
+line_spacing = 40.0
+font = SubResource("SystemFont_s6d52")
+font_size = 23
+
+[node name="Menu_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3hrr8")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_vvb14")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 320.0
+offset_bottom = 179.0
+
+[node name="quit_buton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "x
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CATH-ME"
+label_settings = SubResource("LabelSettings_h6yjt")
+max_lines_visible = 5
+
+[node name="start_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "START
+"
+
+[connection signal="pressed" from="MarginContainer/quit_buton" to="." method="_on_quit_buton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/start_button" to="." method="_on_start_button_pressed"]
