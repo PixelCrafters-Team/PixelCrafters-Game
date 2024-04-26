@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_oh85r"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_k3qa6"]
-[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/12_Step_wood_03.wav" id="3_bwgos"]
+[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/EffectWalk.wav" id="3_v8qq6"]
 
 [sub_resource type="Animation" id="Animation_nwgkw"]
 length = 0.001
@@ -363,7 +363,7 @@ position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_t2df3")
 
 [node name="EffectWalk" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_bwgos")
+stream = ExtResource("3_v8qq6")
 volume_db = 10.0
 
 [node name="TimerWalk" type="Timer" parent="."]

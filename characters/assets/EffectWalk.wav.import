@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cxji3m3dne5us"
-path="res://.godot/imported/12_Step_wood_03.wav-c4099543bc360f44aa2734ab79c71fe4.sample"
+path="res://.godot/imported/EffectWalk.wav-4de8fb7ac6cf67beeeefda625f7fa319.sample"
 
 [deps]
 
-source_file="res://characters/assets/12_Step_wood_03.wav"
-dest_files=["res://.godot/imported/12_Step_wood_03.wav-c4099543bc360f44aa2734ab79c71fe4.sample"]
+source_file="res://characters/assets/EffectWalk.wav"
+dest_files=["res://.godot/imported/EffectWalk.wav-4de8fb7ac6cf67beeeefda625f7fa319.sample"]
 
 [params]
 

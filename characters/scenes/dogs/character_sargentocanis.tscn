@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_2dt55"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_l1550"]
-[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/12_Step_wood_03.wav" id="3_yhwye"]
+[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/EffectWalk.wav" id="3_yhwye"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1plq2"]
 radius = 17.0
