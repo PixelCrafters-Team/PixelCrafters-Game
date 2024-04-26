@@ -9,4 +9,4 @@ position = Vector2(-28, -11)
 [node name="mapa" parent="." instance=ExtResource("1_1b2ol")]
 
 [node name="Character_ronronante" parent="." instance=ExtResource("5_6rpeo")]
-position = Vector2(-150, 214)
+position = Vector2(-356, 206)
