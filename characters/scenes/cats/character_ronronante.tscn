@@ -1,8 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://dv2jtvwuwa8qq"]
+[gd_scene load_steps=30 format=3 uid="uid://bxxq6umfl0kfm"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_oh85r"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_k3qa6"]
 [ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/EffectWalk.wav" id="3_v8qq6"]
+[ext_resource type="Texture2D" uid="uid://lxvdee5241cr" path="res://characters/assets/glace.png" id="4_yvflq"]
+[ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/Effect_IceCracking.mp3" id="5_51k5c"]
 
 [sub_resource type="Animation" id="Animation_nwgkw"]
 length = 0.001
@@ -29,6 +31,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureGlace:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureGlace:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -13)]
 }
 
 [sub_resource type="Animation" id="Animation_jlles"]
@@ -260,9 +286,37 @@ tracks/1/keys = {
 "values": [Vector2(0, -18)]
 }
 
+[sub_resource type="Animation" id="Animation_cursr"]
+resource_name = "glace"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureGlace:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureGlace:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -13)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uu4xc"]
 _data = {
 "RESET": SubResource("Animation_nwgkw"),
+"glace": SubResource("Animation_cursr"),
 "idle_down": SubResource("Animation_jlles"),
 "idle_left": SubResource("Animation_cwk25"),
 "idle_right": SubResource("Animation_81qbp"),
@@ -332,7 +386,7 @@ states/Walk/position = Vector2(634.667, 73.7036)
 radius = 14.0
 height = 32.0
 
-[node name="Character_ronronante" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree")]
+[node name="Character_ronronante" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["cats"]]
 collision_layer = 0
 script = ExtResource("1_oh85r")
 animation_tree = NodePath("AnimationTree")
@@ -374,5 +428,16 @@ limit_left = -1760
 limit_top = -1200
 limit_right = 485
 limit_bottom = 500
+
+[node name="TextureGlace" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, -13)
+scale = Vector2(0.245, 0.245)
+texture = ExtResource("4_yvflq")
+hframes = 3
+frame = 1
+
+[node name="EffectGlace" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_51k5c")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]

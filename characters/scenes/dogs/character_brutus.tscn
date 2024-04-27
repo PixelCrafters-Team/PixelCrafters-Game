@@ -332,7 +332,7 @@ states/Idle/position = Vector2(445.333, 74.4444)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ncmwf")
 states/Walk/position = Vector2(634.667, 73.7036)
 
-[node name="Character_brutus" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree")]
+[node name="Character_brutus" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["dogs"]]
 collision_layer = 0
 script = ExtResource("1_0esyq")
 animation_tree = NodePath("AnimationTree")

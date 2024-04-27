@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var state_machine
 var is_walking: bool = false
+var is_glace: bool = false
 
 @export_category("Variables")
 @export var move_speed: float = 64;
@@ -16,18 +17,23 @@ func _ready():
 	state_machine = animation_tree["parameters/playback"]
 
 func _physics_process(delta):
-	move()
-	animate()
-	move_and_slide()
+	if is_glace == false:
+		move_and_slide()
+		move()
+		animate()
 	
-	if Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up"):
+	if (Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up")) && is_glace == false:
 		if not is_walking:
 			is_walking = true
 			$TimerWalk.start(0.3)
 			$EffectWalk.play()
 	else:
 		is_walking = false
-	
+		
+	if Input.is_key_pressed(KEY_Z) and is_in_group('cats'):
+		glace_cat()
+	if Input.is_key_pressed(KEY_X) and is_in_group('cats'):
+		unfreeze_cat()
 	
 func move() -> void:
 	var direction: Vector2 = Vector2(
@@ -57,3 +63,15 @@ func animate() -> void:
 
 func _on_timer_timeout():
 	is_walking = false
+	
+func glace_cat():
+	$TextureGlace.visible = true
+	$Texture.visible = false
+	is_glace = true
+	$EffectGlace.play()
+
+func unfreeze_cat():
+	$TextureGlace.visible = false
+	$Texture.visible = true
+	is_glace = false
+	$EffectGlace.play()
