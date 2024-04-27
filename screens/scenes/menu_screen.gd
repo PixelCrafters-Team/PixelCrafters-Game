@@ -5,7 +5,7 @@ var sound_source = ""
 
 
 func _ready():
-	click_sound_player = %clickSound
+	click_sound_player = %ClickSound
 	
 	
 func _on_quit_buton_pressed():
