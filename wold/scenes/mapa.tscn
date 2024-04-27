@@ -70,26 +70,26 @@ polygon = PackedVector2Array(493.808, 343.401, 517.897, 358.477, 541.985, 360.15
 position = Vector2(356.162, -180.914)
 polygon = PackedVector2Array(493.808, 343.401, 517.897, 358.477, 541.985, 360.152, 567.794, 351.776, 581.558, 323.299, 574.676, 288.122, 552.308, 269.695, 521.338, 266.345, 492.088, 286.447, 486.926, 311.573)
 
-[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Sprite2D/Collisions/CollisionPolygon2D18"]
-position = Vector2(356.162, -180.914)
+[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="Sprite2D/Collisions"]
+position = Vector2(712.324, -361.828)
 polygon = PackedVector2Array(493.808, 343.401, 517.897, 358.477, 541.985, 360.152, 567.794, 351.776, 581.558, 323.299, 574.676, 288.122, 552.308, 269.695, 521.338, 266.345, 492.088, 286.447, 486.926, 311.573)
 
-[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Sprite2D/Collisions/CollisionPolygon2D18/CollisionPolygon2D18"]
-position = Vector2(356.162, -180.914)
+[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="Sprite2D/Collisions"]
+position = Vector2(1068.49, -542.742)
 polygon = PackedVector2Array(493.808, 343.401, 517.897, 358.477, 541.985, 360.152, 567.794, 351.776, 581.558, 323.299, 574.676, 288.122, 552.308, 269.695, 521.338, 266.345, 492.088, 286.447, 486.926, 311.573)
 
-[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Sprite2D/Collisions/CollisionPolygon2D18/CollisionPolygon2D18/CollisionPolygon2D18"]
-position = Vector2(-1340.34, -3.35016)
+[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="Sprite2D/Collisions"]
+position = Vector2(-271.854, -546.092)
 polygon = PackedVector2Array(493.808, 343.401, 517.897, 358.477, 541.985, 360.152, 567.794, 351.776, 581.558, 323.299, 574.676, 288.122, 552.308, 269.695, 521.338, 266.345, 492.088, 286.447, 486.926, 311.573)
 
-[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Sprite2D/Collisions/CollisionPolygon2D18/CollisionPolygon2D18/CollisionPolygon2D18/CollisionPolygon2D18"]
-position = Vector2(356.162, -180.914)
+[node name="CollisionPolygon2D22" type="CollisionPolygon2D" parent="Sprite2D/Collisions"]
+position = Vector2(84.3082, -727.006)
 polygon = PackedVector2Array(493.808, 343.401, 517.897, 358.477, 541.985, 360.152, 567.794, 351.776, 581.558, 323.299, 574.676, 288.122, 552.308, 269.695, 521.338, 266.345, 492.088, 286.447, 486.926, 311.573)
 
-[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Sprite2D/Collisions/CollisionPolygon2D18/CollisionPolygon2D18/CollisionPolygon2D18/CollisionPolygon2D18/CollisionPolygon2D18"]
-position = Vector2(356.162, -180.914)
+[node name="CollisionPolygon2D23" type="CollisionPolygon2D" parent="Sprite2D/Collisions"]
+position = Vector2(440.47, -907.92)
 polygon = PackedVector2Array(493.808, 343.401, 517.897, 358.477, 541.985, 360.152, 567.794, 351.776, 581.558, 323.299, 574.676, 288.122, 552.308, 269.695, 521.338, 266.345, 492.088, 286.447, 486.926, 311.573)
 
-[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Sprite2D/Collisions/CollisionPolygon2D18/CollisionPolygon2D18/CollisionPolygon2D18/CollisionPolygon2D18/CollisionPolygon2D18/CollisionPolygon2D18"]
-position = Vector2(356.162, -180.914)
+[node name="CollisionPolygon2D24" type="CollisionPolygon2D" parent="Sprite2D/Collisions"]
+position = Vector2(796.632, -1088.83)
 polygon = PackedVector2Array(493.808, 343.401, 517.897, 358.477, 541.985, 360.152, 567.794, 351.776, 581.558, 323.299, 574.676, 288.122, 552.308, 269.695, 521.338, 266.345, 492.088, 286.447, 486.926, 311.573)

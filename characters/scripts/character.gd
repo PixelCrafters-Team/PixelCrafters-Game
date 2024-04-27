@@ -31,7 +31,12 @@ func _physics_process(delta):
 			$TimerWalk.start(0.3)
 			$EffectWalk.play()
 	else:
-		is_walking = false
+		is_walking = false	
+	
+	if Input.is_key_pressed(KEY_SPACE):
+		move_speed = 100
+	else:
+		move_speed = 64;
 		
 	if Input.is_key_pressed(KEY_Z) and is_in_group("cats"):
 		glace_cat()
