@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://c3o81eaherchw"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_kdyp8"]
-[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_5tpor"]
+[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_5tpor"]
 [ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_82f7i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1plq2"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7016hjaugxcy"
-path="res://.godot/imported/gatos_cachorros.png-e4e9898c4a6e0a85ca13eefa1434c37f.ctex"
+path="res://.godot/imported/cats_dogs.png-916aab6a2dbe2fa0c073efe4f71f99c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/assets/gatos_cachorros.png"
-dest_files=["res://.godot/imported/gatos_cachorros.png-e4e9898c4a6e0a85ca13eefa1434c37f.ctex"]
+source_file="res://characters/assets/cats_dogs.png"
+dest_files=["res://.godot/imported/cats_dogs.png-916aab6a2dbe2fa0c073efe4f71f99c3.ctex"]
 
 [params]
 

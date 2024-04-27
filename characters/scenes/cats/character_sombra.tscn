@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://co4itvpd7wcc"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_0tov6"]
-[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_uiahc"]
+[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_ed6tt"]
 [ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_sxhtv"]
 [ext_resource type="Texture2D" uid="uid://lxvdee5241cr" path="res://characters/assets/glace.png" id="4_43p77"]
 [ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/effect_ice_cracking.mp3" id="5_04pcs"]
@@ -398,7 +398,7 @@ shape = SubResource("CapsuleShape2D_1ss5h")
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -18)
 scale = Vector2(0.110156, 0.110156)
-texture = ExtResource("2_uiahc")
+texture = ExtResource("2_ed6tt")
 hframes = 12
 vframes = 8
 frame = 52

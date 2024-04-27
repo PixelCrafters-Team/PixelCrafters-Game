@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://b8aemaewu78hi"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_duxev"]
-[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_y8ct4"]
+[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_e3mmg"]
 [ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_g7xr3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ckanl"]
@@ -345,7 +345,7 @@ shape = SubResource("CapsuleShape2D_ckanl")
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -18)
 scale = Vector2(0.110156, 0.110156)
-texture = ExtResource("2_y8ct4")
+texture = ExtResource("2_e3mmg")
 hframes = 12
 vframes = 8
 frame = 7

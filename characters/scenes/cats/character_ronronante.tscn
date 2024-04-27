@@ -1,7 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://b15ew0a2e6h6f"]
+[gd_scene load_steps=30 format=3 uid="uid://c57huq0bn6a3h"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_oh85r"]
-[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_k3qa6"]
+[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_pul81"]
 [ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_1ki8e"]
 [ext_resource type="Texture2D" uid="uid://lxvdee5241cr" path="res://characters/assets/glace.png" id="4_yvflq"]
 [ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/effect_ice_cracking.mp3" id="5_4c8tv"]
@@ -394,7 +394,7 @@ animation_tree = NodePath("AnimationTree")
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -18)
 scale = Vector2(0.110156, 0.110156)
-texture = ExtResource("2_k3qa6")
+texture = ExtResource("2_pul81")
 hframes = 12
 vframes = 8
 frame = 58
@@ -425,7 +425,7 @@ volume_db = 10.0
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 limit_left = -1760
-limit_top = -1200
+limit_top = -2600
 limit_right = 485
 limit_bottom = 500
 
