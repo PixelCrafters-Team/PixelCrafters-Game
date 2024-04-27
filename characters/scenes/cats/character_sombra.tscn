@@ -424,7 +424,7 @@ volume_db = 10.0
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 limit_left = -1760
-limit_top = -1200
+limit_top = -2600
 limit_right = 485
 limit_bottom = 500
 
