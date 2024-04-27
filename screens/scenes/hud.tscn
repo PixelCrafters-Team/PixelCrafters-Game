@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjycgsoyyytro"]
+
+[ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
+[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_yfcg1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rwmo4"]
+texture = ExtResource("2_yfcg1")
+
+[sub_resource type="Theme" id="Theme_jhs54"]
+Button/styles/hover = SubResource("StyleBoxTexture_rwmo4")
+Button/styles/normal = SubResource("StyleBoxTexture_rwmo4")
+Button/styles/pressed = SubResource("StyleBoxTexture_rwmo4")
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_j0pl6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NameTeam" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 22.0
+offset_right = 952.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 45
+text = "Equipe"
+horizontal_alignment = 1
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 1357.0
+offset_top = 22.0
+offset_right = 1376.0
+offset_bottom = 41.0
+scale = Vector2(3.45527, 3.33333)
+theme = SubResource("Theme_jhs54")
+
+[connection signal="pressed" from="Exit" to="." method="_on_button_pressed"]
