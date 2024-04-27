@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_0tov6"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_uiahc"]
-[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/EffectWalk.wav" id="3_mv4pq"]
+[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_sxhtv"]
 [ext_resource type="Texture2D" uid="uid://lxvdee5241cr" path="res://characters/assets/glace.png" id="4_43p77"]
-[ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/Effect_IceCracking.mp3" id="5_scq8h"]
+[ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/effect_ice_cracking.mp3" id="5_04pcs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ss5h"]
 radius = 14.0
@@ -416,7 +416,7 @@ parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="EffectWalk" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_mv4pq")
+stream = ExtResource("3_sxhtv")
 volume_db = 10.0
 
 [node name="TimerWalk" type="Timer" parent="."]
@@ -437,6 +437,6 @@ hframes = 3
 frame = 2
 
 [node name="EffectGlace" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_scq8h")
+stream = ExtResource("5_04pcs")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]

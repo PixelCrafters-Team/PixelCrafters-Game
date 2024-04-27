@@ -1,22 +1,26 @@
 extends Control
 
-var clickSoundPlayer
-var soundSource = ""
+var click_sound_player
+var sound_source = ""
+
 
 func _ready():
-	clickSoundPlayer = %clickSound
+	click_sound_player = %clickSound
+	
 	
 func _on_quit_buton_pressed():
-	soundSource = "quit"
-	clickSoundPlayer.play()
+	sound_source = "quit"
+	click_sound_player.play()
+
 
 func _on_start_button_pressed():
-	soundSource = "start"
-	clickSoundPlayer.play()
+	sound_source = "start"
+	click_sound_player.play()
+
 
 func _on_click_sound_finished():
-	if soundSource == "start": 
+	if sound_source == "start": 
 		get_tree().change_scene_to_file("res://teste.tscn") 
-	elif soundSource == "quit":
+	elif sound_source == "quit":
 		get_tree().quit()
-	soundSource = ""
+	sound_source = ""

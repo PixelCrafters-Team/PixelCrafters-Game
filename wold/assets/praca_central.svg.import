@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3yh337ohijev"
-path="res://.godot/imported/mundoJogo.svg-a5609c941832deb01ed6ed45fa2da76a.ctex"
+uid="uid://cxuvtjt32orxt"
+path="res://.godot/imported/praca_central.svg-6efd6f651b9f9c5c130e86cac5362803.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wold/assets/mundoJogo.svg"
-dest_files=["res://.godot/imported/mundoJogo.svg-a5609c941832deb01ed6ed45fa2da76a.ctex"]
+source_file="res://wold/assets/praca_central.svg"
+dest_files=["res://.godot/imported/praca_central.svg-6efd6f651b9f9c5c130e86cac5362803.ctex"]
 
 [params]
 

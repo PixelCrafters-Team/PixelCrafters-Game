@@ -1,10 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://bxxq6umfl0kfm"]
+[gd_scene load_steps=30 format=3 uid="uid://b15ew0a2e6h6f"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_oh85r"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_k3qa6"]
-[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/EffectWalk.wav" id="3_v8qq6"]
+[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_1ki8e"]
 [ext_resource type="Texture2D" uid="uid://lxvdee5241cr" path="res://characters/assets/glace.png" id="4_yvflq"]
-[ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/Effect_IceCracking.mp3" id="5_51k5c"]
+[ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/effect_ice_cracking.mp3" id="5_4c8tv"]
 
 [sub_resource type="Animation" id="Animation_nwgkw"]
 length = 0.001
@@ -52,6 +52,33 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -13)]
+}
+
+[sub_resource type="Animation" id="Animation_cursr"]
+resource_name = "glace"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureGlace:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureGlace:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-1, -13)]
@@ -286,33 +313,6 @@ tracks/1/keys = {
 "values": [Vector2(0, -18)]
 }
 
-[sub_resource type="Animation" id="Animation_cursr"]
-resource_name = "glace"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureGlace:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureGlace:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1, -13)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uu4xc"]
 _data = {
 "RESET": SubResource("Animation_nwgkw"),
@@ -417,7 +417,7 @@ position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_t2df3")
 
 [node name="EffectWalk" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_v8qq6")
+stream = ExtResource("3_1ki8e")
 volume_db = 10.0
 
 [node name="TimerWalk" type="Timer" parent="."]
@@ -438,6 +438,6 @@ hframes = 3
 frame = 1
 
 [node name="EffectGlace" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_51k5c")
+stream = ExtResource("5_4c8tv")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]

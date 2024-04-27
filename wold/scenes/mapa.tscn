@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bcxcd8tbjoekt"]
 
-[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://wold/assets/centroDePesquisa.svg" id="1_fxoj0"]
+[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://wold/assets/centro_de_pesquisa.svg" id="1_0bqkm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnbbr"]
 size = Vector2(702.48, 26.383)
@@ -20,12 +20,12 @@ size = Vector2(237.433, 22.3713)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m65qp"]
 size = Vector2(369.697, 355.135)
 
-[node name="mapa" type="Node2D"]
+[node name="Mapa" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-617, -453)
 scale = Vector2(0.581197, 0.59697)
-texture = ExtResource("1_fxoj0")
+texture = ExtResource("1_0bqkm")
 
 [node name="Collision" type="StaticBody2D" parent="Sprite2D"]
 collision_mask = 0

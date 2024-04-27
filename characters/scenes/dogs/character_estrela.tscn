@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_duxev"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/gatos_cachorros.png" id="2_y8ct4"]
-[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/EffectWalk.wav" id="3_i5cb2"]
+[ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_g7xr3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ckanl"]
 radius = 17.0
@@ -363,7 +363,7 @@ parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="EffectWalk" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_i5cb2")
+stream = ExtResource("3_g7xr3")
 volume_db = 10.0
 
 [node name="TimerWalk" type="Timer" parent="."]

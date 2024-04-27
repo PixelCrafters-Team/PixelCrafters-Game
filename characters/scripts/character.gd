@@ -6,7 +6,6 @@ var is_glace: bool = false
 
 @export_category("Variables")
 @export var move_speed: float = 64;
-
 @export var friction: float = 0.2
 @export var acceleration: float = 0.2
 
@@ -16,13 +15,17 @@ var is_glace: bool = false
 func _ready():
 	state_machine = animation_tree["parameters/playback"]
 
+
 func _physics_process(delta):
 	if is_glace == false:
 		move_and_slide()
 		move()
 		animate()
 	
-	if (Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up")) && is_glace == false:
+	if (Input.is_action_pressed("move_left") or 
+			Input.is_action_pressed("move_right") or 
+			Input.is_action_pressed("move_down") or
+			Input.is_action_pressed("move_up")) and is_glace == false:
 		if not is_walking:
 			is_walking = true
 			$TimerWalk.start(0.3)
@@ -30,10 +33,11 @@ func _physics_process(delta):
 	else:
 		is_walking = false
 		
-	if Input.is_key_pressed(KEY_Z) and is_in_group('cats'):
+	if Input.is_key_pressed(KEY_Z) and is_in_group("cats"):
 		glace_cat()
-	if Input.is_key_pressed(KEY_X) and is_in_group('cats'):
+	if Input.is_key_pressed(KEY_X) and is_in_group("cats"):
 		unfreeze_cat()
+	
 	
 func move() -> void:
 	var direction: Vector2 = Vector2(
@@ -46,9 +50,7 @@ func move() -> void:
 		animation_tree["parameters/Walk/blend_position"] = direction
 		velocity.x = lerp(velocity.x, direction.normalized().x * move_speed, acceleration)
 		velocity.y = lerp(velocity.y, direction.normalized().y * move_speed, acceleration)
-		
 		return
-	
 		
 	velocity.x = lerp(velocity.x, direction.normalized().x * move_speed, friction)
 	velocity.y = lerp(velocity.y, direction.normalized().y * move_speed, friction)
@@ -64,11 +66,13 @@ func animate() -> void:
 func _on_timer_timeout():
 	is_walking = false
 	
+	
 func glace_cat():
 	$TextureGlace.visible = true
 	$Texture.visible = false
 	is_glace = true
 	$EffectGlace.play()
+
 
 func unfreeze_cat():
 	$TextureGlace.visible = false

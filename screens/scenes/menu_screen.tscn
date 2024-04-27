@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://screens/scenes/menu_screen.gd" id="1_3hrr8"]
 [ext_resource type="Texture2D" uid="uid://cpe360k00cc3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
-[ext_resource type="AudioStream" uid="uid://83vhkp5ino3d" path="res://screens/assets/click-sound.mp3" id="3_w2lws"]
+[ext_resource type="AudioStream" uid="uid://83vhkp5ino3d" path="res://screens/assets/click_sound.mp3" id="3_ltgx0"]
 
 [sub_resource type="SystemFont" id="SystemFont_s6d52"]
 font_names = PackedStringArray("Cursive")
@@ -76,7 +76,7 @@ text = "START
 
 [node name="clickSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("3_w2lws")
+stream = ExtResource("3_ltgx0")
 
 [connection signal="pressed" from="MarginContainer/quit_buton" to="." method="_on_quit_buton_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/start_button" to="." method="_on_start_button_pressed"]

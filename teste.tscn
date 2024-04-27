@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://chwd3op0tbya8"]
 
 [ext_resource type="PackedScene" uid="uid://bcxcd8tbjoekt" path="res://wold/scenes/mapa.tscn" id="1_1b2ol"]
-[ext_resource type="PackedScene" uid="uid://bxxq6umfl0kfm" path="res://characters/scenes/cats/character_ronronante.tscn" id="5_6rpeo"]
+[ext_resource type="PackedScene" uid="uid://b15ew0a2e6h6f" path="res://characters/scenes/cats/character_ronronante.tscn" id="5_6rpeo"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-28, -11)
