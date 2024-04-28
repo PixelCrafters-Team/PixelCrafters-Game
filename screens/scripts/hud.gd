@@ -1,6 +1,10 @@
 extends CanvasLayer
 
-@export var equipe: String = "-";
+@export var equipe: String = "-"
+@onready var camera = $MiniMap/SubViewport/Camera2D
+
+func _physics_process(delta):
+	camera.position = get_parent().Character.position
 
 func build_uhd():
 	if get_parent().Character.is_in_group("cats"):

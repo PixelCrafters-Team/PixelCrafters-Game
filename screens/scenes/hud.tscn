@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=11 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_yfcg1"]
 [ext_resource type="Texture2D" uid="uid://bhfo7d4ju60uk" path="res://screens/assets/icons/box.png" id="3_h06wf"]
+[ext_resource type="Texture2D" uid="uid://c3yh337ohijev" path="res://wold/assets/mundo_jogo.svg" id="5_3h8d4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
 texture = ExtResource("3_h06wf")
@@ -83,5 +84,35 @@ offset_bottom = 95.0
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = SubResource("Theme_jhs54")
+
+[node name="MiniMap" type="SubViewportContainer" parent="."]
+offset_left = 7.0
+offset_top = 601.0
+offset_right = 207.0
+offset_bottom = 801.0
+
+[node name="SubViewport" type="SubViewport" parent="MiniMap"]
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="MiniMap/SubViewport"]
+position = Vector2(-642, -1058)
+scale = Vector2(0.581, 0.581)
+texture = ExtResource("5_3h8d4")
+
+[node name="Camera2D" type="Camera2D" parent="MiniMap/SubViewport"]
+zoom = Vector2(0.3, 0.3)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 604.0
+offset_right = 208.0
+offset_bottom = 801.0
+theme_override_colors/font_color = Color(0.0117647, 0.203922, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = ".
+"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Control/Exit" to="." method="_on_button_pressed"]
