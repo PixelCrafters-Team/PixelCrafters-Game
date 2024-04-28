@@ -143,9 +143,6 @@ polygon = PackedVector2Array(1259.47, 866.04, 1312.81, 837.563, 1342.06, 884.466
 [node name="CollisionPolygon2D40" type="CollisionPolygon2D" parent="CentroDePesquisa/Collisions"]
 polygon = PackedVector2Array(1092.57, 507.563, 1151.07, 474.061, 1183.76, 524.314, 1128.71, 554.467)
 
-[node name="CollisionPolygon2D41" type="CollisionPolygon2D" parent="CentroDePesquisa/Collisions"]
-polygon = PackedVector2Array(918.793, 783.959, 917.073, 797.36, 901.588, 802.385, 896.426, 812.436, 896.426, 825.837, 911.911, 832.538, 915.352, 845.939, 911.911, 859.34, 917.073, 869.39, 927.396, 877.766, 937.72, 869.39, 944.602, 877.766, 954.926, 884.466, 960.088, 892.842, 972.132, 892.842, 979.014, 891.167, 982.455, 884.466, 1003.1, 877.766, 1016.87, 882.791, 1030.63, 877.766, 1032.35, 869.39, 1027.19, 859.34, 1035.79, 835.888, 1044.4, 834.213, 1053, 827.512, 1054.72, 819.137, 1047.84, 810.761, 1035.79, 807.411, 1028.91, 790.659, 1034.07, 780.609, 1037.51, 772.233, 1032.35, 762.182, 1025.47, 762.182, 1011.71, 768.883, 989.338, 757.157, 987.617, 743.756, 975.573, 738.731, 966.97, 748.781, 968.69, 753.807, 961.808, 758.832, 944.602, 763.857, 932.558, 757.157, 925.676, 757.157, 920.514, 762.182, 917.073, 770.558)
-
 [node name="CollisionPolygon2D42" type="CollisionPolygon2D" parent="CentroDePesquisa/Collisions"]
 polygon = PackedVector2Array(-939.44, 67.005, -934.279, 88.7817, -915.352, 93.807, -906.749, 75.3806, -581.558, -85.4315, -552.308, -88.7817, -552.308, -118.934, -569.514, -113.909, -585, -97.1573, -901.588, 63.6548)
 
@@ -182,6 +179,9 @@ polygon = PackedVector2Array(-691.676, 897.867, -693.396, 916.294, -672.749, 926
 
 [node name="CollisionPolygon2D51" type="CollisionPolygon2D" parent="CentroDePesquisa/Collisions"]
 polygon = PackedVector2Array(-301.103, -242.893, -311.426, -217.766, -289.059, -211.066, -278.735, -227.817, -278.735, -242.893)
+
+[node name="CollisionPolygon2D41" type="CollisionPolygon2D" parent="CentroDePesquisa/Collisions"]
+polygon = PackedVector2Array(948.043, 792.335, 939.44, 814.111, 948.043, 840.913, 968.69, 854.314, 997.94, 845.939, 1009.98, 822.487, 1003.1, 792.335, 975.573, 783.959)
 
 [node name="PracaCentral" type="Sprite2D" parent="."]
 position = Vector2(-645, -1691)
