@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://y61hurvn4hcq"]
+[gd_scene load_steps=16 format=3 uid="uid://y61hurvn4hcq"]
 
 [ext_resource type="Script" path="res://screens/scenes/menu_screen.gd" id="1_3hrr8"]
 [ext_resource type="Texture2D" uid="uid://n8lc4gychwg3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
@@ -8,13 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="6_wcspm"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="7_bjknq"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88sdy"]
+texture = ExtResource("6_wcspm")
+modulate_color = Color(0.454902, 0.156863, 0.0862745, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3b7n6"]
 texture = ExtResource("6_wcspm")
 
 [sub_resource type="Theme" id="Theme_nuk4w"]
 default_font = ExtResource("7_bjknq")
 Button/colors/font_color = Color(0.188235, 0.184314, 0.14902, 1)
-Button/styles/hover = SubResource("StyleBoxTexture_3b7n6")
+Button/styles/hover = SubResource("StyleBoxTexture_88sdy")
 Button/styles/normal = SubResource("StyleBoxTexture_3b7n6")
 Button/styles/pressed = SubResource("StyleBoxTexture_3b7n6")
 
@@ -22,13 +26,21 @@ Button/styles/pressed = SubResource("StyleBoxTexture_3b7n6")
 font = ExtResource("3_32m85")
 font_size = 250
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0drw"]
+texture = ExtResource("5_wpywn")
+modulate_color = Color(0.513726, 0, 0, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_maoqi"]
 texture = ExtResource("5_wpywn")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy6u5"]
+texture = ExtResource("5_wpywn")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
+
 [sub_resource type="Theme" id="Theme_ctwlu"]
-Button/styles/hover = SubResource("StyleBoxTexture_maoqi")
+Button/styles/hover = SubResource("StyleBoxTexture_t0drw")
 Button/styles/normal = SubResource("StyleBoxTexture_maoqi")
-Button/styles/pressed = SubResource("StyleBoxTexture_maoqi")
+Button/styles/pressed = SubResource("StyleBoxTexture_xy6u5")
 
 [node name="Menu_screen" type="Control"]
 layout_mode = 3

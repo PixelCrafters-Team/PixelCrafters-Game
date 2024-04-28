@@ -1,24 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=10 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_yfcg1"]
-[ext_resource type="Texture2D" uid="uid://cdf0xj658pnxn" path="res://screens/assets/icons/Icon_SquareStraight.png" id="3_vm8dl"]
+[ext_resource type="Texture2D" uid="uid://bhfo7d4ju60uk" path="res://screens/assets/icons/box.png" id="3_h06wf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
-texture = ExtResource("3_vm8dl")
+texture = ExtResource("3_h06wf")
 texture_margin_left = 60.0
-texture_margin_top = 10.0
+texture_margin_top = 17.0
 texture_margin_right = 60.0
 texture_margin_bottom = 16.0
+expand_margin_left = 85.0
+expand_margin_top = 42.0
+expand_margin_right = 85.0
+expand_margin_bottom = 52.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rwmo4"]
 texture = ExtResource("2_yfcg1")
+modulate_color = Color(0.537255, 0, 0.0431373, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0jwb5"]
+texture = ExtResource("2_yfcg1")
+modulate_color = Color(0.207843, 0.34902, 0.462745, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ahkba"]
+texture = ExtResource("2_yfcg1")
+modulate_color = Color(0.992157, 0.968627, 0.941176, 1)
 
 [sub_resource type="Theme" id="Theme_jhs54"]
 Button/styles/hover = SubResource("StyleBoxTexture_rwmo4")
-Button/styles/normal = SubResource("StyleBoxTexture_rwmo4")
-Button/styles/pressed = SubResource("StyleBoxTexture_rwmo4")
+Button/styles/normal = SubResource("StyleBoxTexture_0jwb5")
+Button/styles/pressed = SubResource("StyleBoxTexture_ahkba")
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_j0pl6")
@@ -63,10 +76,10 @@ vertical_alignment = 1
 
 [node name="Exit" type="Button" parent="Control"]
 layout_mode = 2
-offset_left = 1360.0
-offset_top = 24.0
-offset_right = 1419.0
-offset_bottom = 82.0
+offset_left = 1341.0
+offset_top = 21.0
+offset_right = 1425.0
+offset_bottom = 95.0
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = SubResource("Theme_jhs54")
