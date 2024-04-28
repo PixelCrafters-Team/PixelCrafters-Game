@@ -20,7 +20,7 @@ func _on_start_button_pressed():
 
 func _on_click_sound_finished():
 	if sound_source == "start": 
-		get_tree().change_scene_to_file("res://game/scenes/Game.tscn") 
+		get_tree().change_scene_to_file("res://game/scenes/game.tscn") 
 	elif sound_source == "quit":
 		get_tree().quit()
 	sound_source = ""
