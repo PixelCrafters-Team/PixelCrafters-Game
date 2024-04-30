@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://btty3dsxkbo88"]
+[gd_scene load_steps=31 format=3 uid="uid://btty3dsxkbo88"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_egjrr"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_rvvcd"]
@@ -385,6 +385,16 @@ states/Idle/position = Vector2(445.333, 74.4444)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ncmwf")
 states/Walk/position = Vector2(634.667, 73.7036)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7kwmx"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+
 [node name="Character_boladepelos" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["cats"]]
 collision_layer = 0
 script = ExtResource("1_egjrr")
@@ -437,5 +447,8 @@ hframes = 3
 
 [node name="EffectGlace" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_kw5st")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_7kwmx")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]

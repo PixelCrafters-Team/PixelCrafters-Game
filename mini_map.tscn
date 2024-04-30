@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://caclt3symm01p"]
 
-[ext_resource type="Texture2D" uid="uid://c3yh337ohijev" path="res://wold/assets/mundo_jogo.svg" id="1_emgtb"]
+[ext_resource type="Texture2D" uid="uid://c3yh337ohijev" path="res://world/assets/mundo_jogo.svg" id="1_wx30w"]
 
 [node name="MiniMap" type="SubViewportContainer"]
 offset_left = 3.0
@@ -16,7 +16,7 @@ render_target_update_mode = 4
 [node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
 position = Vector2(-642, -1058)
 scale = Vector2(0.581, 0.581)
-texture = ExtResource("1_emgtb")
+texture = ExtResource("1_wx30w")
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]
 zoom = Vector2(0.3, 0.3)

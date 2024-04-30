@@ -1,8 +1,9 @@
 extends Node2D
 
-var Map = preload("res://world/scenes/map.tscn").instantiate()
+var peer = ENetMultiplayerPeer.new()
+@export var player_scene : PackedScene
 var Character
-var character_position 
+
 
 var list_characters_cats = [ 
 		preload("res://characters/scenes/cats/character_bola_de_pelos.tscn"), 
@@ -15,25 +16,37 @@ var list_characters_dogs = [
 		preload("res://characters/scenes/dogs/character_sargento_canis.tscn")
 ]
 
-
 func _ready():
-	select_map(0)
 	select_character(sort_team(), 1)
-	$HUD.build_uhd()
+
+func _on_host_pressed():
+	peer.create_server(1027)
+	multiplayer.multiplayer_peer = peer
+	multiplayer.peer_connected.connect(add_player)
+	add_player()
+	Character.get_node("Camera2D").visible = false
+
+func _on_join_pressed():
+	peer.create_client("127.0.0.1", 1027)
+	multiplayer.multiplayer_peer = peer
+	Character.get_node("Camera2D").visible = false
 	
+func add_player(id = 1): 
+	var player = player_scene.instantiate()
+	player.name = str(id)
+	call_deferred("add_child", player)
+
+func del_player(id):
+	rpc("_del_player",	id)
 	
-func select_map(num_map): # MAPA: 0 (centro de pesquisa) e 1 (praca central)
-	if num_map == 0:
-		add_child(Map)
-		Map.get_node("CentroDePesquisa").visible = true
-		Map.get_node("PracaCentral").visible = false
-		character_position = Vector2(113, -25)
-	else:
-		add_child(Map)
-		Map.get_node("CentroDePesquisa").visible = false
-		Map.get_node("PracaCentral").visible = true
-		character_position = Vector2(1046, -939)
-		
+@rpc("any_peer", "call_local")
+func _del_player(id):
+	get_node(str(id)).queue_free()
+	
+func exit_game(id):
+	multiplayer.peer_disconnected.connect(del_player)
+	del_player(id)	
+	
 		
 func sort_team() -> String:
 	var rng = RandomNumberGenerator.new()
@@ -48,6 +61,4 @@ func select_character(team, num_character):
 		Character = list_characters_cats[num_character].instantiate()
 	else:
 		Character = list_characters_dogs[num_character].instantiate()
-	Character.global_position = character_position
-	add_child(Character)
 

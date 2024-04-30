@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_yfcg1"]
 [ext_resource type="Texture2D" uid="uid://bhfo7d4ju60uk" path="res://screens/assets/icons/box.png" id="3_h06wf"]
-[ext_resource type="Texture2D" uid="uid://c3yh337ohijev" path="res://wold/assets/mundo_jogo.svg" id="5_3h8d4"]
+[ext_resource type="Texture2D" uid="uid://c3yh337ohijev" path="res://world/assets/mundo_jogo.svg" id="5_wyj5o"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
 texture = ExtResource("3_h06wf")
@@ -99,7 +99,7 @@ render_target_update_mode = 4
 [node name="Sprite2D" type="Sprite2D" parent="MiniMap/SubViewport"]
 position = Vector2(-642, -1058)
 scale = Vector2(0.581, 0.581)
-texture = ExtResource("5_3h8d4")
+texture = ExtResource("5_wyj5o")
 
 [node name="Camera2D" type="Camera2D" parent="MiniMap/SubViewport"]
 zoom = Vector2(0.3, 0.3)

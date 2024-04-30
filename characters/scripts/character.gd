@@ -12,10 +12,12 @@ var is_glace: bool = false
 @export_category("Objects")
 @export var animation_tree: AnimationTree = null
 
+@onready var cam = $Camera2D
+
 func _ready():
 	state_machine = animation_tree["parameters/playback"]
-
-
+	cam.enabled = is_multiplayer_authority()
+	
 func _physics_process(delta):
 	if is_glace == false:
 		move_and_slide()
@@ -84,3 +86,6 @@ func unfreeze_cat():
 	$Texture.visible = true
 	is_glace = false
 	$EffectGlace.play()
+	
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())

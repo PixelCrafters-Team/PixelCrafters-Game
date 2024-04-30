@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qu2jmm37uk2w"
-path="res://.godot/imported/centro_de_pesquisa.svg-ddabb0ac4548a4bcc0d55b3c44f14dd0.ctex"
+uid="uid://c3yh337ohijev"
+path="res://.godot/imported/mundo_jogo.svg-811f51033522fb100de1c0c83ac1679d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wold/assets/centro_de_pesquisa.svg"
-dest_files=["res://.godot/imported/centro_de_pesquisa.svg-ddabb0ac4548a4bcc0d55b3c44f14dd0.ctex"]
+source_file="res://world/assets/mundo_jogo.svg"
+dest_files=["res://.godot/imported/mundo_jogo.svg-811f51033522fb100de1c0c83ac1679d.ctex"]
 
 [params]
 

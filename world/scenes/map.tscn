@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcxcd8tbjoekt"]
 
-[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://wold/assets/centro_de_pesquisa.svg" id="1_0bqkm"]
-[ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://wold/assets/praca_central.svg" id="2_bqk0x"]
+[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://world/assets/centro_de_pesquisa.svg" id="1_i8d8t"]
+[ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://world/assets/praca_central.svg" id="2_xwusj"]
 
 [node name="Map" type="Node2D"]
 
 [node name="CentroDePesquisa" type="Sprite2D" parent="."]
 position = Vector2(-617, -453)
 scale = Vector2(0.581197, 0.59697)
-texture = ExtResource("1_0bqkm")
+texture = ExtResource("1_i8d8t")
 
 [node name="Collisions" type="StaticBody2D" parent="CentroDePesquisa"]
 
@@ -186,7 +186,7 @@ polygon = PackedVector2Array(948.043, 792.335, 939.44, 814.111, 948.043, 840.913
 [node name="PracaCentral" type="Sprite2D" parent="."]
 position = Vector2(-645, -1691)
 scale = Vector2(0.581, 0.581)
-texture = ExtResource("2_bqk0x")
+texture = ExtResource("2_xwusj")
 
 [node name="Collisions" type="StaticBody2D" parent="PracaCentral"]
 
