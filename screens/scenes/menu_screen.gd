@@ -6,7 +6,10 @@ var sound_source = ""
 
 func _ready():
 	click_sound_player = %ClickSound
-	
+	$AnimationDog/AnimationRoute.play("animationDog")
+	$AnimationDog/AnimationRoute/AnimationWalk.play("walkDog")
+	$AnimationCat/AnimationRoute.play("animationCat")
+	$AnimationCat/AnimationRoute/AnimationWalk.play("walk")
 	
 func _on_quit_buton_pressed():
 	sound_source = "quit"

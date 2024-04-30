@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://y61hurvn4hcq"]
+[gd_scene load_steps=31 format=3 uid="uid://y61hurvn4hcq"]
 
 [ext_resource type="Script" path="res://screens/scenes/menu_screen.gd" id="1_3hrr8"]
 [ext_resource type="Texture2D" uid="uid://n8lc4gychwg3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="5_wpywn"]
 [ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="6_wcspm"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="7_bjknq"]
+[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="8_gfutr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88sdy"]
 texture = ExtResource("6_wcspm")
@@ -41,6 +42,171 @@ modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
 Button/styles/hover = SubResource("StyleBoxTexture_t0drw")
 Button/styles/normal = SubResource("StyleBoxTexture_maoqi")
 Button/styles/pressed = SubResource("StyleBoxTexture_xy6u5")
+
+[sub_resource type="Curve2D" id="Curve2D_uqmlp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -160, 602, 0, 0, 0, 0, -83.299, 604.121, 0, 0, 0, 0, 25, 611, 0, 0, 0, 0, 175, 761, 0, 0, 0, 0, 673.017, 745.126, 0, 0, 0, 0, 1268, 750, 0, 0, 0, 0, 1430, 602, 0, 0, 0, 0, 1587, 604)
+}
+point_count = 8
+
+[sub_resource type="Animation" id="Animation_tqyr7"]
+resource_name = "animationDog"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path/PathFollow:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_f1th3"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path/PathFollow:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pih3s"]
+_data = {
+"RESET": SubResource("Animation_f1th3"),
+"animationDog": SubResource("Animation_tqyr7")
+}
+
+[sub_resource type="Animation" id="Animation_y3g50"]
+resource_name = "walkDog"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Dog/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [30, 31, 32]
+}
+
+[sub_resource type="Animation" id="Animation_kc6e0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Dog/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c0t63"]
+_data = {
+"RESET": SubResource("Animation_kc6e0"),
+"walkDog": SubResource("Animation_y3g50")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_lht55"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1522, 209, 0, 0, 0, 0, 1419, 200, 0, 0, 0, 0, 1263, 82, 0, 0, 0, 0, 172, 82, 0, 0, 0, 0, 18, 214, 0, 0, 0, 0, -169, 196)
+}
+point_count = 6
+
+[sub_resource type="Animation" id="Animation_v73p1"]
+resource_name = "animationCat"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path/PathFollow:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_v5mks"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path/PathFollow:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5f756"]
+_data = {
+"RESET": SubResource("Animation_v5mks"),
+"animationCat": SubResource("Animation_v73p1")
+}
+
+[sub_resource type="Animation" id="Animation_va2bq"]
+resource_name = "walk"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Cat/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [69, 70, 71]
+}
+
+[sub_resource type="Animation" id="Animation_6o3tt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Cat/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [69]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i5ruo"]
+_data = {
+"RESET": SubResource("Animation_6o3tt"),
+"walk": SubResource("Animation_va2bq")
+}
 
 [node name="Menu_screen" type="Control"]
 layout_mode = 3
@@ -93,6 +259,77 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = SubResource("Theme_ctwlu")
 theme_override_font_sizes/font_size = 59
+
+[node name="AnimationDog" type="Node2D" parent="."]
+
+[node name="Dog" type="CharacterBody2D" parent="AnimationDog"]
+position = Vector2(1281.89, 737.313)
+rotation = -0.740268
+
+[node name="Sprite" type="Sprite2D" parent="AnimationDog/Dog"]
+position = Vector2(5.83252, -23.7061)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_gfutr")
+hframes = 12
+vframes = 8
+frame = 30
+
+[node name="Path" type="Path2D" parent="AnimationDog"]
+curve = SubResource("Curve2D_uqmlp")
+
+[node name="PathFollow" type="PathFollow2D" parent="AnimationDog/Path"]
+position = Vector2(-160, 602)
+rotation = 0.0276486
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="AnimationDog/Path/PathFollow"]
+remote_path = NodePath("../../../Dog")
+
+[node name="AnimationRoute" type="AnimationPlayer" parent="AnimationDog"]
+playback_default_blend_time = 0.01
+libraries = {
+"": SubResource("AnimationLibrary_pih3s")
+}
+
+[node name="AnimationWalk" type="AnimationPlayer" parent="AnimationDog/AnimationRoute"]
+libraries = {
+"": SubResource("AnimationLibrary_c0t63")
+}
+
+[node name="AnimationCat" type="Node2D" parent="."]
+
+[node name="Cat" type="CharacterBody2D" parent="AnimationCat"]
+position = Vector2(792.604, 37.9059)
+rotation = -3.14159
+
+[node name="Sprite" type="Sprite2D" parent="AnimationCat/Cat"]
+position = Vector2(1.896, -24.257)
+rotation = 3.01593
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_gfutr")
+hframes = 12
+vframes = 8
+frame = 69
+
+[node name="Path" type="Path2D" parent="AnimationCat"]
+curve = SubResource("Curve2D_lht55")
+
+[node name="PathFollow" type="PathFollow2D" parent="AnimationCat/Path"]
+position = Vector2(1522, 209)
+rotation = -3.05444
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="AnimationCat/Path/PathFollow"]
+position = Vector2(0.841431, 44.0941)
+remote_path = NodePath("../../../Cat")
+
+[node name="AnimationRoute" type="AnimationPlayer" parent="AnimationCat"]
+libraries = {
+"": SubResource("AnimationLibrary_5f756")
+}
+
+[node name="AnimationWalk" type="AnimationPlayer" parent="AnimationCat/AnimationRoute"]
+libraries = {
+"": SubResource("AnimationLibrary_i5ruo")
+}
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="finished" from="ClickSound" to="." method="_on_click_sound_finished"]
