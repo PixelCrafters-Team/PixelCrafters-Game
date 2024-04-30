@@ -238,7 +238,7 @@ text = "Play"
 [node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_ltgx0")
-volume_db = 10.0
+volume_db = 5.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -334,11 +334,11 @@ libraries = {
 "": SubResource("AnimationLibrary_i5ruo")
 }
 
-[node name="music_menu" type="AudioStreamPlayer2D" parent="."]
+[node name="MusicMenu" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_mg4w4")
 autoplay = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="finished" from="ClickSound" to="." method="_on_click_sound_finished"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_quit_buton_pressed"]
-[connection signal="finished" from="music_menu" to="." method="_on_music_menu_finished"]
+[connection signal="finished" from="MusicMenu" to="." method="_on_music_menu_finished"]

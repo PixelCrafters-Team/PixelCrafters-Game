@@ -51,3 +51,6 @@ func select_character(team, num_character):
 	Character.global_position = character_position
 	add_child(Character)
 
+
+func _on_music_game_finished():
+	$MusicGame.play()

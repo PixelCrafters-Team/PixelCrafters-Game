@@ -13,13 +13,13 @@ func _ready():
 func _on_quit_buton_pressed():
 	sound_source = "quit"
 	%ClickSound.play()
-	$music_menu.stream_paused = true
+	$MusicMenu.stream_paused = true
 
 
 func _on_start_button_pressed():
 	sound_source = "start"
 	%ClickSound.play()
-	$music_menu.stream_paused = true
+	$MusicMenu.stream_paused = true
 
 
 func _on_click_sound_finished():
@@ -31,4 +31,4 @@ func _on_click_sound_finished():
 
 
 func _on_music_menu_finished():
-	$music_menu.play()
+	$MusicMenu.play()
