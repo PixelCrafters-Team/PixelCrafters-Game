@@ -1,0 +1,232 @@
+[gd_scene load_steps=20 format=3 uid="uid://b0hwdnnrm8c33"]
+
+[ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="1_1cpkn"]
+[ext_resource type="Script" path="res://screens/scripts/cats_character_selection_screen.gd" id="1_clrrc"]
+[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_noyvm"]
+[ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_ks4tv"]
+[ext_resource type="Texture2D" uid="uid://do4p4xkis5wl4" path="res://characters/assets/ronronante.png" id="4_tkavs"]
+[ext_resource type="Texture2D" uid="uid://b6yapnhqqwq52" path="res://characters/assets/bola_de_pelos.png" id="5_5tivp"]
+[ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="5_ja42p"]
+[ext_resource type="Texture2D" uid="uid://db7d2a5voqbkx" path="res://characters/assets/sombra.png" id="6_e54ni"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_68kv2"]
+font = ExtResource("3_ks4tv")
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_l1hjr"]
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrxlf"]
+font = ExtResource("3_ks4tv")
+font_size = 30
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sphuw"]
+texture = ExtResource("5_ja42p")
+expand_margin_left = 15.0
+expand_margin_top = 5.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Theme" id="Theme_04v50"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.184314, 0.180392, 0.14902, 1)
+Button/font_sizes/font_size = 22
+Button/fonts/font = ExtResource("3_ks4tv")
+Button/styles/hover = SubResource("StyleBoxTexture_sphuw")
+Button/styles/normal = SubResource("StyleBoxTexture_sphuw")
+Button/styles/pressed = SubResource("StyleBoxTexture_sphuw")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0itep"]
+font = ExtResource("3_ks4tv")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyqq5"]
+font = ExtResource("3_ks4tv")
+font_size = 30
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0drw"]
+texture = ExtResource("2_noyvm")
+modulate_color = Color(0.513726, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_maoqi"]
+texture = ExtResource("2_noyvm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy6u5"]
+texture = ExtResource("2_noyvm")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
+
+[sub_resource type="Theme" id="Theme_n1g7h"]
+Button/styles/hover = SubResource("StyleBoxTexture_t0drw")
+Button/styles/normal = SubResource("StyleBoxTexture_maoqi")
+Button/styles/pressed = SubResource("StyleBoxTexture_xy6u5")
+
+[node name="CatsCharacterSelectionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_clrrc")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1440.0
+offset_bottom = 810.0
+texture = ExtResource("1_1cpkn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "ESCOLHA SEU PERSONAGEM:"
+label_settings = SubResource("LabelSettings_68kv2")
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "                    Equipe: Gatos"
+label_settings = SubResource("LabelSettings_l1hjr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Gato" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato"]
+layout_mode = 2
+text = "Ronronante"
+label_settings = SubResource("LabelSettings_rrxlf")
+horizontal_alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_tkavs")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Habilidade:  Ronronar Calmante"
+horizontal_alignment = 1
+
+[node name="Select" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_04v50")
+text = "Selecionar"
+
+[node name="Gato2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato2"]
+layout_mode = 2
+text = "Bola de Pelos"
+label_settings = SubResource("LabelSettings_0itep")
+horizontal_alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato2"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_5tivp")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato2"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Habilidade:  Esconderijo Felino"
+horizontal_alignment = 1
+
+[node name="Select2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_04v50")
+text = "Selecionar"
+
+[node name="Gato3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato3"]
+layout_mode = 2
+text = "Sombra"
+label_settings = SubResource("LabelSettings_fyqq5")
+horizontal_alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato3"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato3/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_e54ni")
+expand_mode = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato3"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Habilidade:  Ataque de Pelos"
+horizontal_alignment = 1
+
+[node name="Select3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Gato3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_04v50")
+text = "Selecionar"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1322.0
+offset_top = 51.0
+offset_right = 1403.0
+offset_bottom = 130.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = SubResource("Theme_n1g7h")
+theme_override_font_sizes/font_size = 59
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_2_pressed"]
