@@ -10,17 +10,21 @@ player_scene = ExtResource("2_lculr")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Host" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 243.0
+offset_bottom = 177.0
 text = "HOST"
 
 [node name="Join" type="Button" parent="CanvasLayer"]
-offset_top = 32.0
-offset_right = 43.0
-offset_bottom = 63.0
+offset_left = 28.0
+offset_top = 191.0
+offset_right = 238.0
+offset_bottom = 344.0
 text = "JOIN"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://characters/scenes/cats/character_bola_de_pelos.tscn", "res://characters/scenes/cats/character_ronronante.tscn", "res://characters/scenes/cats/character_sombra.tscn", "res://characters/scenes/dogs/character_estrela.tscn", "res://characters/scenes/dogs/character_sargento_canis.tscn", "res://characters/scenes/dogs/character_brutus.tscn")
 spawn_path = NodePath("..")
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]

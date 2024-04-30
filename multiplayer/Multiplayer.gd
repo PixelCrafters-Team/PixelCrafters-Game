@@ -4,7 +4,6 @@ var peer = ENetMultiplayerPeer.new()
 @export var player_scene : PackedScene
 var Character
 
-
 var list_characters_cats = [ 
 		preload("res://characters/scenes/cats/character_bola_de_pelos.tscn"), 
 		preload("res://characters/scenes/cats/character_ronronante.tscn"), 

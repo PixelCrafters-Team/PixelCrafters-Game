@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c57huq0bn6a3h"]
+[gd_scene load_steps=31 format=3 uid="uid://c57huq0bn6a3h"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_oh85r"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_pul81"]
@@ -386,6 +386,16 @@ states/Walk/position = Vector2(634.667, 73.7036)
 radius = 14.0
 height = 32.0
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_at4po"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+
 [node name="Character_ronronante" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["cats"]]
 collision_layer = 0
 script = ExtResource("1_oh85r")
@@ -439,5 +449,8 @@ frame = 1
 
 [node name="EffectGlace" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_4c8tv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_at4po")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
