@@ -167,7 +167,7 @@ text = "Habilidade:  Ronronar Calmante"
 label_settings = SubResource("LabelSettings_0k5rk")
 horizontal_alignment = 1
 
-[node name="SelectButton" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
+[node name="SelectButton0" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -210,7 +210,7 @@ text = "Habilidade:  Esconderijo Felino"
 label_settings = SubResource("LabelSettings_njso6")
 horizontal_alignment = 1
 
-[node name="SelectButton" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer"]
+[node name="SelectButton1" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_04v50")
@@ -252,7 +252,7 @@ text = "Habilidade:  Ataque de Pelos"
 label_settings = SubResource("LabelSettings_sq1dj")
 horizontal_alignment = 1
 
-[node name="SelectButton" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer"]
+[node name="SelectButton2" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_04v50")
@@ -283,4 +283,7 @@ size_flags_vertical = 0
 theme = SubResource("Theme_n1g7h")
 theme_override_font_sizes/font_size = 59
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/SelectButton0" to="." method="_on_select_button_0_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/SelectButton1" to="." method="_on_select_button_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/SelectButton2" to="." method="_on_select_button_2_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_2_pressed"]

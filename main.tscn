@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxr387o5gtpgq"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_6vcxb"]
+[ext_resource type="AudioStream" uid="uid://bpleynek6ka3l" path="res://screens/assets/music_menu_screen.wav" id="2_85h5n"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_6vcxb")
+
+[node name="MusicMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_85h5n")
+autoplay = true
+
+[connection signal="finished" from="MusicMenu" to="." method="_on_music_menu_finished"]

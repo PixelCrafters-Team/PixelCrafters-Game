@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://y61hurvn4hcq"]
+[gd_scene load_steps=31 format=3 uid="uid://y61hurvn4hcq"]
 
 [ext_resource type="Script" path="res://screens/scenes/menu_screen.gd" id="1_3hrr8"]
 [ext_resource type="Texture2D" uid="uid://n8lc4gychwg3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="6_wcspm"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="7_bjknq"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="8_gfutr"]
-[ext_resource type="AudioStream" uid="uid://bpleynek6ka3l" path="res://screens/assets/music_menu_screen.wav" id="9_mg4w4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88sdy"]
 texture = ExtResource("6_wcspm")
@@ -334,11 +333,6 @@ libraries = {
 "": SubResource("AnimationLibrary_i5ruo")
 }
 
-[node name="MusicMenu" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_mg4w4")
-autoplay = true
-
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="finished" from="ClickSound" to="." method="_on_click_sound_finished"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_quit_buton_pressed"]
-[connection signal="finished" from="MusicMenu" to="." method="_on_music_menu_finished"]

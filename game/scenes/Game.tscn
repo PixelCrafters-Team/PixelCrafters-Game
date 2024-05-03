@@ -1,14 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://chwd3op0tbya8"]
+[gd_scene load_steps=3 format=3 uid="uid://chwd3op0tbya8"]
 
 [ext_resource type="Script" path="res://game/scripts/game.gd" id="1_vkq62"]
-[ext_resource type="PackedScene" uid="uid://bjycgsoyyytro" path="res://screens/scenes/hud.tscn" id="2_8rffu"]
 [ext_resource type="AudioStream" uid="uid://mdtmgph6wxcr" path="res://game/assets/music_game.ogg" id="3_ss0oy"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(-28, -11)
 script = ExtResource("1_vkq62")
-
-[node name="HUD" parent="." instance=ExtResource("2_8rffu")]
 
 [node name="MusicGame" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ss0oy")

@@ -1,7 +1,7 @@
 extends Control
 
 var sound_source = ""
-var game_scene = preload("res://game/scenes/game.tscn")
+var character_select_scene = preload("res://screens/scenes/character_selection_screen.tscn")
 
 func _ready():
 	$AnimationDog/AnimationRoute.play("animationDog")
@@ -13,22 +13,19 @@ func _ready():
 func _on_quit_buton_pressed():
 	sound_source = "quit"
 	%ClickSound.play()
-	$MusicMenu.stream_paused = true
 
 
 func _on_start_button_pressed():
 	sound_source = "start"
 	%ClickSound.play()
-	$MusicMenu.stream_paused = true
 
 
 func _on_click_sound_finished():
 	if sound_source == "start": 
-		get_tree().change_scene_to_packed(game_scene)
+		get_parent().add_child(character_select_scene.instantiate())
+		get_parent().get_node("Menu_screen").queue_free()
+		
 	elif sound_source == "quit":
 		get_tree().quit()
+		
 	sound_source = ""
-
-
-func _on_music_menu_finished():
-	$MusicMenu.play()

@@ -8,7 +8,8 @@ func _process(delta):
 	$Timer/LabelTimer.text = str(int(timer.time_left / 60)) + ":" + str(int(timer.time_left) % 60)
 
 func _physics_process(delta):
-	camera.position = get_parent().Character.position
+	if get_parent().Character:
+		camera.position = get_parent().Character.position
 
 func build_uhd():
 	if get_parent().Character.is_in_group("cats"):
@@ -16,7 +17,6 @@ func build_uhd():
 	elif get_parent().Character.is_in_group("dogs"):
 		equipe = "Cachorros Vigilantes"	
 	$Team/MarginContainer/VBoxContainer/HBoxContainer/NameTeam.text = equipe
-	timer.start()
 	
 
 func _on_button_pressed():
