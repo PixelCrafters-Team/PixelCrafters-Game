@@ -34,15 +34,6 @@ func select_map(scene, num_map): # MAPA: 0 (centro de pesquisa) e 1 (praca centr
 		Map.get_node("CentroDePesquisa").visible = false
 		Map.get_node("PracaCentral").visible = true
 		character_position = Vector2(1046, -939)
-		
-		
-func sort_team() -> String:
-	var rng = RandomNumberGenerator.new()
-	var random = rng.randi_range(0, 1)
-	if random == 0:
-		return "cats"
-	else:
-		return "dogs"
 	
 
 func set_character(team, num):

@@ -1,13 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://b0hwdnnrm8c33"]
+[gd_scene load_steps=25 format=3 uid="uid://b0hwdnnrm8c33"]
 
 [ext_resource type="Script" path="res://screens/scripts/character_selection_screen.gd" id="1_64yd2"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_ixkij"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_r7yy2"]
 [ext_resource type="Texture2D" uid="uid://c3khujmfv6deo" path="res://screens/assets/background_choose_character.png" id="4_6tfxa"]
-[ext_resource type="Texture2D" uid="uid://do4p4xkis5wl4" path="res://characters/assets/ronronante.png" id="5_lcnsk"]
+[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="5_v78lc"]
 [ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="6_ryn8f"]
-[ext_resource type="Texture2D" uid="uid://b6yapnhqqwq52" path="res://characters/assets/bola_de_pelos.png" id="7_i3854"]
-[ext_resource type="Texture2D" uid="uid://db7d2a5voqbkx" path="res://characters/assets/sombra.png" id="8_08dwh"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="9_gqy7f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37lk6"]
@@ -154,11 +152,22 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextureCharacter" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("5_lcnsk")
-expand_mode = 1
+[node name="TextureCharacterCat" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/BoxContainer"]
+position = Vector2(52, 38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_v78lc")
+hframes = 12
+vframes = 8
+frame = 82
+
+[node name="TextureCharacterDog" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/BoxContainer"]
+visible = false
+position = Vector2(54, 39)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_v78lc")
+hframes = 12
+vframes = 8
+frame = 25
 
 [node name="LabelSkill" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
@@ -197,11 +206,22 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextureCharacter" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("7_i3854")
-expand_mode = 1
+[node name="TextureCharacterCat" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/BoxContainer"]
+position = Vector2(52, 38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_v78lc")
+hframes = 12
+vframes = 8
+frame = 79
+
+[node name="TextureCharacterDog" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/BoxContainer"]
+visible = false
+position = Vector2(54, 39)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_v78lc")
+hframes = 12
+vframes = 8
+frame = 31
 
 [node name="LabelSkill" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
@@ -239,11 +259,22 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextureCharacter" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_08dwh")
-expand_mode = 1
+[node name="TextureCharacterCat" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/BoxContainer"]
+position = Vector2(52, 38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_v78lc")
+hframes = 12
+vframes = 8
+frame = 76
+
+[node name="TextureCharacterDog" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/BoxContainer"]
+visible = false
+position = Vector2(54, 39)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_v78lc")
+hframes = 12
+vframes = 8
+frame = 34
 
 [node name="LabelSkill" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
