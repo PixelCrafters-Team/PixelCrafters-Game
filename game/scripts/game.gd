@@ -34,6 +34,7 @@ func select_map(scene, num_map): # MAPA: 0 (centro de pesquisa) e 1 (praca centr
 		Map.get_node("CentroDePesquisa").visible = false
 		Map.get_node("PracaCentral").visible = true
 		character_position = Vector2(1046, -939)
+
 	
 
 func set_character(team, num):

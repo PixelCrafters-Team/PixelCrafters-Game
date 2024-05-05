@@ -12,10 +12,12 @@ func _ready():
 
 	
 func _on_exit_button_2_pressed():
+	get_parent().click_sound.play()
 	get_tree().quit()
 
 
 func _on_select_button_0_pressed():
+	get_parent().click_sound.play()
 	var scene = get_parent().game_scene
 	scene.set_character(team, 0)
 	scene.create_game(scene)
@@ -25,6 +27,7 @@ func _on_select_button_0_pressed():
 	
 
 func _on_select_button_1_pressed():
+	get_parent().click_sound.play()
 	var scene = get_parent().game_scene
 	scene.set_character(team, 1)
 	scene.create_game(scene)
@@ -34,6 +37,7 @@ func _on_select_button_1_pressed():
 
 
 func _on_select_button_2_pressed():
+	get_parent().click_sound.play()
 	var scene = get_parent().game_scene
 	scene.set_character(team, 2)
 	scene.create_game(scene)
@@ -79,3 +83,4 @@ func load_screen_cats():
 	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/LabelSkill.text = "Esconderijo Felino"
 	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/LabelSkill.text = "Ataque de Pelos"
 	
+

@@ -2,6 +2,8 @@ extends Node2D
 
 var menu_screen = preload("res://screens/scenes/menu_screen.tscn")
 var game_scene = preload("res://game/scenes/game.tscn").instantiate()
+@onready var click_sound = $ClickSound
+@onready var music_menu = $MusicMenu
 
 
 func _ready():
@@ -9,4 +11,4 @@ func _ready():
 	
 	
 func _on_music_menu_finished():
-	$MusicMenu.play()
+	music_menu.play()

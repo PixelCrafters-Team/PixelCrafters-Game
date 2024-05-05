@@ -1,6 +1,5 @@
 extends Control
 
-var sound_source = ""
 var character_select_scene = preload("res://screens/scenes/character_selection_screen.tscn")
 
 func _ready():
@@ -11,21 +10,14 @@ func _ready():
 	
 	
 func _on_quit_buton_pressed():
-	sound_source = "quit"
-	%ClickSound.play()
-
+	get_parent().click_sound.play()
+	get_tree().quit()
+	
 
 func _on_start_button_pressed():
-	sound_source = "start"
-	%ClickSound.play()
-
-
-func _on_click_sound_finished():
-	if sound_source == "start": 
-		get_parent().add_child(character_select_scene.instantiate())
-		get_parent().get_node("Menu_screen").queue_free()
-		
-	elif sound_source == "quit":
-		get_tree().quit()
-		
-	sound_source = ""
+	get_parent().click_sound.play()
+	get_parent().add_child(character_select_scene.instantiate())
+	get_parent().get_node("Menu_screen").queue_free()
+	
+func _on_music_menu_finished():
+	get_parent().music_menu.play()
