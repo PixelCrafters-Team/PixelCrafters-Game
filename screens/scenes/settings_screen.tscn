@@ -1,0 +1,221 @@
+[gd_scene load_steps=20 format=3 uid="uid://dnjklif5idnwa"]
+
+[ext_resource type="Script" path="res://screens/scripts/settings_screen.gd" id="1_kpwvm"]
+[ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="1_nxqv5"]
+[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_jdceu"]
+[ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_sqiu3"]
+[ext_resource type="Texture2D" uid="uid://cvnhkxa6xmbt1" path="res://screens/assets/icons/Icon_SoundOn.png" id="4_kvsqi"]
+[ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="6_oaor4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cdl2r"]
+texture = ExtResource("6_oaor4")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mf1eq"]
+texture = ExtResource("6_oaor4")
+
+[sub_resource type="Theme" id="Theme_6rysv"]
+Button/styles/hover = SubResource("StyleBoxTexture_cdl2r")
+Button/styles/normal = SubResource("StyleBoxTexture_mf1eq")
+Button/styles/pressed = SubResource("StyleBoxTexture_cdl2r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0drw"]
+texture = ExtResource("2_jdceu")
+modulate_color = Color(0.513726, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_maoqi"]
+texture = ExtResource("2_jdceu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy6u5"]
+texture = ExtResource("2_jdceu")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
+
+[sub_resource type="Theme" id="Theme_4tv32"]
+Button/styles/hover = SubResource("StyleBoxTexture_t0drw")
+Button/styles/normal = SubResource("StyleBoxTexture_maoqi")
+Button/styles/pressed = SubResource("StyleBoxTexture_xy6u5")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kfdoe"]
+font = ExtResource("3_sqiu3")
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_ptbje"]
+line_spacing = 10.0
+font = ExtResource("3_sqiu3")
+font_size = 28
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxlsy"]
+texture = ExtResource("4_kvsqi")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
+
+[sub_resource type="Theme" id="Theme_e617f"]
+Button/styles/hover = SubResource("StyleBoxTexture_sxlsy")
+Button/styles/normal = SubResource("StyleBoxTexture_sxlsy")
+Button/styles/pressed = SubResource("StyleBoxTexture_sxlsy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qcakv"]
+font = ExtResource("3_sqiu3")
+font_size = 28
+
+[sub_resource type="Theme" id="Theme_uy45a"]
+default_font = ExtResource("3_sqiu3")
+default_font_size = 23
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kpwvm")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1440.0
+offset_bottom = 810.0
+texture = ExtResource("1_nxqv5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 39
+
+[node name="ReturnButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme = SubResource("Theme_6rysv")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 39
+theme_override_constants/margin_right = 45
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_4tv32")
+theme_override_font_sizes/font_size = 59
+
+[node name="MarginTop" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="LabelTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+size_flags_vertical = 0
+text = "CONFIGURAÇÕES"
+label_settings = SubResource("LabelSettings_kfdoe")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginLeft" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelMusic" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Música
+"
+label_settings = SubResource("LabelSettings_ptbje")
+
+[node name="ButtonMusic" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme = SubResource("Theme_e617f")
+
+[node name="HSliderMusic" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Editar Nome Do Jogador"
+label_settings = SubResource("LabelSettings_qcakv")
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = SubResource("Theme_uy45a")
+theme_override_colors/font_color = Color(0.313726, 0.670588, 0.847059, 1)
+text = "Player"
+scroll_past_end_of_file = true
+minimap_width = 88
+
+[node name="MarginRight" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="MarginLeft2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="LabelSound" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Som
+"
+label_settings = SubResource("LabelSettings_ptbje")
+
+[node name="ButtonSound" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme = SubResource("Theme_e617f")
+
+[node name="HSliderSound" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer2/ExitButton" to="." method="_on_exit_button_pressed"]
