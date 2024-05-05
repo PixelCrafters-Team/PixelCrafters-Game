@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=13 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_yfcg1"]
 [ext_resource type="Texture2D" uid="uid://bhfo7d4ju60uk" path="res://screens/assets/icons/box.png" id="3_h06wf"]
-[ext_resource type="Texture2D" uid="uid://c3yh337ohijev" path="res://wold/assets/mundo_jogo.svg" id="5_3h8d4"]
+[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://wold/assets/centro_de_pesquisa.svg" id="5_gcpwp"]
+[ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://wold/assets/praca_central.svg" id="6_swkie"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
 texture = ExtResource("3_h06wf")
@@ -98,13 +99,20 @@ handle_input_locally = false
 size = Vector2i(200, 200)
 render_target_update_mode = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="MiniMap/SubViewport"]
-position = Vector2(-642, -1058)
+[node name="CentroDePesquisa" type="Sprite2D" parent="MiniMap/SubViewport"]
+rotation = 0.441568
 scale = Vector2(0.581, 0.581)
-texture = ExtResource("5_3h8d4")
+texture = ExtResource("5_gcpwp")
+
+[node name="PracaCentral" type="Sprite2D" parent="MiniMap/SubViewport"]
+visible = false
+position = Vector2(-259, -1280)
+rotation = 0.00523599
+scale = Vector2(0.581, 0.581)
+texture = ExtResource("6_swkie")
 
 [node name="Camera2D" type="Camera2D" parent="MiniMap/SubViewport"]
-zoom = Vector2(0.3, 0.3)
+zoom = Vector2(0.2, 0.2)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 7.0

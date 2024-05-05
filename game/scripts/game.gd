@@ -28,13 +28,16 @@ func select_map(scene, num_map): # MAPA: 0 (centro de pesquisa) e 1 (praca centr
 		scene.add_child(Map)
 		Map.get_node("CentroDePesquisa").visible = true
 		Map.get_node("PracaCentral").visible = false
-		character_position = Vector2(113, -25)
+		Hud.get_node("MiniMap/SubViewport/CentroDePesquisa").visible = true
+		Hud.get_node("MiniMap/SubViewport/PracaCentral").visible = false
+		character_position = Vector2(480, 688)
 	else:
 		scene.add_child(Map)
 		Map.get_node("CentroDePesquisa").visible = false
 		Map.get_node("PracaCentral").visible = true
-		character_position = Vector2(1046, -939)
-
+		Hud.get_node("MiniMap/SubViewport/CentroDePesquisa").visible = false
+		Hud.get_node("MiniMap/SubViewport/PracaCentral").visible = true
+		character_position = Vector2(-720, -568)
 	
 
 func set_character(team, num):

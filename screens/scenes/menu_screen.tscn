@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://y61hurvn4hcq"]
 
-[ext_resource type="Script" path="res://screens/scenes/menu_screen.gd" id="1_3hrr8"]
+[ext_resource type="Script" path="res://screens/scripts/menu_screen.gd" id="1_vi22p"]
 [ext_resource type="Texture2D" uid="uid://n8lc4gychwg3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
 [ext_resource type="FontFile" uid="uid://b7adap3po7cft" path="res://screens/assets/font_cat.ttf" id="3_32m85"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="5_wpywn"]
@@ -214,7 +214,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3hrr8")
+script = ExtResource("1_vi22p")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2

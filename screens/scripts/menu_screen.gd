@@ -19,5 +19,6 @@ func _on_start_button_pressed():
 	get_parent().add_child(character_select_scene.instantiate())
 	get_parent().get_node("Menu_screen").queue_free()
 	
+	
 func _on_music_menu_finished():
 	get_parent().music_menu.play()

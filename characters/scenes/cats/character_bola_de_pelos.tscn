@@ -423,10 +423,10 @@ volume_db = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-limit_left = -1760
-limit_top = -2600
-limit_right = 485
-limit_bottom = 500
+limit_left = -1256
+limit_top = -2200
+limit_right = 1136
+limit_bottom = 968
 
 [node name="TextureGlace" type="Sprite2D" parent="."]
 visible = false
