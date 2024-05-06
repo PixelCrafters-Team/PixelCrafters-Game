@@ -1,6 +1,7 @@
 extends Control
 
 var character_select_scene = preload("res://screens/scenes/character_selection_screen.tscn")
+var settings_scene = preload("res://screens/scenes/settings_screen.tscn")
 
 func _ready():
 	$AnimationDog/AnimationRoute.play("animationDog")
@@ -22,3 +23,14 @@ func _on_start_button_pressed():
 	
 func _on_music_menu_finished():
 	get_parent().music_menu.play()
+
+
+func _on_exit_button_pressed():
+	get_parent().click_sound.play()
+	get_tree().quit()
+
+
+func _on_setting_button_pressed():
+	get_parent().click_sound.play()
+	get_parent().add_child(settings_scene.instantiate())
+	get_parent().get_node("Menu_screen").queue_free()
