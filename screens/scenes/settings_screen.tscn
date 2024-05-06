@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://bicmo5o3slnby"]
+[gd_scene load_steps=21 format=3 uid="uid://bicmo5o3slnby"]
 
 [ext_resource type="Script" path="res://screens/scripts/settings_screen.gd" id="1_kpwvm"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="1_nxqv5"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_jdceu"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_sqiu3"]
-[ext_resource type="Texture2D" uid="uid://cvnhkxa6xmbt1" path="res://screens/assets/icons/Icon_SoundOn.png" id="4_kvsqi"]
+[ext_resource type="StyleBox" uid="uid://dqqgu7sj8v4xo" path="res://screens/themes/style_button_music.tres" id="6_m5hv4"]
 [ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="6_oaor4"]
+[ext_resource type="StyleBox" uid="uid://ee0g4ryuhtv2" path="res://screens/themes/style_button_sound.tres" id="7_ulbfq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cdl2r"]
 texture = ExtResource("6_oaor4")
@@ -44,14 +45,10 @@ line_spacing = 10.0
 font = ExtResource("3_sqiu3")
 font_size = 28
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxlsy"]
-texture = ExtResource("4_kvsqi")
-modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
-
 [sub_resource type="Theme" id="Theme_e617f"]
-Button/styles/hover = SubResource("StyleBoxTexture_sxlsy")
-Button/styles/normal = SubResource("StyleBoxTexture_sxlsy")
-Button/styles/pressed = SubResource("StyleBoxTexture_sxlsy")
+Button/styles/hover = ExtResource("6_m5hv4")
+Button/styles/normal = ExtResource("6_m5hv4")
+Button/styles/pressed = ExtResource("6_m5hv4")
 
 [sub_resource type="LabelSettings" id="LabelSettings_qcakv"]
 font = ExtResource("3_sqiu3")
@@ -60,6 +57,11 @@ font_size = 28
 [sub_resource type="Theme" id="Theme_uy45a"]
 default_font = ExtResource("3_sqiu3")
 default_font_size = 23
+
+[sub_resource type="Theme" id="Theme_pyqah"]
+Button/styles/hover = ExtResource("7_ulbfq")
+Button/styles/normal = ExtResource("7_ulbfq")
+Button/styles/pressed = ExtResource("7_ulbfq")
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
@@ -173,7 +175,7 @@ layout_mode = 2
 text = "Editar Nome Do Jogador"
 label_settings = SubResource("LabelSettings_qcakv")
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="TextPlayer" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme = SubResource("Theme_uy45a")
@@ -183,7 +185,7 @@ scroll_past_end_of_file = true
 minimap_width = 88
 
 [node name="MarginRight" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
@@ -215,14 +217,17 @@ label_settings = SubResource("LabelSettings_ptbje")
 [node name="ButtonSound" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme = SubResource("Theme_e617f")
+theme = SubResource("Theme_pyqah")
 
 [node name="HSliderSound" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
 layout_mode = 2
 min_value = -80.0
-max_value = 15.0
+max_value = 30.0
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer2/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ButtonMusic" to="." method="_on_button_music_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HSliderMusic" to="." method="_on_h_slider_music_value_changed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/TextPlayer" to="." method="_on_text_player_text_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer/ButtonSound" to="." method="_on_button_sound_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HSliderSound" to="." method="_on_h_slider_sound_value_changed"]

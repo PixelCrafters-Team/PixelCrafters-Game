@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://ee0g4ryuhtv2"]
+
+[ext_resource type="Texture2D" uid="uid://cvnhkxa6xmbt1" path="res://screens/assets/icons/Icon_SoundOn.png" id="1_corth"]
+
+[resource]
+texture = ExtResource("1_corth")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
