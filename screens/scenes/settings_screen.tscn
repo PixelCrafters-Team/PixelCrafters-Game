@@ -61,7 +61,7 @@ font_size = 28
 default_font = ExtResource("3_sqiu3")
 default_font_size = 23
 
-[node name="Control" type="Control"]
+[node name="SettingsScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,6 +69,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kpwvm")
+metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
@@ -78,10 +79,9 @@ texture = ExtResource("1_nxqv5")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_direction = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+offset_right = 1439.0
+offset_bottom = 573.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -157,6 +157,8 @@ theme = SubResource("Theme_e617f")
 
 [node name="HSliderMusic" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+min_value = -80.0
+max_value = 15.0
 
 [node name="Margin" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -217,5 +219,10 @@ theme = SubResource("Theme_e617f")
 
 [node name="HSliderSound" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
 layout_mode = 2
+min_value = -80.0
+max_value = 15.0
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer2/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HSliderMusic" to="." method="_on_h_slider_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HSliderSound" to="." method="_on_h_slider_sound_value_changed"]
