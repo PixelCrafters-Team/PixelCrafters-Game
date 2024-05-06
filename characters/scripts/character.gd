@@ -1,9 +1,5 @@
 extends CharacterBody2D
 
-var state_machine
-var is_walking: bool = false
-var is_glace: bool = false
-
 @export_category("Variables")
 @export var move_speed: float = 64;
 @export var friction: float = 0.2
@@ -11,6 +7,18 @@ var is_glace: bool = false
 
 @export_category("Objects")
 @export var animation_tree: AnimationTree = null
+
+var state_machine
+var is_walking: bool = false
+var is_glace: bool = false
+
+var list_positions_teleport = [ 
+		Vector2(480, 676), 
+		Vector2(-182, -475), 
+		Vector2(-1098, 118), 
+		Vector2(947, 78) 
+]
+
 
 func _ready():
 	state_machine = animation_tree["parameters/playback"]
@@ -84,3 +92,9 @@ func unfreeze_cat():
 	$Texture.visible = true
 	is_glace = false
 	$EffectGlace.play()
+
+
+func _on_area_teleport_area_entered(area):
+	if area.is_in_group("teleport"):
+		global_position = list_positions_teleport[randi_range(0, 3)]
+		

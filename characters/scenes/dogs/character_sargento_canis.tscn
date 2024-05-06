@@ -1,12 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://c3o81eaherchw"]
+[gd_scene load_steps=28 format=3 uid="uid://c3o81eaherchw"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_kdyp8"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_5tpor"]
 [ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_82f7i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1plq2"]
-radius = 17.0
-height = 34.0
+radius = 8.0
+height = 22.0
 
 [sub_resource type="Animation" id="Animation_nwgkw"]
 length = 0.001
@@ -332,6 +332,9 @@ states/Idle/position = Vector2(445.333, 74.4444)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ncmwf")
 states/Walk/position = Vector2(634.667, 73.7036)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_up2oq"]
+radius = 4.0
+
 [node name="Character_sargentocanis" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["dogs"]]
 collision_layer = 0
 script = ExtResource("1_kdyp8")
@@ -375,4 +378,11 @@ limit_top = -2200
 limit_right = 1136
 limit_bottom = 968
 
+[node name="AreaTeleport" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="AreaTeleport"]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_up2oq")
+
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="AreaTeleport" to="." method="_on_area_teleport_area_entered"]

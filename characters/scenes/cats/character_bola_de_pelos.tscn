@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://btty3dsxkbo88"]
+[gd_scene load_steps=31 format=3 uid="uid://btty3dsxkbo88"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_egjrr"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_rvvcd"]
@@ -7,7 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/effect_ice_cracking.mp3" id="5_kw5st"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daw1v"]
-radius = 14.0
+radius = 5.0
+height = 20.0
 
 [sub_resource type="Animation" id="Animation_nwgkw"]
 length = 0.001
@@ -385,6 +386,9 @@ states/Idle/position = Vector2(445.333, 74.4444)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ncmwf")
 states/Walk/position = Vector2(634.667, 73.7036)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0jj5o"]
+radius = 4.0
+
 [node name="Character_boladepelos" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["cats"]]
 collision_layer = 0
 script = ExtResource("1_egjrr")
@@ -392,7 +396,7 @@ animation_tree = NodePath("AnimationTree")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 show_behind_parent = true
-position = Vector2(1, -16)
+position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_daw1v")
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -438,4 +442,11 @@ hframes = 3
 [node name="EffectGlace" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_kw5st")
 
+[node name="AreaTeleport" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="AreaTeleport"]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_0jj5o")
+
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="AreaTeleport" to="." method="_on_area_teleport_area_entered"]
