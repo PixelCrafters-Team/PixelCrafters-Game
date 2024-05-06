@@ -1,10 +1,13 @@
 extends Node2D
 
+@onready var teleportSound = $TeleportSound
+
 var Map = preload("res://wold/scenes/map.tscn").instantiate()
 var Hud = preload("res://screens/scenes/hud.tscn").instantiate()
 var Character
-var character_position 
+var character_position
 var num_character
+var num_map
 
 
 var list_characters_cats = [ 
@@ -23,7 +26,8 @@ func _ready():
 	pass
 	
 	
-func select_map(scene, num_map): # MAPA: 0 (centro de pesquisa) e 1 (praca central)
+func select_map(scene, map): # MAPA: 0 (centro de pesquisa) e 1 (praca central)
+	num_map = map
 	if num_map == 0:
 		scene.add_child(Map)
 		Map.get_node("CentroDePesquisa").visible = true

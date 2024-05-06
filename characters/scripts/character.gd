@@ -16,7 +16,11 @@ var list_positions_teleport = [
 		Vector2(480, 676), 
 		Vector2(-182, -475), 
 		Vector2(-1098, 118), 
-		Vector2(947, 78) 
+		Vector2(947, 78), 
+		Vector2(531, -1047), 
+		Vector2(-532, -587), 
+		Vector2(-487, -1252), 
+		Vector2(-371, -1876) 
 ]
 
 
@@ -95,6 +99,9 @@ func unfreeze_cat():
 
 
 func _on_area_teleport_area_entered(area):
-	if area.is_in_group("teleport"):
+	get_parent().teleportSound.play()
+	if area.is_in_group("teleport") and get_parent().num_map == 0:
 		global_position = list_positions_teleport[randi_range(0, 3)]
+	elif area.is_in_group("teleport") and get_parent().num_map == 1:
+		global_position = list_positions_teleport[randi_range(4, 7)]
 		

@@ -1,9 +1,24 @@
-[gd_scene load_steps=21 format=3 uid="uid://bcxcd8tbjoekt"]
+[gd_scene load_steps=37 format=3 uid="uid://bcxcd8tbjoekt"]
 
 [ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://wold/assets/centro_de_pesquisa.svg" id="1_0bqkm"]
 [ext_resource type="Script" path="res://wold/scripts/map.gd" id="1_34aoa"]
 [ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://wold/assets/praca_central.svg" id="2_bqk0x"]
 [ext_resource type="Texture2D" uid="uid://xuy3rrxvr3ri" path="res://wold/assets/teleport.png" id="3_mobbc"]
+
+[sub_resource type="Animation" id="Animation_tq0ku"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_3o55p"]
 resource_name = "teleport_animation"
@@ -22,7 +37,19 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_tq0ku"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2k2hg"]
+_data = {
+"RESET": SubResource("Animation_tq0ku"),
+"teleport_animation": SubResource("Animation_3o55p")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_760is"]
+radius = 13.8765
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dl2tf"]
+radius = 10.8856
+
+[sub_resource type="Animation" id="Animation_is2sj"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -36,18 +63,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2k2hg"]
-_data = {
-"RESET": SubResource("Animation_tq0ku"),
-"teleport_animation": SubResource("Animation_3o55p")
-}
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_760is"]
-radius = 13.8765
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dl2tf"]
-radius = 10.8856
 
 [sub_resource type="Animation" id="Animation_hwv61"]
 resource_name = "teleport_animation"
@@ -66,7 +81,16 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_is2sj"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qbixe"]
+_data = {
+"RESET": SubResource("Animation_is2sj"),
+"teleport_animation": SubResource("Animation_hwv61")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_if0vr"]
+radius = 14.8061
+
+[sub_resource type="Animation" id="Animation_ja148"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -80,15 +104,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qbixe"]
-_data = {
-"RESET": SubResource("Animation_is2sj"),
-"teleport_animation": SubResource("Animation_hwv61")
-}
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_if0vr"]
-radius = 14.8061
 
 [sub_resource type="Animation" id="Animation_bwe3o"]
 resource_name = "teleport_animation"
@@ -107,7 +122,16 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_ja148"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ywbe"]
+_data = {
+"RESET": SubResource("Animation_ja148"),
+"teleport_animation": SubResource("Animation_bwe3o")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpraw"]
+radius = 16.2375
+
+[sub_resource type="Animation" id="Animation_r0tof"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -121,15 +145,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ywbe"]
-_data = {
-"RESET": SubResource("Animation_ja148"),
-"teleport_animation": SubResource("Animation_bwe3o")
-}
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_gpraw"]
-radius = 16.2375
 
 [sub_resource type="Animation" id="Animation_57nv8"]
 resource_name = "teleport_animation"
@@ -148,7 +163,33 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_r0tof"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntr5h"]
+_data = {
+"RESET": SubResource("Animation_r0tof"),
+"teleport_animation": SubResource("Animation_57nv8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0y7a"]
+radius = 17.2117
+
+[sub_resource type="Animation" id="Animation_j6fxc"]
+resource_name = "teleport_animation"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_s62be"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -163,10 +204,133 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntr5h"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_34u4k"]
 _data = {
-"RESET": SubResource("Animation_r0tof"),
-"teleport_animation": SubResource("Animation_57nv8")
+"RESET": SubResource("Animation_s62be"),
+"teleport_animation": SubResource("Animation_j6fxc")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8hdk"]
+radius = 18.9329
+
+[sub_resource type="Animation" id="Animation_ckw5j"]
+resource_name = "teleport_animation"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_nwcit"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_idntk"]
+_data = {
+"RESET": SubResource("Animation_nwcit"),
+"teleport_animation": SubResource("Animation_ckw5j")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8l8qq"]
+radius = 19.011
+
+[sub_resource type="Animation" id="Animation_0csoi"]
+resource_name = "teleport_animation"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_mq35j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sayf0"]
+_data = {
+"RESET": SubResource("Animation_mq35j"),
+"teleport_animation": SubResource("Animation_0csoi")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqp7y"]
+radius = 20.6541
+
+[sub_resource type="Animation" id="Animation_lclhe"]
+resource_name = "teleport_animation"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_dy2bm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m7mu4"]
+_data = {
+"RESET": SubResource("Animation_dy2bm"),
+"teleport_animation": SubResource("Animation_lclhe")
 }
 
 [node name="Map" type="Node2D"]
@@ -365,7 +529,6 @@ libraries = {
 
 [node name="Collision" type="CollisionShape2D" parent="CentroDePesquisa/Teleport/Area"]
 position = Vector2(-0.655151, -5.40332)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_760is")
 
 [node name="Teleport2" type="Sprite2D" parent="CentroDePesquisa"]
@@ -494,3 +657,71 @@ polygon = PackedVector2Array(256.454, 287.436, 271.945, 283.993, 277.108, 309.81
 
 [node name="CollisionPolygon2D22" type="CollisionPolygon2D" parent="PracaCentral/Collisions"]
 polygon = PackedVector2Array(-66.9402, -1343.92, -64.5928, -1218.28, -33.6293, -1221.88, -34.2384, -1344.08)
+
+[node name="Teleport" type="Sprite2D" parent="PracaCentral"]
+position = Vector2(1449.42, 380.044)
+rotation = -1.57023
+texture = ExtResource("3_mobbc")
+vframes = 5
+
+[node name="Area" type="Area2D" parent="PracaCentral/Teleport" groups=["teleport"]]
+
+[node name="Collision" type="CollisionShape2D" parent="PracaCentral/Teleport/Area"]
+position = Vector2(1.69543, -5.17212)
+shape = SubResource("CircleShape2D_n0y7a")
+
+[node name="AnimationTeleport" type="AnimationPlayer" parent="PracaCentral/Teleport"]
+libraries = {
+"": SubResource("AnimationLibrary_34u4k")
+}
+
+[node name="Teleport2" type="Sprite2D" parent="PracaCentral"]
+position = Vector2(-432.665, 1251.74)
+rotation = -0.375184
+texture = ExtResource("3_mobbc")
+vframes = 5
+
+[node name="Area" type="Area2D" parent="PracaCentral/Teleport2" groups=["teleport"]]
+
+[node name="Collision" type="CollisionShape2D" parent="PracaCentral/Teleport2/Area"]
+position = Vector2(1.70401, -3.45093)
+shape = SubResource("CircleShape2D_h8hdk")
+
+[node name="AnimationTeleport" type="AnimationPlayer" parent="PracaCentral/Teleport2"]
+libraries = {
+"": SubResource("AnimationLibrary_idntk")
+}
+
+[node name="Teleport3" type="Sprite2D" parent="PracaCentral"]
+position = Vector2(-385.675, -25.6172)
+rotation = 3.11862
+texture = ExtResource("3_mobbc")
+vframes = 5
+
+[node name="Area" type="Area2D" parent="PracaCentral/Teleport3" groups=["teleport"]]
+
+[node name="Collision" type="CollisionShape2D" parent="PracaCentral/Teleport3/Area"]
+position = Vector2(-0.0257263, -5.16357)
+shape = SubResource("CircleShape2D_8l8qq")
+
+[node name="AnimationTeleport" type="AnimationPlayer" parent="PracaCentral/Teleport3"]
+libraries = {
+"": SubResource("AnimationLibrary_sayf0")
+}
+
+[node name="Teleport4" type="Sprite2D" parent="PracaCentral"]
+position = Vector2(-246.426, -1095.17)
+rotation = 2.39384
+texture = ExtResource("3_mobbc")
+vframes = 5
+
+[node name="Area" type="Area2D" parent="PracaCentral/Teleport4" groups=["teleport"]]
+
+[node name="Collision" type="CollisionShape2D" parent="PracaCentral/Teleport4/Area"]
+position = Vector2(-0.0171509, -3.44238)
+shape = SubResource("CircleShape2D_xqp7y")
+
+[node name="AnimationTeleport" type="AnimationPlayer" parent="PracaCentral/Teleport4"]
+libraries = {
+"": SubResource("AnimationLibrary_m7mu4")
+}
