@@ -2,6 +2,7 @@ extends Control
 
 var menu_scene = preload("res://screens/scenes/menu_screen.tscn")
 
+
 func _ready():
 	var sound_player = get_parent().get_node("MusicMenu")
 	var value = sound_player.get_volume_db()
@@ -13,6 +14,14 @@ func _ready():
 	
 	var name_player = get_parent().player_name
 	$MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/TextPlayer.text = name_player
+
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_cancel"): 
+		get_parent().click_sound.play()
+		get_parent().add_child(menu_scene.instantiate())
+		get_parent().get_node("SettingsScreen").queue_free()
+
 	
 
 func _on_exit_button_pressed():
