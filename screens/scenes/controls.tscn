@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwp5bwpa3vgsy"]
+
+[ext_resource type="Texture2D" uid="uid://do5lptx5cga77" path="res://game/assets/controls.png" id="1_o7xhc"]
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Controls" type="Sprite2D" parent="."]
+position = Vector2(723.5, 402.5)
+scale = Vector2(1.05637, 1.05859)
+texture = ExtResource("1_o7xhc")
