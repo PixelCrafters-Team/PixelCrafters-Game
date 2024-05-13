@@ -1,10 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://btty3dsxkbo88"]
+[gd_scene load_steps=35 format=3 uid="uid://btty3dsxkbo88"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_egjrr"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_rvvcd"]
 [ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_fjkp3"]
 [ext_resource type="Texture2D" uid="uid://lxvdee5241cr" path="res://characters/assets/glace.png" id="4_1y14l"]
 [ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/effect_ice_cracking.mp3" id="5_kw5st"]
+[ext_resource type="Texture2D" uid="uid://qy37f24yrka5" path="res://screens/assets/icons/Item1.png" id="6_mjscu"]
+[ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="7_64mfx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daw1v"]
 radius = 5.0
@@ -389,6 +391,19 @@ states/Walk/position = Vector2(634.667, 73.7036)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0jj5o"]
 radius = 4.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o05rv"]
+texture = ExtResource("6_mjscu")
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 35.0
+modulate_color = Color(1, 1, 1, 0.619608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w3ln3"]
+font = ExtResource("7_64mfx")
+font_size = 50
+font_color = Color(0.121569, 0.121569, 0.384314, 1)
+
 [node name="Character_boladepelos" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["cats"]]
 collision_layer = 0
 script = ExtResource("1_egjrr")
@@ -415,7 +430,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_yrob6")
 anim_player = NodePath("../Animation")
-active = true
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
@@ -447,6 +461,17 @@ stream = ExtResource("5_kw5st")
 [node name="Collision" type="CollisionShape2D" parent="AreaTeleport"]
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_0jj5o")
+
+[node name="namePlayer" type="Label" parent="."]
+offset_left = -7.0
+offset_top = -38.0
+offset_right = 122.0
+offset_bottom = 27.0
+scale = Vector2(0.11, 0.11)
+theme_override_styles/normal = SubResource("StyleBoxTexture_o05rv")
+text = "nome"
+label_settings = SubResource("LabelSettings_w3ln3")
+horizontal_alignment = 1
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaTeleport" to="." method="_on_area_teleport_area_entered"]

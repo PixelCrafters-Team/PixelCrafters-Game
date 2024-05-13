@@ -26,6 +26,7 @@ var list_positions_teleport = [
 
 func _ready():
 	state_machine = animation_tree["parameters/playback"]
+	$namePlayer.text = get_parent().get_parent().player_name
 
 
 func _physics_process(delta):

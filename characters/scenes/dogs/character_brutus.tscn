@@ -1,8 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://d1c5crkq3jomc"]
+[gd_scene load_steps=32 format=3 uid="uid://d1c5crkq3jomc"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_0esyq"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_hyp3o"]
 [ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_wo0qf"]
+[ext_resource type="Texture2D" uid="uid://qy37f24yrka5" path="res://screens/assets/icons/Item1.png" id="4_b30au"]
+[ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="4_di7kt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eoacw"]
 radius = 8.0
@@ -335,6 +337,19 @@ states/Walk/position = Vector2(634.667, 73.7036)
 [sub_resource type="CircleShape2D" id="CircleShape2D_k1wv2"]
 radius = 4.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2p261"]
+texture = ExtResource("4_b30au")
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 35.0
+modulate_color = Color(1, 1, 1, 0.619608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2q45m"]
+font = ExtResource("4_di7kt")
+font_size = 50
+font_color = Color(0.121569, 0.121569, 0.384314, 1)
+
 [node name="Character_brutus" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["dogs"]]
 collision_layer = 0
 script = ExtResource("1_0esyq")
@@ -360,7 +375,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_yrob6")
 anim_player = NodePath("../Animation")
-active = true
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
@@ -382,6 +396,17 @@ limit_bottom = 968
 [node name="Collision" type="CollisionShape2D" parent="AreaTeleport"]
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_k1wv2")
+
+[node name="namePlayer" type="Label" parent="."]
+offset_left = -7.0
+offset_top = -38.0
+offset_right = 122.0
+offset_bottom = 27.0
+scale = Vector2(0.11, 0.11)
+theme_override_styles/normal = SubResource("StyleBoxTexture_2p261")
+text = "nome"
+label_settings = SubResource("LabelSettings_2q45m")
+horizontal_alignment = 1
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaTeleport" to="." method="_on_area_teleport_area_entered"]
