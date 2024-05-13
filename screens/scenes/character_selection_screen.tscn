@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b0hwdnnrm8c33"]
+[gd_scene load_steps=52 format=3 uid="uid://b0hwdnnrm8c33"]
 
 [ext_resource type="Script" path="res://screens/scripts/character_selection_screen.gd" id="1_64yd2"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_ixkij"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c3khujmfv6deo" path="res://screens/assets/background_choose_character.png" id="4_6tfxa"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="5_v78lc"]
 [ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="6_ryn8f"]
+[ext_resource type="Texture2D" uid="uid://cl0it22lehhae" path="res://screens/assets/icons/Icon_Writing.png" id="8_4qlne"]
+[ext_resource type="Texture2D" uid="uid://d05hd2ur104ca" path="res://screens/assets/icons/Icon_Left.png" id="8_xtkud"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="9_gqy7f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37lk6"]
@@ -21,6 +23,22 @@ expand_margin_bottom = 27.0
 [sub_resource type="LabelSettings" id="LabelSettings_rrxlf"]
 font = ExtResource("3_r7yy2")
 font_size = 30
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ov4fd"]
+texture = ExtResource("8_4qlne")
+modulate_color = Color(0.411765, 0.647059, 0.788235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lriw7"]
+texture = ExtResource("8_4qlne")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vujq5"]
+texture = ExtResource("8_4qlne")
+modulate_color = Color(0.278431, 0.109804, 0.0588235, 1)
+
+[sub_resource type="Theme" id="Theme_e6oja"]
+Button/styles/hover = SubResource("StyleBoxTexture_ov4fd")
+Button/styles/normal = SubResource("StyleBoxTexture_lriw7")
+Button/styles/pressed = SubResource("StyleBoxTexture_vujq5")
 
 [sub_resource type="LabelSettings" id="LabelSettings_0k5rk"]
 font = ExtResource("3_r7yy2")
@@ -50,21 +68,107 @@ Button/styles/hover = SubResource("StyleBoxTexture_nhhwu")
 Button/styles/normal = SubResource("StyleBoxTexture_sphuw")
 Button/styles/pressed = SubResource("StyleBoxTexture_sphuw")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3r364"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+texture = ExtResource("4_6tfxa")
+expand_margin_bottom = 27.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxtqg"]
+texture = ExtResource("8_xtkud")
+modulate_color = Color(0.411765, 0.647059, 0.788235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_826oj"]
+texture = ExtResource("8_xtkud")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8re3f"]
+texture = ExtResource("8_xtkud")
+modulate_color = Color(0.278431, 0.109804, 0.0588235, 1)
+
+[sub_resource type="Theme" id="Theme_m6quw"]
+Button/styles/hover = SubResource("StyleBoxTexture_oxtqg")
+Button/styles/normal = SubResource("StyleBoxTexture_826oj")
+Button/styles/pressed = SubResource("StyleBoxTexture_8re3f")
+
 [sub_resource type="LabelSettings" id="LabelSettings_0itep"]
 font = ExtResource("3_r7yy2")
 font_size = 32
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m0gex"]
+texture = ExtResource("8_4qlne")
+modulate_color = Color(0.411765, 0.647059, 0.788235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wauea"]
+texture = ExtResource("8_4qlne")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qkf1k"]
+texture = ExtResource("8_4qlne")
+modulate_color = Color(0.278431, 0.109804, 0.0588235, 1)
+
+[sub_resource type="Theme" id="Theme_pqs78"]
+Button/styles/hover = SubResource("StyleBoxTexture_m0gex")
+Button/styles/normal = SubResource("StyleBoxTexture_wauea")
+Button/styles/pressed = SubResource("StyleBoxTexture_qkf1k")
 
 [sub_resource type="LabelSettings" id="LabelSettings_njso6"]
 font = ExtResource("3_r7yy2")
 font_size = 18
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fnkr2"]
+texture = ExtResource("8_xtkud")
+modulate_color = Color(0.411765, 0.647059, 0.788235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s813a"]
+texture = ExtResource("8_xtkud")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r8rb6"]
+texture = ExtResource("8_xtkud")
+modulate_color = Color(0.278431, 0.109804, 0.0588235, 1)
+
+[sub_resource type="Theme" id="Theme_330yv"]
+Button/styles/hover = SubResource("StyleBoxTexture_fnkr2")
+Button/styles/normal = SubResource("StyleBoxTexture_s813a")
+Button/styles/pressed = SubResource("StyleBoxTexture_r8rb6")
+
 [sub_resource type="LabelSettings" id="LabelSettings_fyqq5"]
 font = ExtResource("3_r7yy2")
 font_size = 30
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5p3u5"]
+texture = ExtResource("8_4qlne")
+modulate_color = Color(0.411765, 0.647059, 0.788235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4pbbf"]
+texture = ExtResource("8_4qlne")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x3p8t"]
+texture = ExtResource("8_4qlne")
+modulate_color = Color(0.278431, 0.109804, 0.0588235, 1)
+
+[sub_resource type="Theme" id="Theme_patjy"]
+Button/styles/hover = SubResource("StyleBoxTexture_5p3u5")
+Button/styles/normal = SubResource("StyleBoxTexture_4pbbf")
+Button/styles/pressed = SubResource("StyleBoxTexture_x3p8t")
+
 [sub_resource type="LabelSettings" id="LabelSettings_sq1dj"]
 font = ExtResource("3_r7yy2")
 font_size = 18
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y10ho"]
+texture = ExtResource("8_xtkud")
+modulate_color = Color(0.411765, 0.647059, 0.788235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ewr5u"]
+texture = ExtResource("8_xtkud")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hpoq4"]
+texture = ExtResource("8_xtkud")
+modulate_color = Color(0.278431, 0.109804, 0.0588235, 1)
+
+[sub_resource type="Theme" id="Theme_64ma0"]
+Button/styles/hover = SubResource("StyleBoxTexture_y10ho")
+Button/styles/normal = SubResource("StyleBoxTexture_ewr5u")
+Button/styles/pressed = SubResource("StyleBoxTexture_hpoq4")
 
 [sub_resource type="LabelSettings" id="LabelSettings_l1hjr"]
 line_spacing = 0.0
@@ -146,13 +250,22 @@ label_settings = SubResource("LabelSettings_rrxlf")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextureCharacterCat" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/BoxContainer"]
+[node name="TextureCharacterCat" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer/BoxContainer"]
 position = Vector2(52, 38)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_v78lc")
@@ -160,7 +273,7 @@ hframes = 12
 vframes = 8
 frame = 82
 
-[node name="TextureCharacterDog" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/BoxContainer"]
+[node name="TextureCharacterDog" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer/BoxContainer"]
 visible = false
 position = Vector2(54, 39)
 scale = Vector2(0.5, 0.5)
@@ -169,8 +282,15 @@ hframes = 12
 vframes = 8
 frame = 25
 
+[node name="ButtonMoreInformation0" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = SubResource("Theme_e6oja")
+
 [node name="LabelSkill" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Habilidade:  Ronronar Calmante"
 label_settings = SubResource("LabelSettings_0k5rk")
@@ -183,14 +303,42 @@ size_flags_vertical = 0
 theme = SubResource("Theme_04v50")
 text = "Selecionar"
 
+[node name="PanelMoreInformation0" type="PanelContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3r364")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="LabelMoreInformation0" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_r7yy2")
+theme_override_font_sizes/font_size = 22
+text = "EMITE UM RONRONAR CALMANTE QUE REDUZ TEMPORARIAMENTE A VELOCIDADE DOS CACHORROS AO SEU REDOR."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BackButton0" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = SubResource("Theme_m6quw")
+
 [node name="PanelCharacter2" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxTexture_o0nmw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter2"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 8
 
 [node name="Title" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
@@ -200,13 +348,21 @@ label_settings = SubResource("LabelSettings_0itep")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextureCharacterCat" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/BoxContainer"]
+[node name="TextureCharacterCat" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/HBoxContainer/BoxContainer"]
 position = Vector2(52, 38)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_v78lc")
@@ -214,7 +370,7 @@ hframes = 12
 vframes = 8
 frame = 79
 
-[node name="TextureCharacterDog" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/BoxContainer"]
+[node name="TextureCharacterDog" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/HBoxContainer/BoxContainer"]
 visible = false
 position = Vector2(54, 39)
 scale = Vector2(0.5, 0.5)
@@ -223,8 +379,15 @@ hframes = 12
 vframes = 8
 frame = 31
 
+[node name="ButtonMoreInformation1" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource("Theme_pqs78")
+
 [node name="LabelSkill" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Habilidade:  Esconderijo Felino"
 label_settings = SubResource("LabelSettings_njso6")
@@ -235,6 +398,32 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_04v50")
 text = "Selecionar"
+
+[node name="PanelMoreInformation1" type="PanelContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter2"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3r364")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="LabelMoreInformation1" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_r7yy2")
+theme_override_font_sizes/font_size = 22
+text = "LIBERA UMA NUVEM DE PÊLOS FOFOS, OBSTRUINDO A VISÃO DOS CACHORROS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BackButton1" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = SubResource("Theme_330yv")
 
 [node name="PanelCharacter3" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -253,13 +442,21 @@ label_settings = SubResource("LabelSettings_fyqq5")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextureCharacterCat" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/BoxContainer"]
+[node name="TextureCharacterCat" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer/BoxContainer"]
 position = Vector2(52, 38)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_v78lc")
@@ -267,7 +464,7 @@ hframes = 12
 vframes = 8
 frame = 76
 
-[node name="TextureCharacterDog" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/BoxContainer"]
+[node name="TextureCharacterDog" type="Sprite2D" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer/BoxContainer"]
 visible = false
 position = Vector2(54, 39)
 scale = Vector2(0.5, 0.5)
@@ -276,8 +473,15 @@ hframes = 12
 vframes = 8
 frame = 34
 
+[node name="ButtonMoreInformation2" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource("Theme_patjy")
+
 [node name="LabelSkill" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Habilidade:  Ataque de Pelos"
 label_settings = SubResource("LabelSettings_sq1dj")
@@ -288,6 +492,32 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_04v50")
 text = "Selecionar"
+
+[node name="PanelMoreInformation2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter3"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3r364")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="LabelMoreInformation2" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_r7yy2")
+theme_override_font_sizes/font_size = 22
+text = "PODE SE ESCONDER EM LOCAIS ESTRATÉGICOS, TORNANDO-SE TEMPORARIAMENTE INVISÍVEL PARA OS CACHORROS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BackButton2" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = SubResource("Theme_64ma0")
 
 [node name="MarginRight" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -314,7 +544,13 @@ size_flags_vertical = 0
 theme = SubResource("Theme_n1g7h")
 theme_override_font_sizes/font_size = 59
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer/ButtonMoreInformation0" to="." method="_on_button_more_information_0_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/SelectButton0" to="." method="_on_select_button_0_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0/VBoxContainer/BackButton0" to="." method="_on_back_button_0_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/HBoxContainer/ButtonMoreInformation1" to="." method="_on_button_more_information_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/SelectButton1" to="." method="_on_select_button_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1/VBoxContainer/BackButton1" to="." method="_on_back_button_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer/ButtonMoreInformation2" to="." method="_on_button_more_information_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/SelectButton2" to="." method="_on_select_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2/VBoxContainer/BackButton2" to="." method="_on_back_button_2_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_2_pressed"]

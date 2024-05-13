@@ -4,6 +4,10 @@ var game_scene = preload("res://game/scenes/game.tscn")
 var team
 
 func _ready():
+	$VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0.visible = false
+	$VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1.visible = false
+	$VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2.visible = false
+	
 	team = sort_team()
 	if  team == "cats": 
 		load_screen_cats()
@@ -58,12 +62,12 @@ func load_screen_dogs():
 	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/Title.text = "Brutus"
 	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/Title.text = "Estrela"
 	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/Title.text = "Sargento Canis"
-	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/BoxContainer/TextureCharacterCat.visible = false
-	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/BoxContainer/TextureCharacterDog.visible = true
-	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/BoxContainer/TextureCharacterCat.visible = false
-	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/BoxContainer/TextureCharacterDog.visible = true
-	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/BoxContainer/TextureCharacterCat.visible = false
-	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/BoxContainer/TextureCharacterDog.visible = true
+	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterCat.visible = false
+	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterDog.visible = true
+	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterCat.visible = false
+	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterDog.visible = true
+	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterCat.visible = false
+	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterDog.visible = true
 	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/LabelSkill.text = "Resistência Canina"
 	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/LabelSkill.text = "Patas Saltitantes"
 	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/LabelSkill.text = "Latido Sônico"
@@ -73,14 +77,37 @@ func load_screen_cats():
 	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/Title.text = "Ronronante"
 	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/Title.text = "Bola de Pelos"
 	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/Title.text = "Sombra"
-	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/BoxContainer/TextureCharacterCat.visible = true
-	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/BoxContainer/TextureCharacterDog.visible = false
-	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/BoxContainer/TextureCharacterCat.visible = true
-	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/BoxContainer/TextureCharacterDog.visible = false
-	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/BoxContainer/TextureCharacterCat.visible = true
-	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/BoxContainer/TextureCharacterDog.visible = false
+	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterCat.visible = true
+	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterDog.visible = false
+	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterCat.visible = true
+	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterDog.visible = false
+	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterCat.visible = true
+	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer/BoxContainer/TextureCharacterDog.visible = false
 	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/LabelSkill.text = "Ronronar Calmante"
 	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/LabelSkill.text = "Esconderijo Felino"
 	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/LabelSkill.text = "Ataque de Pelos"
 	
+
+func _on_button_more_information_0_pressed():
+	$VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0.visible = true
+
+
+func _on_back_button_0_pressed():
+	$VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0.visible = false
+
+
+func _on_button_more_information_1_pressed():
+	$VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1.visible = true
+
+
+func _on_back_button_1_pressed():
+	$VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1.visible = false
+
+
+func _on_button_more_information_2_pressed():
+	$VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2.visible = true
+
+
+func _on_back_button_2_pressed():
+	$VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2.visible = false
 
