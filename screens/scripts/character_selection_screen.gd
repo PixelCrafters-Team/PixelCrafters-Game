@@ -71,6 +71,9 @@ func load_screen_dogs():
 	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/LabelSkill.text = "Resistência Canina"
 	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/LabelSkill.text = "Patas Saltitantes"
 	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/LabelSkill.text = "Latido Sônico"
+	$VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0/VBoxContainer/LabelMoreInformation0.text = "RESISTENTE A DISTRAÇÕES, SENDO MENOS AFETADO PELAS HABILIDADES DE DISTRAÇÃO DOS GATINHOS"
+	$VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1/VBoxContainer/LabelMoreInformation1.text = "PODE CORRER EM ALTA VELOCIDADE, ENCURTANDO A DISTÂNCIA ENTRE ELA E OS GATINHOS RAPIDAMENTE"
+	$VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2/VBoxContainer/LabelMoreInformation2.text = "SEU LATIDO PODEROSO PODE DESORIENTAR TEMPORARIAMENTE OS GATINHOS, TIRANDO A CAPACIDADE DE USAR HABILIDADES"
 
 func load_screen_cats():
 	$VBoxContainer/LabelTeam.text = "Equipe Gatos Hackers"
@@ -86,7 +89,9 @@ func load_screen_cats():
 	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/LabelSkill.text = "Ronronar Calmante"
 	$VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/LabelSkill.text = "Esconderijo Felino"
 	$VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/LabelSkill.text = "Ataque de Pelos"
-	
+	$VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0/VBoxContainer/LabelMoreInformation0.text = "EMITE UM RONRONAR CALMANTE QUE REDUZ TEMPORARIAMENTE A VELOCIDADE DOS CACHORROS AO SEU REDOR"
+	$VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1/VBoxContainer/LabelMoreInformation1.text = "LIBERA UMA NUVEM DE PÊLOS FOFOS, OBSTRUINDO A VISÃO DOS CACHORROS"
+	$VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2/VBoxContainer/LabelMoreInformation2.text = "PODE SE ESCONDER EM LOCAIS ESTRATÉGICOS, TORNANDO-SE TEMPORARIAMENTE INVISÍVEL PARA OS CACHORROS"
 
 func _on_button_more_information_0_pressed():
 	$VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0.visible = true
