@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://hymg1p7kcjdm"]
+
+[ext_resource type="Texture2D" uid="uid://c3khujmfv6deo" path="res://screens/assets/background_choose_character.png" id="1_rc4ol"]
+
+[resource]
+texture = ExtResource("1_rc4ol")
+expand_margin_bottom = 27.0

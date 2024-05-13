@@ -2,6 +2,8 @@ extends Control
 
 var game_scene = preload("res://game/scenes/game.tscn")
 var team
+var cont = -1
+
 
 func _ready():
 	$VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0.visible = false
@@ -13,8 +15,80 @@ func _ready():
 		load_screen_cats()
 	elif team == "dogs":
 		load_screen_dogs()
+		
 
+func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_right"):
+		if cont == -1:
+			cont = 3
+		if cont == 1:
+			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			cont += 1
+		elif cont == 2:
+			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
+			cont += 1
+		else:
+			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			cont = 1
+			
+	if Input.is_action_just_pressed("ui_left"):
+		if cont == -1:
+			cont = 2
+		if cont == 1:
+			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
+			cont = 3
+		elif cont == 2:
+			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			cont -= 1
+		else:
+			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
+			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
+			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
+			cont -= 1
 	
+	if Input.is_action_just_pressed("ui_accept"):
+		get_parent().click_sound.play()
+		var scene = get_parent().game_scene
+		if cont == 1:
+			scene.set_character(team, 0)
+		elif cont == 2:
+			scene.set_character(team, 1)
+		else:
+			scene.set_character(team, 2)
+		scene.create_game(scene)
+		get_parent().add_child(scene)
+		get_parent().get_node("CharacterSelectionScreen").queue_free()
+		get_parent().get_node("MusicMenu").stream_paused = true
+
+
 func _on_exit_button_2_pressed():
 	get_parent().click_sound.play()
 	get_tree().quit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b0hwdnnrm8c33"]
+[gd_scene load_steps=54 format=3 uid="uid://b0hwdnnrm8c33"]
 
 [ext_resource type="Script" path="res://screens/scripts/character_selection_screen.gd" id="1_64yd2"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_ixkij"]
@@ -9,16 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://cl0it22lehhae" path="res://screens/assets/icons/Icon_Writing.png" id="8_4qlne"]
 [ext_resource type="Texture2D" uid="uid://d05hd2ur104ca" path="res://screens/assets/icons/Icon_Left.png" id="8_xtkud"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="9_gqy7f"]
+[ext_resource type="StyleBox" uid="uid://b30bs5s5c0w4h" path="res://screens/themes/style_background_choose_character_1.tres" id="9_syrv5"]
+[ext_resource type="StyleBox" uid="uid://c1710omkvnlax" path="res://screens/themes/style_background_choose_character_2.tres" id="10_wbgjk"]
+[ext_resource type="StyleBox" uid="uid://hymg1p7kcjdm" path="res://screens/themes/style_background_choose_character_3.tres" id="11_sliqk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37lk6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_68kv2"]
 font = ExtResource("3_r7yy2")
 font_size = 42
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0nmw"]
-texture = ExtResource("4_6tfxa")
-expand_margin_bottom = 27.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_rrxlf"]
 font = ExtResource("3_r7yy2")
@@ -236,7 +235,7 @@ layout_mode = 2
 [node name="PanelCharacter1" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_o0nmw")
+theme_override_styles/panel = ExtResource("9_syrv5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1"]
 layout_mode = 2
@@ -332,8 +331,7 @@ theme = SubResource("Theme_m6quw")
 [node name="PanelCharacter2" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_styles/panel = SubResource("StyleBoxTexture_o0nmw")
+theme_override_styles/panel = ExtResource("10_wbgjk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter2"]
 layout_mode = 2
@@ -428,7 +426,7 @@ theme = SubResource("Theme_330yv")
 [node name="PanelCharacter3" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_o0nmw")
+theme_override_styles/panel = ExtResource("11_sliqk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter3"]
 layout_mode = 2
