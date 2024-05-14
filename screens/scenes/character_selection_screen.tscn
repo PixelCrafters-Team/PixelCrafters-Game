@@ -542,12 +542,15 @@ size_flags_vertical = 0
 theme = SubResource("Theme_n1g7h")
 theme_override_font_sizes/font_size = 59
 
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/PanelCharacter1" to="." method="_on_panel_character_1_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer/ButtonMoreInformation0" to="." method="_on_button_more_information_0_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/SelectButton0" to="." method="_on_select_button_0_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0/VBoxContainer/BackButton0" to="." method="_on_back_button_0_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/PanelCharacter2" to="." method="_on_panel_character_2_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/HBoxContainer/ButtonMoreInformation1" to="." method="_on_button_more_information_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter2/VBoxContainer/SelectButton1" to="." method="_on_select_button_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1/VBoxContainer/BackButton1" to="." method="_on_back_button_1_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/PanelCharacter3" to="." method="_on_panel_character_3_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer/ButtonMoreInformation2" to="." method="_on_button_more_information_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/SelectButton2" to="." method="_on_select_button_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2/VBoxContainer/BackButton2" to="." method="_on_back_button_2_pressed"]

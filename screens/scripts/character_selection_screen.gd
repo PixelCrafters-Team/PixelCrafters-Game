@@ -1,8 +1,17 @@
 extends Control
 
-var game_scene = preload("res://game/scenes/game.tscn")
 var team
-var cont = -1
+var game_scene = preload("res://game/scenes/game.tscn")
+var selected_panel = -1
+var texture_resource_panel = [
+		load("res://screens/themes/style_background_choose_character_1.tres"),
+		load("res://screens/themes/style_background_choose_character_2.tres"),
+		load("res://screens/themes/style_background_choose_character_3.tres")
+]
+var texture_img_panel = [
+		load("res://screens/assets/background_choose_character.png"),
+		load("res://screens/assets/background_choose_selected_character.png")
+]
 
 
 func _ready():
@@ -19,67 +28,49 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_right"):
-		if cont == -1:
-			cont = 3
-		if cont == 1:
-			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			cont += 1
-		elif cont == 2:
-			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
-			cont += 1
+		if selected_panel == -1:
+			selected_panel = 3
+		if selected_panel == 1:
+			texture_resource_panel[0].texture = texture_img_panel[0]
+			texture_resource_panel[1].texture = texture_img_panel[1]
+			texture_resource_panel[2].texture = texture_img_panel[0]
+			selected_panel += 1
+		elif selected_panel == 2:
+			texture_resource_panel[0].texture = texture_img_panel[0]
+			texture_resource_panel[1].texture = texture_img_panel[0]
+			texture_resource_panel[2].texture = texture_img_panel[1]
+			selected_panel += 1
 		else:
-			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			cont = 1
+			texture_resource_panel[0].texture = texture_img_panel[1]
+			texture_resource_panel[1].texture = texture_img_panel[0]
+			texture_resource_panel[2].texture = texture_img_panel[0]
+			selected_panel = 1
 			
 	if Input.is_action_just_pressed("ui_left"):
-		if cont == -1:
-			cont = 2
-		if cont == 1:
-			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
-			cont = 3
-		elif cont == 2:
-			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			cont -= 1
+		if selected_panel == -1:
+			selected_panel = 2
+		if selected_panel == 1:
+			texture_resource_panel[0].texture = texture_img_panel[0]
+			texture_resource_panel[1].texture = texture_img_panel[0]
+			texture_resource_panel[2].texture = texture_img_panel[1]
+			selected_panel = 3
+		elif selected_panel == 2:
+			texture_resource_panel[0].texture = texture_img_panel[1]
+			texture_resource_panel[1].texture = texture_img_panel[0]
+			texture_resource_panel[2].texture = texture_img_panel[0]
+			selected_panel -= 1
 		else:
-			var texture_resource = load("res://screens/themes/style_background_choose_character_1.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_2.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_selected_character.png")
-			texture_resource = load("res://screens/themes/style_background_choose_character_3.tres")
-			texture_resource.texture = load("res://screens/assets/background_choose_character.png")
-			cont -= 1
-	
+			texture_resource_panel[0].texture = texture_img_panel[0]
+			texture_resource_panel[1].texture = texture_img_panel[1]
+			texture_resource_panel[2].texture = texture_img_panel[0]
+			selected_panel -= 1
+			
 	if Input.is_action_just_pressed("ui_accept"):
 		get_parent().click_sound.play()
 		var scene = get_parent().game_scene
-		if cont == 1:
+		if selected_panel == 1:
 			scene.set_character(team, 0)
-		elif cont == 2:
+		elif selected_panel == 2:
 			scene.set_character(team, 1)
 		else:
 			scene.set_character(team, 2)
@@ -87,7 +78,7 @@ func _physics_process(delta):
 		get_parent().add_child(scene)
 		get_parent().get_node("CharacterSelectionScreen").queue_free()
 		get_parent().get_node("MusicMenu").stream_paused = true
-
+		
 
 func _on_exit_button_2_pressed():
 	get_parent().click_sound.play()
@@ -123,6 +114,7 @@ func _on_select_button_2_pressed():
 	get_parent().get_node("CharacterSelectionScreen").queue_free()
 	get_parent().get_node("MusicMenu").stream_paused = true
 	
+	
 func sort_team() -> String:
 	var rng = RandomNumberGenerator.new()
 	var random = rng.randi_range(0, 1)
@@ -130,6 +122,7 @@ func sort_team() -> String:
 		return "cats"
 	else:
 		return "dogs"
+
 
 func load_screen_dogs():
 	$VBoxContainer/LabelTeam.text = "Equipe Cachorros Vigilantes"
@@ -149,6 +142,7 @@ func load_screen_dogs():
 	$VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1/VBoxContainer/LabelMoreInformation1.text = "PODE CORRER EM ALTA VELOCIDADE, ENCURTANDO A DISTÂNCIA ENTRE ELA E OS GATINHOS RAPIDAMENTE"
 	$VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2/VBoxContainer/LabelMoreInformation2.text = "SEU LATIDO PODEROSO PODE DESORIENTAR TEMPORARIAMENTE OS GATINHOS, TIRANDO A CAPACIDADE DE USAR HABILIDADES"
 
+
 func load_screen_cats():
 	$VBoxContainer/LabelTeam.text = "Equipe Gatos Hackers"
 	$VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/Title.text = "Ronronante"
@@ -166,6 +160,7 @@ func load_screen_cats():
 	$VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0/VBoxContainer/LabelMoreInformation0.text = "EMITE UM RONRONAR CALMANTE QUE REDUZ TEMPORARIAMENTE A VELOCIDADE DOS CACHORROS AO SEU REDOR"
 	$VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1/VBoxContainer/LabelMoreInformation1.text = "LIBERA UMA NUVEM DE PÊLOS FOFOS, OBSTRUINDO A VISÃO DOS CACHORROS"
 	$VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2/VBoxContainer/LabelMoreInformation2.text = "PODE SE ESCONDER EM LOCAIS ESTRATÉGICOS, TORNANDO-SE TEMPORARIAMENTE INVISÍVEL PARA OS CACHORROS"
+
 
 func _on_button_more_information_0_pressed():
 	$VBoxContainer/HBoxContainer/PanelCharacter1/PanelMoreInformation0.visible = true
@@ -190,3 +185,23 @@ func _on_button_more_information_2_pressed():
 func _on_back_button_2_pressed():
 	$VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2.visible = false
 
+
+func _on_panel_character_1_mouse_entered():
+	texture_resource_panel[0].texture = texture_img_panel[1]
+	texture_resource_panel[1].texture = texture_img_panel[0]
+	texture_resource_panel[2].texture = texture_img_panel[0]
+	selected_panel = 1
+
+
+func _on_panel_character_2_mouse_entered():
+	texture_resource_panel[0].texture = texture_img_panel[0]
+	texture_resource_panel[1].texture = texture_img_panel[1]
+	texture_resource_panel[2].texture = texture_img_panel[0]
+	selected_panel = 2
+
+
+func _on_panel_character_3_mouse_entered():
+	texture_resource_panel[0].texture = texture_img_panel[0]
+	texture_resource_panel[1].texture = texture_img_panel[0]
+	texture_resource_panel[2].texture = texture_img_panel[1]
+	selected_panel = 3
