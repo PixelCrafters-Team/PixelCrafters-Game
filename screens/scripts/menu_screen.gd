@@ -9,7 +9,7 @@ func _ready():
 	$AnimationDog/AnimationRoute/AnimationWalk.play("walkDog")
 	$AnimationCat/AnimationRoute.play("animationCat")
 	$AnimationCat/AnimationRoute/AnimationWalk.play("walk")
-	
+	$AnimationBone.play("bone_animation")
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"): 

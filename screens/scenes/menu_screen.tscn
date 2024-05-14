@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://y61hurvn4hcq"]
+[gd_scene load_steps=38 format=3 uid="uid://y61hurvn4hcq"]
 
 [ext_resource type="Script" path="res://screens/scripts/menu_screen.gd" id="1_vi22p"]
 [ext_resource type="Texture2D" uid="uid://n8lc4gychwg3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="6_wcspm"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="7_bjknq"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="8_gfutr"]
+[ext_resource type="Texture2D" uid="uid://o17gt7glmmr4" path="res://screens/assets/bone.png" id="9_5mpjb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88sdy"]
 texture = ExtResource("6_wcspm")
@@ -221,6 +222,68 @@ _data = {
 "walk": SubResource("Animation_va2bq")
 }
 
+[sub_resource type="Animation" id="Animation_13qj7"]
+resource_name = "bone_animation"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(834, 351), Vector2(834, 351), Vector2(834, 351), Vector2(834, 351)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bone:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.178632, 0.0330082, 0.21247]
+}
+
+[sub_resource type="Animation" id="Animation_vy2vm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(834, 351)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bone:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8bpr2"]
+_data = {
+"RESET": SubResource("Animation_vy2vm"),
+"bone_animation": SubResource("Animation_13qj7")
+}
+
 [node name="Menu_screen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -270,12 +333,12 @@ theme_override_font_sizes/font_size = 59
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-offset_left = 397.0
-offset_top = 134.0
-offset_right = 1049.0
-offset_bottom = 470.0
+offset_left = 390.0
+offset_top = 251.0
+offset_right = 1052.0
+offset_bottom = 587.0
 size_flags_horizontal = 4
-text = "CATCH-ME"
+text = "CATCH  ME"
 label_settings = SubResource("LabelSettings_h6yjt")
 max_lines_visible = 5
 
@@ -349,6 +412,16 @@ libraries = {
 [node name="AnimationWalk" type="AnimationPlayer" parent="AnimationCat/AnimationRoute"]
 libraries = {
 "": SubResource("AnimationLibrary_i5ruo")
+}
+
+[node name="Bone" type="Sprite2D" parent="."]
+position = Vector2(834, 351)
+scale = Vector2(0.2, 0.3)
+texture = ExtResource("9_5mpjb")
+
+[node name="AnimationBone" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8bpr2")
 }
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
