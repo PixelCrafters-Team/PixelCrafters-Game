@@ -1,43 +1,46 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=16 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
-[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_yfcg1"]
-[ext_resource type="Texture2D" uid="uid://bhfo7d4ju60uk" path="res://screens/assets/icons/box.png" id="3_h06wf"]
+[ext_resource type="Texture2D" uid="uid://ctc7msswpmepk" path="res://screens/assets/icons/bone_hud.png" id="3_en02k"]
 [ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://wold/assets/centro_de_pesquisa.svg" id="5_gcpwp"]
+[ext_resource type="Texture2D" uid="uid://woxffrq0op2y" path="res://screens/assets/icons/home_dog.png" id="5_jnmrr"]
 [ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://wold/assets/praca_central.svg" id="6_swkie"]
 [ext_resource type="PackedScene" uid="uid://bqu350nm1tu37" path="res://screens/scenes/pause_menu.tscn" id="7_mbfwe"]
+[ext_resource type="Texture2D" uid="uid://vekm8433hyfu" path="res://screens/assets/icons/cat.png" id="7_xpnao"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
-texture = ExtResource("3_h06wf")
-texture_margin_left = 60.0
-texture_margin_top = 17.0
-texture_margin_right = 60.0
-texture_margin_bottom = 16.0
-expand_margin_left = 85.0
-expand_margin_top = 42.0
-expand_margin_right = 85.0
-expand_margin_bottom = 52.0
+content_margin_left = 50.0
+content_margin_right = 50.0
+texture = ExtResource("3_en02k")
+region_rect = Rect2(6, 67.5, 654, 242)
+modulate_color = Color(0.797748, 0.791714, 0.729902, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rwmo4"]
-texture = ExtResource("2_yfcg1")
+texture = ExtResource("5_jnmrr")
 modulate_color = Color(0.537255, 0, 0.0431373, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0jwb5"]
-texture = ExtResource("2_yfcg1")
-modulate_color = Color(0.207843, 0.34902, 0.462745, 1)
+texture = ExtResource("5_jnmrr")
+modulate_color = Color(0.796078, 0.792157, 0.729412, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ahkba"]
-texture = ExtResource("2_yfcg1")
-modulate_color = Color(0.992157, 0.968627, 0.941176, 1)
+texture = ExtResource("5_jnmrr")
 
 [sub_resource type="Theme" id="Theme_jhs54"]
 Button/styles/hover = SubResource("StyleBoxTexture_rwmo4")
 Button/styles/normal = SubResource("StyleBoxTexture_0jwb5")
 Button/styles/pressed = SubResource("StyleBoxTexture_ahkba")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1bloj"]
-texture = ExtResource("3_h06wf")
+[sub_resource type="SystemFont" id="SystemFont_fo2f6"]
+font_names = PackedStringArray("Comic Sans MS")
+font_weight = 600
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ba17"]
+content_margin_top = 6.0
+texture = ExtResource("7_xpnao")
+region_rect = Rect2(77, 0, 513, 375)
+modulate_color = Color(0.796078, 0.792157, 0.729412, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_j0pl6")
@@ -57,37 +60,53 @@ offset_left = 4.0
 offset_top = -5.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 21
+theme_override_constants/margin_top = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Team/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Team/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="MarginContainer4" type="MarginContainer" parent="Team/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Team/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="MarginContainer5" type="MarginContainer" parent="Team/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="NameTeam" type="Label" parent="Team/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_bw5gp")
-theme_override_font_sizes/font_size = 44
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_neyg4")
-text = "Equipe"
+text = "Equipe Cachorros ou catos"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Exit" type="Button" parent="Team"]
+[node name="MarginContainer" type="MarginContainer" parent="Team/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 1341.0
-offset_top = 21.0
-offset_right = 1425.0
-offset_bottom = 95.0
+size_flags_horizontal = 3
+
+[node name="Exit" type="Button" parent="Team/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 100)
+layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = SubResource("Theme_jhs54")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Team/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
 
 [node name="MiniMap" type="SubViewportContainer" parent="."]
 offset_left = 7.0
@@ -126,23 +145,6 @@ text = ".
 "
 horizontal_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 600.0
-autostart = true
-
-[node name="LabelTimer" type="Label" parent="Timer"]
-offset_left = -4.0
-offset_top = -6.0
-offset_right = 226.0
-offset_bottom = 136.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_bw5gp")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxTexture_1bloj")
-text = "00:00"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="PauseMenu" parent="." instance=ExtResource("7_mbfwe")]
 visible = false
 offset_left = 570.0
@@ -151,5 +153,22 @@ offset_right = 570.0
 offset_bottom = 236.0
 scale = Vector2(2.615, 2.615)
 
-[connection signal="pressed" from="Team/Exit" to="." method="_on_button_pressed"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 600.0
+autostart = true
+
+[node name="LabelTimer" type="Label" parent="Timer"]
+offset_left = 30.0
+offset_top = 23.0
+offset_right = 215.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_fo2f6")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxTexture_8ba17")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Team/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
