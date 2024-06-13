@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b0hwdnnrm8c33"]
+[gd_scene load_steps=58 format=3 uid="uid://djwlurn2jvhbr"]
 
 [ext_resource type="Script" path="res://screens/scripts/character_selection_screen.gd" id="1_64yd2"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_ixkij"]
@@ -12,6 +12,7 @@
 [ext_resource type="StyleBox" uid="uid://b30bs5s5c0w4h" path="res://screens/themes/style_background_choose_character_1.tres" id="9_syrv5"]
 [ext_resource type="StyleBox" uid="uid://c1710omkvnlax" path="res://screens/themes/style_background_choose_character_2.tres" id="10_wbgjk"]
 [ext_resource type="StyleBox" uid="uid://hymg1p7kcjdm" path="res://screens/themes/style_background_choose_character_3.tres" id="11_sliqk"]
+[ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="12_enfdu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37lk6"]
 
@@ -43,14 +44,14 @@ Button/styles/pressed = SubResource("StyleBoxTexture_vujq5")
 font = ExtResource("3_r7yy2")
 font_size = 18
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhhwu"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8l8x8"]
 texture = ExtResource("6_ryn8f")
 expand_margin_left = 15.0
 expand_margin_top = 5.0
 expand_margin_right = 15.0
 expand_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sphuw"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e0hrg"]
 texture = ExtResource("6_ryn8f")
 expand_margin_left = 15.0
 expand_margin_top = 5.0
@@ -63,9 +64,9 @@ Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_color = Color(0.184314, 0.180392, 0.14902, 1)
 Button/font_sizes/font_size = 27
 Button/fonts/font = ExtResource("3_r7yy2")
-Button/styles/hover = SubResource("StyleBoxTexture_nhhwu")
-Button/styles/normal = SubResource("StyleBoxTexture_sphuw")
-Button/styles/pressed = SubResource("StyleBoxTexture_sphuw")
+Button/styles/hover = SubResource("StyleBoxTexture_8l8x8")
+Button/styles/normal = SubResource("StyleBoxTexture_e0hrg")
+Button/styles/pressed = SubResource("StyleBoxTexture_e0hrg")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3r364"]
 content_margin_left = 13.0
@@ -175,21 +176,33 @@ font = ExtResource("3_r7yy2")
 font_size = 26
 shadow_size = 0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0drw"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fr12r"]
+texture = ExtResource("12_enfdu")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_os5i4"]
+texture = ExtResource("12_enfdu")
+
+[sub_resource type="Theme" id="Theme_bkblo"]
+Button/styles/hover = SubResource("StyleBoxTexture_fr12r")
+Button/styles/normal = SubResource("StyleBoxTexture_os5i4")
+Button/styles/pressed = SubResource("StyleBoxTexture_fr12r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nj3ju"]
 texture = ExtResource("9_gqy7f")
 modulate_color = Color(0.513726, 0, 0, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_maoqi"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uyt35"]
 texture = ExtResource("9_gqy7f")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy6u5"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ka03u"]
 texture = ExtResource("9_gqy7f")
 modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
 
-[sub_resource type="Theme" id="Theme_n1g7h"]
-Button/styles/hover = SubResource("StyleBoxTexture_t0drw")
-Button/styles/normal = SubResource("StyleBoxTexture_maoqi")
-Button/styles/pressed = SubResource("StyleBoxTexture_xy6u5")
+[sub_resource type="Theme" id="Theme_6i83s"]
+Button/styles/hover = SubResource("StyleBoxTexture_nj3ju")
+Button/styles/normal = SubResource("StyleBoxTexture_uyt35")
+Button/styles/pressed = SubResource("StyleBoxTexture_ka03u")
 
 [node name="CharacterSelectionScreen" type="Control"]
 layout_mode = 3
@@ -531,15 +544,34 @@ label_settings = SubResource("LabelSettings_l1hjr")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="ExitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1322.0
-offset_top = 51.0
-offset_right = 1403.0
-offset_bottom = 130.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_right = 1440.0
+offset_bottom = 119.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 39
+
+[node name="ReturnButton" type="Button" parent="HBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme = SubResource("Theme_bkblo")
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer2"]
+layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 0
-theme = SubResource("Theme_n1g7h")
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 39
+theme_override_constants/margin_right = 45
+
+[node name="ExitButton" type="Button" parent="HBoxContainer2/MarginContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_6i83s")
 theme_override_font_sizes/font_size = 59
 
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/PanelCharacter1" to="." method="_on_panel_character_1_mouse_entered"]
@@ -554,4 +586,4 @@ theme_override_font_sizes/font_size = 59
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer/ButtonMoreInformation2" to="." method="_on_button_more_information_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/SelectButton2" to="." method="_on_select_button_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2/VBoxContainer/BackButton2" to="." method="_on_back_button_2_pressed"]
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_2_pressed"]
+[connection signal="pressed" from="HBoxContainer2/MarginContainer/ReturnButton" to="." method="_on_return_button_pressed"]

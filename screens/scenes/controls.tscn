@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwp5bwpa3vgsy"]
+[gd_scene load_steps=2 format=3 uid="uid://d2ht36utv4j4i"]
 
-[ext_resource type="Texture2D" uid="uid://do5lptx5cga77" path="res://game/assets/controls.png" id="1_o7xhc"]
+[ext_resource type="Texture2D" uid="uid://cvqlu58pbra31" path="res://game/assets/controls.png" id="1_o7xhc"]
 
 [node name="Controls" type="Control"]
 layout_mode = 3

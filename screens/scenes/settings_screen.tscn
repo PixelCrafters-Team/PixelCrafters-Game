@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bicmo5o3slnby"]
+[gd_scene load_steps=21 format=3 uid="uid://mmuf48qm5ft3"]
 
 [ext_resource type="Script" path="res://screens/scripts/settings_screen.gd" id="1_kpwvm"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="1_nxqv5"]
@@ -8,33 +8,33 @@
 [ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="6_oaor4"]
 [ext_resource type="StyleBox" uid="uid://ee0g4ryuhtv2" path="res://screens/themes/style_button_sound.tres" id="7_ulbfq"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cdl2r"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0af4j"]
 texture = ExtResource("6_oaor4")
 modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mf1eq"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tr3vu"]
 texture = ExtResource("6_oaor4")
 
 [sub_resource type="Theme" id="Theme_6rysv"]
-Button/styles/hover = SubResource("StyleBoxTexture_cdl2r")
-Button/styles/normal = SubResource("StyleBoxTexture_mf1eq")
-Button/styles/pressed = SubResource("StyleBoxTexture_cdl2r")
+Button/styles/hover = SubResource("StyleBoxTexture_0af4j")
+Button/styles/normal = SubResource("StyleBoxTexture_tr3vu")
+Button/styles/pressed = SubResource("StyleBoxTexture_0af4j")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0drw"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trvg5"]
 texture = ExtResource("2_jdceu")
 modulate_color = Color(0.513726, 0, 0, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_maoqi"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nv4u"]
 texture = ExtResource("2_jdceu")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy6u5"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_66x74"]
 texture = ExtResource("2_jdceu")
 modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
 
 [sub_resource type="Theme" id="Theme_4tv32"]
-Button/styles/hover = SubResource("StyleBoxTexture_t0drw")
-Button/styles/normal = SubResource("StyleBoxTexture_maoqi")
-Button/styles/pressed = SubResource("StyleBoxTexture_xy6u5")
+Button/styles/hover = SubResource("StyleBoxTexture_trvg5")
+Button/styles/normal = SubResource("StyleBoxTexture_3nv4u")
+Button/styles/pressed = SubResource("StyleBoxTexture_66x74")
 
 [sub_resource type="LabelSettings" id="LabelSettings_kfdoe"]
 font = ExtResource("3_sqiu3")

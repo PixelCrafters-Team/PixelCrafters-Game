@@ -1,0 +1,265 @@
+[gd_scene load_steps=22 format=3 uid="uid://b2ugddkrlc87h"]
+
+[ext_resource type="Script" path="res://screens/scripts/search_room_screen.gd" id="1_s7i1o"]
+[ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_hf174"]
+[ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_t8nw1"]
+[ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="6_gipdt"]
+[ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="7_1mkbx"]
+[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="12_vwv3q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37lk6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_68kv2"]
+font = ExtResource("3_t8nw1")
+font_size = 42
+
+[sub_resource type="FontFile" id="FontFile_rwrke"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/501/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/501/0/ascent = 0.0
+cache/0/501/0/descent = 0.0
+cache/0/501/0/underline_position = 0.0
+cache/0/501/0/underline_thickness = 0.0
+cache/0/501/0/scale = 1.0
+cache/0/501/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/501/0/kerning_overrides/501/0 = Vector2(0, 0)
+cache/0/501/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/501/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/20/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/20/0/kerning_overrides/501/0 = Vector2(0, 0)
+cache/0/20/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/20/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/30/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/501/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/30/0 = Vector2(0, 0)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gvvtk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l1hjr"]
+line_spacing = 0.0
+font = ExtResource("3_t8nw1")
+font_size = 26
+shadow_size = 0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x7m28"]
+texture = ExtResource("7_1mkbx")
+modulate_color = Color(0.454902, 0.156863, 0.0862745, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3egep"]
+texture = ExtResource("7_1mkbx")
+
+[sub_resource type="Theme" id="Theme_y82n4"]
+default_font = ExtResource("3_t8nw1")
+Button/colors/font_color = Color(0.188235, 0.184314, 0.14902, 1)
+Button/styles/hover = SubResource("StyleBoxTexture_x7m28")
+Button/styles/normal = SubResource("StyleBoxTexture_3egep")
+Button/styles/pressed = SubResource("StyleBoxTexture_3egep")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkfgx"]
+texture = ExtResource("6_gipdt")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r28wq"]
+texture = ExtResource("6_gipdt")
+
+[sub_resource type="Theme" id="Theme_bd7qi"]
+Button/styles/hover = SubResource("StyleBoxTexture_pkfgx")
+Button/styles/normal = SubResource("StyleBoxTexture_r28wq")
+Button/styles/pressed = SubResource("StyleBoxTexture_pkfgx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dkp0m"]
+texture = ExtResource("12_vwv3q")
+modulate_color = Color(0.513726, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hvm47"]
+texture = ExtResource("12_vwv3q")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r17qe"]
+texture = ExtResource("12_vwv3q")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
+
+[sub_resource type="Theme" id="Theme_jydn1"]
+Button/styles/hover = SubResource("StyleBoxTexture_dkp0m")
+Button/styles/normal = SubResource("StyleBoxTexture_hvm47")
+Button/styles/pressed = SubResource("StyleBoxTexture_r17qe")
+
+[node name="SearchRoomScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s7i1o")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1440.0
+offset_bottom = 810.0
+texture = ExtResource("2_hf174")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 5.0
+offset_right = 1440.0
+offset_bottom = 809.0
+size_flags_vertical = 0
+
+[node name="MarginTop" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="LabelTeam" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_37lk6")
+text = "LISTA DE SALAS"
+label_settings = SubResource("LabelSettings_68kv2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginLeft" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="MarginRight" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(800, 250)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Controls" type="Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_rwrke")
+theme_override_font_sizes/font_size = 30
+text = "Sala 1"
+icon = SubResource("ViewportTexture_gvvtk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Controls" type="Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_rwrke")
+theme_override_font_sizes/font_size = 30
+text = "Sala 2"
+icon = SubResource("ViewportTexture_gvvtk")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Controls" type="Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_rwrke")
+theme_override_font_sizes/font_size = 30
+text = "Sala 3"
+icon = SubResource("ViewportTexture_gvvtk")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="Controls" type="Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_rwrke")
+theme_override_font_sizes/font_size = 30
+text = "Sala 4"
+icon = SubResource("ViewportTexture_gvvtk")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Escolha uma sala e chame seus amigos!"
+label_settings = SubResource("LabelSettings_l1hjr")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="JoinRoomButton" type="Button" parent="VBoxContainer/Label"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 5.0
+offset_right = 398.0
+offset_bottom = 83.0
+theme = SubResource("Theme_y82n4")
+theme_override_font_sizes/font_size = 40
+text = "Entrar"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1440.0
+offset_bottom = 119.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 39
+
+[node name="ReturnButton" type="Button" parent="HBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme = SubResource("Theme_bd7qi")
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 39
+theme_override_constants/margin_right = 45
+
+[node name="ExitButton" type="Button" parent="HBoxContainer2/MarginContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_jydn1")
+theme_override_font_sizes/font_size = 59
+
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Controls" to="." method="_on_controls_button_down"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Controls" to="." method="_on_controls_toggled"]
+[connection signal="pressed" from="VBoxContainer/Label/JoinRoomButton" to="." method="_on_join_room_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/MarginContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/MarginContainer2/ExitButton" to="." method="_on_exit_button_pressed"]

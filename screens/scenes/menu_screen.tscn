@@ -10,19 +10,19 @@
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="8_gfutr"]
 [ext_resource type="Texture2D" uid="uid://o17gt7glmmr4" path="res://screens/assets/bone.png" id="9_5mpjb"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88sdy"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rqhil"]
 texture = ExtResource("6_wcspm")
 modulate_color = Color(0.454902, 0.156863, 0.0862745, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3b7n6"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e4x73"]
 texture = ExtResource("6_wcspm")
 
 [sub_resource type="Theme" id="Theme_nuk4w"]
 default_font = ExtResource("7_bjknq")
 Button/colors/font_color = Color(0.188235, 0.184314, 0.14902, 1)
-Button/styles/hover = SubResource("StyleBoxTexture_88sdy")
-Button/styles/normal = SubResource("StyleBoxTexture_3b7n6")
-Button/styles/pressed = SubResource("StyleBoxTexture_3b7n6")
+Button/styles/hover = SubResource("StyleBoxTexture_rqhil")
+Button/styles/normal = SubResource("StyleBoxTexture_e4x73")
+Button/styles/pressed = SubResource("StyleBoxTexture_e4x73")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sptey"]
 texture = ExtResource("5_i8he3")
@@ -222,6 +222,33 @@ _data = {
 "walk": SubResource("Animation_va2bq")
 }
 
+[sub_resource type="Animation" id="Animation_vy2vm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(834, 351)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bone:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_13qj7"]
 resource_name = "bone_animation"
 length = 0.7
@@ -251,33 +278,6 @@ tracks/1/keys = {
 "values": [0.0, -0.178632, 0.0330082, 0.21247]
 }
 
-[sub_resource type="Animation" id="Animation_vy2vm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bone:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(834, 351)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Bone:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8bpr2"]
 _data = {
 "RESET": SubResource("Animation_vy2vm"),
@@ -302,13 +302,13 @@ expand_mode = 2
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 2
-offset_left = 614.0
-offset_top = 528.0
-offset_right = 828.0
-offset_bottom = 606.0
+offset_left = 599.0
+offset_top = 460.0
+offset_right = 899.0
+offset_bottom = 538.0
 theme = SubResource("Theme_nuk4w")
 theme_override_font_sizes/font_size = 40
-text = "Play"
+text = "Buscar sala"
 
 [node name="SettingButton" type="Button" parent="."]
 layout_mode = 0
@@ -335,8 +335,8 @@ theme_override_font_sizes/font_size = 59
 layout_mode = 2
 offset_left = 390.0
 offset_top = 251.0
-offset_right = 1052.0
-offset_bottom = 587.0
+offset_right = 1083.0
+offset_bottom = 470.0
 size_flags_horizontal = 4
 text = "CATCH  ME"
 label_settings = SubResource("LabelSettings_h6yjt")
@@ -424,6 +424,17 @@ libraries = {
 "": SubResource("AnimationLibrary_8bpr2")
 }
 
+[node name="CreateButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 603.0
+offset_top = 551.0
+offset_right = 903.0
+offset_bottom = 629.0
+theme = SubResource("Theme_nuk4w")
+theme_override_font_sizes/font_size = 40
+text = "Criar sala"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CreateButton" to="." method="_on_create_button_pressed"]
