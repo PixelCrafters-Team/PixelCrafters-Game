@@ -3,7 +3,7 @@ extends CanvasLayer
 @export var equipe: String = "-"
 @onready var camera = $MiniMap/SubViewport/Camera2D
 @onready var timer = $Timer
-@onready var pause_menu = $PauseMenu
+@onready var pause_menu = $Team/MarginContainer/PauseMenu
 var paused = false
 var charge_skill
 

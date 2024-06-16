@@ -1,6 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm668anoe3arq"]
+[gd_scene load_steps=8 format=3 uid="uid://cm668anoe3arq"]
 
 [ext_resource type="Script" path="res://screens/scripts/pause_menu.gd" id="1_03y2u"]
+[ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_c7epm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6cdh"]
+bg_color = Color(0.156863, 0.105882, 0.027451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4jqf"]
+bg_color = Color(0.796078, 0.768627, 0.682353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0.156863, 0.105882, 0.027451, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="Theme" id="Theme_d6tsg"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(0.239216, 0.168627, 0.0588235, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_s6cdh")
+Button/styles/normal = SubResource("StyleBoxFlat_a4jqf")
+Button/styles/pressed = SubResource("StyleBoxFlat_a4jqf")
+
+[sub_resource type="Theme" id="Theme_hjngh"]
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(0.24016, 0.169229, 0.0584536, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_s6cdh")
+Button/styles/normal = SubResource("StyleBoxFlat_a4jqf")
+Button/styles/pressed = SubResource("StyleBoxFlat_a4jqf")
+
+[sub_resource type="Theme" id="Theme_bs65r"]
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(0.239216, 0.168627, 0.0588235, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_s6cdh")
+Button/styles/normal = SubResource("StyleBoxFlat_a4jqf")
+Button/styles/pressed = SubResource("StyleBoxFlat_a4jqf")
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -9,26 +60,62 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_03y2u")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -127.5
+offset_right = 122.0
+offset_bottom = 127.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+theme = SubResource("Theme_d6tsg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_c7epm")
+theme_override_font_sizes/font_size = 30
 text = "Continuar"
 
-[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-text = "Controles"
+
+[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme = SubResource("Theme_hjngh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_c7epm")
+theme_override_font_sizes/font_size = 30
+text = "Configurações"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+theme = SubResource("Theme_bs65r")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_c7epm")
+theme_override_font_sizes/font_size = 30
 text = "Sair"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
