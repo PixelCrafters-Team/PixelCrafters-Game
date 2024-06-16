@@ -162,6 +162,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="ColorFade" type="ColorRect" parent="Team"]
+offset_left = -106.0
+offset_top = -56.0
+offset_right = 1538.0
+offset_bottom = 882.0
+color = Color(0, 0, 0, 0.65098)
+
 [node name="MarginContainer" type="MarginContainer" parent="Team"]
 layout_mode = 1
 anchors_preset = -1

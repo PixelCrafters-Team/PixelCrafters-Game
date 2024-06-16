@@ -38,8 +38,10 @@ func _on_timer_timeout():
 func pauseMenu():
 	if paused:
 		pause_menu.hide()
+		$Team/ColorFade.visible = false
 	else:
 		pause_menu.show()
+		$Team/ColorFade.visible = true
 	paused = !paused
 
 
