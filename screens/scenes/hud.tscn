@@ -163,6 +163,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorFade" type="ColorRect" parent="Team"]
+visible = false
+layout_mode = 0
 offset_left = -106.0
 offset_top = -56.0
 offset_right = 1538.0
@@ -224,10 +226,6 @@ theme = SubResource("Theme_jhs54")
 
 [node name="MarginContainer3" type="MarginContainer" parent="Team/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-
-[node name="PauseMenu" parent="Team/MarginContainer" instance=ExtResource("7_mbfwe")]
-visible = false
 layout_mode = 2
 
 [node name="MiniMap" type="SubViewportContainer" parent="."]
@@ -302,6 +300,18 @@ speed_scale = 0.15
 [node name="TimerCharge" type="Timer" parent="SkillCharge"]
 wait_time = 10.0
 autostart = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_mbfwe")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 721.0
+offset_top = 418.0
+offset_right = 721.0
+offset_bottom = 418.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="Team/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
