@@ -9,6 +9,7 @@ var charge_skill
 
 func _ready():
 	charge_skill = 0
+	$SkillCharge/Animation.play("charge_complete")
 	
 func _process(delta):
 	$Timer/LabelTimer.text = str(int(timer.time_left / 60)) + ":" + str(int(timer.time_left) % 60)
