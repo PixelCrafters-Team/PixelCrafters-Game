@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xuy3rrxvr3ri"
-path="res://.godot/imported/teleport.png-203a55af750534f0a2cd875f3b5ea207.ctex"
+uid="uid://c3yh337ohijev"
+path="res://.godot/imported/mundo_jogo.svg-811f51033522fb100de1c0c83ac1679d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wold/assets/teleport.png"
-dest_files=["res://.godot/imported/teleport.png-203a55af750534f0a2cd875f3b5ea207.ctex"]
+source_file="res://world/assets/mundo_jogo.svg"
+dest_files=["res://.godot/imported/mundo_jogo.svg-811f51033522fb100de1c0c83ac1679d.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

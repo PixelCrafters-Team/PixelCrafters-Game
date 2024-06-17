@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var teleportSound = $TeleportSound
 
-var Map = preload("res://wold/scenes/map.tscn").instantiate()
+var Map = preload("res://world/scenes/map.tscn").instantiate()
 var Hud = preload("res://screens/scenes/hud.tscn").instantiate()
 var Character
 var character_position

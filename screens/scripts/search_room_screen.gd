@@ -2,11 +2,22 @@ extends Control
 
 var manu_screen = preload("res://screens/scenes/menu_screen.tscn")
 var create_room_screen = preload("res://screens/scenes/create_room_screen.tscn")
+var rooms = ["Sala 1", "Sala 2", "Sala 3", "Sala 4", "Sala 5", "Sala 6"]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var vbox_inner = $VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer
+	for room in rooms:
+		var hbox = HBoxContainer.new()
+		hbox.layout_mode = 2
 
-
+		var button = Button.new()
+		button.text = room
+		button.custom_minimum_size = Vector2(800, 50)
+		button.pressed.connect(func(): self._on_controls_button_down(room))
+		button.add_theme_font_size_override("font_size", 28)
+		hbox.add_child(button)
+		vbox_inner.add_child(hbox)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -25,9 +36,9 @@ func _on_join_room_button_pressed():
 
 
 
-func _on_controls_button_down():
+func _on_controls_button_down(room):
 		# TODO: get id to find room
-	print("selected")
+	print("selected" + room)
 
 
 func _on_exit_button_pressed():

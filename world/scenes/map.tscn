@@ -1,9 +1,9 @@
 [gd_scene load_steps=37 format=3 uid="uid://bcxcd8tbjoekt"]
 
-[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://wold/assets/centro_de_pesquisa.svg" id="1_0bqkm"]
-[ext_resource type="Script" path="res://wold/scripts/map.gd" id="1_34aoa"]
-[ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://wold/assets/praca_central.svg" id="2_bqk0x"]
-[ext_resource type="Texture2D" uid="uid://xuy3rrxvr3ri" path="res://wold/assets/teleport.png" id="3_mobbc"]
+[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://world/assets/centro_de_pesquisa.svg" id="1_0bqkm"]
+[ext_resource type="Script" path="res://world/scripts/map.gd" id="1_34aoa"]
+[ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://world/assets/praca_central.svg" id="2_bqk0x"]
+[ext_resource type="Texture2D" uid="uid://xuy3rrxvr3ri" path="res://world/assets/teleport.png" id="3_mobbc"]
 
 [sub_resource type="Animation" id="Animation_tq0ku"]
 length = 0.001

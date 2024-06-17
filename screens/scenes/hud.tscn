@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
 [ext_resource type="Texture2D" uid="uid://ctc7msswpmepk" path="res://screens/assets/icons/bone_hud.png" id="3_en02k"]
-[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://wold/assets/centro_de_pesquisa.svg" id="5_gcpwp"]
 [ext_resource type="Texture2D" uid="uid://woxffrq0op2y" path="res://screens/assets/icons/home_dog.png" id="5_jnmrr"]
-[ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://wold/assets/praca_central.svg" id="6_swkie"]
+[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://world/assets/centro_de_pesquisa.svg" id="6_fb3q1"]
+[ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://world/assets/praca_central.svg" id="7_isbgt"]
 [ext_resource type="PackedScene" uid="uid://cm668anoe3arq" path="res://screens/scenes/pause_menu.tscn" id="7_mbfwe"]
 [ext_resource type="Texture2D" uid="uid://vekm8433hyfu" path="res://screens/assets/icons/cat.png" id="7_xpnao"]
 [ext_resource type="Texture2D" uid="uid://bdur7m8ftjb6y" path="res://screens/assets/skill_charge.png" id="9_bnomy"]
@@ -163,6 +163,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorFade" type="ColorRect" parent="Team"]
+layout_mode = 0
 offset_left = -106.0
 offset_top = -56.0
 offset_right = 1538.0
@@ -244,14 +245,14 @@ render_target_update_mode = 4
 [node name="CentroDePesquisa" type="Sprite2D" parent="MiniMap/SubViewport"]
 rotation = 0.441568
 scale = Vector2(0.581, 0.581)
-texture = ExtResource("5_gcpwp")
+texture = ExtResource("6_fb3q1")
 
 [node name="PracaCentral" type="Sprite2D" parent="MiniMap/SubViewport"]
 visible = false
 position = Vector2(-259, -1280)
 rotation = 0.00523599
 scale = Vector2(0.581, 0.581)
-texture = ExtResource("6_swkie")
+texture = ExtResource("7_isbgt")
 
 [node name="Camera2D" type="Camera2D" parent="MiniMap/SubViewport"]
 zoom = Vector2(0.2, 0.2)

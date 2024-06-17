@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/scripts/game.gd" id="1_vkq62"]
 [ext_resource type="AudioStream" uid="uid://mdtmgph6wxcr" path="res://game/assets/music_game.ogg" id="3_ss0oy"]
-[ext_resource type="AudioStream" uid="uid://buhqcvt3y5l1i" path="res://wold/assets/teleportSoud.mp3" id="3_yxvpu"]
+[ext_resource type="AudioStream" uid="uid://buhqcvt3y5l1i" path="res://world/assets/teleportSoud.mp3" id="3_yxvpu"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(-28, -11)
