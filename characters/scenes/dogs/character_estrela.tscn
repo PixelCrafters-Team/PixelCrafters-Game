@@ -1,10 +1,12 @@
-[gd_scene load_steps=32 format=3 uid="uid://b8aemaewu78hi"]
+[gd_scene load_steps=34 format=3 uid="uid://b8aemaewu78hi"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_duxev"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_e3mmg"]
 [ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_g7xr3"]
 [ext_resource type="Texture2D" uid="uid://qy37f24yrka5" path="res://screens/assets/icons/Item1.png" id="4_u0ats"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="5_klmuj"]
+[ext_resource type="Texture2D" uid="uid://b6lexifcwsfa5" path="res://characters/assets/skill_estrela.png" id="6_puylm"]
+[ext_resource type="AudioStream" uid="uid://bey1gp6xuspcg" path="res://characters/assets/effect_active_skill.mp3" id="7_8hk6v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ckanl"]
 radius = 8.0
@@ -374,9 +376,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_uu4xc")
-}
 tree_root = SubResource("AnimationNodeStateMachine_yrob6")
 anim_player = NodePath("../Animation")
 parameters/Idle/blend_position = Vector2(0, 0)
@@ -412,5 +411,17 @@ text = "nome"
 label_settings = SubResource("LabelSettings_lb468")
 horizontal_alignment = 1
 
+[node name="Skill" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-13, -35)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("6_puylm")
+
+[node name="SkillDuration" type="Timer" parent="Skill"]
+
+[node name="EffectActiveSkill" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8hk6v")
+
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaTeleport" to="." method="_on_area_teleport_area_entered"]
+[connection signal="timeout" from="Skill/SkillDuration" to="." method="_on_skill_duration_timeout"]

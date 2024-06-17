@@ -11,6 +11,7 @@ extends CharacterBody2D
 var state_machine
 var is_walking: bool = false
 var is_glace: bool = false
+var is_skill_estrela = false
 
 var list_positions_teleport = [ 
 		Vector2(480, 676), 
@@ -44,17 +45,23 @@ func _physics_process(delta):
 			$TimerWalk.start(0.3)
 			$EffectWalk.play()
 	else:
-		is_walking = false	
+		is_walking = false		
 	
 	if Input.is_key_pressed(KEY_SPACE):
 		move_speed = 100
 	else:
 		move_speed = 64;
+	
+	if is_skill_estrela:
+		move_speed += 50
 		
-	if Input.is_key_pressed(KEY_Z) and is_in_group("cats"):
-		glace_cat()
 	if Input.is_key_pressed(KEY_X) and is_in_group("cats"):
+		glace_cat()
+	if Input.is_key_pressed(KEY_C) and is_in_group("cats"):
 		unfreeze_cat()
+		
+	if Input.is_key_pressed(KEY_Z) and is_in_group("dogs") and get_name() == "Character_estrela":
+		activate_skill()
 	
 	
 func move() -> void:
@@ -106,3 +113,19 @@ func _on_area_teleport_area_entered(area):
 	elif area.is_in_group("teleport") and get_parent().num_map == 1:
 		global_position = list_positions_teleport[randi_range(4, 7)]
 		
+		
+func activate_skill():
+	if get_parent().get_node("HUD").charge_skill == 0:
+		$EffectActiveSkill.play()
+		$Skill/SkillDuration.start(5)
+		$Skill.visible = true
+		if get_name() == "Character_estrela":
+			is_skill_estrela = true
+		
+
+func _on_skill_duration_timeout():
+	$Skill.visible = false
+	if get_name() == "Character_estrela":
+		is_skill_estrela = false
+		get_parent().get_node("HUD").start_timer()
+	$Skill/SkillDuration.stop()
