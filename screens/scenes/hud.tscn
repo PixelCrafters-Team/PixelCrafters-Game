@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=25 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cm668anoe3arq" path="res://screens/scenes/pause_menu.tscn" id="7_mbfwe"]
 [ext_resource type="Texture2D" uid="uid://vekm8433hyfu" path="res://screens/assets/icons/cat.png" id="7_xpnao"]
 [ext_resource type="Texture2D" uid="uid://bdur7m8ftjb6y" path="res://screens/assets/skill_charge.png" id="9_bnomy"]
+[ext_resource type="AudioStream" uid="uid://cxwe51ievgvgb" path="res://screens/assets/timer_charge.mp3" id="9_qx2rj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
 content_margin_left = 50.0
@@ -302,6 +303,9 @@ speed_scale = 0.15
 [node name="TimerCharge" type="Timer" parent="SkillCharge"]
 wait_time = 10.0
 autostart = true
+
+[node name="EffectCharge" type="AudioStreamPlayer" parent="SkillCharge/TimerCharge"]
+stream = ExtResource("9_qx2rj")
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_mbfwe")]
 visible = false
