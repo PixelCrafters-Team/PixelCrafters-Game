@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qy37f24yrka5" path="res://screens/assets/icons/Item1.png" id="4_u0ats"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="5_klmuj"]
 [ext_resource type="Texture2D" uid="uid://b6lexifcwsfa5" path="res://characters/assets/skill_estrela.png" id="6_puylm"]
-[ext_resource type="AudioStream" uid="uid://bey1gp6xuspcg" path="res://characters/assets/effect_active_skill.mp3" id="7_8hk6v"]
+[ext_resource type="AudioStream" uid="uid://cavagoic810ct" path="res://screens/assets/effect_dog_barking.mp3" id="7_dwi22"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ckanl"]
 radius = 8.0
@@ -420,7 +420,7 @@ texture = ExtResource("6_puylm")
 [node name="SkillDuration" type="Timer" parent="Skill"]
 
 [node name="EffectActiveSkill" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_8hk6v")
+stream = ExtResource("7_dwi22")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaTeleport" to="." method="_on_area_teleport_area_entered"]
