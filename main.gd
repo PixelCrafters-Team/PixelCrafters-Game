@@ -10,6 +10,8 @@ var player_name = "Player-" + str(randi() % 100 + 1)
 func _ready():
 	add_child(menu_screen.instantiate())
 	
-	
 func _on_music_menu_finished():
 	music_menu.play()
+
+func create_scene():
+	game_scene = preload("res://game/scenes/Game.tscn").instantiate()

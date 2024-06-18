@@ -144,6 +144,7 @@ func _on_exit_button_pressed():
 
 func _on_start_button_pressed():
 	get_parent().click_sound.play()
+	get_parent().create_scene()
 	var scene = get_parent().game_scene
 	scene.set_character(team, num_character)
 	scene.create_game(scene)
