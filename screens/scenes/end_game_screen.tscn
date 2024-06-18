@@ -1,38 +1,39 @@
-[gd_scene load_steps=18 format=3 uid="uid://bh5otqaqtm0bj"]
+[gd_scene load_steps=19 format=3 uid="uid://bh5otqaqtm0bj"]
 
-[ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="1_spolw"]
-[ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_wv13l"]
-[ext_resource type="Texture2D" uid="uid://c3khujmfv6deo" path="res://screens/assets/background_choose_character.png" id="3_y07f7"]
-[ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="4_icuy6"]
-[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="5_rpe17"]
+[ext_resource type="Script" path="res://screens/scenes/end_game_screen.gd" id="1_xvxl0"]
+[ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_aofrj"]
+[ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_owiu7"]
+[ext_resource type="Texture2D" uid="uid://c3khujmfv6deo" path="res://screens/assets/background_choose_character.png" id="4_b68yn"]
+[ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="5_kfakm"]
+[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="6_0tqln"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o446p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cdqti"]
-font = ExtResource("2_wv13l")
+font = ExtResource("3_owiu7")
 font_size = 42
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pbskw"]
-texture = ExtResource("3_y07f7")
+texture = ExtResource("4_b68yn")
 expand_margin_bottom = 27.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_nh03m"]
-font = ExtResource("2_wv13l")
+font = ExtResource("3_owiu7")
 font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_a14br"]
-font = ExtResource("2_wv13l")
+font = ExtResource("3_owiu7")
 font_size = 18
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhhwu"]
-texture = ExtResource("4_icuy6")
+texture = ExtResource("5_kfakm")
 expand_margin_left = 15.0
 expand_margin_top = 5.0
 expand_margin_right = 15.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sphuw"]
-texture = ExtResource("4_icuy6")
+texture = ExtResource("5_kfakm")
 expand_margin_left = 15.0
 expand_margin_top = 5.0
 expand_margin_right = 15.0
@@ -43,20 +44,20 @@ modulate_color = Color(0.37881, 0.125048, 0.064938, 1)
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_color = Color(0.184314, 0.180392, 0.14902, 1)
 Button/font_sizes/font_size = 27
-Button/fonts/font = ExtResource("2_wv13l")
+Button/fonts/font = ExtResource("3_owiu7")
 Button/styles/hover = SubResource("StyleBoxTexture_nhhwu")
 Button/styles/normal = SubResource("StyleBoxTexture_sphuw")
 Button/styles/pressed = SubResource("StyleBoxTexture_sphuw")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0drw"]
-texture = ExtResource("5_rpe17")
+texture = ExtResource("6_0tqln")
 modulate_color = Color(0.513726, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_maoqi"]
-texture = ExtResource("5_rpe17")
+texture = ExtResource("6_0tqln")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy6u5"]
-texture = ExtResource("5_rpe17")
+texture = ExtResource("6_0tqln")
 modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
 
 [sub_resource type="Theme" id="Theme_ed6e1"]
@@ -64,12 +65,13 @@ Button/styles/hover = SubResource("StyleBoxTexture_t0drw")
 Button/styles/normal = SubResource("StyleBoxTexture_maoqi")
 Button/styles/pressed = SubResource("StyleBoxTexture_xy6u5")
 
-[node name="VictoryScreen" type="Node2D"]
+[node name="EndGameScreen" type="Node2D"]
+script = ExtResource("1_xvxl0")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1440.0
 offset_bottom = 810.0
-texture = ExtResource("1_spolw")
+texture = ExtResource("2_aofrj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 1440.0
@@ -201,3 +203,5 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = SubResource("Theme_ed6e1")
 theme_override_font_sizes/font_size = 59
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/SelectButton0" to="." method="_on_select_button_continue_pressed"]

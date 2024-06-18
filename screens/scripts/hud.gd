@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+var endGameScreen = preload("res://screens/scenes/end_game_screen.tscn").instantiate()
 @export var equipe: String = "-"
 @onready var camera = $MiniMap/SubViewport/Camera2D
 @onready var timer = $Timer
@@ -39,6 +40,10 @@ func _on_button_pressed():
 
 func _on_timer_timeout():
 	timer.stop()
+	print(get_name())
+	get_parent().get_parent().add_child(endGameScreen)
+	get_parent().get_parent().get_node("Game").queue_free()
+	#get_parent().get_node("Game").queue_free()
 	
 	
 func pauseMenu():
