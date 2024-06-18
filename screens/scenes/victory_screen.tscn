@@ -1,0 +1,203 @@
+[gd_scene load_steps=18 format=3 uid="uid://bh5otqaqtm0bj"]
+
+[ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="1_spolw"]
+[ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_wv13l"]
+[ext_resource type="Texture2D" uid="uid://c3khujmfv6deo" path="res://screens/assets/background_choose_character.png" id="3_y07f7"]
+[ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="4_icuy6"]
+[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="5_rpe17"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o446p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cdqti"]
+font = ExtResource("2_wv13l")
+font_size = 42
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pbskw"]
+texture = ExtResource("3_y07f7")
+expand_margin_bottom = 27.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_nh03m"]
+font = ExtResource("2_wv13l")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_a14br"]
+font = ExtResource("2_wv13l")
+font_size = 18
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhhwu"]
+texture = ExtResource("4_icuy6")
+expand_margin_left = 15.0
+expand_margin_top = 5.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sphuw"]
+texture = ExtResource("4_icuy6")
+expand_margin_left = 15.0
+expand_margin_top = 5.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.37881, 0.125048, 0.064938, 1)
+
+[sub_resource type="Theme" id="Theme_6fg3i"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.184314, 0.180392, 0.14902, 1)
+Button/font_sizes/font_size = 27
+Button/fonts/font = ExtResource("2_wv13l")
+Button/styles/hover = SubResource("StyleBoxTexture_nhhwu")
+Button/styles/normal = SubResource("StyleBoxTexture_sphuw")
+Button/styles/pressed = SubResource("StyleBoxTexture_sphuw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0drw"]
+texture = ExtResource("5_rpe17")
+modulate_color = Color(0.513726, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_maoqi"]
+texture = ExtResource("5_rpe17")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy6u5"]
+texture = ExtResource("5_rpe17")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
+
+[sub_resource type="Theme" id="Theme_ed6e1"]
+Button/styles/hover = SubResource("StyleBoxTexture_t0drw")
+Button/styles/normal = SubResource("StyleBoxTexture_maoqi")
+Button/styles/pressed = SubResource("StyleBoxTexture_xy6u5")
+
+[node name="VictoryScreen" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1440.0
+offset_bottom = 810.0
+texture = ExtResource("1_spolw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 1440.0
+offset_bottom = 770.0
+size_flags_vertical = 0
+
+[node name="MarginTop" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+
+[node name="LabelTeam" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o446p")
+text = "Vitoria dos Gatos Hackers!"
+label_settings = SubResource("LabelSettings_cdqti")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginLeft" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="PanelCharacter1" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_pbskw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.05
+
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Estatisticas"
+label_settings = SubResource("LabelSettings_nh03m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="LabelSkill" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Habilidade:  Ronronar Calmante"
+label_settings = SubResource("LabelSettings_a14br")
+
+[node name="LabelSkill2" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Uso de Habilidade:  2"
+label_settings = SubResource("LabelSettings_a14br")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="LabelSkill" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gatos salvos: 3"
+label_settings = SubResource("LabelSettings_a14br")
+
+[node name="LabelSkill2" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gatos congelados: 6"
+label_settings = SubResource("LabelSettings_a14br")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="LabelSkill" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tempo da rodada:  5 min"
+label_settings = SubResource("LabelSettings_a14br")
+
+[node name="LabelSkill2" type="Label" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quantidade de jogadores: 8"
+label_settings = SubResource("LabelSettings_a14br")
+
+[node name="MarginBottom" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="SelectButton0" type="Button" parent="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource("Theme_6fg3i")
+text = "Continuar"
+
+[node name="MarginRight" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 1322.0
+offset_top = 51.0
+offset_right = 1403.0
+offset_bottom = 130.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = SubResource("Theme_ed6e1")
+theme_override_font_sizes/font_size = 59
