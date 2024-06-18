@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2ugddkrlc87h"]
+[gd_scene load_steps=20 format=3 uid="uid://b2ugddkrlc87h"]
 
 [ext_resource type="Script" path="res://screens/scripts/search_room_screen.gd" id="1_s7i1o"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_hf174"]
@@ -12,46 +12,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_68kv2"]
 font = ExtResource("3_t8nw1")
 font_size = 42
-
-[sub_resource type="FontFile" id="FontFile_rwrke"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/501/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/501/0/ascent = 0.0
-cache/0/501/0/descent = 0.0
-cache/0/501/0/underline_position = 0.0
-cache/0/501/0/underline_thickness = 0.0
-cache/0/501/0/scale = 1.0
-cache/0/501/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/501/0/kerning_overrides/501/0 = Vector2(0, 0)
-cache/0/501/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/501/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/20/0/ascent = 0.0
-cache/0/20/0/descent = 0.0
-cache/0/20/0/underline_position = 0.0
-cache/0/20/0/underline_thickness = 0.0
-cache/0/20/0/scale = 1.0
-cache/0/20/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/501/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/30/0/ascent = 0.0
-cache/0/30/0/descent = 0.0
-cache/0/30/0/underline_position = 0.0
-cache/0/30/0/underline_thickness = 0.0
-cache/0/30/0/scale = 1.0
-cache/0/30/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/501/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/30/0 = Vector2(0, 0)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_gvvtk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l1hjr"]
 line_spacing = 0.0
@@ -154,59 +114,6 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Controls" type="Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(800, 50)
-layout_mode = 2
-theme_override_fonts/font = SubResource("FontFile_rwrke")
-theme_override_font_sizes/font_size = 30
-text = "Sala 1"
-icon = SubResource("ViewportTexture_gvvtk")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Controls" type="Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(800, 50)
-layout_mode = 2
-theme_override_fonts/font = SubResource("FontFile_rwrke")
-theme_override_font_sizes/font_size = 30
-text = "Sala 2"
-icon = SubResource("ViewportTexture_gvvtk")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="Controls" type="Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
-custom_minimum_size = Vector2(800, 50)
-layout_mode = 2
-theme_override_fonts/font = SubResource("FontFile_rwrke")
-theme_override_font_sizes/font_size = 30
-text = "Sala 3"
-icon = SubResource("ViewportTexture_gvvtk")
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer3"]
-layout_mode = 2
-
-[node name="Controls" type="Button" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
-custom_minimum_size = Vector2(800, 50)
-layout_mode = 2
-theme_override_fonts/font = SubResource("FontFile_rwrke")
-theme_override_font_sizes/font_size = 30
-text = "Sala 4"
-icon = SubResource("ViewportTexture_gvvtk")
-
 [node name="Label" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
@@ -258,8 +165,6 @@ size_flags_vertical = 4
 theme = SubResource("Theme_jydn1")
 theme_override_font_sizes/font_size = 59
 
-[connection signal="button_down" from="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Controls" to="." method="_on_controls_button_down"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Controls" to="." method="_on_controls_toggled"]
 [connection signal="pressed" from="VBoxContainer/Label/JoinRoomButton" to="." method="_on_join_room_button_pressed"]
 [connection signal="pressed" from="HBoxContainer2/MarginContainer/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="HBoxContainer2/MarginContainer2/ExitButton" to="." method="_on_exit_button_pressed"]
