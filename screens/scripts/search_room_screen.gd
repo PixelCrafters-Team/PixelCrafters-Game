@@ -10,7 +10,6 @@ func _ready():
 	for room in rooms:
 		var hbox = HBoxContainer.new()
 		hbox.layout_mode = 2
-
 		var button = Button.new()
 		button.text = room
 		button.custom_minimum_size = Vector2(800, 50)
