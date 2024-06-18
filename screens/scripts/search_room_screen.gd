@@ -3,7 +3,7 @@ extends Control
 var manu_screen = preload("res://screens/scenes/menu_screen.tscn")
 var create_room_screen = preload("res://screens/scenes/create_room_screen.tscn")
 var rooms = ["Sala 1", "Sala 2", "Sala 3", "Sala 4", "Sala 5", "Sala 6"]
-var selected_room = rooms.pick_random()
+var selected_room = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var vbox_inner = $VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer

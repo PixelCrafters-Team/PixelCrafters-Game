@@ -131,7 +131,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_styles/normal = SubResource("1")
-text = "SALA #1"
 label_settings = SubResource("2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
