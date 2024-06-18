@@ -77,8 +77,8 @@ func _physics_process(delta):
 			scene.set_character(team, 1)
 		else:
 			scene.set_character(team, 2)
-		scene.create_game(scene)
-		get_parent().add_child(scene)
+		#scene.create_game(scene)
+		#get_parent().add_child(scene)
 		get_parent().get_node("CharacterSelectionScreen").queue_free()
 		get_parent().get_node("MusicMenu").stream_paused = true
 		
@@ -99,7 +99,7 @@ func _on_select_button_0_pressed():
 	#scene.set_character(team, 0)
 	#scene.create_game(scene)
 	#get_parent().add_child(scene)
-	#get_parent().get_node("CharacterSelectionScreen").queue_free()
+	get_parent().get_node("CharacterSelectionScreen").queue_free()
 	#get_parent().get_node("MusicMenu").stream_paused = true
 	
 
@@ -114,7 +114,7 @@ func _on_select_button_1_pressed():
 	#scene.set_character(team, 1)
 	#scene.create_game(scene)
 	#get_parent().add_child(scene)
-	#get_parent().get_node("CharacterSelectionScreen").queue_free()
+	get_parent().get_node("CharacterSelectionScreen").queue_free()
 	#get_parent().get_node("MusicMenu").stream_paused = true
 
 
@@ -129,7 +129,7 @@ func _on_select_button_2_pressed():
 	#scene.set_character(team, 2)
 	#scene.create_game(scene)
 	#get_parent().add_child(scene)
-	#get_parent().get_node("CharacterSelectionScreen").queue_free()
+	get_parent().get_node("CharacterSelectionScreen").queue_free()
 	#get_parent().get_node("MusicMenu").stream_paused = true
 	
 	

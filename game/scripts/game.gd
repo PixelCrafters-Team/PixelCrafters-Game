@@ -53,7 +53,7 @@ func set_character(team, num):
 		
 		
 func create_game(scene):
-	select_map(scene, 0)
+	select_map(scene, [0,1].pick_random())
 	scene.add_child(Character)
 	Character.global_position = character_position
 	add_child(Hud)
