@@ -3,7 +3,7 @@ extends Control
 var manu_screen = preload("res://screens/scenes/menu_screen.tscn")
 var create_room_screen = preload("res://screens/scenes/create_room_screen.tscn")
 var rooms = ["Sala 1", "Sala 2", "Sala 3", "Sala 4", "Sala 5", "Sala 6"]
-
+var selected_room = rooms.pick_random()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var vbox_inner = $VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer
@@ -31,14 +31,15 @@ func _on_return_button_pressed():
 
 func _on_join_room_button_pressed():
 	get_parent().click_sound.play()
-	get_parent().add_child(create_room_screen.instantiate())
+	var scene = create_room_screen.instantiate()
+	scene.set_room(selected_room)
+	get_parent().add_child(scene)
 	get_parent().get_node("SearchRoomScreen").queue_free()
 
 
 
 func _on_controls_button_down(room):
-		# TODO: get id to find room
-	print("selected" + room)
+	selected_room = room
 
 
 func _on_exit_button_pressed():

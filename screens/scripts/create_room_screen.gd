@@ -5,7 +5,6 @@ var character_selection_screen  = preload("res://screens/scenes/character_select
 var character
 static var team = ""
 var num_character
-
 func _ready():
 	if character:
 		$VBoxContainer/Label/StartButton.visible = true
@@ -32,7 +31,10 @@ func _ready():
 		
 func _process(delta):
 	pass
-
+	
+func set_room(room):
+	$VBoxContainer/LabelTeam.text = room
+	
 func set_character(character_set):
 	character = character_set
 
