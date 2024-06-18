@@ -11,6 +11,7 @@ extends CharacterBody2D
 var state_machine
 var is_walking: bool = false
 var is_glace: bool = false
+var is_skill_active = false
 var is_skill_estrela = false
 
 var list_positions_teleport = [ 
@@ -115,16 +116,19 @@ func _on_area_teleport_area_entered(area):
 		
 		
 func activate_skill():
-	if get_parent().get_node("HUD").charge_skill == 0:
+	if get_parent().get_node("HUD").charge_skill == 0 and is_skill_active == false:
+		is_skill_active = true
 		$EffectActiveSkill.play()
 		$Skill/SkillDuration.start(5)
 		$Skill.visible = true
 		if get_name() == "Character_estrela":
 			is_skill_estrela = true
+			get_parent().get_node("HUD").message_game("Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes")
 		
 
 func _on_skill_duration_timeout():
 	$Skill.visible = false
+	is_skill_active = false
 	if get_name() == "Character_estrela":
 		is_skill_estrela = false
 		get_parent().get_node("HUD").start_timer()

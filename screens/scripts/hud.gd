@@ -10,15 +10,19 @@ var charge_skill
 func _ready():
 	charge_skill = 0
 	$SkillCharge/Animation.play("charge_complete")
+	$Team/MarginContainer/VBoxContainer/GamMessages.text = " "
+	
 	
 func _process(delta):
 	$Timer/LabelTimer.text = str(int(timer.time_left / 60)) + ":" + str(int(timer.time_left) % 60)
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
+	
 		
 func _physics_process(delta):
 	if get_parent().Character:
 		camera.position = get_parent().Character.position
+
 
 func build_uhd():
 	if get_parent().Character.is_in_group("cats"):
@@ -35,6 +39,7 @@ func _on_button_pressed():
 
 func _on_timer_timeout():
 	timer.stop()
+	
 	
 func pauseMenu():
 	if paused:
@@ -67,9 +72,21 @@ func _on_timer_charge_timeout():
 		$SkillCharge/TimerCharge.stop()
 		charge_skill = 0
 		$SkillCharge/TimerCharge/EffectCharge.play()
+	
 		
 func start_timer():
 	$SkillCharge/Animation.play("charge_0")
 	$SkillCharge/TimerCharge.start(5)
 	charge_skill = 1
 	$SkillCharge/TimerCharge/EffectCharge.play()
+	
+	
+func message_game(text):
+	if !get_parent().get_node('Character_estrela'):
+		$Team/MarginContainer/VBoxContainer/GamMessages/EffectNotificationMessage.play()
+	$Team/MarginContainer/VBoxContainer/GamMessages.text = text
+	$Team/MarginContainer/VBoxContainer/GamMessages/TimerMessage.start(2)
+	
+
+func _on_timer_message_timeout():
+	$Team/MarginContainer/VBoxContainer/GamMessages.text = " "

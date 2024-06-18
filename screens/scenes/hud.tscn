@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=27 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
 [ext_resource type="Texture2D" uid="uid://ctc7msswpmepk" path="res://screens/assets/icons/bone_hud.png" id="3_en02k"]
 [ext_resource type="Texture2D" uid="uid://woxffrq0op2y" path="res://screens/assets/icons/home_dog.png" id="5_jnmrr"]
+[ext_resource type="AudioStream" uid="uid://cp2ud7g4re6v8" path="res://screens/assets/notification_message.mp3" id="5_rjj8a"]
 [ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://world/assets/centro_de_pesquisa.svg" id="6_fb3q1"]
 [ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://world/assets/praca_central.svg" id="7_isbgt"]
 [ext_resource type="PackedScene" uid="uid://cm668anoe3arq" path="res://screens/scenes/pause_menu.tscn" id="7_mbfwe"]
@@ -33,6 +34,9 @@ texture = ExtResource("5_jnmrr")
 Button/styles/hover = SubResource("StyleBoxTexture_rwmo4")
 Button/styles/normal = SubResource("StyleBoxTexture_0jwb5")
 Button/styles/pressed = SubResource("StyleBoxTexture_ahkba")
+
+[sub_resource type="SystemFont" id="SystemFont_kajlj"]
+font_names = PackedStringArray("Comic Sans MS")
 
 [sub_resource type="SystemFont" id="SystemFont_fo2f6"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -231,6 +235,19 @@ theme = SubResource("Theme_jhs54")
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
+[node name="GamMessages" type="Label" parent="Team/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.796078, 0.768627, 0.682353, 1)
+theme_override_fonts/font = SubResource("SystemFont_kajlj")
+theme_override_font_sizes/font_size = 22
+text = "Habilidade Ativada"
+horizontal_alignment = 1
+
+[node name="EffectNotificationMessage" type="AudioStreamPlayer" parent="Team/MarginContainer/VBoxContainer/GamMessages"]
+stream = ExtResource("5_rjj8a")
+
+[node name="TimerMessage" type="Timer" parent="Team/MarginContainer/VBoxContainer/GamMessages"]
+
 [node name="MiniMap" type="SubViewportContainer" parent="."]
 offset_left = 7.0
 offset_top = 601.0
@@ -320,5 +337,6 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [connection signal="pressed" from="Team/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Team/MarginContainer/VBoxContainer/GamMessages/TimerMessage" to="." method="_on_timer_message_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="SkillCharge/TimerCharge" to="." method="_on_timer_charge_timeout"]
