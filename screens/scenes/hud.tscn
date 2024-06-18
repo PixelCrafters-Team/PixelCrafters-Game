@@ -1,15 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=24 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
 [ext_resource type="Texture2D" uid="uid://ctc7msswpmepk" path="res://screens/assets/icons/bone_hud.png" id="3_en02k"]
-[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://wold/assets/centro_de_pesquisa.svg" id="5_gcpwp"]
 [ext_resource type="Texture2D" uid="uid://woxffrq0op2y" path="res://screens/assets/icons/home_dog.png" id="5_jnmrr"]
-[ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://wold/assets/praca_central.svg" id="6_swkie"]
+[ext_resource type="Texture2D" uid="uid://qu2jmm37uk2w" path="res://world/assets/centro_de_pesquisa.svg" id="6_fb3q1"]
+[ext_resource type="Texture2D" uid="uid://cxuvtjt32orxt" path="res://world/assets/praca_central.svg" id="7_isbgt"]
 [ext_resource type="PackedScene" uid="uid://cm668anoe3arq" path="res://screens/scenes/pause_menu.tscn" id="7_mbfwe"]
 [ext_resource type="Texture2D" uid="uid://vekm8433hyfu" path="res://screens/assets/icons/cat.png" id="7_xpnao"]
 [ext_resource type="Texture2D" uid="uid://bdur7m8ftjb6y" path="res://screens/assets/skill_charge.png" id="9_bnomy"]
-[ext_resource type="AudioStream" uid="uid://cxwe51ievgvgb" path="res://screens/assets/timer_charge.mp3" id="10_pa46m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
 content_margin_left = 50.0
@@ -158,13 +157,14 @@ _data = {
 script = ExtResource("1_j0pl6")
 
 [node name="Team" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorFade" type="ColorRect" parent="Team"]
-visible = false
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = -106.0
 offset_top = -56.0
@@ -229,6 +229,10 @@ theme = SubResource("Theme_jhs54")
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
+[node name="PauseMenu" parent="Team/MarginContainer" instance=ExtResource("7_mbfwe")]
+visible = false
+layout_mode = 2
+
 [node name="MiniMap" type="SubViewportContainer" parent="."]
 offset_left = 7.0
 offset_top = 601.0
@@ -243,14 +247,14 @@ render_target_update_mode = 4
 [node name="CentroDePesquisa" type="Sprite2D" parent="MiniMap/SubViewport"]
 rotation = 0.441568
 scale = Vector2(0.581, 0.581)
-texture = ExtResource("5_gcpwp")
+texture = ExtResource("6_fb3q1")
 
 [node name="PracaCentral" type="Sprite2D" parent="MiniMap/SubViewport"]
 visible = false
 position = Vector2(-259, -1280)
 rotation = 0.00523599
 scale = Vector2(0.581, 0.581)
-texture = ExtResource("6_swkie")
+texture = ExtResource("7_isbgt")
 
 [node name="Camera2D" type="Camera2D" parent="MiniMap/SubViewport"]
 zoom = Vector2(0.2, 0.2)
@@ -301,21 +305,6 @@ speed_scale = 0.15
 [node name="TimerCharge" type="Timer" parent="SkillCharge"]
 wait_time = 10.0
 autostart = true
-
-[node name="EffectCharge" type="AudioStreamPlayer" parent="SkillCharge/TimerCharge"]
-stream = ExtResource("10_pa46m")
-
-[node name="PauseMenu" parent="." instance=ExtResource("7_mbfwe")]
-visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 721.0
-offset_top = 418.0
-offset_right = 721.0
-offset_bottom = 418.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [connection signal="pressed" from="Team/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
