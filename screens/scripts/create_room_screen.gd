@@ -4,7 +4,7 @@ var menu_screen = preload("res://screens/scenes/menu_screen.tscn")
 var character_selection_screen  = preload("res://screens/scenes/character_selection_screen.tscn")
 var character
 static var team = ""
-static var room_name = ""
+static var room_name = "Sala 1"
 var num_character
 var hbox
 var parent_vbox
@@ -53,6 +53,7 @@ func create_player_character(name: String, position: Vector2, frame: int, hframe
 
 	
 func _ready():
+	$VBoxContainer/Label.text = $VBoxContainer/Label.text + room_name
 	hbox = $VBoxContainer/HBoxContainer/PanelCharacterCat/VBoxContainer/HBoxContainer if team == 'cats' else $VBoxContainer/HBoxContainer/PanelCharacterDog/VBoxContainer/HBoxContainer
 	parent_vbox = $VBoxContainer/HBoxContainer/PanelCharacterCat/VBoxContainer if team == 'cats' else $VBoxContainer/HBoxContainer/PanelCharacterDog/VBoxContainer
 	$VBoxContainer/LabelTeam.text = room_name
@@ -78,7 +79,7 @@ func _ready():
 		num_character = 2
 		create_player_character(
 			"SargentoCanisDog",
-			Vector2(-153, 45),
+			Vector2(-130, 45),
 			34
 		)
 	elif character == "sombra":
