@@ -3,12 +3,13 @@ extends CanvasLayer
 @export var equipe: String = "-"
 @onready var camera = $MiniMap/SubViewport/Camera2D
 @onready var timer = $Timer
-@onready var pause_menu = $Team/MarginContainer/PauseMenu
+@onready var pause_menu = $PauseMenu
 var paused = false
 var charge_skill
 
 func _ready():
 	charge_skill = 0
+	$SkillCharge/Animation.play("charge_complete")
 	
 func _process(delta):
 	$Timer/LabelTimer.text = str(int(timer.time_left / 60)) + ":" + str(int(timer.time_left) % 60)
@@ -46,22 +47,29 @@ func pauseMenu():
 
 
 func _on_timer_charge_timeout():
-	if charge_skill == 0:
-		$SkillCharge/Animation.play("charge_0")
-		$SkillCharge/TimerCharge.start(10)
-		charge_skill = 1
-	elif charge_skill == 1:
+	if charge_skill == 1:
 		$SkillCharge/Animation.play("charge_1")
-		$SkillCharge/TimerCharge.start(10)
+		$SkillCharge/TimerCharge.stop()
+		$SkillCharge/TimerCharge.start(5)
 		charge_skill = 2
 	elif charge_skill == 2:
 		$SkillCharge/Animation.play("charge_2")
-		$SkillCharge/TimerCharge.start(10)
+		$SkillCharge/TimerCharge.stop()
+		$SkillCharge/TimerCharge.start(5)
 		charge_skill = 3
 	elif charge_skill == 3:
 		$SkillCharge/Animation.play("charge_3")
-		$SkillCharge/TimerCharge.start(10)
+		$SkillCharge/TimerCharge.stop()
+		$SkillCharge/TimerCharge.start(5)
 		charge_skill = 4
 	elif charge_skill == 4:
 		$SkillCharge/Animation.play("charge_complete")
+		$SkillCharge/TimerCharge.stop()
 		charge_skill = 0
+		$SkillCharge/TimerCharge/EffectCharge.play()
+		
+func start_timer():
+	$SkillCharge/Animation.play("charge_0")
+	$SkillCharge/TimerCharge.start(5)
+	charge_skill = 1
+	$SkillCharge/TimerCharge/EffectCharge.play()

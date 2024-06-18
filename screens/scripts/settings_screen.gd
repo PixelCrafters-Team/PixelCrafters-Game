@@ -1,42 +1,53 @@
 extends Control
 
 var menu_scene = preload("res://screens/scenes/menu_screen.tscn")
+var is_scene_game = false
 
+func set_is_game():
+	is_scene_game = true
 
 func _ready():
-	var sound_player = get_parent().get_node("MusicMenu")
+	var main = get_tree().root.get_node("Main")
+	var sound_player = main.get_node("MusicMenu")
 	var value = sound_player.get_volume_db()
 	$MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HSliderMusic.value = value
 	
-	sound_player = get_parent().get_node("ClickSound")
+	sound_player = main.get_node("ClickSound")
 	value = sound_player.get_volume_db()
 	$MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HSliderSound.value = value
 	
-	var name_player = get_parent().player_name
+	var name_player = main.player_name
 	$MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/TextPlayer.text = name_player
 
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"): 
-		get_parent().click_sound.play()
-		get_parent().add_child(menu_scene.instantiate())
-		get_parent().get_node("SettingsScreen").queue_free()
-
+		if is_scene_game:
+			get_parent().get_node("SettingsScreen").queue_free()
+		else:
+			get_parent().click_sound.play()
+			get_parent().add_child(menu_scene.instantiate())
+			get_parent().get_node("SettingsScreen").queue_free()
 	
 
 func _on_exit_button_pressed():
-	get_parent().click_sound.play()
+	var main = get_tree().root.get_node("Main")
+	main.click_sound.play()
 	get_tree().quit()
 
 
 func _on_return_button_pressed():
-	get_parent().click_sound.play()
-	get_parent().add_child(menu_scene.instantiate())
-	get_parent().get_node("SettingsScreen").queue_free()
+	var main = get_tree().root.get_node("Main")
+	if is_scene_game:
+		get_parent().get_node("SettingsScreen").queue_free()
+	else:
+		get_parent().add_child(menu_scene.instantiate())
+		get_parent().get_node("SettingsScreen").queue_free()
 
 
 func _on_h_slider_music_value_changed(value):
-	var music_player = get_parent().get_node("MusicMenu")
+	var main = get_tree().root.get_node("Main")
+	var music_player = main.get_node("MusicMenu")
 	if music_player:
 		music_player.set_volume_db(float(value))
 		if music_player.get_volume_db() > -80.0:
@@ -50,8 +61,9 @@ func _on_h_slider_music_value_changed(value):
 
 
 func _on_h_slider_sound_value_changed(value):
-	get_parent().click_sound.play()
-	var sound_player = get_parent().get_node("ClickSound")
+	var main = get_tree().root.get_node("Main")
+	main.click_sound.play()
+	var sound_player = main.get_node("ClickSound")
 	if sound_player:
 		sound_player.set_volume_db(float(value))
 		if sound_player.get_volume_db() > -80.0:
@@ -65,8 +77,9 @@ func _on_h_slider_sound_value_changed(value):
 
 
 func _on_button_music_pressed():
-	get_parent().click_sound.play()
-	var music_player = get_parent().get_node("MusicMenu")
+	var main = get_tree().root.get_node("Main")
+	main.click_sound.play()
+	var music_player = main.get_node("MusicMenu")
 	if music_player:
 		if music_player.get_volume_db() > -80.0:
 			music_player.set_volume_db(-80.0)
@@ -83,8 +96,9 @@ func _on_button_music_pressed():
 
 
 func _on_button_sound_pressed():
-	get_parent().click_sound.play()
-	var sound_player = get_parent().get_node("ClickSound")
+	var main = get_tree().root.get_node("Main")
+	main.click_sound.play()
+	var sound_player = main.get_node("ClickSound")
 	if sound_player:
 		if sound_player.get_volume_db() > -80.0:
 			sound_player.set_volume_db(-80.0)
@@ -101,4 +115,5 @@ func _on_button_sound_pressed():
 
 
 func _on_text_player_text_changed():
-	get_parent().player_name = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/TextPlayer.text
+	var main = get_tree().root.get_node("Main")
+	main.player_name = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/TextPlayer.text
