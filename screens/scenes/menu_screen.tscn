@@ -302,13 +302,14 @@ expand_mode = 2
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 2
-offset_left = 599.0
-offset_top = 460.0
-offset_right = 899.0
-offset_bottom = 538.0
+offset_left = 581.0
+offset_top = 478.0
+offset_right = 881.0
+offset_bottom = 556.0
 theme = SubResource("Theme_nuk4w")
 theme_override_font_sizes/font_size = 40
-text = "Buscar sala"
+text = "Jogar
+"
 
 [node name="SettingButton" type="Button" parent="."]
 layout_mode = 0
@@ -347,6 +348,7 @@ max_lines_visible = 5
 [node name="Dog" type="CharacterBody2D" parent="AnimationDog"]
 position = Vector2(-160, 602)
 rotation = 0.0276454
+scale = Vector2(1, 1)
 
 [node name="Sprite" type="Sprite2D" parent="AnimationDog/Dog"]
 position = Vector2(5.83252, -23.7061)
@@ -423,17 +425,6 @@ libraries = {
 "": SubResource("AnimationLibrary_8bpr2")
 }
 
-[node name="CreateButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 603.0
-offset_top = 551.0
-offset_right = 903.0
-offset_bottom = 629.0
-theme = SubResource("Theme_nuk4w")
-theme_override_font_sizes/font_size = 40
-text = "Criar sala"
-
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="CreateButton" to="." method="_on_create_button_pressed"]

@@ -126,13 +126,23 @@ vertical_alignment = 2
 
 [node name="JoinRoomButton" type="Button" parent="VBoxContainer/Label"]
 layout_mode = 0
-offset_left = 98.0
-offset_top = 5.0
-offset_right = 398.0
-offset_bottom = 83.0
+offset_left = 285.0
+offset_top = 38.0
+offset_right = 585.0
+offset_bottom = 116.0
 theme = SubResource("Theme_y82n4")
 theme_override_font_sizes/font_size = 40
 text = "Entrar"
+
+[node name="CreateRoom" type="Button" parent="VBoxContainer/Label"]
+layout_mode = 0
+offset_left = -55.0
+offset_top = 39.0
+offset_right = 245.0
+offset_bottom = 117.0
+theme = SubResource("Theme_y82n4")
+theme_override_font_sizes/font_size = 40
+text = "Criar"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -166,5 +176,6 @@ theme = SubResource("Theme_jydn1")
 theme_override_font_sizes/font_size = 59
 
 [connection signal="pressed" from="VBoxContainer/Label/JoinRoomButton" to="." method="_on_join_room_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Label/CreateRoom" to="." method="_on_create_room_pressed"]
 [connection signal="pressed" from="HBoxContainer2/MarginContainer/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="HBoxContainer2/MarginContainer2/ExitButton" to="." method="_on_exit_button_pressed"]

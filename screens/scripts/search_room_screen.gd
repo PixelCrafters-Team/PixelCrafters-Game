@@ -6,6 +6,7 @@ var rooms = ["Sala 1", "Sala 2", "Sala 3", "Sala 4", "Sala 5", "Sala 6"]
 var selected_room = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$VBoxContainer/Label/JoinRoomButton.disabled = true
 	var vbox_inner = $VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer
 	for room in rooms:
 		var hbox = HBoxContainer.new()
@@ -38,9 +39,18 @@ func _on_join_room_button_pressed():
 
 
 func _on_controls_button_down(room):
+	$VBoxContainer/Label/JoinRoomButton.disabled = false
 	selected_room = room
 
 
 func _on_exit_button_pressed():
 	get_parent().click_sound.play()
 	get_tree().quit()
+
+
+func _on_create_room_pressed():
+	get_parent().click_sound.play()
+	var scene = create_room_screen.instantiate()
+	scene.set_room("Sala 7")
+	get_parent().add_child(scene)
+	get_parent().get_node("SearchRoomScreen").queue_free()
