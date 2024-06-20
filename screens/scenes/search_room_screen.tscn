@@ -19,19 +19,19 @@ font = ExtResource("3_t8nw1")
 font_size = 26
 shadow_size = 0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x7m28"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4c5pm"]
 texture = ExtResource("7_1mkbx")
 modulate_color = Color(0.454902, 0.156863, 0.0862745, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3egep"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_raw6y"]
 texture = ExtResource("7_1mkbx")
 
 [sub_resource type="Theme" id="Theme_y82n4"]
 default_font = ExtResource("3_t8nw1")
 Button/colors/font_color = Color(0.188235, 0.184314, 0.14902, 1)
-Button/styles/hover = SubResource("StyleBoxTexture_x7m28")
-Button/styles/normal = SubResource("StyleBoxTexture_3egep")
-Button/styles/pressed = SubResource("StyleBoxTexture_3egep")
+Button/styles/hover = SubResource("StyleBoxTexture_4c5pm")
+Button/styles/normal = SubResource("StyleBoxTexture_raw6y")
+Button/styles/pressed = SubResource("StyleBoxTexture_raw6y")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkfgx"]
 texture = ExtResource("6_gipdt")

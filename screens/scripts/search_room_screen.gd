@@ -30,6 +30,9 @@ func _on_return_button_pressed():
 
 
 func _on_join_room_button_pressed():
+	var clientr_peer = ENetMultiplayerPeer.new()
+	clientr_peer.create_client("127.0.0.1", 7000)
+	multiplayer.set_multiplayer_peer(clientr_peer)
 	get_parent().click_sound.play()
 	var scene = create_room_screen.instantiate()
 	scene.set_room(selected_room)
@@ -49,8 +52,17 @@ func _on_exit_button_pressed():
 
 
 func _on_create_room_pressed():
+	var server_peer = ENetMultiplayerPeer.new()
+	server_peer.create_server(7000)
+	multiplayer.set_multiplayer_peer(server_peer)
+	multiplayer.peer_connected.connect(_add_player_to_game)
+
 	get_parent().click_sound.play()
 	var scene = create_room_screen.instantiate()
 	scene.set_room("Sala 7")
 	get_parent().add_child(scene)
 	get_parent().get_node("SearchRoomScreen").queue_free()
+
+func _add_player_to_game(id: int):
+	print("?????")
+	print(id)
