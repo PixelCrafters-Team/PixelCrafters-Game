@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=28 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cm668anoe3arq" path="res://screens/scenes/pause_menu.tscn" id="7_mbfwe"]
 [ext_resource type="Texture2D" uid="uid://vekm8433hyfu" path="res://screens/assets/icons/cat.png" id="7_xpnao"]
 [ext_resource type="Texture2D" uid="uid://bdur7m8ftjb6y" path="res://screens/assets/skill_charge.png" id="9_bnomy"]
+[ext_resource type="Texture2D" uid="uid://bnyb78rtab6ta" path="res://screens/assets/skillEstrela.png" id="9_hmrqc"]
 [ext_resource type="AudioStream" uid="uid://cxwe51ievgvgb" path="res://screens/assets/timer_charge.mp3" id="9_qx2rj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
@@ -304,8 +305,14 @@ vertical_alignment = 1
 
 [node name="SkillCharge" type="Node" parent="."]
 
+[node name="SkillEstrela" type="Sprite2D" parent="SkillCharge"]
+visible = false
+position = Vector2(1380, 231)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("9_hmrqc")
+
 [node name="Sprite2D" type="Sprite2D" parent="SkillCharge"]
-position = Vector2(1364, 225)
+position = Vector2(1299, 230)
 scale = Vector2(0.407692, 0.362843)
 texture = ExtResource("9_bnomy")
 hframes = 9

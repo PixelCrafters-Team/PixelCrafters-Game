@@ -233,7 +233,6 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="StartButton" type="Button" parent="VBoxContainer/Label"]
-visible = false
 layout_mode = 0
 offset_left = 575.0
 offset_top = 50.0
@@ -275,6 +274,7 @@ theme = SubResource("Theme_6fqng")
 theme_override_font_sizes/font_size = 59
 
 [node name="JoinRoomButton" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 577.0
 offset_top = 579.0
