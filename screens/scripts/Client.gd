@@ -15,11 +15,16 @@ var is_creator: bool = false
 
 var room: int
 
+@rpc("any_peer")
 func create_room() -> void:
 	is_creator = true
 	connect_to_server()
+	
+func stop() -> void: 
+	multiplayer.multiplayer_peer = null
+	remove_all_players()
 
-func connect_to_server(room_id: int = 1) -> void:
+func connect_to_server(room_id: int = 0) -> void:
 	room = room_id
 	
 	var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
@@ -44,8 +49,29 @@ func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
 	if (is_creator):
 		rpc_id(1, "create_room", user)
+	else: 
+		rpc_id(1, "join_room", room, user)
 	print("_on_connected_ok", peer_id)
 
+@rpc("any_peer")
+func register_player(id, info):
+	player_info[id] = info
+	var menu = get_tree().current_scene.get_node('Menu_screen')
+	menu.add_player_to_ui(info.name)
+	
+@rpc("any_peer")
+func remove_player(id):
+	var menu = get_tree().current_scene.get_node('Menu_screen')
+	menu.remove_player(player_info.keys().find(id))
+	
+	if not player_info.erase(id):
+		printerr("error removing player")
+	
+func remove_all_players():
+	var menu = get_tree().current_scene.get_node('Menu_screen')
+	menu.remove_all_players()
+	player_info = {}
+	
 func _on_connected_fail():
 	print("_on_connected_fail")
 	multiplayer.multiplayer_peer = null
@@ -56,6 +82,11 @@ func _on_server_disconnected():
 	
 @rpc("any_peer")
 func update_room(room_id):
-	if get_tree().current_scene.name == 'Menu_screen':
-		get_tree().current_scene.update_room(room_id)
+	var menu = get_tree().current_scene.get_node('Menu_screen')
+	if menu.name == 'Menu_screen':
+		menu.update_room(room_id)
+		
+@rpc("any_peer")
+func join_room():
+	pass
 

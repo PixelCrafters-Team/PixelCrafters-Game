@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://y61hurvn4hcq"]
+[gd_scene load_steps=40 format=3 uid="uid://y61hurvn4hcq"]
 
 [ext_resource type="Script" path="res://screens/scripts/menu_screen.gd" id="1_vi22p"]
 [ext_resource type="Texture2D" uid="uid://n8lc4gychwg3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="7_bjknq"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="8_gfutr"]
 [ext_resource type="Texture2D" uid="uid://o17gt7glmmr4" path="res://screens/assets/bone.png" id="9_5mpjb"]
+[ext_resource type="Script" path="res://screens/scripts/PlayerList.gd" id="10_q0sue"]
+[ext_resource type="Script" path="res://screens/scripts/JoinWindow.gd" id="10_rqjc0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rqhil"]
 texture = ExtResource("6_wcspm")
@@ -445,13 +447,62 @@ offset_right = 92.0
 offset_bottom = 51.0
 horizontal_scroll_mode = 0
 
-[node name="Label" type="Label" parent="CreateDialog/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateDialog/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CreateDialog/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Loading..."
 
-[node name="PlayerList" type="VBoxContainer" parent="CreateDialog/ScrollContainer"]
+[node name="PlayerList" type="VBoxContainer" parent="CreateDialog/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("10_q0sue")
+
+[node name="JoinWindow" type="Window" parent="."]
+unique_name_in_owner = true
+mode = 2
+visible = false
+script = ExtResource("10_rqjc0")
+
+[node name="ConnectVBoxContainer" type="VBoxContainer" parent="JoinWindow"]
+offset_right = 83.0
+offset_bottom = 66.0
+
+[node name="ErrorLabel" type="Label" parent="JoinWindow/ConnectVBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="JoinWindow/ConnectVBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ConnectButton" type="Button" parent="JoinWindow/ConnectVBoxContainer"]
+layout_mode = 2
+text = "Entrar"
+
+[node name="WaitScrollContainer" type="ScrollContainer" parent="JoinWindow"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="JoinWindow/WaitScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="JoinWindow/WaitScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerList" type="VBoxContainer" parent="JoinWindow/WaitScrollContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("10_q0sue")
 
 [connection signal="pressed" from="CreateRoomButton" to="." method="_on_create_room_button_pressed"]
 [connection signal="pressed" from="JoinRoomButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="StartButton2" to="." method="_on_start_button_2_pressed"]
+[connection signal="canceled" from="CreateDialog" to="." method="_on_create_dialog_canceled"]
+[connection signal="close_requested" from="JoinWindow" to="JoinWindow" method="_on_close_requested"]
+[connection signal="pressed" from="JoinWindow/ConnectVBoxContainer/ConnectButton" to="JoinWindow" method="_on_connect_button_pressed"]

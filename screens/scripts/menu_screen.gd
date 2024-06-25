@@ -4,8 +4,12 @@ var character_select_scene = preload("res://screens/scenes/character_selection_s
 var settings_scene = preload("res://screens/scenes/settings_screen.tscn")
 
 @onready var create_dialog: AcceptDialog = get_node('CreateDialog') 
-@onready var create_dialog_label: Label = create_dialog.get_node('ScrollContainer/Label')
-@onready var create_dialog_player_list: VBoxContainer =  create_dialog.get_node('ScrollContainer/PlayerList')
+@onready var create_dialog_label: Label = create_dialog.get_node('ScrollContainer/VBoxContainer/Label')
+@onready var create_dialog_player_list: VBoxContainer =  create_dialog.get_node('ScrollContainer/VBoxContainer/PlayerList')
+
+@onready var join_dialog: Window = get_node('JoinWindow') 
+@onready var join_dialog_label: Label = join_dialog.get_node('WaitScrollContainer/VBoxContainer/Label')
+@onready var join_dialog_player_list: VBoxContainer =  join_dialog.get_node('WaitScrollContainer/VBoxContainer/PlayerList')
 
 
 func _ready():
@@ -62,4 +66,38 @@ func _on_create_room_button_pressed():
 	create_dialog.popup_centered()
 
 func update_room(room_id):
-	create_dialog_label.text = "Sala " + str(room_id)
+	print("room_id", room_id)
+	if Client.is_creator:
+		create_dialog_label.text = "Sala " + str(room_id)
+	else:
+		join_dialog_label.text = "Sala " + str(room_id)
+		join_dialog.connected_ok()
+
+
+func _on_create_dialog_canceled():
+	if multiplayer.multiplayer_peer != null:
+		Client.stop()
+
+
+func _on_start_button_2_pressed():
+	join_dialog.popup_centered()
+
+func add_player_to_ui(name):
+	if Client.is_creator:
+		create_dialog_player_list.add_player(name)
+	else:
+		join_dialog_player_list.add_player(name)
+		
+func remove_player(index):
+	if Client.is_creator:
+		create_dialog_player_list.remove_player(index)
+	else:
+		join_dialog_player_list.remove_player(index)
+
+func remove_all_players():
+	if Client.is_creator:
+		create_dialog_player_list.remove_all()
+		create_dialog.hide()
+	else:
+		join_dialog_player_list.remove_all()
+		join_dialog.hide()
