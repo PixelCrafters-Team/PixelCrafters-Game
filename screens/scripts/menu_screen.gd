@@ -2,8 +2,11 @@ extends Control
 
 var character_select_scene = preload("res://screens/scenes/character_selection_screen.tscn")
 var settings_scene = preload("res://screens/scenes/settings_screen.tscn")
-var search_room_scene = preload("res://screens/scenes/search_room_screen.tscn")
-var create_room_scene = preload("res://screens/scenes/create_room_screen.tscn")
+
+@onready var create_dialog: AcceptDialog = get_node('CreateDialog') 
+@onready var create_dialog_label: Label = create_dialog.get_node('ScrollContainer/Label')
+@onready var create_dialog_player_list: VBoxContainer =  create_dialog.get_node('ScrollContainer/PlayerList')
+
 
 func _ready():
 	$AnimationDog/AnimationRoute.play("animationDog")
@@ -30,7 +33,6 @@ func _on_quit_buton_pressed():
 
 func _on_start_button_pressed():
 	get_parent().click_sound.play()
-	get_parent().add_child(search_room_scene.instantiate())
 	get_parent().get_node("Menu_screen").queue_free()
 	
 	
@@ -51,5 +53,13 @@ func _on_setting_button_pressed():
 
 func _on_create_button_pressed():
 	get_parent().click_sound.play()
-	get_parent().add_child(create_room_scene.instantiate())
 	get_parent().get_node("Menu_screen").queue_free()
+
+
+func _on_create_room_button_pressed():
+	print("Create room button pressed")
+	Client.create_room()
+	create_dialog.popup_centered()
+
+func update_room(room_id):
+	create_dialog_label.text = "Sala " + str(room_id)

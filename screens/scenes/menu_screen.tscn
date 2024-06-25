@@ -300,18 +300,17 @@ offset_bottom = 810.0
 texture = ExtResource("1_vvb14")
 expand_mode = 2
 
-[node name="StartButton" type="Button" parent="."]
+[node name="CreateRoomButton" type="Button" parent="."]
 layout_mode = 2
-offset_left = 581.0
-offset_top = 478.0
-offset_right = 881.0
-offset_bottom = 556.0
+offset_left = 405.0
+offset_top = 498.0
+offset_right = 705.0
+offset_bottom = 576.0
 theme = SubResource("Theme_nuk4w")
 theme_override_font_sizes/font_size = 40
-text = "Jogar
-"
+text = "Criar"
 
-[node name="SettingButton" type="Button" parent="."]
+[node name="JoinRoomButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1287.0
 offset_top = 51.0
@@ -425,6 +424,34 @@ libraries = {
 "": SubResource("AnimationLibrary_8bpr2")
 }
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
+[node name="StartButton2" type="Button" parent="."]
+offset_left = 750.0
+offset_top = 499.0
+offset_right = 1050.0
+offset_bottom = 577.0
+theme = SubResource("Theme_nuk4w")
+theme_override_font_sizes/font_size = 40
+text = "Entrar"
+
+[node name="CreateDialog" type="AcceptDialog" parent="."]
+mode = 3
+title = "Waiting for players..."
+position = Vector2i(0, 36)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CreateDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 92.0
+offset_bottom = 51.0
+horizontal_scroll_mode = 0
+
+[node name="Label" type="Label" parent="CreateDialog/ScrollContainer"]
+layout_mode = 2
+text = "Loading..."
+
+[node name="PlayerList" type="VBoxContainer" parent="CreateDialog/ScrollContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="CreateRoomButton" to="." method="_on_create_room_button_pressed"]
+[connection signal="pressed" from="JoinRoomButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
