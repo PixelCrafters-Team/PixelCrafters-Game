@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://mmuf48qm5ft3"]
+[gd_scene load_steps=25 format=3 uid="uid://mmuf48qm5ft3"]
 
 [ext_resource type="Script" path="res://screens/scripts/settings_screen.gd" id="1_kpwvm"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="1_nxqv5"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_jdceu"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_sqiu3"]
+[ext_resource type="Texture2D" uid="uid://b03heab55i88g" path="res://screens/assets/icons/Icon_Exclamation.png" id="4_6xdws"]
 [ext_resource type="StyleBox" uid="uid://dqqgu7sj8v4xo" path="res://screens/themes/style_button_music.tres" id="6_m5hv4"]
 [ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="6_oaor4"]
 [ext_resource type="StyleBox" uid="uid://ee0g4ryuhtv2" path="res://screens/themes/style_button_sound.tres" id="7_ulbfq"]
@@ -19,6 +20,18 @@ texture = ExtResource("6_oaor4")
 Button/styles/hover = SubResource("StyleBoxTexture_0af4j")
 Button/styles/normal = SubResource("StyleBoxTexture_tr3vu")
 Button/styles/pressed = SubResource("StyleBoxTexture_0af4j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_esg6n"]
+texture = ExtResource("4_6xdws")
+modulate_color = Color(0.309804, 0.65098, 0.796078, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bpxy5"]
+texture = ExtResource("4_6xdws")
+
+[sub_resource type="Theme" id="Theme_ftnqv"]
+Button/styles/hover = SubResource("StyleBoxTexture_esg6n")
+Button/styles/normal = SubResource("StyleBoxTexture_bpxy5")
+Button/styles/pressed = SubResource("StyleBoxTexture_esg6n")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trvg5"]
 texture = ExtResource("2_jdceu")
@@ -65,13 +78,8 @@ Button/styles/pressed = ExtResource("7_ulbfq")
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_kpwvm")
-metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
@@ -103,6 +111,13 @@ theme_override_constants/margin_top = 39
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme = SubResource("Theme_6rysv")
+
+[node name="InfoButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(50, 85)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = SubResource("Theme_ftnqv")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
 layout_mode = 2
@@ -225,6 +240,7 @@ min_value = -80.0
 max_value = 30.0
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer2/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ButtonMusic" to="." method="_on_button_music_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HSliderMusic" to="." method="_on_h_slider_music_value_changed"]

@@ -1,6 +1,7 @@
 extends Control
 
 var menu_scene = preload("res://screens/scenes/menu_screen.tscn")
+var developer_scene = preload("res://screens/scenes/developer_information.tscn")
 var is_scene_game = false
 
 func set_is_game():
@@ -117,3 +118,9 @@ func _on_button_sound_pressed():
 func _on_text_player_text_changed():
 	var main = get_tree().root.get_node("Main")
 	main.player_name = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/TextPlayer.text
+
+
+func _on_info_button_pressed():
+	get_parent().click_sound.play()
+	get_parent().add_child(developer_scene.instantiate())
+	get_parent().get_node("SettingsScreen").queue_free()

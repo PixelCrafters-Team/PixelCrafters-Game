@@ -1,8 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://dakpoghceg01b"]
+[gd_scene load_steps=14 format=3 uid="uid://dakpoghceg01b"]
 
-[ext_resource type="Texture2D" uid="uid://c6jxsr8ojmn5j" path="res://screens/assets/developers_background_screen.png" id="1_mcojd"]
+[ext_resource type="Script" path="res://screens/scripts/developer_information.gd" id="1_hhaig"]
+[ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="1_nrxox"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_xjwvk"]
-[ext_resource type="Texture2D" uid="uid://bffrerikb1gey" path="res://screens/assets/developers/user.png" id="3_6ifn3"]
+[ext_resource type="Texture2D" uid="uid://ckq2vd5pquuxb" path="res://screens/assets/foto_bianca.png" id="3_75cpd"]
+[ext_resource type="Texture2D" uid="uid://df75cl2d6ajjm" path="res://screens/assets/foto_caroline.png" id="4_xjxn1"]
+[ext_resource type="Texture2D" uid="uid://d08x6fg4d3g7l" path="res://screens/assets/foto_gabriela.png" id="5_c1dvs"]
+[ext_resource type="Texture2D" uid="uid://btcipjbi7ixsh" path="res://screens/assets/foto_yasmin.png" id="6_bduu1"]
+[ext_resource type="Texture2D" uid="uid://bpid5spowxjl1" path="res://screens/assets/logo_ufpel.png" id="7_uwpwd"]
+[ext_resource type="Texture2D" uid="uid://cs460gif1y5s1" path="res://screens/assets/logo_computação.png" id="8_x5chq"]
+[ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="9_qu4gq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0af4j"]
+texture = ExtResource("9_qu4gq")
+modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tr3vu"]
+texture = ExtResource("9_qu4gq")
+
+[sub_resource type="Theme" id="Theme_6lpx5"]
+Button/styles/hover = SubResource("StyleBoxTexture_0af4j")
+Button/styles/normal = SubResource("StyleBoxTexture_tr3vu")
+Button/styles/pressed = SubResource("StyleBoxTexture_0af4j")
 
 [node name="DeveloperInformation" type="Control"]
 layout_mode = 3
@@ -11,27 +30,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_hhaig")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
 offset_right = 1440.0
 offset_bottom = 810.0
-texture = ExtResource("1_mcojd")
+texture = ExtResource("1_nrxox")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="LabelTitlle" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_xjwvk")
 theme_override_font_sizes/font_size = 45
@@ -39,91 +70,134 @@ text = "DESENVOLVEDORES
 "
 horizontal_alignment = 1
 
-[node name="MarginTop2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginTop2" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Bianca" type="VBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Picture" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Bianca"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("3_6ifn3")
+texture = ExtResource("3_75cpd")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="LabelName" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Bianca"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 25
 text = "Bianca Beppler"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Caroline" type="VBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="Picture" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Caroline"]
+clip_contents = true
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("3_6ifn3")
+texture = ExtResource("4_xjxn1")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="LabelName" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Caroline"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 25
 text = "Caroline Camargo"
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Gabriela" type="VBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
+[node name="Picture" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Gabriela"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("3_6ifn3")
+texture = ExtResource("5_c1dvs")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
+[node name="LabelName" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Gabriela"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 25
 text = "Gabriela Ribeiro"
 
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Yasmin" type="VBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer5"]
+[node name="Picture" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Yasmin"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("3_6ifn3")
+texture = ExtResource("6_bduu1")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer5"]
+[node name="LabelName" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Yasmin"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 25
 text = "Yasmin Camargo"
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelProfessor" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Jogo desenvolvido para a disciplina de jogos
+Professor Orientador: Rafael Torchelsen"
+
+[node name="Ufpel" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("7_uwpwd")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="Computação" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("8_x5chq")
+expand_mode = 1
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = 49.0
+offset_top = 43.0
+offset_right = 129.0
+offset_bottom = 123.0
+theme = SubResource("Theme_6lpx5")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
