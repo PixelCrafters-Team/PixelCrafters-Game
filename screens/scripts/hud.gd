@@ -15,6 +15,10 @@ func _ready():
 	
 	if get_parent().get_node("Character_estrela"):
 		$SkillCharge/SkillEstrela.visible = true
+		$SkillCharge/SkillSargentoCanis.visible = false
+	if get_parent().get_node("Character_sargentocanis"):
+		$SkillCharge/SkillSargentoCanis.visible = true
+		$SkillCharge/SkillEstrela.visible = true
 	
 	
 func _process(delta):

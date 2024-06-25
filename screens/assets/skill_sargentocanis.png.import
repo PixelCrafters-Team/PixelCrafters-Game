@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyb78rtab6ta"
-path="res://.godot/imported/skillEstrela.png-8fcf93d9a9fb1a7f728ce84a3ba1f1dc.ctex"
+uid="uid://bxdwj5p7idvld"
+path="res://.godot/imported/skill_sargentocanis.png-f51d49025354ce0db9276a30dcc46cdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://screens/assets/skillEstrela.png"
-dest_files=["res://.godot/imported/skillEstrela.png-8fcf93d9a9fb1a7f728ce84a3ba1f1dc.ctex"]
+source_file="res://screens/assets/skill_sargentocanis.png"
+dest_files=["res://.godot/imported/skill_sargentocanis.png-f51d49025354ce0db9276a30dcc46cdc.ctex"]
 
 [params]
 
