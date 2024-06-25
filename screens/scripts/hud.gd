@@ -16,10 +16,15 @@ func _ready():
 	if get_parent().get_node("Character_estrela"):
 		$SkillCharge/SkillEstrela.visible = true
 		$SkillCharge/SkillSargentoCanis.visible = false
+		$SkillCharge/SkillBrutus.visible = false
 	if get_parent().get_node("Character_sargentocanis"):
 		$SkillCharge/SkillSargentoCanis.visible = true
-		$SkillCharge/SkillEstrela.visible = true
-	
+		$SkillCharge/SkillEstrela.visible = false
+		$SkillCharge/SkillBrutus.visible = false
+	if get_parent().get_node("Character_brutus"):
+		$SkillCharge/SkillBrutus.visible = true
+		$SkillCharge/SkillSargentoCanis.visible = false
+		$SkillCharge/SkillEstrela.visible = false
 	
 func _process(delta):
 	$Timer/LabelTimer.text = str(int(timer.time_left / 60)) + ":" + str(int(timer.time_left) % 60)
