@@ -8,7 +8,7 @@ var Character
 var character_position
 var num_character
 var num_map
-
+var team_selected
 
 var list_characters_cats = [ 
 		preload("res://characters/scenes/cats/character_ronronante.tscn"), 
@@ -45,6 +45,7 @@ func select_map(scene, map): # MAPA: 0 (centro de pesquisa) e 1 (praca central)
 	
 
 func set_character(team, num):
+	team_selected = team
 	num_character = num
 	if team == "cats":
 		Character = list_characters_cats[num_character].instantiate()
@@ -52,6 +53,7 @@ func set_character(team, num):
 		Character = list_characters_dogs[num_character].instantiate()
 		
 		
+@rpc("any_peer", "call_local")
 func create_game(scene):
 	select_map(scene, [0,1].pick_random())
 	scene.add_child(Character)

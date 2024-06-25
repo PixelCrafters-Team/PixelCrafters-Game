@@ -3,7 +3,7 @@ extends Control
 var team
 var game_scene = preload("res://game/scenes/Game.tscn")
 var create_room_scene = preload("res://screens/scenes/create_room_screen.tscn")
-
+var player_id
 var selected_panel = -1
 var texture_resource_panel = [
 		load("res://screens/themes/style_background_choose_character_1.tres"),
@@ -87,12 +87,14 @@ func _on_exit_button_2_pressed():
 	get_parent().click_sound.play()
 	get_tree().quit()
 
-
+func set_player(player):
+	player_id = player
+	
 func _on_select_button_0_pressed():
 	get_parent().click_sound.play()
 	var scene = create_room_scene.instantiate()
 	var character = "ronronante" if team == "cats" else "brutus"
-	scene.set_character(character)
+	scene.set_character(character, team, player_id)
 	get_parent().add_child(scene)
 	#get_parent().click_sound.play()
 	#var scene = get_parent().game_scene
@@ -107,7 +109,7 @@ func _on_select_button_1_pressed():
 	get_parent().click_sound.play()
 	var scene = create_room_scene.instantiate()
 	var character = "bola_de_pelos" if team == "cats" else "estrela"
-	scene.set_character(character)
+	scene.set_character(character, team, player_id)
 	get_parent().add_child(scene)
 	#get_parent().click_sound.play()
 	#var scene = get_parent().game_scene
@@ -122,7 +124,7 @@ func _on_select_button_2_pressed():
 	get_parent().click_sound.play()
 	var scene = create_room_scene.instantiate()
 	var character = "sombra" if team == "cats" else "sargento_canis"
-	scene.set_character(character)
+	scene.set_character(character, team, player_id)
 	get_parent().add_child(scene)
 	#get_parent().click_sound.play()
 	#var scene = get_parent().game_scene

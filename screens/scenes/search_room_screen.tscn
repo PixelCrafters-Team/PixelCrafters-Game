@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://b2ugddkrlc87h"]
+[gd_scene load_steps=20 format=3 uid="uid://pm4p0j5h8jv1"]
 
-[ext_resource type="Script" path="res://screens/scripts/search_room_screen.gd" id="1_s7i1o"]
+[ext_resource type="Script" path="res://screens/scripts/search_room_screen.gd" id="1_64yd2"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_hf174"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_t8nw1"]
 [ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="6_gipdt"]
@@ -68,7 +68,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_s7i1o")
+script = ExtResource("1_64yd2")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2

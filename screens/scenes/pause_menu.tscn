@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm668anoe3arq"]
+[gd_scene load_steps=8 format=3 uid="uid://bidf0hocl21xa"]
 
 [ext_resource type="Script" path="res://screens/scripts/pause_menu.gd" id="1_03y2u"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_c7epm"]

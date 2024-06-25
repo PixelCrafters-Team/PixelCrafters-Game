@@ -3,56 +3,71 @@ extends Control
 var menu_screen = preload("res://screens/scenes/menu_screen.tscn")
 var character_selection_screen  = preload("res://screens/scenes/character_selection_screen.tscn")
 var character
+var character_scene
 static var team = ""
 static var room_name = "Sala 1"
 var num_character
 var hbox
 var parent_vbox
 
+var list_characters_cats = [ 
+		preload("res://characters/scenes/cats/character_ronronante.tscn"), 
+		preload("res://characters/scenes/cats/character_bola_de_pelos.tscn"), 
+		preload("res://characters/scenes/cats/character_sombra.tscn")
+]
+var list_characters_dogs = [
+		preload("res://characters/scenes/dogs/character_brutus.tscn"),
+		preload("res://characters/scenes/dogs/character_estrela.tscn"),
+		preload("res://characters/scenes/dogs/character_sargento_canis.tscn")
+]
+
+
 func create_player_character(name: String, position: Vector2, frame: int, hframes: int = 12, vframes: int = 8):
-	var main = get_tree().root.get_node("Main")
+	#var main = get_tree().root.get_node("Main")
 	# Create HBoxContainer
 
 	# Create Sprite2D for the character
-	var character_sprite = Sprite2D.new()
-	character_sprite.name = name
-	character_sprite.visible = true
-	character_sprite.position = position
-	character_sprite.scale = Vector2(0.5, 0.5)
-	var texture_path = "res://characters/assets/cats_dogs.png"
-	var texture = load(texture_path)
-	if texture:
-		character_sprite.texture = texture
-	else:
-		print("Failed to load texture at path: ", texture_path)
-	character_sprite.hframes = hframes
-	character_sprite.vframes = vframes
-	character_sprite.frame = frame
-
-	# Create Label for the character name
-	var label = Label.new()
-	label.text = main.player_name
-	label.custom_minimum_size = Vector2(0, 50)
-	label.offset_left = -72.0
-	label.offset_top = -128.0
-	label.offset_right = 70.0
-	label.offset_bottom = -68.0
-	label.add_theme_font_size_override("font_size", 40)
-
-	character_sprite.add_child(label)
+	#var character_sprite = Sprite2D.new()
+#	character_sprite.name = name
+#	character_sprite.visible = true
+#	character_sprite.position = position
+#	character_sprite.scale = Vector2(0.5, 0.5)
+#	var texture_path = "res://characters/assets/cats_dogs.png"
+#	var texture = load(texture_path)
+#	if texture:
+#		character_sprite.texture = texture
+#	else:
+#		print("Failed to load texture at path: ", texture_path)
+#	character_sprite.hframes = hframes
+#	character_sprite.vframes = vframes
+#	character_sprite.frame = frame
+#
+#	# Create Label for the character name
+#	var label = Label.new()
+#	label.text = main.player_name
+#	label.custom_minimum_size = Vector2(0, 50)
+#	label.offset_left = -72.0
+#	label.offset_top = -128.0
+#	label.offset_right = 70.0
+#	label.offset_bottom = -68.0
+#	label.add_theme_font_size_override("font_size", 40)
+#
+#	character_sprite.add_child(label)
 
 	# Add the character sprite to the HBoxContainer
-	hbox.add_child(character_sprite)
+#	hbox.add_child(character_sprite)
 
 	# Get the parent VBoxContainer and add the HBoxContainer to it
 
-	if parent_vbox:
-		parent_vbox.add_child(hbox)
-	else:
-		print("Failed to find the parent VBoxContainer")
+#	if parent_vbox:
+##		parent_vbox.add_child(hbox)
+#	else:
+#		print("Failed to find the parent VBoxContainer")
+	pass
 
 	
 func _ready():
+
 	$VBoxContainer/Label.text = $VBoxContainer/Label.text + room_name
 	hbox = $VBoxContainer/HBoxContainer/PanelCharacterCat/VBoxContainer/HBoxContainer if team == 'cats' else $VBoxContainer/HBoxContainer/PanelCharacterDog/VBoxContainer/HBoxContainer
 	parent_vbox = $VBoxContainer/HBoxContainer/PanelCharacterCat/VBoxContainer if team == 'cats' else $VBoxContainer/HBoxContainer/PanelCharacterDog/VBoxContainer
@@ -110,8 +125,16 @@ func _process(delta):
 func set_room(room):
 	room_name = room
 	
-func set_character(character_set):
+@rpc("any_peer", "call_local")	
+func set_character(character_set, team, id):
 	character = character_set
+	_ready()
+	if team == "cats":
+		character_scene = list_characters_cats[num_character].instantiate()
+	else:
+		character_scene = list_characters_dogs[num_character].instantiate()
+	character_scene.player_id = id
+	%Players.add_child(character_scene, true)
 
 func _on_return_button_pressed():
 	get_parent().click_sound.play()

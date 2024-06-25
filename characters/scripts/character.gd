@@ -8,6 +8,10 @@ extends CharacterBody2D
 @export_category("Objects")
 @export var animation_tree: AnimationTree = null
 
+@export var player_id := 1:
+	set(id): 
+		player_id = id
+		
 var state_machine
 var is_walking: bool = false
 var is_glace: bool = false
@@ -28,7 +32,8 @@ var list_positions_teleport = [
 
 func _ready():
 	state_machine = animation_tree["parameters/playback"]
-	$namePlayer.text = get_parent().get_parent().player_name
+	var main = get_tree().root.get_node("Main")
+	$namePlayer.text = main.player_name
 
 
 func _physics_process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bx0gmlj5qodcr"]
+[gd_scene load_steps=30 format=3 uid="uid://b78nljpnpo6f2"]
 
 [ext_resource type="Script" path="res://screens/scripts/create_room_screen.gd" id="1_mh16i"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2"]
@@ -285,8 +285,12 @@ theme_override_font_sizes/font_size = 40
 text = "Entrar"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://characters/scenes/cats/character_bola_de_pelos.tscn")
-spawn_path = NodePath("..")
+_spawnable_scenes = PackedStringArray("res://characters/scenes/cats/character_bola_de_pelos.tscn", "res://characters/scenes/cats/character_ronronante.tscn", "res://characters/scenes/cats/character_sombra.tscn", "res://characters/scenes/dogs/character_brutus.tscn", "res://characters/scenes/dogs/character_estrela.tscn", "res://characters/scenes/dogs/character_sargento_canis.tscn")
+spawn_path = NodePath("../Players")
+spawn_limit = 6
+
+[node name="Players" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacterCat/VBoxContainer/SelectCatsButton" to="." method="_on_select_cats_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacterDog/VBoxContainer/SelectDogsButton" to="." method="_on_select_dogs_button_pressed"]

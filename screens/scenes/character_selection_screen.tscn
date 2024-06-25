@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://djwlurn2jvhbr"]
+[gd_scene load_steps=58 format=3 uid="uid://d0i21ya0va6yp"]
 
 [ext_resource type="Script" path="res://screens/scripts/character_selection_screen.gd" id="1_64yd2"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_ixkij"]
@@ -545,6 +545,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_right = 1440.0
 offset_bottom = 119.0
 

@@ -1,9 +1,14 @@
 extends Control
 
+var peer = ENetMultiplayerPeer.new()
 var manu_screen = preload("res://screens/scenes/menu_screen.tscn")
 var create_room_screen = preload("res://screens/scenes/create_room_screen.tscn")
+var select_character_screen = preload("res://screens/scenes/character_selection_screen.tscn")
 var rooms = ["Sala 1", "Sala 2", "Sala 3", "Sala 4", "Sala 5", "Sala 6"]
 var selected_room = ""
+var teams = ["cats", "dogs"]
+var player_id 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$VBoxContainer/Label/JoinRoomButton.disabled = true
@@ -30,16 +35,14 @@ func _on_return_button_pressed():
 
 
 func _on_join_room_button_pressed():
-	var clientr_peer = ENetMultiplayerPeer.new()
-	clientr_peer.create_client("127.0.0.1", 7000)
-	multiplayer.set_multiplayer_peer(clientr_peer)
+	peer.create_client("127.0.0.1", 1027)
+	multiplayer.multiplayer_peer = peer
 	get_parent().click_sound.play()
-	var scene = create_room_screen.instantiate()
-	scene.set_room(selected_room)
+	var scene = select_character_screen.instantiate()
+	scene.set_team_name(teams.pick_random())
+	print('a')
+	scene.set_player(player_id)
 	get_parent().add_child(scene)
-	get_parent().get_node("SearchRoomScreen").queue_free()
-
-
 
 func _on_controls_button_down(room):
 	$VBoxContainer/Label/JoinRoomButton.disabled = false
@@ -52,17 +55,17 @@ func _on_exit_button_pressed():
 
 
 func _on_create_room_pressed():
-	var server_peer = ENetMultiplayerPeer.new()
-	server_peer.create_server(7000)
-	multiplayer.set_multiplayer_peer(server_peer)
-	multiplayer.peer_connected.connect(_add_player_to_game)
-
+	peer.create_server(1027)
+	multiplayer.multiplayer_peer = peer
+	multiplayer.peer_connected.connect(add_player)
+	add_player()
 	get_parent().click_sound.play()
-	var scene = create_room_screen.instantiate()
-	scene.set_room("Sala 7")
+	var scene = select_character_screen.instantiate()
+	scene.set_team_name(teams.pick_random())
+	scene.set_player(player_id)
 	get_parent().add_child(scene)
-	get_parent().get_node("SearchRoomScreen").queue_free()
 
-func _add_player_to_game(id: int):
-	print("?????")
+func add_player(id = 1): 
 	print(id)
+	player_id = id
+	
