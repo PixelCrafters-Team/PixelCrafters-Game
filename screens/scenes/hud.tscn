@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=33 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bxdwj5p7idvld" path="res://screens/assets/skill_sargentocanis.png" id="9_0jfr6"]
 [ext_resource type="Texture2D" uid="uid://dm6l16ut02i7d" path="res://screens/assets/skill_boladepelos.png" id="9_75n5b"]
 [ext_resource type="Texture2D" uid="uid://bdur7m8ftjb6y" path="res://screens/assets/skill_charge.png" id="9_bnomy"]
+[ext_resource type="Texture2D" uid="uid://bi8n6d5ncx431" path="res://screens/assets/skill_ronronante.png" id="9_dkaqv"]
 [ext_resource type="Texture2D" uid="uid://5uhe5hombi1p" path="res://screens/assets/skill_sombra.png" id="9_p7xjl"]
 [ext_resource type="Texture2D" uid="uid://cgca214vixvhb" path="res://screens/assets/skill_brutus.png" id="9_pq2k0"]
 [ext_resource type="AudioStream" uid="uid://cxwe51ievgvgb" path="res://screens/assets/timer_charge.mp3" id="9_qx2rj"]
@@ -309,7 +310,13 @@ vertical_alignment = 1
 
 [node name="SkillCharge" type="Node" parent="."]
 
+[node name="SkillRonronante" type="Sprite2D" parent="SkillCharge"]
+position = Vector2(1378, 231)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("9_dkaqv")
+
 [node name="SkillBolaDePelos" type="Sprite2D" parent="SkillCharge"]
+visible = false
 position = Vector2(1375, 231)
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("9_75n5b")

@@ -19,30 +19,42 @@ func _ready():
 		$SkillCharge/SkillBrutus.visible = false
 		$SkillCharge/SkillSombra.visible = false
 		$SkillCharge/SkillBolaDePelos.visible = false
+		$SkillCharge/SkillRonronante.visible = false
 	if get_parent().get_node("Character_sargentocanis"):
 		$SkillCharge/SkillSargentoCanis.visible = true
 		$SkillCharge/SkillEstrela.visible = false
 		$SkillCharge/SkillBrutus.visible = false
 		$SkillCharge/SkillSombra.visible = false
 		$SkillCharge/SkillBolaDePelos.visible = false
+		$SkillCharge/SkillRonronante.visible = false
 	if get_parent().get_node("Character_brutus"):
 		$SkillCharge/SkillBrutus.visible = true
 		$SkillCharge/SkillSargentoCanis.visible = false
 		$SkillCharge/SkillEstrela.visible = false
 		$SkillCharge/SkillSombra.visible = false
 		$SkillCharge/SkillBolaDePelos.visible = false
+		$SkillCharge/SkillRonronante.visible = false
 	if get_parent().get_node("Character_sombra"):
 		$SkillCharge/SkillSombra.visible = true
 		$SkillCharge/SkillSargentoCanis.visible = false
 		$SkillCharge/SkillEstrela.visible = false
 		$SkillCharge/SkillBrutus.visible = false
 		$SkillCharge/SkillBolaDePelos.visible = false
+		$SkillCharge/SkillRonronante.visible = false
 	if get_parent().get_node("Character_boladepelos"):
 		$SkillCharge/SkillBolaDePelos.visible = true
 		$SkillCharge/SkillSargentoCanis.visible = false
 		$SkillCharge/SkillEstrela.visible = false
 		$SkillCharge/SkillBrutus.visible = false
 		$SkillCharge/SkillSombra.visible = false
+		$SkillCharge/SkillRonronante.visible = false
+	if get_parent().get_node("Character_ronronante"):
+		$SkillCharge/SkillRonronante.visible = true
+		$SkillCharge/SkillSargentoCanis.visible = false
+		$SkillCharge/SkillEstrela.visible = false
+		$SkillCharge/SkillBrutus.visible = false
+		$SkillCharge/SkillSombra.visible = false
+		$SkillCharge/SkillBolaDePelos.visible = false
 func _process(delta):
 	$Timer/LabelTimer.text = str(int(timer.time_left / 60)) + ":" + str(int(timer.time_left) % 60)
 	if Input.is_action_just_pressed("pause"):
