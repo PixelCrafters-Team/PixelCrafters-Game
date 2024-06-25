@@ -17,11 +17,11 @@ func create_player_character(name: String, position: Vector2, frame: int, hframe
 	var character_sprite = Sprite2D.new()
 	character_sprite.name = name
 	character_sprite.visible = true
-	character_sprite.position = position
-	character_sprite.scale = Vector2(0.5, 0.5)
+	character_sprite.global_position = position
+	character_sprite.scale = Vector2(0.3, 0.3)
 	var texture_path = "res://characters/assets/cats_dogs.png"
 	var texture = load(texture_path)
-	if texture:
+	if texture: 
 		character_sprite.texture = texture
 	else:
 		print("Failed to load texture at path: ", texture_path)
@@ -63,23 +63,29 @@ func _ready():
 		
 	if character == "estrela":
 		num_character = 1
+		var player_spot = $VBoxContainer/HBoxContainer/PanelCharacterDog/VBoxContainer/HBoxContainer/ColorRect3/ColorRect
+		var position = player_spot.global_position + (player_spot.size / 2)
 		create_player_character(
 			"EstrelaDog",
-		 	Vector2(220, 55),
+		 	position,
 			31
 		)
 	elif character == "brutus":
 		num_character = 0
+		var player_spot = $VBoxContainer/HBoxContainer/PanelCharacterDog/VBoxContainer/HBoxContainer/ColorRect2/ColorRect
+		var position = player_spot.global_position + (player_spot.size / 2)
 		create_player_character(
 			"BrutusDog",
-			Vector2(62, 50),
+			position,
 			25
 		)
 	elif character == "sargento_canis":
 		num_character = 2
+		var player_spot = $VBoxContainer/HBoxContainer/PanelCharacterDog/VBoxContainer/HBoxContainer/ColorRect4/ColorRect
+		var position = player_spot.global_position + (player_spot.size / 2)
 		create_player_character(
 			"SargentoCanisDog",
-			Vector2(-130, 45),
+			position,
 			34
 		)
 	elif character == "sombra":
