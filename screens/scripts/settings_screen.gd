@@ -121,6 +121,6 @@ func _on_text_player_text_changed():
 
 
 func _on_info_button_pressed():
-	get_parent().click_sound.play()
+	var main = get_tree().root.get_node("Main")
+	main.click_sound.play()
 	get_parent().add_child(developer_scene.instantiate())
-	get_parent().get_node("SettingsScreen").queue_free()
