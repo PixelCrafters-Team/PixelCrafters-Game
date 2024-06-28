@@ -4,6 +4,7 @@ extends Node2D
 
 var Map = preload("res://world/scenes/map.tscn").instantiate()
 var Hud = preload("res://screens/scenes/hud.tscn").instantiate()
+var SceneCharacter
 var Character
 var character_position
 var num_character
@@ -47,17 +48,25 @@ func select_map(scene, map): # MAPA: 0 (centro de pesquisa) e 1 (praca central)
 func set_character(team, num):
 	num_character = num
 	if team == "cats":
-		Character = list_characters_cats[num_character].instantiate()
+		SceneCharacter = list_characters_cats[num_character]
 	else:
-		Character = list_characters_dogs[num_character].instantiate()
+		SceneCharacter = list_characters_dogs[num_character]
 		
 		
 func create_game(scene):
-	select_map(scene, [0,1].pick_random())
-	scene.add_child(Character)
-	Character.global_position = character_position
-	add_child(Hud)
-	$HUD.build_uhd()
+	#select_map(scene, [0,1].pick_random())
+	select_map(scene, 0)
+	
+	var lista_jogadores = Networking.retornar_lista()
+	for i in range(lista_jogadores.size()):
+		Character = SceneCharacter.instantiate()
+		scene.add_child(Character)
+		Character.global_position = character_position
+		Character.name = str(lista_jogadores[i][0])
+		Character.set_multiplayer_authority(lista_jogadores[i][0])
+		Character.set_nickname(lista_jogadores[i][1])
+		add_child(Hud)
+		$HUD.build_uhd()
 	
 
 func _on_music_game_finished():

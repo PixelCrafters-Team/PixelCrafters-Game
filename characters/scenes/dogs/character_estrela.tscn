@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b8aemaewu78hi"]
+[gd_scene load_steps=35 format=3 uid="uid://b8aemaewu78hi"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_duxev"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_e3mmg"]
@@ -352,6 +352,11 @@ font = ExtResource("5_klmuj")
 font_size = 50
 font_color = Color(0.121569, 0.121569, 0.384314, 1)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lln83"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="Character_estrela" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["dogs"]]
 collision_layer = 0
 script = ExtResource("1_duxev")
@@ -421,6 +426,9 @@ texture = ExtResource("6_puylm")
 
 [node name="EffectActiveSkill" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_dwi22")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_lln83")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaTeleport" to="." method="_on_area_teleport_area_entered"]

@@ -2,8 +2,7 @@ extends Control
 
 var character_select_scene = preload("res://screens/scenes/character_selection_screen.tscn")
 var settings_scene = preload("res://screens/scenes/settings_screen.tscn")
-var search_room_scene = preload("res://screens/scenes/search_room_screen.tscn")
-var create_room_scene = preload("res://screens/scenes/create_room_screen.tscn")
+var room_scene = preload("res://multiplayer/MenuLAN.tscn")
 
 func _ready():
 	$AnimationDog/AnimationRoute.play("animationDog")
@@ -30,7 +29,7 @@ func _on_quit_buton_pressed():
 
 func _on_start_button_pressed():
 	get_parent().click_sound.play()
-	get_parent().add_child(search_room_scene.instantiate())
+	get_parent().add_child(room_scene.instantiate())
 	get_parent().get_node("Menu_screen").queue_free()
 	
 	
@@ -46,10 +45,4 @@ func _on_exit_button_pressed():
 func _on_setting_button_pressed():
 	get_parent().click_sound.play()
 	get_parent().add_child(settings_scene.instantiate())
-	get_parent().get_node("Menu_screen").queue_free()
-
-
-func _on_create_button_pressed():
-	get_parent().click_sound.play()
-	get_parent().add_child(create_room_scene.instantiate())
 	get_parent().get_node("Menu_screen").queue_free()

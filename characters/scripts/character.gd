@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export_category("Objects")
 @export var animation_tree: AnimationTree = null
 
+var nickname = ""
 var state_machine
 var is_walking: bool = false
 var is_glace: bool = false
@@ -28,41 +29,42 @@ var list_positions_teleport = [
 
 func _ready():
 	state_machine = animation_tree["parameters/playback"]
-	$namePlayer.text = get_parent().get_parent().player_name
+	#$namePlayer.text = get_parent().get_parent().player_name
 
 
 func _physics_process(delta):
-	if is_glace == false:
-		move_and_slide()
-		move()
-		animate()
-	
-	if (Input.is_action_pressed("move_left") or 
-			Input.is_action_pressed("move_right") or 
-			Input.is_action_pressed("move_down") or
-			Input.is_action_pressed("move_up")) and is_glace == false:
-		if not is_walking:
-			is_walking = true
-			$TimerWalk.start(0.3)
-			$EffectWalk.play()
-	else:
-		is_walking = false		
-	
-	if Input.is_key_pressed(KEY_SPACE):
-		move_speed = 100
-	else:
-		move_speed = 64;
-	
-	if is_skill_estrela:
-		move_speed += 50
+	if is_multiplayer_authority():
+		if is_glace == false:
+			move_and_slide()
+			move()
+			animate()
 		
-	if Input.is_key_pressed(KEY_X) and is_in_group("cats"):
-		glace_cat()
-	if Input.is_key_pressed(KEY_C) and is_in_group("cats"):
-		unfreeze_cat()
+		if (Input.is_action_pressed("move_left") or 
+				Input.is_action_pressed("move_right") or 
+				Input.is_action_pressed("move_down") or
+				Input.is_action_pressed("move_up")) and is_glace == false:
+			if not is_walking:
+				is_walking = true
+				$TimerWalk.start(0.3)
+				$EffectWalk.play()
+		else:
+			is_walking = false		
 		
-	if Input.is_key_pressed(KEY_Z) and is_in_group("dogs") and get_name() == "Character_estrela":
-		activate_skill()
+		if Input.is_key_pressed(KEY_SPACE):
+			move_speed = 100
+		else:
+			move_speed = 64;
+		
+		if is_skill_estrela:
+			move_speed += 50
+			
+		if Input.is_key_pressed(KEY_X) and is_in_group("cats"):
+			glace_cat()
+		if Input.is_key_pressed(KEY_C) and is_in_group("cats"):
+			unfreeze_cat()
+			
+		if Input.is_key_pressed(KEY_Z) and is_in_group("dogs") and get_name() == "Character_estrela":
+			activate_skill()
 	
 	
 func move() -> void:
@@ -81,6 +83,11 @@ func move() -> void:
 	velocity.x = lerp(velocity.x, direction.normalized().x * move_speed, friction)
 	velocity.y = lerp(velocity.y, direction.normalized().y * move_speed, friction)
 		
+	
+func set_nickname(nickname):
+	self.nickname = nickname
+	$namePlayer.text = nickname
+	pass
 	
 func animate() -> void:
 	if velocity.length() > 2:
@@ -106,14 +113,14 @@ func unfreeze_cat():
 	is_glace = false
 	$EffectGlace.play()
 
-
+"""
 func _on_area_teleport_area_entered(area):
 	get_parent().teleportSound.play()
 	if area.is_in_group("teleport") and get_parent().num_map == 0:
 		global_position = list_positions_teleport[randi_range(0, 3)]
 	elif area.is_in_group("teleport") and get_parent().num_map == 1:
 		global_position = list_positions_teleport[randi_range(4, 7)]
-		
+"""		
 		
 func activate_skill():
 	if get_parent().get_node("HUD").charge_skill == 0 and is_skill_active == false:

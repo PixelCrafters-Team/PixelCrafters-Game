@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dquyh8lebuwu"]
+
+[ext_resource type="Script" path="res://multiplayer/Jogador.gd" id="1_61od1"]
+[ext_resource type="Texture2D" uid="uid://8wrcjmwq8u67" path="res://multiplayer/icon.svg" id="2_602dl"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ci6v0"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc1w4"]
+size = Vector2(118, 122)
+
+[node name="Jogador" type="CharacterBody2D"]
+script = ExtResource("1_61od1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_602dl")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ci6v0")
+
+[node name="NicknameLabel" type="Label" parent="."]
+offset_left = -130.0
+offset_top = -109.0
+offset_right = 132.0
+offset_bottom = -78.0
+theme_override_font_sizes/font_size = 22
+text = "João"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_yc1w4")

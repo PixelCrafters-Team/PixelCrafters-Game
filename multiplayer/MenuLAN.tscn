@@ -1,0 +1,134 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctoap6e1xmr6y"]
+
+[ext_resource type="Script" path="res://multiplayer/MenuLAN.gd" id="1_n7r5m"]
+
+[node name="LAN" type="Control"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n7r5m")
+metadata/_edit_use_anchors_ = true
+
+[node name="ListaJogadores" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 171.0
+offset_right = 635.0
+offset_bottom = 535.0
+
+[node name="Criar" type="Button" parent="."]
+layout_mode = 1
+offset_left = 101.0
+offset_top = 619.0
+offset_right = 373.0
+offset_bottom = 669.0
+text = "Criar servidor"
+
+[node name="Conectar" type="Button" parent="."]
+layout_mode = 1
+offset_left = 428.0
+offset_top = 621.0
+offset_right = 701.0
+offset_bottom = 671.0
+text = "Entrar Servidor"
+
+[node name="Comecar" type="Button" parent="."]
+layout_mode = 1
+offset_left = 770.0
+offset_top = 623.0
+offset_right = 1043.0
+offset_bottom = 673.0
+text = "Começar jogo"
+
+[node name="IpEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 901.0
+offset_top = 185.0
+offset_right = 1174.0
+offset_bottom = 226.0
+placeholder_text = "127.0.0.1"
+
+[node name="NomeEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 905.0
+offset_top = 262.0
+offset_right = 1178.0
+offset_bottom = 303.0
+text = "Jogador"
+placeholder_text = "Jogador"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 171.0
+offset_right = 871.0
+offset_bottom = 212.0
+text = "IP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 261.0
+offset_right = 870.0
+offset_bottom = 302.0
+text = "Nome"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoIP" type="Label" parent="."]
+layout_mode = 0
+offset_left = 779.0
+offset_top = 383.0
+offset_right = 1175.0
+offset_bottom = 450.0
+text = "Use este ip para se conectar ao servidor:"
+
+[node name="ChoiceCharacter" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1035.0
+offset_top = 466.0
+offset_right = 1274.0
+offset_bottom = 554.0
+text = "Choice Character"
+
+[node name="ErroPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -99.0
+offset_right = 157.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ErroPanel"]
+layout_mode = 0
+offset_right = 321.0
+offset_bottom = 145.0
+text = "Ocorreu um erro
+Tente novamente"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ErroPanel"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 145.0
+offset_right = 243.0
+offset_bottom = 171.0
+text = "Confirmar"
+
+[connection signal="pressed" from="Criar" to="." method="_on_criar_pressed"]
+[connection signal="pressed" from="Conectar" to="." method="_on_conectar_pressed"]
+[connection signal="pressed" from="Comecar" to="." method="_on_comecar_pressed"]
+[connection signal="pressed" from="ErroPanel/Button" to="." method="_on_erropanel_button_pressed"]

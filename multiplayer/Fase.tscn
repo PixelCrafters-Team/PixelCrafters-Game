@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://gp28ldbjk2ek"]
+
+[ext_resource type="Script" path="res://multiplayer/Fase.gd" id="1_bbmbe"]
+
+[node name="Fase" type="Node2D"]
+script = ExtResource("1_bbmbe")
+
+[node name="Jogadores" type="Node2D" parent="."]
