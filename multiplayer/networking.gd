@@ -1,105 +1,105 @@
 extends Node
 
-const IPPADRAO = "127.0.0.1"
-const PORTA = 6007
-const MAXJOGADORES = 5
+const IPSTANDARD = "127.0.0.1"
+const PORT = 6007
+const MAXPLAYERS = 6
 
-var ip = IPPADRAO
+var ip = IPSTANDARD
 var id = 0
-var nome_jogador = ""
-var par = null
-var jogadores = []
+var name_player = ""
+var pair = null
+var players = []
 
-signal lista_alterada
-signal conexao_resetada
+signal list_changed
+signal connection_reset
 
 func _ready():
-	multiplayer.connected_to_server.connect(self.conectado_ao_servidor)
-	multiplayer.connection_failed.connect(self.falha_na_conexao)
-	multiplayer.server_disconnected.connect(self.queda_do_servidor)
+	multiplayer.connected_to_server.connect(self.connected_server)
+	multiplayer.connection_failed.connect(self.connection_fail)
+	multiplayer.server_disconnected.connect(self.server_crash)
 	pass
 
-func conectado_ao_servidor():
+func connected_server():
 	id = multiplayer.multiplayer_peer.get_unique_id()
-	rpc("registrar_jogador", id, nome_jogador)
+	rpc("register_player", id, name_player)
 	pass
 
-func par_desconectado(id):
-	rpc("remover_jogador", id)
+func pair_disconnected(id):
+	rpc("remove_player", id)
 	pass
 
-func falha_na_conexao():
+func connection_fail():
 	resetar_conexao()
 	pass
 
-func queda_do_servidor():
+func server_crash():
 	if not get_tree().current_scene.name == "LAN":
 		get_tree().change_scene_to_file("res://MenuLAN.tscn")
 	resetar_conexao()
 	pass
 
 func resetar_conexao():
-	par = null
+	pair = null
 	multiplayer.set_multiplayer_peer(null)
-	jogadores.clear()
-	emit_signal("conexao_resetada")
+	players.clear()
+	emit_signal("connection_reset")
 	pass
 
 @rpc("any_peer")
-func registrar_jogador(id, nome):
+func register_player(id, name):
 	if multiplayer.is_server():
-		for i in range(jogadores.size()):
-			rpc_id(id, "registrar_jogador", jogadores[i][0], jogadores[i][1])
-		rpc("registrar_jogador", id, nome)
-	jogadores.append([id, nome])
-	emit_signal("lista_alterada")
+		for i in range(players.size()):
+			rpc_id(id, "register_player", players[i][0], players[i][1])
+		rpc("register_player", id, name)
+	players.append([id, name])
+	emit_signal("list_changed")
 	pass
 
 @rpc("any_peer", "call_local")
-func remover_jogador(id):
-	print(jogadores)
-	for i in range(jogadores.size()):
-		if jogadores[i][0] == id:
-			jogadores.remove_at(i)
-			emit_signal("lista_alterada")
+func remove_player(id):
+	print(players)
+	for i in range(players.size()):
+		if players[i][0] == id:
+			players.remove_at(i)
+			emit_signal("list_changed")
 			return
 	pass
 
-func criar_servidor():
-	par = ENetMultiplayerPeer.new()
-	par.create_server(PORTA, MAXJOGADORES)
-	var ip = retornar_ip()
+func create_server():
+	pair = ENetMultiplayerPeer.new()
+	pair.create_server(PORT, MAXPLAYERS)
+	var ip = return_ip()
 	if ip.begins_with("192"):
-		multiplayer.set_multiplayer_peer(par)
-		par.peer_disconnected.connect(self.par_desconectado)
+		multiplayer.set_multiplayer_peer(pair)
+		pair.peer_disconnected.connect(self.pair_disconnected)
 		id = multiplayer.multiplayer_peer.get_unique_id()
-		registrar_jogador(id, nome_jogador)
+		register_player(id, name_player)
 	else:
 		resetar_conexao()
 	pass
 
-func entrar_servidor():
-	par = ENetMultiplayerPeer.new()
-	par.create_client(ip, PORTA)
-	multiplayer.set_multiplayer_peer(par)
+func join_server():
+	pair = ENetMultiplayerPeer.new()
+	pair.create_client(ip, PORT)
+	multiplayer.set_multiplayer_peer(pair)
 	pass
 
-func atualizar_ip(novo_ip):
-	ip = novo_ip
+func update_ip(new_ip):
+	ip = new_ip
 	pass
 
-func atualizar_nome(novo_nome):
-	nome_jogador = novo_nome
+func update_name(new_name):
+	name_player = new_name
 	pass
 
-func retornar_lista():
-	return jogadores
+func return_list():
+	return players
 	pass
 
-func retornar_ip():
-	var lista_ip = IP.get_local_addresses()
-	for i in range(lista_ip.size()):
-		if lista_ip[i].begins_with("192"):
-			return lista_ip[i]
-	return IPPADRAO
+func return_ip():
+	var list_ip = IP.get_local_addresses()
+	for i in range(list_ip.size()):
+		if list_ip[i].begins_with("192"):
+			return list_ip[i]
+	return IPSTANDARD
 	pass

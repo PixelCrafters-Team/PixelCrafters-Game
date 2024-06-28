@@ -57,14 +57,14 @@ func create_game(scene):
 	#select_map(scene, [0,1].pick_random())
 	select_map(scene, 0)
 	
-	var lista_jogadores = Networking.retornar_lista()
-	for i in range(lista_jogadores.size()):
+	var list_players = Networking.return_list()
+	for i in range(list_players.size()):
 		Character = SceneCharacter.instantiate()
 		scene.add_child(Character)
 		Character.global_position = character_position
-		Character.name = str(lista_jogadores[i][0])
-		Character.set_multiplayer_authority(lista_jogadores[i][0])
-		Character.set_nickname(lista_jogadores[i][1])
+		Character.name = str(list_players[i][0])
+		Character.set_multiplayer_authority(list_players[i][0])
+		Character.set_nickname(list_players[i][1])
 		add_child(Hud)
 		$HUD.build_uhd()
 	

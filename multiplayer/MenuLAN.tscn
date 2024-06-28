@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctoap6e1xmr6y"]
 
-[ext_resource type="Script" path="res://multiplayer/MenuLAN.gd" id="1_n7r5m"]
+[ext_resource type="Script" path="res://multiplayer/menuLAN.gd" id="1_s6sxb"]
 
 [node name="LAN" type="Control"]
 layout_direction = 1
@@ -10,17 +10,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_n7r5m")
+script = ExtResource("1_s6sxb")
 metadata/_edit_use_anchors_ = true
 
-[node name="ListaJogadores" type="ItemList" parent="."]
+[node name="ListPlayers" type="ItemList" parent="."]
 layout_mode = 0
 offset_left = 71.0
 offset_top = 171.0
 offset_right = 635.0
 offset_bottom = 535.0
 
-[node name="Criar" type="Button" parent="."]
+[node name="Create" type="Button" parent="."]
 layout_mode = 1
 offset_left = 101.0
 offset_top = 619.0
@@ -28,7 +28,7 @@ offset_right = 373.0
 offset_bottom = 669.0
 text = "Criar servidor"
 
-[node name="Conectar" type="Button" parent="."]
+[node name="Connect" type="Button" parent="."]
 layout_mode = 1
 offset_left = 428.0
 offset_top = 621.0
@@ -36,7 +36,7 @@ offset_right = 701.0
 offset_bottom = 671.0
 text = "Entrar Servidor"
 
-[node name="Comecar" type="Button" parent="."]
+[node name="Start" type="Button" parent="."]
 layout_mode = 1
 offset_left = 770.0
 offset_top = 623.0
@@ -52,7 +52,7 @@ offset_right = 1174.0
 offset_bottom = 226.0
 placeholder_text = "127.0.0.1"
 
-[node name="NomeEdit" type="LineEdit" parent="."]
+[node name="NameEdit" type="LineEdit" parent="."]
 layout_mode = 0
 offset_left = 905.0
 offset_top = 262.0
@@ -128,7 +128,7 @@ offset_right = 243.0
 offset_bottom = 171.0
 text = "Confirmar"
 
-[connection signal="pressed" from="Criar" to="." method="_on_criar_pressed"]
-[connection signal="pressed" from="Conectar" to="." method="_on_conectar_pressed"]
-[connection signal="pressed" from="Comecar" to="." method="_on_comecar_pressed"]
+[connection signal="pressed" from="Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ErroPanel/Button" to="." method="_on_erropanel_button_pressed"]
