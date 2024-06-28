@@ -348,7 +348,6 @@ max_lines_visible = 5
 [node name="Dog" type="CharacterBody2D" parent="AnimationDog"]
 position = Vector2(-160, 602)
 rotation = 0.0276454
-scale = Vector2(1, 1)
 
 [node name="Sprite" type="Sprite2D" parent="AnimationDog/Dog"]
 position = Vector2(5.83252, -23.7061)
