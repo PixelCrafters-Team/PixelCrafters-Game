@@ -2,7 +2,7 @@ extends Control
 
 var team = "dogs"
 var num_character = 1
-
+var SceneCharacterSlection = preload("res://screens/scenes/character_selection_screen.tscn")
 
 func _ready():
 	Networking.list_changed.connect(self.list_changed)
@@ -11,6 +11,7 @@ func _ready():
 
 
 func _on_create_pressed():
+	$ChoiceCharacter.visible = true
 	Networking.update_name($NameEdit.text)
 	Networking.create_server()
 	$Create.disabled = true
@@ -21,6 +22,7 @@ func _on_create_pressed():
 
 
 func _on_connect_pressed():
+	$ChoiceCharacter.visible = true
 	Networking.update_ip($IpEdit.text)
 	Networking.update_name($NameEdit.text)
 	Networking.join_server()
@@ -38,8 +40,9 @@ func _on_start_pressed():
 @rpc("any_peer", "call_local")
 func start_game():
 	get_parent().click_sound.play()
+	
 	var scene = get_parent().game_scene
-	scene.set_character(team, num_character)
+	#scene.set_character(team, num_character)
 	scene.create_game(scene)
 	get_parent().get_node("MusicMenu").stream_paused = true
 	get_parent().add_child(scene)
@@ -69,3 +72,7 @@ func _on_erropanel_button_pressed():
 	$Conectar.disabled = false
 	$ErroPanel.hide()
 	pass
+
+
+func _on_choice_character_pressed():
+	get_parent().add_child(SceneCharacterSlection.instantiate())

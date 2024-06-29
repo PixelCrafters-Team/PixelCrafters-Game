@@ -90,6 +90,7 @@ offset_bottom = 450.0
 text = "Use este ip para se conectar ao servidor:"
 
 [node name="ChoiceCharacter" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1035.0
 offset_top = 466.0
@@ -131,4 +132,5 @@ text = "Confirmar"
 [connection signal="pressed" from="Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ChoiceCharacter" to="." method="_on_choice_character_pressed"]
 [connection signal="pressed" from="ErroPanel/Button" to="." method="_on_erropanel_button_pressed"]

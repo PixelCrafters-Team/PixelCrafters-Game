@@ -54,8 +54,7 @@ func set_character(team, num):
 		
 		
 func create_game(scene):
-	#select_map(scene, [0,1].pick_random())
-	select_map(scene, 0)
+	select_map(scene, [0,1].pick_random())
 	
 	var list_players = Networking.return_list()
 	for i in range(list_players.size()):

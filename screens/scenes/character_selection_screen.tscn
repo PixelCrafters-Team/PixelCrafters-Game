@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://djwlurn2jvhbr"]
+[gd_scene load_steps=49 format=3 uid="uid://djwlurn2jvhbr"]
 
 [ext_resource type="Script" path="res://screens/scripts/character_selection_screen.gd" id="1_64yd2"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_ixkij"]
@@ -8,11 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="6_ryn8f"]
 [ext_resource type="Texture2D" uid="uid://cl0it22lehhae" path="res://screens/assets/icons/Icon_Writing.png" id="8_4qlne"]
 [ext_resource type="Texture2D" uid="uid://d05hd2ur104ca" path="res://screens/assets/icons/Icon_Left.png" id="8_xtkud"]
-[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="9_gqy7f"]
 [ext_resource type="StyleBox" uid="uid://b30bs5s5c0w4h" path="res://screens/themes/style_background_choose_character_1.tres" id="9_syrv5"]
 [ext_resource type="StyleBox" uid="uid://c1710omkvnlax" path="res://screens/themes/style_background_choose_character_2.tres" id="10_wbgjk"]
 [ext_resource type="StyleBox" uid="uid://hymg1p7kcjdm" path="res://screens/themes/style_background_choose_character_3.tres" id="11_sliqk"]
-[ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="12_enfdu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37lk6"]
 
@@ -175,34 +173,6 @@ line_spacing = 0.0
 font = ExtResource("3_r7yy2")
 font_size = 26
 shadow_size = 0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fr12r"]
-texture = ExtResource("12_enfdu")
-modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_os5i4"]
-texture = ExtResource("12_enfdu")
-
-[sub_resource type="Theme" id="Theme_bkblo"]
-Button/styles/hover = SubResource("StyleBoxTexture_fr12r")
-Button/styles/normal = SubResource("StyleBoxTexture_os5i4")
-Button/styles/pressed = SubResource("StyleBoxTexture_fr12r")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nj3ju"]
-texture = ExtResource("9_gqy7f")
-modulate_color = Color(0.513726, 0, 0, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uyt35"]
-texture = ExtResource("9_gqy7f")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ka03u"]
-texture = ExtResource("9_gqy7f")
-modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
-
-[sub_resource type="Theme" id="Theme_6i83s"]
-Button/styles/hover = SubResource("StyleBoxTexture_nj3ju")
-Button/styles/normal = SubResource("StyleBoxTexture_uyt35")
-Button/styles/pressed = SubResource("StyleBoxTexture_ka03u")
 
 [node name="CharacterSelectionScreen" type="Control"]
 layout_mode = 3
@@ -555,25 +525,12 @@ size_flags_horizontal = 2
 theme_override_constants/margin_left = 45
 theme_override_constants/margin_top = 39
 
-[node name="ReturnButton" type="Button" parent="HBoxContainer2/MarginContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = SubResource("Theme_bkblo")
-
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_left = 45
 theme_override_constants/margin_top = 39
 theme_override_constants/margin_right = 45
-
-[node name="ExitButton" type="Button" parent="HBoxContainer2/MarginContainer2"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = SubResource("Theme_6i83s")
-theme_override_font_sizes/font_size = 59
 
 [connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/PanelCharacter1" to="." method="_on_panel_character_1_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter1/VBoxContainer/HBoxContainer/ButtonMoreInformation0" to="." method="_on_button_more_information_0_pressed"]
@@ -587,4 +544,3 @@ theme_override_font_sizes/font_size = 59
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/HBoxContainer/ButtonMoreInformation2" to="." method="_on_button_more_information_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/VBoxContainer/SelectButton2" to="." method="_on_select_button_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2/VBoxContainer/BackButton2" to="." method="_on_back_button_2_pressed"]
-[connection signal="pressed" from="HBoxContainer2/MarginContainer/ReturnButton" to="." method="_on_return_button_pressed"]

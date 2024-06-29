@@ -21,14 +21,18 @@ func _ready():
 	$VBoxContainer/HBoxContainer/PanelCharacter2/PanelMoreInformation1.visible = false
 	$VBoxContainer/HBoxContainer/PanelCharacter3/PanelMoreInformation2.visible = false
 	
+	set_team_name()
 	if  team == "cats": 
 		load_screen_cats()
 	elif team == "dogs":
 		load_screen_dogs()
 		
-func set_team_name(team_value):
-	team = team_value
-
+func set_team_name():
+	if [0,1].pick_random() == 0:
+		team = 'cats'
+	else:
+		team = 'dogs'
+		
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_right"):
 		if selected_panel == -1:
@@ -83,50 +87,27 @@ func _physics_process(delta):
 		get_parent().get_node("MusicMenu").stream_paused = true
 		
 
-func _on_exit_button_2_pressed():
-	get_parent().click_sound.play()
-	get_tree().quit()
-
-
 func _on_select_button_0_pressed():
 	get_parent().click_sound.play()
-	var scene = create_room_scene.instantiate()
-	var character = "ronronante" if team == "cats" else "brutus"
-	scene.set_character(character)
-	get_parent().add_child(scene)
-	#get_parent().click_sound.play()
-	#var scene = get_parent().game_scene
-	#scene.set_character(team, 0)
-	#scene.create_game(scene)
-	#get_parent().add_child(scene)
+	var scene = get_parent().game_scene
+	scene.set_character(team, 0)
 	get_parent().get_node("CharacterSelectionScreen").queue_free()
-	#get_parent().get_node("MusicMenu").stream_paused = true
 	
 
 func _on_select_button_1_pressed():
 	get_parent().click_sound.play()
-	var scene = create_room_scene.instantiate()
-	var character = "bola_de_pelos" if team == "cats" else "estrela"
-	scene.set_character(character)
-	get_parent().add_child(scene)
-	#get_parent().click_sound.play()
-	#var scene = get_parent().game_scene
-	#scene.set_character(team, 1)
-	#scene.create_game(scene)
-	#get_parent().add_child(scene)
+	var scene = get_parent().game_scene
+	scene.set_character(team, 1)
 	get_parent().get_node("CharacterSelectionScreen").queue_free()
-	#get_parent().get_node("MusicMenu").stream_paused = true
 
 
 func _on_select_button_2_pressed():
 	get_parent().click_sound.play()
-	var scene = create_room_scene.instantiate()
-	var character = "sombra" if team == "cats" else "sargento_canis"
-	scene.set_character(character)
-	get_parent().add_child(scene)
+	
+	#get_parent().add_child(scene)
 	#get_parent().click_sound.play()
-	#var scene = get_parent().game_scene
-	#scene.set_character(team, 2)
+	var scene = get_parent().game_scene
+	scene.set_character(team, 2)
 	#scene.create_game(scene)
 	#get_parent().add_child(scene)
 	get_parent().get_node("CharacterSelectionScreen").queue_free()
@@ -224,8 +205,3 @@ func _on_panel_character_3_mouse_entered():
 	texture_resource_panel[2].texture = texture_img_panel[1]
 	selected_panel = 3
 
-
-func _on_return_button_pressed():
-	get_parent().click_sound.play()
-	get_parent().add_child(create_room_scene.instantiate())
-	get_parent().get_node("CharacterSelectionScreen").queue_free()
