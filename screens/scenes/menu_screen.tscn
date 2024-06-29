@@ -300,15 +300,25 @@ offset_bottom = 810.0
 texture = ExtResource("1_vvb14")
 expand_mode = 2
 
-[node name="StartButton" type="Button" parent="."]
+[node name="CreateRoom" type="Button" parent="."]
 layout_mode = 2
-offset_left = 581.0
-offset_top = 478.0
-offset_right = 881.0
-offset_bottom = 556.0
+offset_left = 409.0
+offset_top = 497.0
+offset_right = 709.0
+offset_bottom = 575.0
 theme = SubResource("Theme_nuk4w")
 theme_override_font_sizes/font_size = 40
-text = "Jogar
+text = "Criar Sala"
+
+[node name="StartButton2" type="Button" parent="."]
+layout_mode = 2
+offset_left = 747.0
+offset_top = 499.0
+offset_right = 1047.0
+offset_bottom = 577.0
+theme = SubResource("Theme_nuk4w")
+theme_override_font_sizes/font_size = 40
+text = "Entrar Sala
 "
 
 [node name="SettingButton" type="Button" parent="."]
@@ -425,6 +435,7 @@ libraries = {
 "": SubResource("AnimationLibrary_8bpr2")
 }
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CreateRoom" to="." method="_on_create_room_pressed"]
+[connection signal="pressed" from="StartButton2" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

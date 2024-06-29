@@ -18,7 +18,7 @@ func _on_create_pressed():
 	$Create.disabled = true
 	$Connect.disabled = true
 	var ip = Networking.return_ip()
-	$InfoIP.text = "Use este ip para se conectar ao servidor:\n" + ip
+	$InfoIP.text = "" + ip
 	pass
 
 

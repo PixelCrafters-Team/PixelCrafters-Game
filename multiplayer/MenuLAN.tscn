@@ -1,11 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctoap6e1xmr6y"]
+[gd_scene load_steps=11 format=3 uid="uid://ctoap6e1xmr6y"]
 
 [ext_resource type="Script" path="res://multiplayer/menuLAN.gd" id="1_s6sxb"]
+[ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_c13qs"]
+[ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_ce388"]
+[ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="4_qc0du"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6cdh"]
+bg_color = Color(0.156863, 0.105882, 0.027451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4jqf"]
+bg_color = Color(0.796078, 0.768627, 0.682353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0.156863, 0.105882, 0.027451, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="Theme" id="Theme_jxcg2"]
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(0.239216, 0.168627, 0.0588235, 1)
+Button/fonts/font = null
+Button/styles/hover = SubResource("StyleBoxFlat_s6cdh")
+Button/styles/normal = SubResource("StyleBoxFlat_a4jqf")
+Button/styles/pressed = SubResource("StyleBoxFlat_a4jqf")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_uc4u0"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_mopw2"]
+line_spacing = 10.0
+font = ExtResource("3_ce388")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_bmwoo"]
+line_spacing = 10.0
+font = ExtResource("3_ce388")
+font_size = 28
 
 [node name="LAN" type="Control"]
 layout_direction = 1
@@ -18,35 +67,67 @@ grow_vertical = 2
 script = ExtResource("1_s6sxb")
 metadata/_edit_use_anchors_ = true
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1440.0
+offset_bottom = 810.0
+texture = ExtResource("2_c13qs")
+
+[node name="LabelTitle" type="Label" parent="."]
+offset_left = 503.0
+offset_top = 175.0
+offset_right = 957.0
+offset_bottom = 234.0
+theme_override_fonts/font = ExtResource("3_ce388")
+theme_override_font_sizes/font_size = 45
+text = "ENTRAR EM UMA SALA
+"
+horizontal_alignment = 1
+
 [node name="ListPlayers" type="ItemList" parent="."]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 171.0
-offset_right = 635.0
-offset_bottom = 535.0
+offset_left = 655.0
+offset_top = 300.0
+offset_right = 929.0
+offset_bottom = 629.0
+theme_override_fonts/font = ExtResource("3_ce388")
+theme_override_font_sizes/font_size = 20
 
 [node name="Create" type="Button" parent="."]
 layout_mode = 1
-offset_left = 101.0
-offset_top = 619.0
-offset_right = 373.0
-offset_bottom = 669.0
-text = "Criar servidor"
+offset_left = 223.0
+offset_top = 574.0
+offset_right = 577.0
+offset_bottom = 624.0
+theme = SubResource("Theme_jxcg2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ce388")
+theme_override_font_sizes/font_size = 28
+text = "Criar Sala"
 
 [node name="Connect" type="Button" parent="."]
 layout_mode = 1
-offset_left = 428.0
-offset_top = 621.0
-offset_right = 701.0
-offset_bottom = 671.0
-text = "Entrar Servidor"
+offset_left = 218.0
+offset_top = 576.0
+offset_right = 574.0
+offset_bottom = 626.0
+theme = SubResource("Theme_jxcg2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ce388")
+theme_override_font_sizes/font_size = 28
+text = "Procurar Sala"
 
 [node name="Start" type="Button" parent="."]
+visible = false
 layout_mode = 1
-offset_left = 770.0
-offset_top = 623.0
-offset_right = 1043.0
-offset_bottom = 673.0
+offset_left = 971.0
+offset_top = 586.0
+offset_right = 1244.0
+offset_bottom = 636.0
+theme = SubResource("Theme_jxcg2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ce388")
+theme_override_font_sizes/font_size = 28
 text = "Começar jogo"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Start"]
@@ -54,57 +135,68 @@ replication_config = SubResource("SceneReplicationConfig_uc4u0")
 
 [node name="IpEdit" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 901.0
-offset_top = 185.0
-offset_right = 1174.0
-offset_bottom = 226.0
+offset_left = 421.0
+offset_top = 413.0
+offset_right = 599.0
+offset_bottom = 461.0
+theme_override_font_sizes/font_size = 24
 placeholder_text = "127.0.0.1"
 
 [node name="NameEdit" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 905.0
-offset_top = 262.0
-offset_right = 1178.0
-offset_bottom = 303.0
+offset_left = 319.0
+offset_top = 304.0
+offset_right = 602.0
+offset_bottom = 355.0
+theme_override_fonts/font = ExtResource("3_ce388")
+theme_override_font_sizes/font_size = 24
 text = "Jogador"
 placeholder_text = "Jogador"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 737.0
-offset_top = 171.0
-offset_right = 871.0
-offset_bottom = 212.0
-text = "IP"
+offset_left = 209.0
+offset_top = 414.0
+offset_right = 407.0
+offset_bottom = 455.0
+text = "Código da Sala:"
+label_settings = SubResource("LabelSettings_mopw2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 736.0
-offset_top = 261.0
-offset_right = 870.0
-offset_bottom = 302.0
-text = "Nome"
+offset_left = 187.0
+offset_top = 303.0
+offset_right = 321.0
+offset_bottom = 344.0
+theme_override_fonts/font = ExtResource("3_ce388")
+text = "Nome:"
+label_settings = SubResource("LabelSettings_bmwoo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InfoIP" type="Label" parent="."]
-layout_mode = 0
-offset_left = 779.0
-offset_top = 383.0
-offset_right = 1175.0
-offset_bottom = 450.0
-text = "Use este ip para se conectar ao servidor:"
-
-[node name="ChoiceCharacter" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 1035.0
-offset_top = 466.0
-offset_right = 1274.0
-offset_bottom = 554.0
-text = "Choice Character"
+offset_left = 216.0
+offset_top = 484.0
+offset_right = 604.0
+offset_bottom = 563.0
+theme_override_font_sizes/font_size = 27
+autowrap_mode = 1
+
+[node name="InfoIP2" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 216.0
+offset_top = 405.0
+offset_right = 604.0
+offset_bottom = 484.0
+theme_override_fonts/font = ExtResource("3_ce388")
+theme_override_font_sizes/font_size = 28
+text = "Código para se conectar na sala:"
+autowrap_mode = 1
 
 [node name="ErroPanel" type="Panel" parent="."]
 visible = false
@@ -137,8 +229,38 @@ offset_right = 243.0
 offset_bottom = 171.0
 text = "Confirmar"
 
+[node name="ChoiceCharacter" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 974.0
+offset_top = 466.0
+offset_right = 1236.0
+offset_bottom = 553.0
+theme = SubResource("Theme_jxcg2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ce388")
+theme_override_font_sizes/font_size = 28
+text = "Escolher 
+Personagem"
+
+[node name="ContainerChoiceCharacter" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 972.0
+offset_top = 269.0
+offset_right = 1231.0
+offset_bottom = 442.0
+
+[node name="TextureChoiceCharacter" type="Sprite2D" parent="ContainerChoiceCharacter"]
+visible = false
+position = Vector2(130, 76)
+scale = Vector2(0.551758, 0.564453)
+texture = ExtResource("4_qc0du")
+hframes = 12
+vframes = 8
+frame = 68
+
 [connection signal="pressed" from="Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="ChoiceCharacter" to="." method="_on_choice_character_pressed"]
 [connection signal="pressed" from="ErroPanel/Button" to="." method="_on_erropanel_button_pressed"]
+[connection signal="pressed" from="ChoiceCharacter" to="." method="_on_choice_character_pressed"]

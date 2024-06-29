@@ -33,6 +33,7 @@ func _on_start_button_pressed():
 	get_parent().get_node("Menu_screen").queue_free()
 	
 	
+	
 func _on_music_menu_finished():
 	get_parent().music_menu.play()
 
@@ -45,4 +46,17 @@ func _on_exit_button_pressed():
 func _on_setting_button_pressed():
 	get_parent().click_sound.play()
 	get_parent().add_child(settings_scene.instantiate())
+	get_parent().get_node("Menu_screen").queue_free()
+
+
+func _on_create_room_pressed():
+	get_parent().click_sound.play()
+	get_parent().add_child(room_scene.instantiate())
+	get_parent().get_node("LAN/Label").visible = false
+	get_parent().get_node("LAN/IpEdit").visible = false
+	get_parent().get_node("LAN/Connect").visible = false
+	get_parent().get_node("LAN/Start").visible = true
+	get_parent().get_node("LAN/InfoIP").visible = true
+	get_parent().get_node("LAN/InfoIP2").visible = true
+	get_parent().get_node("LAN/LabelTitle").text = "CRIAR EM UMA SALA"
 	get_parent().get_node("Menu_screen").queue_free()
