@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d1c5crkq3jomc"]
+[gd_scene load_steps=33 format=3 uid="uid://d1c5crkq3jomc"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_0esyq"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_hyp3o"]
@@ -350,6 +350,11 @@ font = ExtResource("4_di7kt")
 font_size = 50
 font_color = Color(0.121569, 0.121569, 0.384314, 1)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_p2vro"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="Character_brutus" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["dogs"]]
 collision_layer = 0
 script = ExtResource("1_0esyq")
@@ -373,9 +378,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_uu4xc")
-}
 tree_root = SubResource("AnimationNodeStateMachine_yrob6")
 anim_player = NodePath("../Animation")
 parameters/Idle/blend_position = Vector2(0, 0)
@@ -410,6 +412,9 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_2p261")
 text = "nome"
 label_settings = SubResource("LabelSettings_2q45m")
 horizontal_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_p2vro")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaTeleport" to="." method="_on_area_teleport_area_entered"]

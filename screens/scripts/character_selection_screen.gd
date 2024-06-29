@@ -81,10 +81,9 @@ func _physics_process(delta):
 			scene.set_character(team, 1)
 		else:
 			scene.set_character(team, 2)
-		#scene.create_game(scene)
-		#get_parent().add_child(scene)
+		
 		get_parent().get_node("CharacterSelectionScreen").queue_free()
-		get_parent().get_node("MusicMenu").stream_paused = true
+		
 		
 
 func _on_select_button_0_pressed():
@@ -103,15 +102,9 @@ func _on_select_button_1_pressed():
 
 func _on_select_button_2_pressed():
 	get_parent().click_sound.play()
-	
-	#get_parent().add_child(scene)
-	#get_parent().click_sound.play()
 	var scene = get_parent().game_scene
 	scene.set_character(team, 2)
-	#scene.create_game(scene)
-	#get_parent().add_child(scene)
 	get_parent().get_node("CharacterSelectionScreen").queue_free()
-	#get_parent().get_node("MusicMenu").stream_paused = true
 	
 	
 func sort_team() -> String:

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctoap6e1xmr6y"]
+[gd_scene load_steps=3 format=3 uid="uid://ctoap6e1xmr6y"]
 
 [ext_resource type="Script" path="res://multiplayer/menuLAN.gd" id="1_s6sxb"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_uc4u0"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="LAN" type="Control"]
 layout_direction = 1
@@ -43,6 +48,9 @@ offset_top = 623.0
 offset_right = 1043.0
 offset_bottom = 673.0
 text = "Começar jogo"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Start"]
+replication_config = SubResource("SceneReplicationConfig_uc4u0")
 
 [node name="IpEdit" type="LineEdit" parent="."]
 layout_mode = 0

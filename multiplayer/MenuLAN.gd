@@ -5,6 +5,7 @@ var num_character = 1
 var SceneCharacterSlection = preload("res://screens/scenes/character_selection_screen.tscn")
 
 func _ready():
+	$Start.disabled = true
 	Networking.list_changed.connect(self.list_changed)
 	Networking.connection_reset.connect(self.connection_reset)
 	pass
@@ -75,4 +76,5 @@ func _on_erropanel_button_pressed():
 
 
 func _on_choice_character_pressed():
+	$Start.disabled = false
 	get_parent().add_child(SceneCharacterSlection.instantiate())
