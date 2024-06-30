@@ -1,9 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctoap6e1xmr6y"]
+[gd_scene load_steps=13 format=3 uid="uid://ctoap6e1xmr6y"]
 
 [ext_resource type="Script" path="res://multiplayer/menuLAN.gd" id="1_s6sxb"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_c13qs"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_ce388"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="4_qc0du"]
+[ext_resource type="Texture2D" uid="uid://c3khujmfv6deo" path="res://screens/assets/background_choose_character.png" id="4_qcfy7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtfml"]
+content_margin_left = 30.0
+content_margin_top = 40.0
+content_margin_bottom = 50.0
+texture = ExtResource("4_qcfy7")
+region_rect = Rect2(0, 0, 773, 655)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6cdh"]
 bg_color = Color(0.156863, 0.105882, 0.027451, 1)
@@ -74,6 +82,7 @@ offset_bottom = 810.0
 texture = ExtResource("2_c13qs")
 
 [node name="LabelTitle" type="Label" parent="."]
+layout_mode = 0
 offset_left = 503.0
 offset_top = 175.0
 offset_right = 957.0
@@ -85,20 +94,24 @@ text = "ENTRAR EM UMA SALA
 horizontal_alignment = 1
 
 [node name="ListPlayers" type="ItemList" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 655.0
 offset_top = 300.0
 offset_right = 929.0
 offset_bottom = 629.0
+theme_override_colors/font_color = Color(0.184314, 0.180392, 0.14902, 1)
 theme_override_fonts/font = ExtResource("3_ce388")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
+theme_override_styles/panel = SubResource("StyleBoxTexture_dtfml")
 
 [node name="Create" type="Button" parent="."]
+visible = false
 layout_mode = 1
-offset_left = 223.0
-offset_top = 574.0
-offset_right = 577.0
-offset_bottom = 624.0
+offset_left = 232.0
+offset_top = 403.0
+offset_right = 586.0
+offset_bottom = 453.0
 theme = SubResource("Theme_jxcg2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ce388")
@@ -107,10 +120,10 @@ text = "Criar Sala"
 
 [node name="Connect" type="Button" parent="."]
 layout_mode = 1
-offset_left = 218.0
-offset_top = 576.0
-offset_right = 574.0
-offset_bottom = 626.0
+offset_left = 224.0
+offset_top = 577.0
+offset_right = 580.0
+offset_bottom = 627.0
 theme = SubResource("Theme_jxcg2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ce388")
@@ -179,23 +192,23 @@ vertical_alignment = 1
 [node name="InfoIP" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 216.0
-offset_top = 484.0
-offset_right = 604.0
-offset_bottom = 563.0
+offset_left = 215.0
+offset_top = 577.0
+offset_right = 603.0
+offset_bottom = 656.0
 theme_override_font_sizes/font_size = 27
 autowrap_mode = 1
 
 [node name="InfoIP2" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 216.0
-offset_top = 405.0
-offset_right = 604.0
-offset_bottom = 484.0
+offset_left = 217.0
+offset_top = 490.0
+offset_right = 605.0
+offset_bottom = 569.0
 theme_override_fonts/font = ExtResource("3_ce388")
 theme_override_font_sizes/font_size = 28
-text = "Código para se conectar na sala:"
+text = "Código para seus amigos se conectar na sala:"
 autowrap_mode = 1
 
 [node name="ErroPanel" type="Panel" parent="."]
@@ -244,6 +257,7 @@ text = "Escolher
 Personagem"
 
 [node name="ContainerChoiceCharacter" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 972.0
 offset_top = 269.0
@@ -251,8 +265,7 @@ offset_right = 1231.0
 offset_bottom = 442.0
 
 [node name="TextureChoiceCharacter" type="Sprite2D" parent="ContainerChoiceCharacter"]
-visible = false
-position = Vector2(130, 76)
+position = Vector2(134, 94)
 scale = Vector2(0.551758, 0.564453)
 texture = ExtResource("4_qc0du")
 hframes = 12
@@ -262,5 +275,6 @@ frame = 68
 [connection signal="pressed" from="Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="text_changed" from="NameEdit" to="." method="_on_name_edit_text_changed"]
 [connection signal="pressed" from="ErroPanel/Button" to="." method="_on_erropanel_button_pressed"]
 [connection signal="pressed" from="ChoiceCharacter" to="." method="_on_choice_character_pressed"]

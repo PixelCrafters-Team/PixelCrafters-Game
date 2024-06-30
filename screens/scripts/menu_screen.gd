@@ -55,8 +55,7 @@ func _on_create_room_pressed():
 	get_parent().get_node("LAN/Label").visible = false
 	get_parent().get_node("LAN/IpEdit").visible = false
 	get_parent().get_node("LAN/Connect").visible = false
-	get_parent().get_node("LAN/Start").visible = true
+	get_parent().get_node("LAN/Create").visible = true
 	get_parent().get_node("LAN/InfoIP").visible = true
-	get_parent().get_node("LAN/InfoIP2").visible = true
 	get_parent().get_node("LAN/LabelTitle").text = "CRIAR EM UMA SALA"
 	get_parent().get_node("Menu_screen").queue_free()

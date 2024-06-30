@@ -5,6 +5,10 @@ var num_character = 1
 var SceneCharacterSlection = preload("res://screens/scenes/character_selection_screen.tscn")
 
 func _ready():
+	var main = get_tree().root.get_node("Main")
+	var name_player = main.player_name
+	$NameEdit.text = name_player
+
 	$Start.disabled = true
 	Networking.list_changed.connect(self.list_changed)
 	Networking.connection_reset.connect(self.connection_reset)
@@ -12,18 +16,22 @@ func _ready():
 
 
 func _on_create_pressed():
-	$ChoiceCharacter.visible = true
 	Networking.update_name($NameEdit.text)
 	Networking.create_server()
+	$ChoiceCharacter.visible = true
+	$ListPlayers.visible = true
+	$Start.visible = true
 	$Create.disabled = true
 	$Connect.disabled = true
 	var ip = Networking.return_ip()
+	$InfoIP2.visible = true
 	$InfoIP.text = "" + ip
 	pass
 
 
 func _on_connect_pressed():
 	$ChoiceCharacter.visible = true
+	$ListPlayers.visible = true
 	Networking.update_ip($IpEdit.text)
 	Networking.update_name($NameEdit.text)
 	Networking.join_server()
@@ -78,3 +86,8 @@ func _on_erropanel_button_pressed():
 func _on_choice_character_pressed():
 	$Start.disabled = false
 	get_parent().add_child(SceneCharacterSlection.instantiate())
+
+
+func _on_name_edit_text_changed(new_text):
+	var main = get_tree().root.get_node("Main")
+	main.player_name = new_text
