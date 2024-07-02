@@ -53,12 +53,12 @@ func resetar_conexao():
 
 
 @rpc("any_peer")
-func register_player(id, name):
+func register_player(id, name, character=null):
 	if multiplayer.is_server():
 		for i in range(players.size()):
-			rpc_id(id, "register_player", players[i][0], players[i][1])
-		rpc("register_player", id, name)
-	players.append([id, name, null])
+			rpc_id(id, "register_player", players[i][0], players[i][1],  players[i][2])
+		rpc("register_player", id, name, character)
+	players.append([id, name, character])
 	emit_signal("list_changed")
 	pass
 
@@ -124,6 +124,7 @@ func update_list_character(i, character):
 	print("update list")
 	players[i][2] = character; 
 	emit_signal("list_changed")
+	pass
 
 
 func get_player_id():

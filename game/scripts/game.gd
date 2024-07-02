@@ -51,7 +51,6 @@ func set_character(team, num):
 	var list_players = Networking.return_list()
 	for i in range(list_players.size()):
 		if id == list_players[i][0]:
-			print("set_character")
 			if team == "cats":
 				list_players[i][2] = list_characters_cats[num_character]
 			else:
@@ -62,9 +61,7 @@ func set_character(team, num):
 func create_game(scene):
 	#select_map(scene, [0,1].pick_random())
 	select_map(scene, 0)
-	
 	var list_players = Networking.return_list()
-	print(list_players)
 	for i in range(list_players.size()):
 		Character = load(list_players[i][2]).instantiate();
 		scene.add_child(Character)

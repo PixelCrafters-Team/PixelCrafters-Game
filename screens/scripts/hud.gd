@@ -13,42 +13,42 @@ func _ready():
 	$SkillCharge/Animation.play("charge_complete")
 	$Team/MarginContainer/VBoxContainer/GamMessages.text = " "
 	
-	if get_parent().get_node("Character_estrela"):
+	if get_parent().has_node("Character_estrela"):
 		$SkillCharge/SkillEstrela.visible = true
 		$SkillCharge/SkillSargentoCanis.visible = false
 		$SkillCharge/SkillBrutus.visible = false
 		$SkillCharge/SkillSombra.visible = false
 		$SkillCharge/SkillBolaDePelos.visible = false
 		$SkillCharge/SkillRonronante.visible = false
-	if get_parent().get_node("Character_sargentocanis"):
+	if get_parent().has_node("Character_sargentocanis"):
 		$SkillCharge/SkillSargentoCanis.visible = true
 		$SkillCharge/SkillEstrela.visible = false
 		$SkillCharge/SkillBrutus.visible = false
 		$SkillCharge/SkillSombra.visible = false
 		$SkillCharge/SkillBolaDePelos.visible = false
 		$SkillCharge/SkillRonronante.visible = false
-	if get_parent().get_node("Character_brutus"):
+	if get_parent().has_node("Character_brutus"):
 		$SkillCharge/SkillBrutus.visible = true
 		$SkillCharge/SkillSargentoCanis.visible = false
 		$SkillCharge/SkillEstrela.visible = false
 		$SkillCharge/SkillSombra.visible = false
 		$SkillCharge/SkillBolaDePelos.visible = false
 		$SkillCharge/SkillRonronante.visible = false
-	if get_parent().get_node("Character_sombra"):
+	if get_parent().has_node("Character_sombra"):
 		$SkillCharge/SkillSombra.visible = true
 		$SkillCharge/SkillSargentoCanis.visible = false
 		$SkillCharge/SkillEstrela.visible = false
 		$SkillCharge/SkillBrutus.visible = false
 		$SkillCharge/SkillBolaDePelos.visible = false
 		$SkillCharge/SkillRonronante.visible = false
-	if get_parent().get_node("Character_boladepelos"):
+	if get_parent().has_node("Character_boladepelos"):
 		$SkillCharge/SkillBolaDePelos.visible = true
 		$SkillCharge/SkillSargentoCanis.visible = false
 		$SkillCharge/SkillEstrela.visible = false
 		$SkillCharge/SkillBrutus.visible = false
 		$SkillCharge/SkillSombra.visible = false
 		$SkillCharge/SkillRonronante.visible = false
-	if get_parent().get_node("Character_ronronante"):
+	if get_parent().has_node("Character_ronronante"):
 		$SkillCharge/SkillRonronante.visible = true
 		$SkillCharge/SkillSargentoCanis.visible = false
 		$SkillCharge/SkillEstrela.visible = false
@@ -84,7 +84,6 @@ func _on_timer_timeout():
 	print(get_name())
 	get_parent().get_parent().add_child(endGameScreen)
 	get_parent().get_parent().get_node("Game").queue_free()
-	#get_parent().get_node("Game").queue_free()
 	
 	
 func pauseMenu():
