@@ -12,14 +12,14 @@ var num_map
 
 
 var list_characters_cats = [ 
-		preload("res://characters/scenes/cats/character_ronronante.tscn"), 
-		preload("res://characters/scenes/cats/character_bola_de_pelos.tscn"), 
-		preload("res://characters/scenes/cats/character_sombra.tscn")
+		"res://characters/scenes/cats/character_ronronante.tscn", 
+		"res://characters/scenes/cats/character_bola_de_pelos.tscn", 
+		"res://characters/scenes/cats/character_sombra.tscn"
 ]
 var list_characters_dogs = [
-		preload("res://characters/scenes/dogs/character_brutus.tscn"),
-		preload("res://characters/scenes/dogs/character_estrela.tscn"),
-		preload("res://characters/scenes/dogs/character_sargento_canis.tscn")
+		"res://characters/scenes/dogs/character_brutus.tscn",
+		"res://characters/scenes/dogs/character_estrela.tscn",
+		"res://characters/scenes/dogs/character_sargento_canis.tscn"
 ]
 
 
@@ -47,10 +47,16 @@ func select_map(scene, map): # MAPA: 0 (centro de pesquisa) e 1 (praca central)
 
 func set_character(team, num):
 	num_character = num
-	if team == "cats":
-		SceneCharacter = list_characters_cats[num_character]
-	else:
-		SceneCharacter = list_characters_dogs[num_character]
+	var id = Networking.get_player_id()
+	var list_players = Networking.return_list()
+	for i in range(list_players.size()):
+		if id == list_players[i][0]:
+			print("set_character")
+			if team == "cats":
+				list_players[i][2] = list_characters_cats[num_character]
+			else:
+				list_players[i][2] = list_characters_dogs[num_character]
+			Networking.rpc("update_list_character", i, list_players[i][2])
 		
 		
 func create_game(scene):
@@ -58,11 +64,12 @@ func create_game(scene):
 	select_map(scene, 0)
 	
 	var list_players = Networking.return_list()
+	print(list_players)
 	for i in range(list_players.size()):
-		Character = SceneCharacter.instantiate()
+		Character = load(list_players[i][2]).instantiate();
 		scene.add_child(Character)
 		Character.global_position = character_position
-		Character.name = str(list_players[i][0])
+		Character.name = str(list_players[i][1])
 		Character.set_multiplayer_authority(list_players[i][0])
 		Character.set_nickname(list_players[i][1])
 		add_child(Hud)

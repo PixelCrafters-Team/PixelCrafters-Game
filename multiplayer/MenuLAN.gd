@@ -46,12 +46,10 @@ func _on_start_pressed():
 	pass
 
 
-@rpc("any_peer", "call_local")
+@rpc("authority", "call_local")
 func start_game():
 	get_parent().click_sound.play()
-	
 	var scene = get_parent().game_scene
-	#scene.set_character(team, num_character)
 	scene.create_game(scene)
 	get_parent().get_node("MusicMenu").stream_paused = true
 	get_parent().add_child(scene)

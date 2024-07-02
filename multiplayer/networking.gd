@@ -13,30 +13,36 @@ var players = []
 signal list_changed
 signal connection_reset
 
+
 func _ready():
 	multiplayer.connected_to_server.connect(self.connected_server)
 	multiplayer.connection_failed.connect(self.connection_fail)
 	multiplayer.server_disconnected.connect(self.server_crash)
 	pass
 
+
 func connected_server():
 	id = multiplayer.multiplayer_peer.get_unique_id()
 	rpc("register_player", id, name_player)
 	pass
 
+
 func pair_disconnected(id):
 	rpc("remove_player", id)
 	pass
 
+
 func connection_fail():
 	resetar_conexao()
 	pass
+
 
 func server_crash():
 	if not get_tree().current_scene.name == "LAN":
 		get_tree().change_scene_to_file("res://MenuLAN.tscn")
 	resetar_conexao()
 	pass
+
 
 func resetar_conexao():
 	pair = null
@@ -45,15 +51,17 @@ func resetar_conexao():
 	emit_signal("connection_reset")
 	pass
 
+
 @rpc("any_peer")
 func register_player(id, name):
 	if multiplayer.is_server():
 		for i in range(players.size()):
 			rpc_id(id, "register_player", players[i][0], players[i][1])
 		rpc("register_player", id, name)
-	players.append([id, name])
+	players.append([id, name, null])
 	emit_signal("list_changed")
 	pass
+
 
 @rpc("any_peer", "call_local")
 func remove_player(id):
@@ -64,6 +72,7 @@ func remove_player(id):
 			emit_signal("list_changed")
 			return
 	pass
+
 
 func create_server():
 	pair = ENetMultiplayerPeer.new()
@@ -78,23 +87,28 @@ func create_server():
 		resetar_conexao()
 	pass
 
+
 func join_server():
 	pair = ENetMultiplayerPeer.new()
 	pair.create_client(ip, PORT)
 	multiplayer.set_multiplayer_peer(pair)
 	pass
 
+
 func update_ip(new_ip):
 	ip = new_ip
 	pass
+
 
 func update_name(new_name):
 	name_player = new_name
 	pass
 
+
 func return_list():
 	return players
 	pass
+
 
 func return_ip():
 	var list_ip = IP.get_local_addresses()
@@ -102,4 +116,16 @@ func return_ip():
 		if list_ip[i].begins_with("192"):
 			return list_ip[i]
 	return IPSTANDARD
+	pass
+	
+	
+@rpc("any_peer")
+func update_list_character(i, character):
+	print("update list")
+	players[i][2] = character; 
+	emit_signal("list_changed")
+
+
+func get_player_id():
+	return id
 	pass
