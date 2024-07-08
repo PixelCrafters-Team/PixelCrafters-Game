@@ -4,7 +4,6 @@ extends Node2D
 
 var Map = preload("res://world/scenes/map.tscn").instantiate()
 var Hud = preload("res://screens/scenes/hud.tscn").instantiate()
-var SceneCharacter
 var Character
 var character_position
 var num_character

@@ -66,7 +66,7 @@ func _physics_process(delta):
 		if Input.is_key_pressed(KEY_C) and is_in_group("cats"):
 			unfreeze_cat()
 			
-		if Input.is_key_pressed(KEY_Z) and is_in_group("dogs") and get_name() == "Character_estrela":
+		if Input.is_key_pressed(KEY_Z) and is_in_group("dogs") and is_in_group("estrela"):
 			activate_skill()
 	
 
@@ -131,14 +131,14 @@ func activate_skill():
 		$EffectActiveSkill.play()
 		$Skill/SkillDuration.start(5)
 		$Skill.visible = true
-		if get_name() == "Character_estrela":
+		if is_in_group("estrela"):
 			is_skill_estrela = true
 			get_parent().get_node("HUD").message_game("Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes")
 		
 func _on_skill_duration_timeout():
 	$Skill.visible = false
 	is_skill_active = false
-	if get_name() == "Character_estrela":
+	if is_in_group("estrela"):
 		is_skill_estrela = false
 		get_parent().get_node("HUD").start_timer()
 	$Skill/SkillDuration.stop()

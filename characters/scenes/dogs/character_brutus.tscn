@@ -355,7 +355,7 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[node name="Character_brutus" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["dogs"]]
+[node name="Character_brutus" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["brutus", "dogs"]]
 collision_layer = 0
 script = ExtResource("1_0esyq")
 animation_tree = NodePath("AnimationTree")
