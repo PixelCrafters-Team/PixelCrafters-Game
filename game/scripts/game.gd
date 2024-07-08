@@ -68,8 +68,8 @@ func create_game(scene):
 		Character.name = str(list_players[i][1])
 		Character.set_multiplayer_authority(list_players[i][0])
 		Character.set_nickname(list_players[i][1])
-		add_child(Hud)
-		$HUD.build_uhd()
+	add_child(Hud)
+	$HUD.build_uhd()
 	
 
 func _on_music_game_finished():

@@ -127,8 +127,7 @@ func start_timer():
 	
 	
 func message_game(text):
-	if !get_parent().get_node('Character_estrela'):
-		$Team/MarginContainer/VBoxContainer/GamMessages/EffectNotificationMessage.play()
+	$Team/MarginContainer/VBoxContainer/GamMessages/EffectNotificationMessage.play()
 	$Team/MarginContainer/VBoxContainer/GamMessages.text = text
 	$Team/MarginContainer/VBoxContainer/GamMessages/TimerMessage.start(2)
 	
