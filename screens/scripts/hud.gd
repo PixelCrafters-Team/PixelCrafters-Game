@@ -117,6 +117,7 @@ func _on_timer_charge_timeout():
 		$SkillCharge/TimerCharge.stop()
 		charge_skill = 0
 		$SkillCharge/TimerCharge/EffectCharge.play()
+		message_game("Habilidade recarregada")
 	
 		
 func start_timer():
