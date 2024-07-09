@@ -117,7 +117,7 @@ func _on_timer_charge_timeout():
 		$SkillCharge/TimerCharge.stop()
 		charge_skill = 0
 		$SkillCharge/TimerCharge/EffectCharge.play()
-		message_game("Habilidade recarregada")
+		message_game("Habilidade recarregada", false)
 	
 		
 func start_timer():
@@ -127,8 +127,9 @@ func start_timer():
 	$SkillCharge/TimerCharge/EffectCharge.play()
 	
 	
-func message_game(text):
-	$Team/MarginContainer/VBoxContainer/GamMessages/EffectNotificationMessage.play()
+func message_game(text, som=true):
+	if som == true:
+		$Team/MarginContainer/VBoxContainer/GamMessages/EffectNotificationMessage.play()
 	$Team/MarginContainer/VBoxContainer/GamMessages.text = text
 	$Team/MarginContainer/VBoxContainer/GamMessages/TimerMessage.start(2)
 	

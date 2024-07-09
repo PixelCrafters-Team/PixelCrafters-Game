@@ -133,13 +133,12 @@ func activate_skill():
 		$Skill.visible = true
 		if is_in_group("estrela"):
 			is_skill_estrela = true
-			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes",  $namePlayer.text)
+			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes")
 			
 
 @rpc
-func set_message_game_hud(text, player):
-	if $namePlayer.text != player:
-		get_parent().get_node("HUD").message_game(text)
+func set_message_game_hud(text):
+	get_parent().get_node("HUD").message_game(text)
 		
 	
 func _on_skill_duration_timeout():

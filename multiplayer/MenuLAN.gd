@@ -41,8 +41,17 @@ func _on_connect_pressed():
 
 
 func _on_start_pressed():
-	if multiplayer.is_server():
+	var all_characters_chosen = true
+	var list_players = Networking.return_list()
+	for i in range(list_players.size()):
+		if list_players[i][2] == null:
+			all_characters_chosen = false
+			
+	if multiplayer.is_server() and all_characters_chosen == true:
 		rpc("start_game")
+	else:
+		$Panel/ErroPanel/Label.text = "Todos os jogadores devem escolher seus personagens antes!"
+		$Panel.visible = true
 	pass
 
 
@@ -70,14 +79,12 @@ pass
 
 
 func connection_reset():
-	$ErroPanel.show()
+	$Panel.show()
 	pass
 
 
 func _on_erropanel_button_pressed():
-	$Criar.disabled = false
-	$Conectar.disabled = false
-	$ErroPanel.hide()
+	$Panel.hide()
 	pass
 
 
