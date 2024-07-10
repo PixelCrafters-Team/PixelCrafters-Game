@@ -389,7 +389,7 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ncmwf")
 states/Walk/position = Vector2(634.667, 73.7036)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0jj5o"]
-radius = 4.0
+radius = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o05rv"]
 texture = ExtResource("6_mjscu")

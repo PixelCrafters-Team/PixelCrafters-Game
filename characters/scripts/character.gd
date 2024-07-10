@@ -164,7 +164,6 @@ func update_animation_state(direction: Vector2, state: String) -> void:
 func _on_area_collision_area_entered(area):
 	print(area)
 	if area.name == 'AreaCollision':	# colisão com um personagem
-		print(area.get_parent().get_groups())
 		var player_glace = area.get_parent().nickname
 		if area.get_parent().is_in_group("cats") and self.is_in_group("dogs") and get_parent().get_node(player_glace+'/TextureGlace').visible == false:
 			glace_cat(player_glace)
@@ -174,11 +173,10 @@ func _on_area_collision_area_entered(area):
 			unfreeze_cat(nickname)
 			rpc('unfreeze_cat', nickname)
 	
-	"""
-	# teletransporte
-	get_parent().teleportSound.play()
-	if area.is_in_group("teleport") and get_parent().num_map == 0:
+	if area.is_in_group("teleport") and get_parent().num_map == 0 and is_multiplayer_authority():
 		global_position = list_positions_teleport[randi_range(0, 3)]
-	elif area.is_in_group("teleport") and get_parent().num_map == 1:
+		get_parent().teleportSound.play()
+	elif area.is_in_group("teleport") and get_parent().num_map == 1 and is_multiplayer_authority():
 		global_position = list_positions_teleport[randi_range(4, 7)]
-	"""
+		get_parent().teleportSound.play()
+

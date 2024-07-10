@@ -337,7 +337,7 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ncmwf")
 states/Walk/position = Vector2(634.667, 73.7036)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pkele"]
-radius = 4.0
+radius = 7.28011
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cuxgi"]
 texture = ExtResource("4_u0ats")
@@ -402,7 +402,7 @@ limit_bottom = 968
 [node name="AreaCollision" type="Area2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="AreaCollision"]
-position = Vector2(0, -13)
+position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_pkele")
 
 [node name="namePlayer" type="Label" parent="."]
