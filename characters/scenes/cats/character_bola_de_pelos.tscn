@@ -461,9 +461,10 @@ hframes = 3
 [node name="EffectGlace" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_kw5st")
 
-[node name="AreaTeleport" type="Area2D" parent="."]
+[node name="AreaCollision" type="Area2D" parent="."]
+collision_mask = 0
 
-[node name="Collision" type="CollisionShape2D" parent="AreaTeleport"]
+[node name="Collision" type="CollisionShape2D" parent="AreaCollision"]
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_0jj5o")
 
@@ -482,4 +483,4 @@ horizontal_alignment = 1
 replication_config = SubResource("SceneReplicationConfig_corvg")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="AreaTeleport" to="." method="_on_area_teleport_area_entered"]
+[connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]

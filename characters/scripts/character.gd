@@ -62,9 +62,12 @@ func _physics_process(delta):
 			move_speed += 50
 			
 		if Input.is_key_pressed(KEY_X) and is_in_group("cats"):
-			glace_cat()
+			glace_cat(nickname)
+			rpc('glace_cat', nickname)
+			
 		if Input.is_key_pressed(KEY_C) and is_in_group("cats"):
-			unfreeze_cat()
+			unfreeze_cat(nickname)
+			rpc('unfreeze_cat', nickname)
 			
 		if Input.is_key_pressed(KEY_Z) and is_in_group("dogs") and is_in_group("estrela"):
 			activate_skill()
@@ -104,26 +107,26 @@ func animate() -> void:
 func _on_timer_timeout():
 	is_walking = false
 
-func glace_cat():
-	$TextureGlace.visible = true
-	$Texture.visible = false
-	is_glace = true
-	$EffectGlace.play()
+@rpc
+func glace_cat(player_glace=self.nickname):
+	var list_players = Networking.return_list()
+	for i in range(list_players.size()):
+		if player_glace == list_players[i][1]:
+			get_parent().get_node(player_glace+'/TextureGlace').visible = true
+			get_parent().get_node(player_glace+'/Texture').visible = false
+			get_parent().get_node(player_glace).is_glace = true
+			get_parent().get_node(player_glace+'/EffectGlace').play()
 
-func unfreeze_cat():
-	$TextureGlace.visible = false
-	$Texture.visible = true
-	is_glace = false
-	$EffectGlace.play()
+@rpc
+func unfreeze_cat(player_glace=self.nickname):
+	var list_players = Networking.return_list()
+	for i in range(list_players.size()):
+		if player_glace == list_players[i][1]:
+			get_parent().get_node(player_glace+'/TextureGlace').visible = false
+			get_parent().get_node(player_glace+'/Texture').visible = true
+			get_parent().get_node(player_glace).is_glace = false
+			get_parent().get_node(player_glace+'/EffectGlace').play()
 
-"""
-func _on_area_teleport_area_entered(area):
-	get_parent().teleportSound.play()
-	if area.is_in_group("teleport") and get_parent().num_map == 0:
-		global_position = list_positions_teleport[randi_range(0, 3)]
-	elif area.is_in_group("teleport") and get_parent().num_map == 1:
-		global_position = list_positions_teleport[randi_range(4, 7)]
-"""
 
 func activate_skill():
 	if get_parent().get_node("HUD").charge_skill == 0 and is_skill_active == false:
@@ -156,3 +159,26 @@ func update_animation_state(direction: Vector2, state: String) -> void:
 		animation_tree["parameters/Idle/blend_position"] = direction
 		animation_tree["parameters/Walk/blend_position"] = direction
 	state_machine.travel(state)
+
+
+func _on_area_collision_area_entered(area):
+	print(area)
+	if area.name == 'AreaCollision':	# colisão com um personagem
+		print(area.get_parent().get_groups())
+		var player_glace = area.get_parent().nickname
+		if area.get_parent().is_in_group("cats") and self.is_in_group("dogs") and get_parent().get_node(player_glace+'/TextureGlace').visible == false:
+			glace_cat(player_glace)
+			rpc('glace_cat', player_glace)
+			
+		if area.get_parent().is_in_group("cats") and self.is_in_group("cats") and get_node('TextureGlace').visible == true:
+			unfreeze_cat(nickname)
+			rpc('unfreeze_cat', nickname)
+	
+	"""
+	# teletransporte
+	get_parent().teleportSound.play()
+	if area.is_in_group("teleport") and get_parent().num_map == 0:
+		global_position = list_positions_teleport[randi_range(0, 3)]
+	elif area.is_in_group("teleport") and get_parent().num_map == 1:
+		global_position = list_positions_teleport[randi_range(4, 7)]
+	"""

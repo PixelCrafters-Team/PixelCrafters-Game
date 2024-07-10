@@ -399,9 +399,9 @@ limit_top = -2200
 limit_right = 1136
 limit_bottom = 968
 
-[node name="AreaTeleport" type="Area2D" parent="."]
+[node name="AreaCollision" type="Area2D" parent="."]
 
-[node name="Collision" type="CollisionShape2D" parent="AreaTeleport"]
+[node name="Collision" type="CollisionShape2D" parent="AreaCollision"]
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_pkele")
 
@@ -431,5 +431,5 @@ stream = ExtResource("7_dwi22")
 replication_config = SubResource("SceneReplicationConfig_lln83")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="AreaTeleport" to="." method="_on_area_teleport_area_entered"]
+[connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]
 [connection signal="timeout" from="Skill/SkillDuration" to="." method="_on_skill_duration_timeout"]
