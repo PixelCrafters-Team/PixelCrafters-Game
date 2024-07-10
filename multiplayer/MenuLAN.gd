@@ -9,7 +9,7 @@ func _ready():
 	var name_player = main.player_name
 	$NameEdit.text = name_player
 
-	$Start.disabled = true
+	$CreateRoom/Start.disabled = true
 	Networking.list_changed.connect(self.list_changed)
 	Networking.connection_reset.connect(self.connection_reset)
 	pass
@@ -20,23 +20,30 @@ func _on_create_pressed():
 	Networking.create_server()
 	$ChoiceCharacter.visible = true
 	$ListPlayers.visible = true
-	$Start.visible = true
-	$Create.disabled = true
-	$Connect.disabled = true
+	$CreateRoom/Start.visible = true
+	$CreateRoom/Create.visible = false
+	$EnterRoom/Connect.disabled = true
 	var ip = Networking.return_ip()
-	$InfoIP2.visible = true
-	$InfoIP.text = "" + ip
+	$CreateRoom/InfoIP.visible = true
+	$CreateRoom/InfoIP/IP.text = "" + ip
+	$EnterRoom/IpEdit.visible = false
+	$NameEdit.visible = false
+	$CreateRoom/ChoiceMap.visible = true
 	pass
 
 
 func _on_connect_pressed():
 	$ChoiceCharacter.visible = true
 	$ListPlayers.visible = true
-	Networking.update_ip($IpEdit.text)
+	Networking.update_ip($CreateRoom/InfoIP/IP.text)
 	Networking.update_name($NameEdit.text)
 	Networking.join_server()
-	$Create.disabled = true
-	$Connect.disabled = true
+	$CreateRoom/Create.disabled = true
+	$EnterRoom/Connect.disabled = true
+	$EnterRoom/IpEdit.visible = false
+	$NameEdit.visible = false
+	$EnterRoom/Connect.visible = false
+	$EnterRoom/Label.visible = true
 	pass
 
 
@@ -59,7 +66,8 @@ func _on_start_pressed():
 func start_game():
 	get_parent().click_sound.play()
 	var scene = get_parent().game_scene
-	scene.create_game(scene)
+	var map = $CreateRoom/ChoiceMap.get_selected_id()
+	scene.create_game(scene, map)
 	get_parent().get_node("MusicMenu").stream_paused = true
 	get_parent().add_child(scene)
 	get_parent().get_node("LAN").queue_free()
@@ -89,7 +97,7 @@ func _on_erropanel_button_pressed():
 
 
 func _on_choice_character_pressed():
-	$Start.disabled = false
+	$CreateRoom/Start.disabled = false
 	get_parent().add_child(SceneCharacterSlection.instantiate())
 
 
