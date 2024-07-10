@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=34 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
+[ext_resource type="Texture2D" uid="uid://ljtd267x8cqe" path="res://screens/assets/glacecats.png" id="2_jrxxx"]
 [ext_resource type="Texture2D" uid="uid://ctc7msswpmepk" path="res://screens/assets/icons/bone_hud.png" id="3_en02k"]
 [ext_resource type="Texture2D" uid="uid://woxffrq0op2y" path="res://screens/assets/icons/home_dog.png" id="5_jnmrr"]
 [ext_resource type="AudioStream" uid="uid://cp2ud7g4re6v8" path="res://screens/assets/notification_message.mp3" id="5_rjj8a"]
@@ -376,6 +377,62 @@ offset_right = 721.0
 offset_bottom = 418.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="NumGlaceCats" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1019.0
+offset_top = 117.0
+offset_right = -979.0
+offset_bottom = 157.0
+
+[node name="Sprite2D" type="Sprite2D" parent="NumGlaceCats"]
+position = Vector2(1120, 74)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jrxxx")
+
+[node name="GlaceCats" type="Label" parent="NumGlaceCats"]
+custom_minimum_size = Vector2(0, 100)
+offset_left = 1032.0
+offset_top = 40.0
+offset_right = 1099.0
+offset_bottom = 142.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bw5gp")
+theme_override_font_sizes/font_size = 38
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="NumGlaceCats"]
+custom_minimum_size = Vector2(0, 100)
+offset_left = 1085.0
+offset_top = 42.0
+offset_right = 1110.0
+offset_bottom = 142.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bw5gp")
+theme_override_font_sizes/font_size = 38
+text = "/
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalGlaceCats" type="Label" parent="NumGlaceCats"]
+custom_minimum_size = Vector2(0, 100)
+offset_left = 1054.0
+offset_top = 41.0
+offset_right = 1190.0
+offset_bottom = 143.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bw5gp")
+theme_override_font_sizes/font_size = 38
+text = " 8"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Team/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Team/MarginContainer/VBoxContainer/GamMessages/TimerMessage" to="." method="_on_timer_message_timeout"]

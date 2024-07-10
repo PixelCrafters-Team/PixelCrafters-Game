@@ -163,7 +163,6 @@ func update_animation_state(direction: Vector2, state: String) -> void:
 
 
 func _on_area_collision_area_entered(area):
-	print(area)
 	if area.name == 'AreaCollision':	# colisão com um personagem
 		var player_glace = area.get_parent().nickname
 		if area.get_parent().is_in_group("cats") and self.is_in_group("dogs") and get_parent().get_node(player_glace+'/TextureGlace').visible == false:
