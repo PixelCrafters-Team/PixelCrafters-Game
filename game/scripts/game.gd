@@ -5,7 +5,8 @@ extends Node2D
 var Map = preload("res://world/scenes/map.tscn").instantiate()
 var Hud = preload("res://screens/scenes/hud.tscn").instantiate()
 var Character
-var character_position
+var character_position_cats
+var character_position_dogs
 var num_character
 var num_map
 
@@ -34,14 +35,16 @@ func select_map(scene, map): # MAPA: 0 (centro de pesquisa) e 1 (praca central)
 		Map.get_node("PracaCentral").visible = false
 		Hud.get_node("MiniMap/SubViewport/CentroDePesquisa").visible = true
 		Hud.get_node("MiniMap/SubViewport/PracaCentral").visible = false
-		character_position = Vector2(480, 688)
+		character_position_cats = Vector2(480, 688)
+		character_position_dogs = Vector2(-579, 121)
 	else:
 		scene.add_child(Map)
 		Map.get_node("CentroDePesquisa").visible = false
 		Map.get_node("PracaCentral").visible = true
 		Hud.get_node("MiniMap/SubViewport/CentroDePesquisa").visible = false
 		Hud.get_node("MiniMap/SubViewport/PracaCentral").visible = true
-		character_position = Vector2(-720, -568)
+		character_position_cats = Vector2(-720, -568)
+		character_position_dogs = Vector2(271, -1053)
 	
 
 func set_character(team, num):
@@ -64,7 +67,11 @@ func create_game(scene):
 	for i in range(list_players.size()):
 		Character = load(list_players[i][2]).instantiate();
 		scene.add_child(Character)
-		Character.global_position = character_position
+		if Character.is_in_group("cats") == true:
+			Character.global_position = character_position_cats
+		else: 
+			Character.global_position = character_position_dogs
+			
 		Character.name = str(list_players[i][1])
 		Character.set_multiplayer_authority(list_players[i][0])
 		Character.set_nickname(list_players[i][1])
