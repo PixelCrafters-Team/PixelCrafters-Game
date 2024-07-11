@@ -144,6 +144,7 @@ func activate_skill():
 			set_message_game_hud( "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes", false)
 			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes")
 		if is_in_group("ronronante") and is_in_group("cats"):
+			is_skill_ronronante = true
 			rpc("update_ronronante_skill", true)
 			var message_ronronante = "Jogador " + $namePlayer.text + " - Ativou habilidade: Ronronar calmante"
 			set_message_game_hud(message_ronronante, false)
@@ -200,6 +201,7 @@ func _on_area_collision_area_entered(area):
 func _on_skill_duration_timeout_ronronante():
 	$Skill.visible = false
 	is_skill_active = false
+	is_skill_ronronante = false
 	rpc("update_ronronante_skill", false)
 	get_parent().get_node("HUD").start_timer()
 	$Skill/SkillDuration.stop()
