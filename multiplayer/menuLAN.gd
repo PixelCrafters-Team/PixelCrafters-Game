@@ -88,7 +88,7 @@ pass
 
 
 func connection_reset():
-	$Panel.show()
+	Networking.reset_connection()
 	pass
 
 
@@ -105,3 +105,29 @@ func _on_choice_character_pressed():
 func _on_name_edit_text_changed(new_text):
 	var main = get_tree().root.get_node("Main")
 	main.player_name = new_text
+
+@rpc("any_peer")
+func reset_conection():
+	get_parent().click_sound.play()
+	var menu_scene = preload("res://screens/scenes/menu_screen.tscn")
+	get_parent().add_child(menu_scene.instantiate())
+	connection_reset()
+	get_parent().get_node("LAN").queue_free()
+
+
+func _on_return_button_pressed():
+	if $CreateRoom/Start.visible == true:
+		rpc("reset_conection")
+		get_parent().click_sound.play()
+		
+		$Timer.start(1)
+	else:
+		reset_conection()
+	
+
+
+func _on_timer_timeout():
+	var menu_scene = preload("res://screens/scenes/menu_screen.tscn")	
+	get_parent().add_child(menu_scene.instantiate())
+	connection_reset()
+	get_parent().get_node("LAN").queue_free()

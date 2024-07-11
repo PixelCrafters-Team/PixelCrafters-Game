@@ -14,6 +14,7 @@ signal list_changed
 signal connection_reset
 
 
+
 func _ready():
 	multiplayer.connected_to_server.connect(self.connected_server)
 	multiplayer.connection_failed.connect(self.connection_fail)
@@ -33,22 +34,22 @@ func pair_disconnected(id):
 
 
 func connection_fail():
-	resetar_conexao()
+	reset_connection()
 	pass
 
 
 func server_crash():
 	if not get_tree().current_scene.name == "LAN":
 		get_tree().change_scene_to_file("res://MenuLAN.tscn")
-	resetar_conexao()
+	reset_connection()
 	pass
 
 
-func resetar_conexao():
+func reset_connection():
 	pair = null
 	multiplayer.set_multiplayer_peer(null)
 	players.clear()
-	emit_signal("connection_reset")
+	#emit_signal("connection_reset")
 	pass
 
 
@@ -84,7 +85,7 @@ func create_server():
 		id = multiplayer.multiplayer_peer.get_unique_id()
 		register_player(id, name_player)
 	else:
-		resetar_conexao()
+		reset_connection()
 	pass
 
 
