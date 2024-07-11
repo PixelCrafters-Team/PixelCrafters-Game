@@ -184,11 +184,17 @@ func _on_area_collision_area_entered(area):
 			set_message_game_hud("Jogador " + $namePlayer.text + " congelou jogador " + player_glace, false)
 			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " congelou jogador " + player_glace)
 			
-		if area.get_parent().is_in_group("cats") and self.is_in_group("cats") and get_node('TextureGlace').visible == true:
-			unfreeze_cat(nickname)
-			rpc('unfreeze_cat', nickname)
-			set_message_game_hud( "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text, false)
-			rpc("set_message_game_hud", "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text)
+		if area.get_parent().is_in_group("cats") and self.is_in_group("cats") and (get_node('TextureGlace').visible == true or get_parent().get_node(player_glace+'/TextureGlace').visible == true):
+			if get_node('TextureGlace').visible == true:
+				set_message_game_hud( "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text, false)
+				rpc("set_message_game_hud", "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text)
+				unfreeze_cat(nickname)
+				rpc('unfreeze_cat', nickname)
+			else:
+				unfreeze_cat(player_glace)
+				rpc('unfreeze_cat', player_glace)
+				set_message_game_hud( "Jogador " + $namePlayer.text + " descongelou jogador " +  player_glace, false)
+				rpc("set_message_game_hud", "Jogador " +  $namePlayer.text + " descongelou jogador " +  player_glace)
 	
 	if area.is_in_group("teleport") and get_parent().num_map == 0 and is_multiplayer_authority(): # colisão com um portal de teletransporte
 		global_position = list_positions_teleport[randi_range(0, 3)]
