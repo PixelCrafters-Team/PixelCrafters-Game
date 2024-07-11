@@ -393,6 +393,7 @@ texture = ExtResource("2_jrxxx")
 
 [node name="GlaceCats" type="Label" parent="NumGlaceCats"]
 custom_minimum_size = Vector2(0, 100)
+layout_mode = 0
 offset_left = 1032.0
 offset_top = 40.0
 offset_right = 1099.0
@@ -407,6 +408,7 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="NumGlaceCats"]
 custom_minimum_size = Vector2(0, 100)
+layout_mode = 0
 offset_left = 1085.0
 offset_top = 42.0
 offset_right = 1110.0
@@ -422,6 +424,7 @@ vertical_alignment = 1
 
 [node name="TotalGlaceCats" type="Label" parent="NumGlaceCats"]
 custom_minimum_size = Vector2(0, 100)
+layout_mode = 0
 offset_left = 1054.0
 offset_top = 41.0
 offset_right = 1190.0

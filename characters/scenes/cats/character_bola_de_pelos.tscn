@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://btty3dsxkbo88"]
+[gd_scene load_steps=38 format=3 uid="uid://btty3dsxkbo88"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_egjrr"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_rvvcd"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/effect_ice_cracking.mp3" id="5_kw5st"]
 [ext_resource type="Texture2D" uid="uid://qy37f24yrka5" path="res://screens/assets/icons/Item1.png" id="6_mjscu"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="7_64mfx"]
+[ext_resource type="Texture2D" uid="uid://b6lexifcwsfa5" path="res://characters/assets/skill_estrela.png" id="8_654fd"]
+[ext_resource type="AudioStream" uid="uid://cavagoic810ct" path="res://screens/assets/effect_dog_barking.mp3" id="9_nsp8u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daw1v"]
 radius = 5.0
@@ -433,6 +435,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uu4xc")
+}
 tree_root = SubResource("AnimationNodeStateMachine_yrob6")
 anim_player = NodePath("../Animation")
 parameters/Idle/blend_position = Vector2(0, 0)
@@ -481,6 +486,17 @@ horizontal_alignment = 1
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_corvg")
+
+[node name="Skill" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-13, -35)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("8_654fd")
+
+[node name="SkillDuration" type="Timer" parent="Skill"]
+
+[node name="EffectActiveSkill" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_nsp8u")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]

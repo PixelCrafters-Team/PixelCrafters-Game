@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c57huq0bn6a3h"]
+[gd_scene load_steps=38 format=3 uid="uid://c57huq0bn6a3h"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_oh85r"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_pul81"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://dmr5ars1ub1oc" path="res://characters/assets/effect_ice_cracking.mp3" id="5_4c8tv"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="6_0p38e"]
 [ext_resource type="Texture2D" uid="uid://qy37f24yrka5" path="res://screens/assets/icons/Item1.png" id="6_tvbod"]
+[ext_resource type="Texture2D" uid="uid://b6lexifcwsfa5" path="res://characters/assets/skill_estrela.png" id="8_oc2p3"]
+[ext_resource type="AudioStream" uid="uid://cavagoic810ct" path="res://screens/assets/effect_dog_barking.mp3" id="9_g7e0v"]
 
 [sub_resource type="Animation" id="Animation_nwgkw"]
 length = 0.001
@@ -428,6 +430,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uu4xc")
+}
 tree_root = SubResource("AnimationNodeStateMachine_yrob6")
 anim_player = NodePath("../Animation")
 parameters/Idle/blend_position = Vector2(0, 0)
@@ -482,5 +487,17 @@ horizontal_alignment = 1
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_51n33")
 
+[node name="Skill" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-13, -35)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("8_oc2p3")
+
+[node name="SkillDuration" type="Timer" parent="Skill"]
+
+[node name="EffectActiveSkill" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_g7e0v")
+
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]
+[connection signal="timeout" from="Skill/SkillDuration" to="." method="_on_skill_duration_timeout_ronronante"]

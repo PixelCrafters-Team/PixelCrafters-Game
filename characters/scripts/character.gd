@@ -14,6 +14,7 @@ var is_walking: bool = false
 var is_glace: bool = false
 var is_skill_active = false
 var is_skill_estrela = false
+var is_skill_ronronante = false
 
 var list_positions_teleport = [
 	Vector2(480, 676), 
@@ -58,10 +59,14 @@ func _physics_process(delta):
 		else:
 			move_speed = 64
 		
-		if is_skill_estrela:
+		if is_skill_estrela and is_in_group("estrela"):
 			move_speed += 50
+	
+		if is_skill_ronronante and is_in_group("dogs"):
+			print("skill ronronante")
+			move_speed = move_speed - (move_speed * 0.4)
 			
-		if Input.is_key_pressed(KEY_X) and is_in_group("cats"):
+		if Input.is_key_pressed(KEY_Z) and is_in_group("cats"):
 			glace_cat(nickname)
 			rpc('glace_cat', nickname)
 			
@@ -69,7 +74,7 @@ func _physics_process(delta):
 			unfreeze_cat(nickname)
 			rpc('unfreeze_cat', nickname)
 			
-		if Input.is_key_pressed(KEY_Z) and is_in_group("dogs") and is_in_group("estrela"):
+		if Input.is_key_pressed(KEY_X):
 			activate_skill()
 	
 
@@ -134,11 +139,15 @@ func activate_skill():
 		$EffectActiveSkill.play()
 		$Skill/SkillDuration.start(5)
 		$Skill.visible = true
-		if is_in_group("estrela"):
+		if is_in_group("estrela") and is_in_group("dogs"):
 			is_skill_estrela = true
 			set_message_game_hud( "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes", false)
 			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes")
-			
+		if is_in_group("ronronante") and is_in_group("cats"):
+			rpc("update_ronronante_skill", true)
+			var message_ronronante = "Jogador " + $namePlayer.text + " - Ativou habilidade: Ronronar calmante"
+			set_message_game_hud(message_ronronante, false)
+			rpc("set_message_game_hud", message_ronronante)
 
 @rpc
 func set_message_game_hud(text, play_effect=true):
@@ -161,6 +170,9 @@ func update_animation_state(direction: Vector2, state: String) -> void:
 		animation_tree["parameters/Walk/blend_position"] = direction
 	state_machine.travel(state)
 
+@rpc
+func update_ronronante_skill(is_active: bool):
+	is_skill_ronronante = is_active
 
 func _on_area_collision_area_entered(area):
 	if area.name == 'AreaCollision':	# colisão com um personagem
@@ -184,3 +196,10 @@ func _on_area_collision_area_entered(area):
 		global_position = list_positions_teleport[randi_range(4, 7)]
 		get_parent().teleportSound.play()
 
+
+func _on_skill_duration_timeout_ronronante():
+	$Skill.visible = false
+	is_skill_active = false
+	rpc("update_ronronante_skill", false)
+	get_parent().get_node("HUD").start_timer()
+	$Skill/SkillDuration.stop()
