@@ -35,7 +35,8 @@ func _on_create_pressed():
 func _on_connect_pressed():
 	$ChoiceCharacter.visible = true
 	$ListPlayers.visible = true
-	Networking.update_ip($CreateRoom/InfoIP/IP.text)
+	print($NameEdit.text)
+	Networking.update_ip($EnterRoom/IpEdit.text)
 	Networking.update_name($NameEdit.text)
 	Networking.join_server()
 	$CreateRoom/Create.disabled = true
