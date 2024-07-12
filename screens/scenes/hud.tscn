@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=36 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
@@ -44,6 +44,16 @@ Button/styles/pressed = SubResource("StyleBoxTexture_ahkba")
 
 [sub_resource type="SystemFont" id="SystemFont_kajlj"]
 font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47pql"]
+bg_color = Color(0.796078, 0.768627, 0.682353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0.156863, 0.105882, 0.027451, 1)
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="SystemFont" id="SystemFont_fo2f6"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -165,6 +175,11 @@ _data = {
 "charge_complete": SubResource("Animation_u5v21")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lvoh"]
+bg_color = Color(0.745098, 0.737255, 0.654902, 1)
+corner_radius_top_left = 51
+corner_radius_top_right = 50
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_j0pl6")
 
@@ -255,11 +270,18 @@ stream = ExtResource("5_rjj8a")
 
 [node name="TimerMessage" type="Timer" parent="Team/MarginContainer/VBoxContainer/GamMessages"]
 
+[node name="PanelMiniMap" type="Panel" parent="."]
+offset_left = -1.0
+offset_top = 604.0
+offset_right = 205.0
+offset_bottom = 817.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_47pql")
+
 [node name="MiniMap" type="SubViewportContainer" parent="."]
-offset_left = 7.0
-offset_top = 601.0
-offset_right = 207.0
-offset_bottom = 801.0
+offset_left = 2.0
+offset_top = 608.0
+offset_right = 202.0
+offset_bottom = 808.0
 
 [node name="SubViewport" type="SubViewport" parent="MiniMap"]
 handle_input_locally = false
@@ -282,10 +304,10 @@ texture = ExtResource("7_isbgt")
 zoom = Vector2(0.2, 0.2)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 7.0
-offset_top = 604.0
-offset_right = 208.0
-offset_bottom = 801.0
+offset_left = 2.0
+offset_top = 610.0
+offset_right = 203.0
+offset_bottom = 807.0
 theme_override_colors/font_color = Color(0.0117647, 0.203922, 1, 1)
 theme_override_font_sizes/font_size = 100
 text = ".
@@ -381,15 +403,28 @@ grow_vertical = 1
 [node name="NumGlaceCats" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -1019.0
-offset_top = 117.0
-offset_right = -979.0
-offset_bottom = 157.0
+offset_left = -1020.0
+offset_top = 138.0
+offset_right = -980.0
+offset_bottom = 178.0
 
 [node name="Sprite2D" type="Sprite2D" parent="NumGlaceCats"]
-position = Vector2(2144, -45)
-scale = Vector2(0.3, 0.3)
+self_modulate = Color(0.936091, 0.932016, 0.895364, 1)
+position = Vector2(2144, -53.425)
+scale = Vector2(0.318519, 0.369917)
 texture = ExtResource("18_x6n6k")
+
+[node name="Label" type="Label" parent="NumGlaceCats/Sprite2D"]
+offset_left = -233.0
+offset_top = -91.1099
+offset_right = 230.0
+offset_bottom = -26.1099
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bw5gp")
+theme_override_font_sizes/font_size = 53
+theme_override_styles/normal = SubResource("StyleBoxFlat_7lvoh")
+text = "Gatos Congelados"
+horizontal_alignment = 1
 
 [node name="GlaceCats" type="Label" parent="NumGlaceCats"]
 custom_minimum_size = Vector2(0, 100)
