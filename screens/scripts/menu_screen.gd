@@ -3,6 +3,7 @@ extends Control
 var character_select_scene = preload("res://screens/scenes/character_selection_screen.tscn")
 var settings_scene = preload("res://screens/scenes/settings_screen.tscn")
 var room_scene = preload("res://multiplayer/MenuLAN.tscn")
+var server_disconnected = false
 
 func _ready():
 	$AnimationDog/AnimationRoute.play("animationDog")
@@ -20,6 +21,11 @@ func _physics_process(delta):
 		get_parent().click_sound.play()
 		get_parent().add_child(character_select_scene.instantiate())
 		get_parent().get_node("Menu_screen").queue_free()
+	
+	if server_disconnected:
+		server_disconnected = false
+		$Panel/ErroPanel/Label.text = "Erro o servidor se desconectou da sala"
+		$Panel.visible = true
 
 		
 func _on_quit_buton_pressed():
@@ -59,3 +65,8 @@ func _on_create_room_pressed():
 	get_parent().get_node("LAN/CreateRoom/InfoIP").visible = false
 	get_parent().get_node("LAN/LabelTitle").text = "CRIAR EM UMA SALA"
 	get_parent().get_node("Menu_screen").queue_free()
+
+
+func _on_button_pressed():
+	get_parent().click_sound.play()
+	$Panel.visible = false

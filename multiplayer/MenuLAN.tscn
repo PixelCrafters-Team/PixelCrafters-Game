@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctoap6e1xmr6y"]
+[gd_scene load_steps=21 format=3 uid="uid://ctoap6e1xmr6y"]
 
 [ext_resource type="Script" path="res://multiplayer/menuLAN.gd" id="1_s6sxb"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_c13qs"]
@@ -19,7 +19,7 @@ Button/styles/hover = SubResource("StyleBoxTexture_pkfgx")
 Button/styles/normal = SubResource("StyleBoxTexture_r28wq")
 Button/styles/pressed = SubResource("StyleBoxTexture_pkfgx")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6cdh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkugw"]
 bg_color = Color(0.156863, 0.105882, 0.027451, 1)
 border_width_left = 1
 border_width_top = 1
@@ -33,7 +33,7 @@ corner_radius_bottom_left = 15
 shadow_size = 5
 shadow_offset = Vector2(3, 3)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4jqf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxv57"]
 bg_color = Color(0.796078, 0.768627, 0.682353, 1)
 border_width_left = 1
 border_width_top = 1
@@ -51,9 +51,37 @@ shadow_offset = Vector2(3, 3)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_pressed_color = Color(0.239216, 0.168627, 0.0588235, 1)
 Button/fonts/font = null
-Button/styles/hover = SubResource("StyleBoxFlat_s6cdh")
-Button/styles/normal = SubResource("StyleBoxFlat_a4jqf")
-Button/styles/pressed = SubResource("StyleBoxFlat_a4jqf")
+Button/styles/hover = SubResource("StyleBoxFlat_mkugw")
+Button/styles/normal = SubResource("StyleBoxFlat_pxv57")
+Button/styles/pressed = SubResource("StyleBoxFlat_pxv57")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4jqf"]
+bg_color = Color(0.796078, 0.768627, 0.682353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0.156863, 0.105882, 0.027451, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6cdh"]
+bg_color = Color(0.156863, 0.105882, 0.027451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="Theme" id="Theme_wq30m"]
 OptionButton/colors/font_color = Color(1, 1, 1, 1)
@@ -115,6 +143,7 @@ texture = ExtResource("2_c13qs")
 
 [node name="ReturnButton" type="Button" parent="."]
 custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
 offset_left = 49.0
 offset_top = 44.0
 offset_right = 129.0
@@ -392,6 +421,8 @@ text = "Confirmar"
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="CreateRoom/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="CreateRoom/ChoiceMap" to="." method="_on_choice_map_pressed"]
+[connection signal="toggled" from="CreateRoom/ChoiceMap" to="." method="_on_choice_map_toggled"]
 [connection signal="pressed" from="CreateRoom/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="EnterRoom/Connect" to="." method="_on_connect_pressed"]
 [connection signal="text_changed" from="NameEdit" to="." method="_on_name_edit_text_changed"]

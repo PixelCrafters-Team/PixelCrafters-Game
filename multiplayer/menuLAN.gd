@@ -16,6 +16,7 @@ func _ready():
 
 
 func _on_create_pressed():
+	get_parent().click_sound.play()
 	Networking.update_name($NameEdit.text)
 	Networking.create_server()
 	$ChoiceCharacter.visible = true
@@ -33,6 +34,7 @@ func _on_create_pressed():
 
 
 func _on_connect_pressed():
+	get_parent().click_sound.play()
 	$ChoiceCharacter.visible = true
 	$ListPlayers.visible = true
 	print($NameEdit.text)
@@ -49,6 +51,7 @@ func _on_connect_pressed():
 
 
 func _on_start_pressed():
+	get_parent().click_sound.play()
 	var all_characters_chosen = true
 	var list_players = Networking.return_list()
 	for i in range(list_players.size()):
@@ -93,11 +96,13 @@ func connection_reset():
 
 
 func _on_erropanel_button_pressed():
+	get_parent().click_sound.play()
 	$Panel.hide()
 	pass
 
 
 func _on_choice_character_pressed():
+	get_parent().click_sound.play()
 	$CreateRoom/Start.disabled = false
 	get_parent().add_child(SceneCharacterSlection.instantiate())
 
@@ -106,6 +111,7 @@ func _on_name_edit_text_changed(new_text):
 	var main = get_tree().root.get_node("Main")
 	main.player_name = new_text
 
+
 @rpc("any_peer")
 func reset_conection():
 	get_parent().click_sound.play()
@@ -113,9 +119,10 @@ func reset_conection():
 	get_parent().add_child(menu_scene.instantiate())
 	connection_reset()
 	get_parent().get_node("LAN").queue_free()
-
+	get_parent().get_node("Menu_screen").server_disconnected = true
 
 func _on_return_button_pressed():
+	get_parent().click_sound.play()
 	if $CreateRoom/Start.visible == true:
 		rpc("reset_conection")
 		get_parent().click_sound.play()
@@ -125,9 +132,16 @@ func _on_return_button_pressed():
 		reset_conection()
 	
 
-
 func _on_timer_timeout():
 	var menu_scene = preload("res://screens/scenes/menu_screen.tscn")	
 	get_parent().add_child(menu_scene.instantiate())
 	connection_reset()
 	get_parent().get_node("LAN").queue_free()
+
+
+func _on_choice_map_pressed():
+	get_parent().click_sound.play()
+
+
+func _on_choice_map_toggled(toggled_on):
+	get_parent().click_sound.play()

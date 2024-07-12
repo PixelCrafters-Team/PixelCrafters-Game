@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://y61hurvn4hcq"]
+[gd_scene load_steps=42 format=3 uid="uid://y61hurvn4hcq"]
 
 [ext_resource type="Script" path="res://screens/scripts/menu_screen.gd" id="1_vi22p"]
 [ext_resource type="Texture2D" uid="uid://n8lc4gychwg3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
@@ -284,6 +284,56 @@ _data = {
 "bone_animation": SubResource("Animation_13qj7")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uh5yk"]
+bg_color = Color(0.796078, 0.768627, 0.682353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0.156863, 0.105882, 0.027451, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6cdh"]
+bg_color = Color(0.156863, 0.105882, 0.027451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4jqf"]
+bg_color = Color(0.796078, 0.768627, 0.682353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0.156863, 0.105882, 0.027451, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="Theme" id="Theme_bsied"]
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(0.239216, 0.168627, 0.0588235, 1)
+Button/fonts/font = null
+Button/styles/hover = SubResource("StyleBoxFlat_s6cdh")
+Button/styles/normal = SubResource("StyleBoxFlat_a4jqf")
+Button/styles/pressed = SubResource("StyleBoxFlat_a4jqf")
+
 [node name="Menu_screen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -435,7 +485,53 @@ libraries = {
 "": SubResource("AnimationLibrary_8bpr2")
 }
 
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 49.0
+offset_top = 42.0
+offset_right = 1395.0
+offset_bottom = 766.0
+
+[node name="ErroPanel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 243.0
+offset_right = 882.0
+offset_bottom = 501.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uh5yk")
+
+[node name="Label" type="Label" parent="Panel/ErroPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -197.0
+offset_right = 197.0
+offset_bottom = 178.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_bjknq")
+theme_override_font_sizes/font_size = 28
+text = "Ocorreu um erro 
+Tente novamente "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Panel/ErroPanel"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 173.0
+offset_right = 328.0
+offset_bottom = 229.0
+theme = SubResource("Theme_bsied")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_bjknq")
+theme_override_font_sizes/font_size = 28
+text = "Confirmar"
+
 [connection signal="pressed" from="CreateRoom" to="." method="_on_create_room_pressed"]
 [connection signal="pressed" from="StartButton2" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Panel/ErroPanel/Button" to="." method="_on_button_pressed"]
