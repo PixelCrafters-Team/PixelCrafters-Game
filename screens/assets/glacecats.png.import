@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3v1dpdiu6tbv"
-path="res://.godot/imported/glacecats2 (1).png-d05d508c757d88f11f847b60141ca4b8.ctex"
+path="res://.godot/imported/glacecats.png-4017f016880acb548498502b424647bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://screens/assets/glacecats2 (1).png"
-dest_files=["res://.godot/imported/glacecats2 (1).png-d05d508c757d88f11f847b60141ca4b8.ctex"]
+source_file="res://screens/assets/glacecats.png"
+dest_files=["res://.godot/imported/glacecats.png-4017f016880acb548498502b424647bf.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=34 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cgca214vixvhb" path="res://screens/assets/skill_brutus.png" id="9_pq2k0"]
 [ext_resource type="AudioStream" uid="uid://cxwe51ievgvgb" path="res://screens/assets/timer_charge.mp3" id="9_qx2rj"]
 [ext_resource type="Texture2D" uid="uid://bnyb78rtab6ta" path="res://screens/assets/skill_estrela.png" id="10_5ttmg"]
+[ext_resource type="Texture2D" uid="uid://3v1dpdiu6tbv" path="res://screens/assets/glacecats.png" id="18_x6n6k"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
 content_margin_left = 50.0
@@ -386,16 +387,17 @@ offset_right = -979.0
 offset_bottom = 157.0
 
 [node name="Sprite2D" type="Sprite2D" parent="NumGlaceCats"]
-position = Vector2(1120, 74)
-scale = Vector2(0.5, 0.5)
+position = Vector2(2144, -45)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("18_x6n6k")
 
 [node name="GlaceCats" type="Label" parent="NumGlaceCats"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 0
-offset_left = 1032.0
-offset_top = 40.0
-offset_right = 1099.0
-offset_bottom = 142.0
+offset_left = 2070.0
+offset_top = -96.0
+offset_right = 2137.0
+offset_bottom = 6.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_bw5gp")
@@ -404,29 +406,13 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="NumGlaceCats"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 0
-offset_left = 1085.0
-offset_top = 42.0
-offset_right = 1110.0
-offset_bottom = 142.0
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_bw5gp")
-theme_override_font_sizes/font_size = 38
-text = "/
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="TotalGlaceCats" type="Label" parent="NumGlaceCats"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 0
-offset_left = 1054.0
-offset_top = 41.0
-offset_right = 1190.0
-offset_bottom = 143.0
+offset_left = 2148.0
+offset_top = -95.0
+offset_right = 2203.0
+offset_bottom = 5.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_bw5gp")

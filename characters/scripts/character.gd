@@ -114,24 +114,28 @@ func _on_timer_timeout():
 	is_walking = false
 
 @rpc
-func glace_cat(player_glace=self.nickname):
+func glace_cat(player_glace=self.nickname, play_effect=true):
 	var list_players = Networking.return_list()
 	for i in range(list_players.size()):
 		if player_glace == list_players[i][1]:
 			get_parent().get_node(player_glace+'/TextureGlace').visible = true
 			get_parent().get_node(player_glace+'/Texture').visible = false
 			get_parent().get_node(player_glace).is_glace = true
-			get_parent().get_node(player_glace+'/EffectGlace').play()
+			
+			if player_glace == get_name_player() or play_effect == true:
+				get_parent().get_node(player_glace+'/EffectGlace').play()
 
 @rpc
-func unfreeze_cat(player_glace=self.nickname):
+func unfreeze_cat(player_glace=self.nickname, play_effect=true):
 	var list_players = Networking.return_list()
 	for i in range(list_players.size()):
 		if player_glace == list_players[i][1]:
 			get_parent().get_node(player_glace+'/TextureGlace').visible = false
 			get_parent().get_node(player_glace+'/Texture').visible = true
 			get_parent().get_node(player_glace).is_glace = false
-			get_parent().get_node(player_glace+'/EffectGlace').play()
+			
+			if player_glace == get_name_player() or play_effect == true:
+				get_parent().get_node(player_glace+'/EffectGlace').play()
 
 
 func activate_skill():
@@ -182,35 +186,50 @@ func update_animation_state(direction: Vector2, state: String) -> void:
 		animation_tree["parameters/Walk/blend_position"] = direction
 	state_machine.travel(state)
 
+
 @rpc
 func update_ronronante_skill(is_active: bool):
 	print('ronronante')
 	is_skill_ronronante = is_active
+
 	
 @rpc
 func update_sombra_skill(is_active: bool):
 	print('sombra')
-	if (is_active and is_in_group("dogs")):
+	var name_player = get_name_player()	
+	if (get_parent().get_node(name_player).is_in_group("dogs") and is_active):
 		get_parent().get_node(self.nickname).visible = false
 	else:
 		get_parent().get_node(self.nickname).visible = true
 	is_skill_sombra = is_active
 	
+	
 @rpc
-func update_boladepelos_skill(is_active: bool):
-	print('boladepelos')
-	if (is_in_group("dogs") and is_active):
-		%CentroDePesquisa.visible = false
+func update_boladepelos_skill(is_active: bool):		
+	var name_player = get_name_player()	
+	if (get_parent().get_node(name_player).is_in_group("dogs") and is_active):
+		get_parent().get_node("Map").visible = false
 	else:
-		%CentroDePesquisa.visible = true
+		get_parent().get_node("Map").visible = true
 	is_skill_boladepelos = is_active
 
+
+func get_name_player() -> String:
+	var id = Networking.get_player_id()
+	var list_players = Networking.return_list()
+	var name_player = null
+	for i in range(list_players.size()):
+		if id == list_players[i][0]:
+			name_player = list_players[i][1]
+	return name_player
+	
+	
 func _on_area_collision_area_entered(area):
 	if area.name == 'AreaCollision':	# colisão com um personagem
 		var player_glace = area.get_parent().nickname
 		if area.get_parent().is_in_group("cats") and self.is_in_group("dogs") and get_parent().get_node(player_glace+'/TextureGlace').visible == false:
 			glace_cat(player_glace)
-			rpc('glace_cat', player_glace)
+			rpc('glace_cat', player_glace, false)
 			set_message_game_hud("Jogador " + $namePlayer.text + " congelou jogador " + player_glace, false)
 			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " congelou jogador " + player_glace)
 			
@@ -219,7 +238,7 @@ func _on_area_collision_area_entered(area):
 				set_message_game_hud( "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text, false)
 				rpc("set_message_game_hud", "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text)
 				unfreeze_cat(nickname)
-				rpc('unfreeze_cat', nickname)
+				rpc('unfreeze_cat', nickname, false)
 			else:
 				unfreeze_cat(player_glace)
 				rpc('unfreeze_cat', player_glace)
