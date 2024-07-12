@@ -15,6 +15,8 @@ var is_glace: bool = false
 var is_skill_active = false
 var is_skill_estrela = false
 var is_skill_ronronante = false
+var is_skill_sombra = false
+var is_skill_boladepelos = false
 
 var list_positions_teleport = [
 	Vector2(480, 676), 
@@ -63,7 +65,6 @@ func _physics_process(delta):
 			move_speed += 50
 	
 		if is_skill_ronronante and is_in_group("dogs"):
-			print("skill ronronante")
 			move_speed = move_speed - (move_speed * 0.4)
 			
 		if Input.is_key_pressed(KEY_Z) and is_in_group("cats"):
@@ -143,13 +144,23 @@ func activate_skill():
 			is_skill_estrela = true
 			set_message_game_hud( "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes", false)
 			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes")
-		if is_in_group("ronronante") and is_in_group("cats"):
+		if is_in_group("ronronante"):
 			is_skill_ronronante = true
 			rpc("update_ronronante_skill", true)
 			var message_ronronante = "Jogador " + $namePlayer.text + " - Ativou habilidade: Ronronar calmante"
 			set_message_game_hud(message_ronronante, false)
 			rpc("set_message_game_hud", message_ronronante)
-
+		if is_in_group("boladepelos"):
+			is_skill_boladepelos = true
+			rpc("update_boladepelos_skill", true)
+			var message_boladepelos = "Jogador " + $namePlayer.text + " - Ativou habilidade: Ataque de pelos"
+			set_message_game_hud(message_boladepelos, false)
+		if is_in_group("sombra"):
+			is_skill_sombra = true
+			rpc("update_sombra_skill", true)
+			var message_sombra = "Jogador " + $namePlayer.text + " - Ativou habilidade: Esconderijo felino"
+			set_message_game_hud(message_sombra, false)
+			
 @rpc
 func set_message_game_hud(text, play_effect=true):
 	get_parent().get_node("HUD").message_game(text, play_effect)
@@ -173,7 +184,26 @@ func update_animation_state(direction: Vector2, state: String) -> void:
 
 @rpc
 func update_ronronante_skill(is_active: bool):
+	print('ronronante')
 	is_skill_ronronante = is_active
+	
+@rpc
+func update_sombra_skill(is_active: bool):
+	print('sombra')
+	if (is_active and is_in_group("dogs")):
+		get_parent().get_node(self.nickname).visible = false
+	else:
+		get_parent().get_node(self.nickname).visible = true
+	is_skill_sombra = is_active
+	
+@rpc
+func update_boladepelos_skill(is_active: bool):
+	print('boladepelos')
+	if (is_in_group("dogs") and is_active):
+		%CentroDePesquisa.visible = false
+	else:
+		%CentroDePesquisa.visible = true
+	is_skill_boladepelos = is_active
 
 func _on_area_collision_area_entered(area):
 	if area.name == 'AreaCollision':	# colisão com um personagem
@@ -209,5 +239,23 @@ func _on_skill_duration_timeout_ronronante():
 	is_skill_active = false
 	is_skill_ronronante = false
 	rpc("update_ronronante_skill", false)
+	get_parent().get_node("HUD").start_timer()
+	$Skill/SkillDuration.stop()
+
+
+func _on_skill_duration_timeout_sombra():
+	$Skill.visible = false
+	is_skill_active = false
+	is_skill_sombra = false
+	rpc("update_sombra_skill", false)
+	get_parent().get_node("HUD").start_timer()
+	$Skill/SkillDuration.stop()
+
+
+func _on_skill_duration_timeout_boladepelos():
+	$Skill.visible = false
+	is_skill_active = false
+	is_skill_boladepelos = false
+	rpc("update_boladepelos_skill", false)
 	get_parent().get_node("HUD").start_timer()
 	$Skill/SkillDuration.stop()

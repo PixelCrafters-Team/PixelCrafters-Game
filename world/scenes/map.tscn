@@ -337,6 +337,7 @@ _data = {
 script = ExtResource("1_34aoa")
 
 [node name="CentroDePesquisa" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 rotation = 0.442422
 scale = Vector2(0.581, 0.581)
 texture = ExtResource("1_0bqkm")
@@ -583,6 +584,7 @@ libraries = {
 }
 
 [node name="PracaCentral" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(-259, -1280)
 rotation = 0.00498426
 scale = Vector2(0.581, 0.581)

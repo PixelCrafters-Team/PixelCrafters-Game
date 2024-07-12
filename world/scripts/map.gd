@@ -11,4 +11,3 @@ func _ready():
 	$PracaCentral/Teleport3/AnimationTeleport.play("teleport_animation")
 	$PracaCentral/Teleport4/AnimationTeleport.play("teleport_animation")
 	
-	
