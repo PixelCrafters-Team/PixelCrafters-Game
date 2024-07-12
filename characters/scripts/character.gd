@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
+const SPEED_WALK = 64.0
+
 @export_category("Variables")
-@export var move_speed: float = 64
+@export var move_speed: float = SPEED_WALK
 @export var friction: float = 0.2
 @export var acceleration: float = 0.2
 
@@ -56,16 +58,16 @@ func _physics_process(delta):
 		else:
 			is_walking = false		
 		
-		if Input.is_key_pressed(KEY_SPACE):
-			move_speed = 100
-		else:
-			move_speed = 64
+		if !(is_skill_ronronante and is_in_group("dogs")):
+			if Input.is_key_pressed(KEY_SPACE):
+				move_speed = SPEED_WALK + 36
+			else:
+				move_speed = SPEED_WALK
+		elif is_skill_ronronante and is_in_group("dogs"):
+			move_speed = SPEED_WALK - (SPEED_WALK * 0.5)
 		
 		if is_skill_estrela and is_in_group("estrela"):
 			move_speed += 50
-	
-		if is_skill_ronronante and is_in_group("dogs"):
-			move_speed = move_speed - (move_speed * 0.4)
 			
 		if Input.is_key_pressed(KEY_Z) and is_in_group("cats"):
 			glace_cat(nickname)
@@ -190,8 +192,8 @@ func update_animation_state(direction: Vector2, state: String) -> void:
 @rpc
 func update_ronronante_skill(is_active: bool):
 	print('ronronante')
-	is_skill_ronronante = is_active
-
+	var name_player = get_name_player()	
+	get_parent().get_node(name_player).is_skill_ronronante = is_active	
 	
 @rpc
 func update_sombra_skill(is_active: bool):
