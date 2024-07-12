@@ -3,6 +3,7 @@ extends Control
 var team = "dogs"
 var num_character = 1
 var SceneCharacterSlection = preload("res://screens/scenes/character_selection_screen.tscn")
+var is_create_room = false
 
 func _ready():
 	var main = get_tree().root.get_node("Main")
@@ -17,6 +18,7 @@ func _ready():
 
 func _on_create_pressed():
 	get_parent().click_sound.play()
+	is_create_room = true
 	Networking.update_name($NameEdit.text)
 	Networking.create_server()
 	$ChoiceCharacter.visible = true
@@ -113,23 +115,24 @@ func _on_name_edit_text_changed(new_text):
 
 
 @rpc("any_peer")
-func reset_conection():
+func reset_conection(is_Server):
 	get_parent().click_sound.play()
 	var menu_scene = preload("res://screens/scenes/menu_screen.tscn")
 	get_parent().add_child(menu_scene.instantiate())
 	connection_reset()
 	get_parent().get_node("LAN").queue_free()
-	get_parent().get_node("Menu_screen").server_disconnected = true
+	if(is_Server):
+		get_parent().get_node("Menu_screen").server_disconnected = true
 
 func _on_return_button_pressed():
 	get_parent().click_sound.play()
-	if $CreateRoom/Start.visible == true:
-		rpc("reset_conection")
+	if $CreateRoom/Start.visible == true and is_create_room:
+		rpc("reset_conection", true)
 		get_parent().click_sound.play()
 		
 		$Timer.start(1)
 	else:
-		reset_conection()
+		reset_conection(false)
 	
 
 func _on_timer_timeout():
