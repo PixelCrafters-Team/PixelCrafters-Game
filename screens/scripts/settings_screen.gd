@@ -31,12 +31,6 @@ func _physics_process(delta):
 			get_parent().get_node("SettingsScreen").queue_free()
 	
 
-func _on_exit_button_pressed():
-	var main = get_tree().root.get_node("Main")
-	main.click_sound.play()
-	get_tree().quit()
-
-
 func _on_return_button_pressed():
 	var main = get_tree().root.get_node("Main")
 	if is_scene_game:

@@ -1,10 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://mmuf48qm5ft3"]
+[gd_scene load_steps=20 format=3 uid="uid://mmuf48qm5ft3"]
 
 [ext_resource type="Script" path="res://screens/scripts/settings_screen.gd" id="1_kpwvm"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="1_nxqv5"]
-[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="2_jdceu"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_sqiu3"]
-[ext_resource type="Texture2D" uid="uid://b03heab55i88g" path="res://screens/assets/icons/Icon_Exclamation.png" id="4_6xdws"]
+[ext_resource type="Texture2D" uid="uid://dw7ox6cxhuq6v" path="res://screens/assets/icons/Icon_Question.png" id="4_jgben"]
 [ext_resource type="StyleBox" uid="uid://dqqgu7sj8v4xo" path="res://screens/themes/style_button_music.tres" id="6_m5hv4"]
 [ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="6_oaor4"]
 [ext_resource type="StyleBox" uid="uid://ee0g4ryuhtv2" path="res://screens/themes/style_button_sound.tres" id="7_ulbfq"]
@@ -22,32 +21,16 @@ Button/styles/normal = SubResource("StyleBoxTexture_tr3vu")
 Button/styles/pressed = SubResource("StyleBoxTexture_0af4j")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_esg6n"]
-texture = ExtResource("4_6xdws")
+texture = ExtResource("4_jgben")
 modulate_color = Color(0.309804, 0.65098, 0.796078, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bpxy5"]
-texture = ExtResource("4_6xdws")
+texture = ExtResource("4_jgben")
 
 [sub_resource type="Theme" id="Theme_ftnqv"]
 Button/styles/hover = SubResource("StyleBoxTexture_esg6n")
 Button/styles/normal = SubResource("StyleBoxTexture_bpxy5")
 Button/styles/pressed = SubResource("StyleBoxTexture_esg6n")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trvg5"]
-texture = ExtResource("2_jdceu")
-modulate_color = Color(0.513726, 0, 0, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nv4u"]
-texture = ExtResource("2_jdceu")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_66x74"]
-texture = ExtResource("2_jdceu")
-modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
-
-[sub_resource type="Theme" id="Theme_4tv32"]
-Button/styles/hover = SubResource("StyleBoxTexture_trvg5")
-Button/styles/normal = SubResource("StyleBoxTexture_3nv4u")
-Button/styles/pressed = SubResource("StyleBoxTexture_66x74")
 
 [sub_resource type="LabelSettings" id="LabelSettings_kfdoe"]
 font = ExtResource("3_sqiu3")
@@ -112,13 +95,6 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme = SubResource("Theme_6rysv")
 
-[node name="InfoButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
-custom_minimum_size = Vector2(50, 85)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = SubResource("Theme_ftnqv")
-
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -126,13 +102,12 @@ theme_override_constants/margin_left = 45
 theme_override_constants/margin_top = 39
 theme_override_constants/margin_right = 45
 
-[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer2"]
-custom_minimum_size = Vector2(80, 80)
+[node name="InfoButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer2"]
+custom_minimum_size = Vector2(75, 85)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = SubResource("Theme_4tv32")
-theme_override_font_sizes/font_size = 59
+size_flags_vertical = 8
+theme = SubResource("Theme_ftnqv")
 
 [node name="MarginTop" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 70)
@@ -240,8 +215,7 @@ min_value = -80.0
 max_value = 30.0
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer/ReturnButton" to="." method="_on_return_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/InfoButton" to="." method="_on_info_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer2/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/MarginContainer2/InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ButtonMusic" to="." method="_on_button_music_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HSliderMusic" to="." method="_on_h_slider_music_value_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/TextPlayer" to="." method="_on_text_player_text_changed"]
