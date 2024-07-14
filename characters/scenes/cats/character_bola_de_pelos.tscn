@@ -435,9 +435,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_uu4xc")
-}
 tree_root = SubResource("AnimationNodeStateMachine_yrob6")
 anim_player = NodePath("../Animation")
 parameters/Idle/blend_position = Vector2(0, 0)
@@ -467,7 +464,6 @@ hframes = 3
 stream = ExtResource("5_kw5st")
 
 [node name="AreaCollision" type="Area2D" parent="."]
-collision_mask = 0
 
 [node name="Collision" type="CollisionShape2D" parent="AreaCollision"]
 position = Vector2(0, -13)

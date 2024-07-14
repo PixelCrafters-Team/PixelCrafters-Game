@@ -40,7 +40,12 @@ func connection_fail():
 
 func server_crash():
 	if not get_tree().current_scene.name == "LAN":
-		get_tree().change_scene_to_file("res://MenuLAN.tscn")
+		var main = get_tree().root.get_node("Main")
+		main.get_node("Game").queue_free()
+		var menu_scene = preload("res://screens/scenes/menu_screen.tscn")
+		main.add_child(menu_scene.instantiate())
+		main.get_node("Menu_screen").server_disconnected = true
+		main.create_scene()
 	reset_connection()
 	pass
 
