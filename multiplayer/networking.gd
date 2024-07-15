@@ -94,7 +94,7 @@ func create_server():
 	else:
 		print("erro ao criar o servidor")
 		return false
-	pass
+	return true
 
 
 func join_server():
