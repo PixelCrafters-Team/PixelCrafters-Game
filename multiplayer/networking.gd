@@ -45,7 +45,7 @@ func server_crash():
 		main.get_node("Game").queue_free()
 		var menu_scene = preload("res://screens/scenes/menu_screen.tscn")
 		main.add_child(menu_scene.instantiate())
-		main.get_node("Menu_screen").server_disconnected = true
+		main.get_node("Menu_screen").error_server = 1
 		main.create_scene()
 	reset_connection()
 	pass
@@ -92,7 +92,8 @@ func create_server():
 		register_player(id, name_player)
 		id_room_creator = get_player_id()
 	else:
-		reset_connection()
+		print("erro ao criar o servidor")
+		return false
 	pass
 
 

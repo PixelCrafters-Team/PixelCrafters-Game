@@ -3,7 +3,7 @@ extends Control
 var character_select_scene = preload("res://screens/scenes/character_selection_screen.tscn")
 var settings_scene = preload("res://screens/scenes/settings_screen.tscn")
 var room_scene = preload("res://multiplayer/MenuLAN.tscn")
-var server_disconnected = false
+var error_server = 0
 
 func _ready():
 	$AnimationDog/AnimationRoute.play("animationDog")
@@ -22,9 +22,14 @@ func _physics_process(delta):
 		get_parent().add_child(character_select_scene.instantiate())
 		get_parent().get_node("Menu_screen").queue_free()
 	
-	if server_disconnected:
-		server_disconnected = false
+	if error_server == 1:
+		error_server = 0
 		$Panel/ErroPanel/Label.text = "Erro o servidor se desconectou da sala"
+		$Panel.visible = true
+	
+	if error_server == 2:
+		error_server = 0
+		$Panel/ErroPanel/Label.text = "Erro não foi possível criar a sala"
 		$Panel.visible = true
 
 		

@@ -21,18 +21,20 @@ func _on_create_pressed():
 	get_parent().click_sound.play()
 	is_create_room = true
 	Networking.update_name($NameEdit.text)
-	Networking.create_server()
-	$ChoiceCharacter.visible = true
-	$ListPlayers.visible = true
-	$CreateRoom/Start.visible = true
-	$CreateRoom/Create.visible = false
-	$EnterRoom/Connect.disabled = true
-	var ip = Networking.return_ip()
-	$CreateRoom/InfoIP.visible = true
-	$CreateRoom/InfoIP/IP.text = "" + ip
-	$EnterRoom/IpEdit.visible = false
-	$NameEdit.visible = false
-	$CreateRoom/ChoiceMap.visible = true
+	if Networking.create_server():
+		$ChoiceCharacter.visible = true
+		$ListPlayers.visible = true
+		$CreateRoom/Start.visible = true
+		$CreateRoom/Create.visible = false
+		$EnterRoom/Connect.disabled = true
+		var ip = Networking.return_ip()
+		$CreateRoom/InfoIP.visible = true
+		$CreateRoom/InfoIP/IP.text = "" + ip
+		$EnterRoom/IpEdit.visible = false
+		$NameEdit.visible = false
+		$CreateRoom/ChoiceMap.visible = true
+	else:
+		reset_conection(2)
 	pass
 	
 func _on_connect_pressed():
@@ -102,7 +104,7 @@ func _on_erropanel_button_pressed():
 	get_parent().click_sound.play()
 	$Panel.hide()
 	if empty_room:
-		reset_conection(false)
+		reset_conection()
 		empty_room = false
 	pass
 
@@ -119,24 +121,25 @@ func _on_name_edit_text_changed(new_text):
 
 
 @rpc("any_peer")
-func reset_conection(is_Server):
+func reset_conection(error_server = 0):
 	get_parent().click_sound.play()
 	var menu_scene = preload("res://screens/scenes/menu_screen.tscn")
 	get_parent().add_child(menu_scene.instantiate())
 	connection_reset()
 	get_parent().get_node("LAN").queue_free()
-	if(is_Server):
-		get_parent().get_node("Menu_screen").server_disconnected = true
+	if(error_server == 1):
+		get_parent().get_node("Menu_screen").error_server = 1
+	if(error_server == 2):
+		get_parent().get_node("Menu_screen").error_server = 2
 
 func _on_return_button_pressed():
 	get_parent().click_sound.play()
 	if $CreateRoom/Start.visible == true and is_create_room:
-		rpc("reset_conection", true)
+		rpc("reset_conection", 1)
 		get_parent().click_sound.play()
-		
 		$Timer.start(1)
 	else:
-		reset_conection(false)
+		reset_conection()
 	
 
 func _on_timer_timeout():
