@@ -68,7 +68,6 @@ func _on_start_pressed():
 	else:
 		$Panel/ErroPanel/Label.text = "Todos os jogadores devem escolher seus personagens antes!"
 		$Panel.visible = true
-		empty_room = true
 	pass
 
 
