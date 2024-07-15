@@ -9,6 +9,8 @@ var character_position_cats
 var character_position_dogs
 var num_character
 var num_map
+var num_total_cats = 0
+var num_glace_cats = 0
 
 
 var list_characters_cats = [ 
@@ -69,14 +71,16 @@ func create_game(scene, map):
 		scene.add_child(Character)
 		if Character.is_in_group("cats") == true:
 			Character.global_position = character_position_cats
+			num_total_cats += 1
 		else: 
 			Character.global_position = character_position_dogs
 			
 		Character.name = str(list_players[i][1])
 		Character.set_multiplayer_authority(list_players[i][0])
 		Character.set_nickname(list_players[i][1])
+		
 	add_child(Hud)
-	$HUD.build_uhd()
+	$HUD.build_uhd(num_total_cats)
 	
 
 func _on_music_game_finished():

@@ -69,6 +69,7 @@ func _physics_process(delta):
 		if is_skill_estrela and is_in_group("estrela"):
 			move_speed += 50
 			
+		"""	
 		if Input.is_key_pressed(KEY_Z) and is_in_group("cats"):
 			glace_cat(nickname)
 			rpc('glace_cat', nickname)
@@ -76,9 +77,9 @@ func _physics_process(delta):
 		if Input.is_key_pressed(KEY_C) and is_in_group("cats"):
 			unfreeze_cat(nickname)
 			rpc('unfreeze_cat', nickname)
-			
+		"""	
 		if Input.is_key_pressed(KEY_X):
-			activate_skill()
+			activate_skill()	
 	
 
 func move() -> void:
@@ -117,6 +118,7 @@ func _on_timer_timeout():
 
 @rpc
 func glace_cat(player_glace=self.nickname, play_effect=true):
+	get_parent().num_glace_cats += 1
 	var list_players = Networking.return_list()
 	for i in range(list_players.size()):
 		if player_glace == list_players[i][1]:
@@ -129,6 +131,7 @@ func glace_cat(player_glace=self.nickname, play_effect=true):
 
 @rpc
 func unfreeze_cat(player_glace=self.nickname, play_effect=true):
+	get_parent().num_glace_cats -= 1
 	var list_players = Networking.return_list()
 	for i in range(list_players.size()):
 		if player_glace == list_players[i][1]:
@@ -235,13 +238,13 @@ func _on_area_collision_area_entered(area):
 			set_message_game_hud("Jogador " + $namePlayer.text + " congelou jogador " + player_glace, false)
 			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " congelou jogador " + player_glace)
 			
-		if area.get_parent().is_in_group("cats") and self.is_in_group("cats") and (get_node('TextureGlace').visible == true or get_parent().get_node(player_glace+'/TextureGlace').visible == true):
+		if area.get_parent().is_in_group("cats") and self.is_in_group("cats"):
 			if get_node('TextureGlace').visible == true:
 				set_message_game_hud( "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text, false)
 				rpc("set_message_game_hud", "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text)
 				unfreeze_cat(nickname)
 				rpc('unfreeze_cat', nickname, false)
-			else:
+			elif get_parent().get_node(player_glace+'/TextureGlace').visible == true:
 				unfreeze_cat(player_glace)
 				rpc('unfreeze_cat', player_glace)
 				set_message_game_hud( "Jogador " + $namePlayer.text + " descongelou jogador " +  player_glace, false)

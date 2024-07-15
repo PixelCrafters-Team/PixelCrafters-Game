@@ -55,8 +55,10 @@ func _ready():
 		$SkillCharge/SkillBrutus.visible = false
 		$SkillCharge/SkillSombra.visible = false
 		$SkillCharge/SkillBolaDePelos.visible = false
+		
 func _process(delta):
 	$Timer/LabelTimer.text = str(int(timer.time_left / 60)) + ":" + str(int(timer.time_left) % 60)
+	$NumGlaceCats/GlaceCats.text = str(get_parent().num_glace_cats)
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
 	
@@ -66,7 +68,8 @@ func _physics_process(delta):
 		camera.position = get_parent().Character.position
 
 
-func build_uhd():
+func build_uhd(num_total_cats):
+	$NumGlaceCats/TotalGlaceCats.text = str(num_total_cats)
 	if get_parent().Character.is_in_group("cats"):
 		equipe = "Gatos Hackers"
 	elif get_parent().Character.is_in_group("dogs"):

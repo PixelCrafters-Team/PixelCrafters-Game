@@ -4,6 +4,7 @@ var team = "dogs"
 var num_character = 1
 var SceneCharacterSlection = preload("res://screens/scenes/character_selection_screen.tscn")
 var is_create_room = false
+var empty_room = false
 
 func _ready():
 	var main = get_tree().root.get_node("Main")
@@ -33,13 +34,11 @@ func _on_create_pressed():
 	$NameEdit.visible = false
 	$CreateRoom/ChoiceMap.visible = true
 	pass
-
-
+	
 func _on_connect_pressed():
 	get_parent().click_sound.play()
 	$ChoiceCharacter.visible = true
 	$ListPlayers.visible = true
-	print($NameEdit.text)
 	Networking.update_ip($EnterRoom/IpEdit.text)
 	Networking.update_name($NameEdit.text)
 	Networking.join_server()
@@ -49,6 +48,7 @@ func _on_connect_pressed():
 	$NameEdit.visible = false
 	$EnterRoom/Connect.visible = false
 	$EnterRoom/Label.visible = true
+	$Wait.start(0.5)
 	pass
 
 
@@ -56,7 +56,7 @@ func _on_start_pressed():
 	get_parent().click_sound.play()
 	var all_characters_chosen = true
 	var list_players = Networking.return_list()
-	for i in range(list_players.size()):
+	for i in range(list_players.size()):		
 		if list_players[i][2] == null:
 			all_characters_chosen = false
 			
@@ -66,6 +66,7 @@ func _on_start_pressed():
 	else:
 		$Panel/ErroPanel/Label.text = "Todos os jogadores devem escolher seus personagens antes!"
 		$Panel.visible = true
+		empty_room = true
 	pass
 
 
@@ -100,6 +101,9 @@ func connection_reset():
 func _on_erropanel_button_pressed():
 	get_parent().click_sound.play()
 	$Panel.hide()
+	if empty_room:
+		reset_conection(false)
+		empty_room = false
 	pass
 
 
@@ -148,3 +152,11 @@ func _on_choice_map_pressed():
 
 func _on_choice_map_toggled(toggled_on):
 	get_parent().click_sound.play()
+
+
+func _on_wait_timeout():
+	if Networking.get_id_room_creator() == null:
+		$Panel/ErroPanel/Label.text = "Código da sala incorreto, não existe nenhum moderador nesta sala"
+		$Panel.visible = true
+		empty_room = true
+	$Wait.stop()

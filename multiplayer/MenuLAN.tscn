@@ -419,6 +419,8 @@ text = "Confirmar"
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="Wait" type="Timer" parent="."]
+
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="CreateRoom/Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="CreateRoom/ChoiceMap" to="." method="_on_choice_map_pressed"]
@@ -429,3 +431,4 @@ text = "Confirmar"
 [connection signal="pressed" from="ChoiceCharacter" to="." method="_on_choice_character_pressed"]
 [connection signal="pressed" from="Panel/ErroPanel/Button" to="." method="_on_erropanel_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Wait" to="." method="_on_wait_timeout"]
