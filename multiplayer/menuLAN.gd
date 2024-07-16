@@ -136,7 +136,8 @@ func _on_return_button_pressed():
 	if $CreateRoom/Start.visible == true and is_create_room:
 		rpc("reset_conection", 1)
 		get_parent().click_sound.play()
-		$Timer.start(1)
+		Networking.update_id_room_creator(null, true)
+		$Timer.start(0.5)
 	else:
 		reset_conection()
 	

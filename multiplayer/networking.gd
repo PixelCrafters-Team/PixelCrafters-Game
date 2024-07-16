@@ -47,6 +47,8 @@ func server_crash():
 		main.add_child(menu_scene.instantiate())
 		main.get_node("Menu_screen").error_server = 1
 		main.create_scene()
+	id_room_creator = null
+	update_id_room_creator(id_room_creator)
 	reset_connection()
 	pass
 
@@ -147,6 +149,8 @@ func get_id_room_creator():
 	
 	
 @rpc()
-func update_id_room_creator(new_room_creator):
+func update_id_room_creator(new_room_creator, update_players=false):
 	id_room_creator = new_room_creator	
+	if update_players == true:
+		rpc('update_id_room_creator', new_room_creator)
 
