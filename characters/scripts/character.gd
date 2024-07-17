@@ -19,6 +19,8 @@ var is_skill_estrela = false
 var is_skill_ronronante = false
 var is_skill_sombra = false
 var is_skill_boladepelos = false
+var is_skill_sargento_canis = false
+var is_skill_brutus = false
 
 var list_positions_teleport = [
 	Vector2(480, 676), 
@@ -145,30 +147,44 @@ func unfreeze_cat(player_glace=self.nickname, play_effect=true):
 
 func activate_skill():
 	if get_parent().get_node("HUD").charge_skill == 0 and is_skill_active == false:
-		is_skill_active = true
-		$EffectActiveSkill.play()
-		$Skill/SkillDuration.start(5)
-		$Skill.visible = true
+		if ((not is_skill_sargento_canis and is_in_group("cats")) or is_in_group("sargentocanis")):
+			is_skill_active = true
+			$EffectActiveSkill.play()
+			$Skill/SkillDuration.start(5)
+			$Skill.visible = true
+		elif(is_skill_sargento_canis and is_in_group("cats")):
+			var hud_message = "Não é possível ativar habilidades enquanto Latido sônico estiver ativado."
+			set_message_game_hud(hud_message, false)
 		if is_in_group("estrela") and is_in_group("dogs"):
 			is_skill_estrela = true
 			set_message_game_hud( "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes", false)
 			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes")
-		if is_in_group("ronronante"):
+		if is_in_group("ronronante") and not is_skill_sargento_canis:
 			is_skill_ronronante = true
 			rpc("update_ronronante_skill", true)
 			var message_ronronante = "Jogador " + $namePlayer.text + " - Ativou habilidade: Ronronar calmante"
 			set_message_game_hud(message_ronronante, false)
 			rpc("set_message_game_hud", message_ronronante)
-		if is_in_group("boladepelos"):
+		if is_in_group("boladepelos")  and not is_skill_sargento_canis:
 			is_skill_boladepelos = true
 			rpc("update_boladepelos_skill", true)
 			var message_boladepelos = "Jogador " + $namePlayer.text + " - Ativou habilidade: Ataque de pelos"
 			set_message_game_hud(message_boladepelos, false)
-		if is_in_group("sombra"):
+		if is_in_group("sombra")  and not is_skill_sargento_canis:
 			is_skill_sombra = true
 			rpc("update_sombra_skill", true)
 			var message_sombra = "Jogador " + $namePlayer.text + " - Ativou habilidade: Esconderijo felino"
 			set_message_game_hud(message_sombra, false)
+		if is_in_group("sargentocanis"):
+			is_skill_sargento_canis = true
+			rpc("update_sargento_canis_skill", true)
+			var message_sagento_canis = "Jogador " + $namePlayer.text + " - Ativou habilidade: Latido sônico"
+			set_message_game_hud(message_sagento_canis, false)
+		if is_in_group("brutus"):
+			is_skill_brutus = true
+			rpc("update_brutus_skill", true)
+			var message_brutus = "Jogador " + $namePlayer.text + " - Ativou habilidade: Resistência canina"
+			set_message_game_hud(message_brutus, false)
 			
 @rpc
 func set_message_game_hud(text, play_effect=true):
@@ -191,16 +207,23 @@ func update_animation_state(direction: Vector2, state: String) -> void:
 		animation_tree["parameters/Walk/blend_position"] = direction
 	state_machine.travel(state)
 
-
+@rpc
+func update_sargento_canis_skill(is_active: bool):
+	var name_player = get_name_player()	
+	get_parent().get_node(name_player).is_skill_sargento_canis = is_active
+	
+@rpc
+func update_brutus_skill(is_active: bool):
+	var name_player = get_name_player()	
+	get_parent().get_node(name_player).is_skill_brutus = is_active
+	
 @rpc
 func update_ronronante_skill(is_active: bool):
-	print('ronronante')
 	var name_player = get_name_player()	
-	get_parent().get_node(name_player).is_skill_ronronante = is_active	
+	get_parent().get_node(name_player).is_skill_ronronante = is_active
 	
 @rpc
 func update_sombra_skill(is_active: bool):
-	print('sombra')
 	var name_player = get_name_player()	
 	if (get_parent().get_node(name_player).is_in_group("dogs") and is_active):
 		get_parent().get_node(self.nickname).visible = false
@@ -281,5 +304,23 @@ func _on_skill_duration_timeout_boladepelos():
 	is_skill_active = false
 	is_skill_boladepelos = false
 	rpc("update_boladepelos_skill", false)
+	get_parent().get_node("HUD").start_timer()
+	$Skill/SkillDuration.stop()
+
+
+func _on_skill_duration_timeout_sargento_canis():
+	$Skill.visible = false
+	is_skill_active = false
+	is_skill_sargento_canis = false
+	rpc("update_sargento_canis_skill", false)
+	get_parent().get_node("HUD").start_timer()
+	$Skill/SkillDuration.stop()
+
+
+func _on_skill_duration_timeout_brutus():
+	$Skill.visible = false
+	is_skill_active = false
+	is_skill_brutus = false
+	rpc("update_brutus_skill", false)
 	get_parent().get_node("HUD").start_timer()
 	$Skill/SkillDuration.stop()

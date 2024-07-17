@@ -435,4 +435,4 @@ stream = ExtResource("7_ttmjq")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]
-[connection signal="timeout" from="Skill/SkillDuration" to="." method="_on_skill_duration_timeout"]
+[connection signal="timeout" from="Skill/SkillDuration" to="." method="_on_skill_duration_timeout_sargento_canis"]
