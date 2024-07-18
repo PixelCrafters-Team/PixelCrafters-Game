@@ -58,7 +58,7 @@ func _physics_process(delta):
 				$TimerWalk.start(0.3)
 				$EffectWalk.play()
 		else:
-			is_walking = false		
+			is_walking = false
 		
 		if !(is_skill_ronronante and is_in_group("dogs")):
 			if Input.is_key_pressed(KEY_SPACE):
@@ -66,7 +66,14 @@ func _physics_process(delta):
 			else:
 				move_speed = SPEED_WALK
 		elif is_skill_ronronante and is_in_group("dogs"):
-			move_speed = SPEED_WALK - (SPEED_WALK * 0.5)
+			var name_player = get_name_player()
+			if (get_parent().get_node(name_player).is_in_group("brutus") and is_skill_brutus):
+				var brutus_speed = SPEED_WALK
+				if (Input.is_key_pressed(KEY_SPACE)):
+					brutus_speed = SPEED_WALK + 36
+				get_parent().get_node(name_player).move_speed = brutus_speed
+			else:
+				move_speed = SPEED_WALK - (SPEED_WALK * 0.5)
 		
 		if is_skill_estrela and is_in_group("estrela"):
 			move_speed += 50
@@ -147,12 +154,12 @@ func unfreeze_cat(player_glace=self.nickname, play_effect=true):
 
 func activate_skill():
 	if get_parent().get_node("HUD").charge_skill == 0 and is_skill_active == false:
-		if ((not is_skill_sargento_canis and is_in_group("cats")) or is_in_group("sargentocanis")):
+		if ((not is_skill_sargento_canis and is_in_group("cats")) or is_in_group("sargentocanis") or is_in_group("brutus")):
 			is_skill_active = true
 			$EffectActiveSkill.play()
 			$Skill/SkillDuration.start(5)
 			$Skill.visible = true
-		elif(is_skill_sargento_canis and is_in_group("cats")):
+		elif (is_skill_sargento_canis and is_in_group("cats")):
 			var hud_message = "Não é possível ativar habilidades enquanto Latido sônico estiver ativado."
 			set_message_game_hud(hud_message, false)
 		if is_in_group("estrela") and is_in_group("dogs"):
@@ -170,7 +177,7 @@ func activate_skill():
 			rpc("update_boladepelos_skill", true)
 			var message_boladepelos = "Jogador " + $namePlayer.text + " - Ativou habilidade: Ataque de pelos"
 			set_message_game_hud(message_boladepelos, false)
-		if is_in_group("sombra")  and not is_skill_sargento_canis:
+		if is_in_group("sombra") and is_skill_sargento_canis:
 			is_skill_sombra = true
 			rpc("update_sombra_skill", true)
 			var message_sombra = "Jogador " + $namePlayer.text + " - Ativou habilidade: Esconderijo felino"
@@ -219,24 +226,30 @@ func update_brutus_skill(is_active: bool):
 	
 @rpc
 func update_ronronante_skill(is_active: bool):
-	var name_player = get_name_player()	
+	var name_player = get_name_player()
 	get_parent().get_node(name_player).is_skill_ronronante = is_active
 	
 @rpc
 func update_sombra_skill(is_active: bool):
-	var name_player = get_name_player()	
+	var name_player = get_name_player()
 	if (get_parent().get_node(name_player).is_in_group("dogs") and is_active):
-		get_parent().get_node(self.nickname).visible = false
+		if (get_parent().get_node(name_player).is_in_group("brutus")):
+			get_parent().get_node(self.nickname).visible = true
+		else:
+			get_parent().get_node(self.nickname).visible = false
 	else:
 		get_parent().get_node(self.nickname).visible = true
 	is_skill_sombra = is_active
 	
 	
 @rpc
-func update_boladepelos_skill(is_active: bool):		
+func update_boladepelos_skill(is_active: bool):
 	var name_player = get_name_player()	
 	if (get_parent().get_node(name_player).is_in_group("dogs") and is_active):
-		get_parent().get_node("Map").visible = false
+		if (get_parent().get_node(name_player).is_in_group("brutus")):
+			get_parent().get_node("Map").visible = true
+		else:
+			get_parent().get_node("Map").visible = false
 	else:
 		get_parent().get_node("Map").visible = true
 	is_skill_boladepelos = is_active

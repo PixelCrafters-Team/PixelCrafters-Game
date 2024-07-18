@@ -132,7 +132,6 @@ func return_ip():
 	
 @rpc("any_peer")
 func update_list_character(i, character):
-	print("update list")
 	players[i][2] = character; 
 	emit_signal("list_changed")
 	pass
