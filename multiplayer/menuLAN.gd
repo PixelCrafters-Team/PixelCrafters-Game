@@ -67,7 +67,8 @@ func _on_start_pressed():
 			
 	if multiplayer.is_server() and all_characters_chosen == true:
 		var map = $CreateRoom/ChoiceMap.get_selected_id()
-		rpc("start_game", map)
+		var time_match = $CreateRoom/MatchDuration.value
+		rpc("start_game", map, time_match*60)
 	else:
 		$Panel/ErroPanel/Label.text = "Todos os jogadores devem escolher seus personagens antes!"
 		$Panel.visible = true
@@ -75,10 +76,10 @@ func _on_start_pressed():
 
 
 @rpc("authority", "call_local")
-func start_game(map):
+func start_game(map, time_match):
 	get_parent().click_sound.play()
 	var scene = get_parent().game_scene
-	scene.create_game(scene, map)
+	scene.create_game(scene, map, time_match)
 	get_parent().get_node("MusicMenu").stream_paused = true
 	get_parent().add_child(scene)
 	get_parent().get_node("LAN").queue_free()

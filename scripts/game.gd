@@ -62,7 +62,7 @@ func set_character(team, num):
 			Networking.rpc("update_list_character", i, list_players[i][2])
 		
 		
-func create_game(scene, map):
+func create_game(scene, map, time_match):
 	#select_map(scene, [0,1].pick_random())
 	select_map(scene, map)
 	var list_players = Networking.return_list()
@@ -81,7 +81,7 @@ func create_game(scene, map):
 		
 	add_child(Hud)
 	$HUD.build_uhd(num_total_cats)
-	
+	$HUD/Timer.set_wait_time(float(time_match))
 
 func _on_music_game_finished():
 	$MusicGame.play()
