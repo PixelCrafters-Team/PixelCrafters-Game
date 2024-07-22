@@ -32,7 +32,10 @@ func _on_create_pressed():
 		$CreateRoom/InfoIP/IP.text = "" + ip
 		$EnterRoom/IpEdit.visible = false
 		$NameEdit.visible = false
-		$CreateRoom/ChoiceMap.visible = true
+		$CreateRoom/ChoiceMap.visible = false
+		$CreateRoom/NumPlayers.visible = false
+		$CreateRoom/MatchDuration.visible = false
+		$CreateRoom/Label.visible = true
 	else:
 		reset_conection(2)
 	pass

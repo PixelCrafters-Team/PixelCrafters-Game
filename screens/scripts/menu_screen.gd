@@ -64,9 +64,12 @@ func _on_create_room_pressed():
 	get_parent().click_sound.play()
 	get_parent().add_child(room_scene.instantiate())
 	get_parent().get_node("LAN/NameEdit").visible = true
+	get_parent().get_node("LAN/CreateRoom/Create").visible = true
+	get_parent().get_node("LAN/CreateRoom/ChoiceMap").visible = true
+	get_parent().get_node("LAN/CreateRoom/NumPlayers").visible = true
+	get_parent().get_node("LAN/CreateRoom/MatchDuration").visible = true
 	get_parent().get_node("LAN/EnterRoom/IpEdit").visible = false
 	get_parent().get_node("LAN/EnterRoom/Connect").visible = false
-	get_parent().get_node("LAN/CreateRoom/Create").visible = true
 	get_parent().get_node("LAN/CreateRoom/InfoIP").visible = false
 	get_parent().get_node("LAN/LabelTitle").text = "CRIAR EM UMA SALA"
 	get_parent().get_node("Menu_screen").queue_free()

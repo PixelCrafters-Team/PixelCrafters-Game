@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctoap6e1xmr6y"]
+[gd_scene load_steps=24 format=3 uid="uid://ctoap6e1xmr6y"]
 
 [ext_resource type="Script" path="res://multiplayer/menuLAN.gd" id="1_s6sxb"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_c13qs"]
@@ -98,6 +98,18 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
+[sub_resource type="Theme" id="Theme_mehgi"]
+default_font_size = 26
+LineEdit/fonts/font = ExtResource("3_ce388")
+
+[sub_resource type="LabelSettings" id="LabelSettings_cocbf"]
+font = ExtResource("3_ce388")
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_lrsn6"]
+font = ExtResource("3_ce388")
+font_size = 20
+
 [sub_resource type="LabelSettings" id="LabelSettings_mopw2"]
 line_spacing = 10.0
 font = ExtResource("3_ce388")
@@ -170,10 +182,10 @@ offset_bottom = 40.0
 [node name="Create" type="Button" parent="CreateRoom"]
 visible = false
 layout_mode = 1
-offset_left = 232.0
-offset_top = 403.0
-offset_right = 586.0
-offset_bottom = 453.0
+offset_left = 771.0
+offset_top = 553.0
+offset_right = 1026.0
+offset_bottom = 603.0
 theme = SubResource("Theme_jxcg2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ce388")
@@ -183,13 +195,13 @@ text = "Criar Sala"
 [node name="ChoiceMap" type="OptionButton" parent="CreateRoom"]
 visible = false
 layout_mode = 1
-offset_left = 749.0
-offset_top = 344.0
-offset_right = 1105.0
-offset_bottom = 394.0
+offset_left = 219.0
+offset_top = 449.0
+offset_right = 607.0
+offset_bottom = 499.0
 theme = SubResource("Theme_wq30m")
 theme_override_fonts/font = ExtResource("3_ce388")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 24
 alignment = 1
 item_count = 2
 selected = 0
@@ -245,6 +257,103 @@ offset_bottom = 49.0
 theme_override_font_sizes/font_size = 27
 autowrap_mode = 1
 
+[node name="NumPlayers" type="Control" parent="CreateRoom"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NumCats" type="SpinBox" parent="CreateRoom/NumPlayers"]
+layout_mode = 0
+offset_left = 1068.0
+offset_top = 317.0
+offset_right = 1172.0
+offset_bottom = 375.0
+theme = SubResource("Theme_mehgi")
+min_value = 1.0
+max_value = 10.0
+value = 4.0
+rounded = true
+alignment = 1
+
+[node name="Label" type="Label" parent="CreateRoom/NumPlayers/NumCats"]
+layout_mode = 0
+offset_left = -298.0
+offset_top = 4.0
+offset_right = -33.0
+offset_bottom = 63.0
+text = "Número de Gatos"
+label_settings = SubResource("LabelSettings_cocbf")
+autowrap_mode = 2
+
+[node name="NumDogs" type="SpinBox" parent="CreateRoom/NumPlayers"]
+layout_mode = 0
+offset_left = 1067.0
+offset_top = 412.0
+offset_right = 1171.0
+offset_bottom = 470.0
+theme = SubResource("Theme_mehgi")
+min_value = 1.0
+max_value = 10.0
+value = 2.0
+rounded = true
+alignment = 1
+
+[node name="Label" type="Label" parent="CreateRoom/NumPlayers/NumDogs"]
+layout_mode = 0
+offset_left = -298.0
+offset_top = 6.0
+offset_right = -18.0
+offset_bottom = 61.0
+text = "Número de Cachorros"
+label_settings = SubResource("LabelSettings_cocbf")
+autowrap_mode = 2
+
+[node name="MatchDuration" type="SpinBox" parent="CreateRoom"]
+visible = false
+layout_mode = 0
+offset_left = 490.0
+offset_top = 549.0
+offset_right = 625.0
+offset_bottom = 607.0
+theme = SubResource("Theme_mehgi")
+min_value = 2.0
+max_value = 10.0
+value = 5.0
+rounded = true
+
+[node name="Label" type="Label" parent="CreateRoom/MatchDuration"]
+layout_mode = 0
+offset_left = -280.0
+offset_top = 7.0
+offset_right = -10.0
+offset_bottom = 91.0
+text = "Duração da Partida"
+label_settings = SubResource("LabelSettings_cocbf")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="LabelTime" type="Label" parent="CreateRoom/MatchDuration"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 111.0
+offset_bottom = 65.0
+text = "minutos"
+label_settings = SubResource("LabelSettings_lrsn6")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="CreateRoom"]
+visible = false
+offset_left = 745.0
+offset_top = 311.0
+offset_right = 1183.0
+offset_bottom = 419.0
+theme_override_font_sizes/font_size = 24
+text = "Escolha o seu personagem e aguarde demais jogadores. Quando todos estiverem prontos comece a partida!"
+autowrap_mode = 2
+
 [node name="EnterRoom" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -266,7 +375,7 @@ text = "Procurar Sala"
 layout_mode = 0
 offset_left = 421.0
 offset_top = 413.0
-offset_right = 599.0
+offset_right = 622.0
 offset_bottom = 461.0
 theme_override_font_sizes/font_size = 24
 placeholder_text = "127.0.0.1"
@@ -322,7 +431,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 319.0
 offset_top = 304.0
-offset_right = 602.0
+offset_right = 624.0
 offset_bottom = 355.0
 theme_override_fonts/font = ExtResource("3_ce388")
 theme_override_font_sizes/font_size = 24
@@ -357,10 +466,10 @@ Personagem"
 
 [node name="ContainerChoiceCharacter" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 1022.0
-offset_top = 458.0
-offset_right = 1281.0
-offset_bottom = 631.0
+offset_left = 1250.0
+offset_top = 401.0
+offset_right = 1509.0
+offset_bottom = 574.0
 
 [node name="TextureChoiceCharacter" type="Sprite2D" parent="ContainerChoiceCharacter"]
 visible = false
