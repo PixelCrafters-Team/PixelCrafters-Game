@@ -87,6 +87,10 @@ func _physics_process(delta):
 			unfreeze_cat(nickname)
 			rpc('unfreeze_cat', nickname)
 		"""	
+		if Input.is_key_pressed(KEY_Z):
+			if is_in_group("cats"):
+				check_and_unfreeze_nearby_cats()
+				
 		if Input.is_key_pressed(KEY_X):
 			activate_skill()	
 	
@@ -127,29 +131,43 @@ func _on_timer_timeout():
 
 @rpc
 func glace_cat(player_glace=self.nickname, play_effect=true):
-	get_parent().num_glace_cats += 1
 	var list_players = Networking.return_list()
 	for i in range(list_players.size()):
 		if player_glace == list_players[i][1]:
-			get_parent().get_node(player_glace+'/TextureGlace').visible = true
-			get_parent().get_node(player_glace+'/Texture').visible = false
-			get_parent().get_node(player_glace).is_glace = true
+			if get_parent().get_node(player_glace+'/TextureGlace').visible == false:
+				get_parent().num_glace_cats += 1
+				get_parent().get_node(player_glace+'/TextureGlace').visible = true
+				get_parent().get_node(player_glace+'/Texture').visible = false
+				get_parent().get_node(player_glace).is_glace = true
 			
 			if player_glace == get_name_player() or play_effect == true:
 				get_parent().get_node(player_glace+'/EffectGlace').play()
 
 @rpc
 func unfreeze_cat(player_glace=self.nickname, play_effect=true):
-	get_parent().num_glace_cats -= 1
 	var list_players = Networking.return_list()
 	for i in range(list_players.size()):
 		if player_glace == list_players[i][1]:
-			get_parent().get_node(player_glace+'/TextureGlace').visible = false
-			get_parent().get_node(player_glace+'/Texture').visible = true
-			get_parent().get_node(player_glace).is_glace = false
+			if 	get_parent().get_node(player_glace+'/TextureGlace').visible == true:
+				get_parent().num_glace_cats -= 1
+				get_parent().get_node(player_glace+'/TextureGlace').visible = false
+				get_parent().get_node(player_glace+'/Texture').visible = true
+				get_parent().get_node(player_glace).is_glace = false
 			
 			if player_glace == get_name_player() or play_effect == true:
 				get_parent().get_node(player_glace+'/EffectGlace').play()
+
+
+func check_and_unfreeze_nearby_cats():
+	var area = get_node("AreaCollision")
+	var overlapping_bodies = area.get_overlapping_areas()
+	for body in overlapping_bodies:			
+		var player_glace = body.get_parent().nickname
+		if body.get_parent().is_in_group("cats") and body.get_parent().get_node('TextureGlace').visible:
+			unfreeze_cat(player_glace)
+			rpc('unfreeze_cat', player_glace, false)
+			set_message_game_hud( "Jogador " + $namePlayer.text + " descongelou jogador " +  player_glace, false)
+			rpc("set_message_game_hud", "Jogador " +  $namePlayer.text + " descongelou jogador " +  player_glace)
 
 
 func activate_skill():
@@ -273,7 +291,8 @@ func _on_area_collision_area_entered(area):
 			rpc('glace_cat', player_glace, false)
 			set_message_game_hud("Jogador " + $namePlayer.text + " congelou jogador " + player_glace, false)
 			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " congelou jogador " + player_glace)
-			
+		
+		"""	
 		if area.get_parent().is_in_group("cats") and self.is_in_group("cats"):
 			if get_node('TextureGlace').visible == true:
 				set_message_game_hud( "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text, false)
@@ -285,7 +304,7 @@ func _on_area_collision_area_entered(area):
 				rpc('unfreeze_cat', player_glace)
 				set_message_game_hud( "Jogador " + $namePlayer.text + " descongelou jogador " +  player_glace, false)
 				rpc("set_message_game_hud", "Jogador " +  $namePlayer.text + " descongelou jogador " +  player_glace)
-	
+		"""	
 	if area.is_in_group("teleport") and get_parent().num_map == 0 and is_multiplayer_authority(): # colisão com um portal de teletransporte
 		global_position = list_positions_teleport[randi_range(0, 3)]
 		get_parent().teleportSound.play()
