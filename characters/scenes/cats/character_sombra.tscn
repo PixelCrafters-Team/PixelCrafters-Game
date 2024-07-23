@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://co4itvpd7wcc"]
+[gd_scene load_steps=40 format=3 uid="uid://co4itvpd7wcc"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_0tov6"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_ed6tt"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="7_3tg33"]
 [ext_resource type="Texture2D" uid="uid://b6lexifcwsfa5" path="res://characters/assets/skill_estrela.png" id="8_781pc"]
 [ext_resource type="AudioStream" uid="uid://cavagoic810ct" path="res://screens/assets/effect_dog_barking.mp3" id="9_51gdh"]
+[ext_resource type="Texture2D" uid="uid://bo0vuqcj68o4e" path="res://characters/assets/tecla_z.png" id="10_bsbb2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ss5h"]
 radius = 6.0
@@ -411,9 +412,15 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddddk"]
+bg_color = Color(0.745098, 0.737255, 0.654902, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Character_sombra" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["cats", "sombra"]]
 collision_layer = 0
-collision_mask = 2
 script = ExtResource("1_0tov6")
 animation_tree = NodePath("AnimationTree")
 
@@ -436,9 +443,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_uu4xc")
-}
 tree_root = SubResource("AnimationNodeStateMachine_yrob6")
 anim_player = NodePath("../Animation")
 parameters/Idle/blend_position = Vector2(0, 0)
@@ -499,6 +503,31 @@ texture = ExtResource("8_781pc")
 [node name="EffectActiveSkill" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_51gdh")
 
+[node name="InfoTeclaZ" type="Panel" parent="."]
+visible = false
+offset_left = -44.0
+offset_top = -90.0
+offset_right = 49.0
+offset_bottom = -43.0
+
+[node name="TeclaZ" type="Sprite2D" parent="InfoTeclaZ"]
+position = Vector2(44, 29)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_bsbb2")
+
+[node name="Label" type="Label" parent="InfoTeclaZ/TeclaZ"]
+offset_left = -320.0
+offset_top = -230.0
+offset_right = 419.0
+offset_bottom = -157.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_3tg33")
+theme_override_font_sizes/font_size = 53
+theme_override_styles/normal = SubResource("StyleBoxFlat_ddddk")
+text = " Pressione para descongelar: "
+horizontal_alignment = 1
+
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]
+[connection signal="area_exited" from="AreaCollision" to="." method="_on_area_collision_area_exited"]
 [connection signal="timeout" from="Skill/SkillDuration" to="." method="_on_skill_duration_timeout_sombra"]

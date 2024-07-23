@@ -41,6 +41,9 @@ func _ready():
 		$Camera2D.enabled = true
 	else:
 		$Camera2D.enabled = false
+	
+	if is_in_group("cats"):
+		$InfoTeclaZ.visible = false
 
 func _physics_process(delta):
 	if is_multiplayer_authority():
@@ -93,8 +96,8 @@ func _physics_process(delta):
 				
 		if Input.is_key_pressed(KEY_X):
 			activate_skill()	
-	
-
+		
+		
 func move() -> void:
 	var direction: Vector2 = Vector2(
 		Input.get_axis("move_left", "move_right"),
@@ -164,6 +167,7 @@ func check_and_unfreeze_nearby_cats():
 	for body in overlapping_bodies:			
 		var player_glace = body.get_parent().nickname
 		if body.get_parent().is_in_group("cats") and body.get_parent().get_node('TextureGlace').visible:
+			$InfoTeclaZ.visible = false
 			unfreeze_cat(player_glace)
 			rpc('unfreeze_cat', player_glace, false)
 			set_message_game_hud( "Jogador " + $namePlayer.text + " descongelou jogador " +  player_glace, false)
@@ -291,20 +295,11 @@ func _on_area_collision_area_entered(area):
 			rpc('glace_cat', player_glace, false)
 			set_message_game_hud("Jogador " + $namePlayer.text + " congelou jogador " + player_glace, false)
 			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " congelou jogador " + player_glace)
+			
+		if area.get_parent().is_in_group("cats") and self.is_in_group("cats") and get_parent().get_node(player_glace+'/TextureGlace').visible == true and get_name_player() == nickname:
+			$InfoTeclaZ.visible = true
 		
-		"""	
-		if area.get_parent().is_in_group("cats") and self.is_in_group("cats"):
-			if get_node('TextureGlace').visible == true:
-				set_message_game_hud( "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text, false)
-				rpc("set_message_game_hud", "Jogador " + player_glace + " descongelou jogador " + $namePlayer.text)
-				unfreeze_cat(nickname)
-				rpc('unfreeze_cat', nickname, false)
-			elif get_parent().get_node(player_glace+'/TextureGlace').visible == true:
-				unfreeze_cat(player_glace)
-				rpc('unfreeze_cat', player_glace)
-				set_message_game_hud( "Jogador " + $namePlayer.text + " descongelou jogador " +  player_glace, false)
-				rpc("set_message_game_hud", "Jogador " +  $namePlayer.text + " descongelou jogador " +  player_glace)
-		"""	
+			
 	if area.is_in_group("teleport") and get_parent().num_map == 0 and is_multiplayer_authority(): # colisão com um portal de teletransporte
 		global_position = list_positions_teleport[randi_range(0, 3)]
 		get_parent().teleportSound.play()
@@ -356,3 +351,10 @@ func _on_skill_duration_timeout_brutus():
 	rpc("update_brutus_skill", false)
 	get_parent().get_node("HUD").start_timer()
 	$Skill/SkillDuration.stop()
+
+
+func _on_area_collision_area_exited(area):
+	if area.is_in_group("cats") and get_parent().get_node(get_name_player()).is_in_group("cats"):
+		get_parent().get_node(get_name_player()+'/InfoTeclaZ').visible = false
+	if area.is_in_group("cats") and get_parent().get_node(area.get_parent().nickname).is_in_group("cats"):
+		get_parent().get_node(area.get_parent().nickname+'/InfoTeclaZ').visible = false
