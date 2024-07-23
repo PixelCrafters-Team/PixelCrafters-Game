@@ -354,7 +354,5 @@ func _on_skill_duration_timeout_brutus():
 
 
 func _on_area_collision_area_exited(area):
-	if area.is_in_group("cats") and get_parent().get_node(get_name_player()).is_in_group("cats"):
-		get_parent().get_node(get_name_player()+'/InfoTeclaZ').visible = false
-	if area.is_in_group("cats") and get_parent().get_node(area.get_parent().nickname).is_in_group("cats"):
-		get_parent().get_node(area.get_parent().nickname+'/InfoTeclaZ').visible = false
+	if is_in_group("cats"):
+		$InfoTeclaZ.visible = false
