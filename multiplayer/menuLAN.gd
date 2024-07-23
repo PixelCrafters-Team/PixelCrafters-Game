@@ -5,6 +5,8 @@ var num_character = 1
 var SceneCharacterSlection = preload("res://screens/scenes/character_selection_screen.tscn")
 var is_create_room = false
 var empty_room = false
+@export var max_dogs_players: int
+@export var max_cats_players: int
 
 func _ready():
 	var main = get_tree().root.get_node("Main")
@@ -36,10 +38,14 @@ func _on_create_pressed():
 		$CreateRoom/NumPlayers.visible = false
 		$CreateRoom/MatchDuration.visible = false
 		$CreateRoom/Label.visible = true
+		set_multiplayer_authority(Networking.id_room_creator)
+		max_cats_players = $CreateRoom/NumPlayers/NumCats.value
+		max_dogs_players = $CreateRoom/NumPlayers/NumDogs.value
 	else:
 		reset_conection(2)
 	pass
-	
+
+
 func _on_connect_pressed():
 	get_parent().click_sound.play()
 	$ChoiceCharacter.visible = true
@@ -56,6 +62,10 @@ func _on_connect_pressed():
 	$Wait.start(0.5)
 	pass
 
+@rpc("any_peer")
+func get_num_max_players(new_max_cats_players, new_max_dogs_players):
+	max_cats_players = new_max_cats_players
+	max_dogs_players = new_max_dogs_players
 
 func _on_start_pressed():
 	get_parent().click_sound.play()
@@ -166,4 +176,44 @@ func _on_wait_timeout():
 		$Panel/ErroPanel/Label.text = "Código da sala incorreto, não existe nenhum moderador nesta sala"
 		$Panel.visible = true
 		empty_room = true
+	
+	if Networking.get_id_room_creator() != null:
+		var id = Networking.get_id_room_creator()
+		rpc_id(id, "get_num_max_players", max_cats_players, max_dogs_players)
+
+		print(max_dogs_players)
+		print(max_cats_players)
 	$Wait.stop()
+	
+	
+
+func get_max_team_dogs_cats():
+	var list_characters_cats = [ 
+		"res://characters/scenes/cats/character_ronronante.tscn", 
+		"res://characters/scenes/cats/character_bola_de_pelos.tscn", 
+		"res://characters/scenes/cats/character_sombra.tscn"
+	]
+	var list_characters_dogs = [
+		"res://characters/scenes/dogs/character_brutus.tscn",
+		"res://characters/scenes/dogs/character_estrela.tscn",
+		"res://characters/scenes/dogs/character_sargento_canis.tscn"
+	]
+	
+	var cont_cats = 0
+	var cont_dogs = 0
+	
+	var players = Networking.return_list()
+	for i in range(players.size()):
+		if players[i][2] in list_characters_cats:
+			cont_cats += 1
+		elif players[i][2] in list_characters_dogs:
+			cont_dogs += 1
+	
+	var is_max_team = [false,false]
+
+	if cont_dogs >= max_dogs_players:
+		is_max_team[0] = true
+	if cont_cats >= max_cats_players:
+		is_max_team[1] = true
+	return is_max_team
+

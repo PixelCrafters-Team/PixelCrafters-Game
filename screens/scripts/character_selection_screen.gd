@@ -28,11 +28,19 @@ func _ready():
 		load_screen_dogs()
 		
 func set_team_name():
+	print(get_parent().get_node("LAN").max_dogs_players)
+	print(get_parent().get_node("LAN").max_cats_players)
+	var is_max_team_dogs_cats = get_parent().get_node("LAN").get_max_team_dogs_cats()
+	print(is_max_team_dogs_cats)
 	if [0,1].pick_random() == 0:
 		team = 'cats'
+		if is_max_team_dogs_cats[1] && !is_max_team_dogs_cats[0]:
+			team = 'dogs'
 	else:
 		team = 'dogs'
-		
+		if is_max_team_dogs_cats[0] && !is_max_team_dogs_cats[1]:
+			team = 'cats'	
+	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_right"):
 		if selected_panel == -1:

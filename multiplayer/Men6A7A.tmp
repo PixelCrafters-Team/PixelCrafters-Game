@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ctoap6e1xmr6y"]
+[gd_scene load_steps=24 format=3 uid="uid://ctoap6e1xmr6y"]
 
 [ext_resource type="Script" path="res://multiplayer/menuLAN.gd" id="1_s6sxb"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_c13qs"]
@@ -135,14 +135,6 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 15
 shadow_size = 5
 shadow_offset = Vector2(3, 3)
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_e7hpo"]
-properties/0/path = NodePath(".:max_dogs_players")
-properties/0/spawn = true
-properties/0/replication_mode = 2
-properties/1/path = NodePath(".:max_cats_players")
-properties/1/spawn = true
-properties/1/replication_mode = 2
 
 [node name="LAN" type="Control"]
 layout_direction = 1
@@ -538,9 +530,6 @@ text = "Confirmar"
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Wait" type="Timer" parent="."]
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_e7hpo")
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="CreateRoom/Create" to="." method="_on_create_pressed"]
