@@ -1,12 +1,13 @@
 extends Control
 
-var team = "dogs"
+var team = null
 var num_character = 1
 var SceneCharacterSlection = preload("res://screens/scenes/character_selection_screen.tscn")
 var is_create_room = false
 var empty_room = false
 @export var max_dogs_players: int
 @export var max_cats_players: int
+
 
 func _ready():
 	var main = get_tree().root.get_node("Main")
@@ -16,6 +17,7 @@ func _ready():
 	$CreateRoom/Start.disabled = true
 	Networking.list_changed.connect(self.list_changed)
 	Networking.connection_reset.connect(self.connection_reset)
+	
 	pass
 
 
@@ -60,7 +62,6 @@ func _on_connect_pressed():
 	$EnterRoom/Connect.visible = false
 	$EnterRoom/Label.visible = true
 	$Wait.start(0.5)
-	pass
 
 @rpc("any_peer")
 func get_num_max_players(new_max_cats_players, new_max_dogs_players):
@@ -124,7 +125,6 @@ func _on_erropanel_button_pressed():
 
 func _on_choice_character_pressed():
 	get_parent().click_sound.play()
-	$CreateRoom/Start.disabled = false
 	get_parent().add_child(SceneCharacterSlection.instantiate())
 
 
@@ -144,6 +144,7 @@ func reset_conection(error_server = 0):
 		get_parent().get_node("Menu_screen").error_server = 1
 	if(error_server == 2):
 		get_parent().get_node("Menu_screen").error_server = 2
+
 
 func _on_return_button_pressed():
 	get_parent().click_sound.play()
@@ -180,34 +181,29 @@ func _on_wait_timeout():
 	if Networking.get_id_room_creator() != null:
 		var id = Networking.get_id_room_creator()
 		rpc_id(id, "get_num_max_players", max_cats_players, max_dogs_players)
-
-		print(max_dogs_players)
-		print(max_cats_players)
+		var list = Networking.return_list()
+		if list.size() >= (max_dogs_players + max_cats_players):
+			rpc("enable_start_button")
+	pass
 	$Wait.stop()
 	
 	
+@rpc("any_peer")
+func enable_start_button():
+	$CreateRoom/Start.disabled = false
+
 
 func get_max_team_dogs_cats():
-	var list_characters_cats = [ 
-		"res://characters/scenes/cats/character_ronronante.tscn", 
-		"res://characters/scenes/cats/character_bola_de_pelos.tscn", 
-		"res://characters/scenes/cats/character_sombra.tscn"
-	]
-	var list_characters_dogs = [
-		"res://characters/scenes/dogs/character_brutus.tscn",
-		"res://characters/scenes/dogs/character_estrela.tscn",
-		"res://characters/scenes/dogs/character_sargento_canis.tscn"
-	]
-	
 	var cont_cats = 0
 	var cont_dogs = 0
 	
 	var players = Networking.return_list()
 	for i in range(players.size()):
-		if players[i][2] in list_characters_cats:
-			cont_cats += 1
-		elif players[i][2] in list_characters_dogs:
-			cont_dogs += 1
+		if players[i][2] != null:
+			if "cats" in players[i][2]:
+				cont_cats += 1
+			elif "dogs" in players[i][2]:
+				cont_dogs += 1
 	
 	var is_max_team = [false,false]
 
