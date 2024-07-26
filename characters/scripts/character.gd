@@ -178,7 +178,10 @@ func activate_skill():
 	if get_parent().get_node("HUD").charge_skill == 0 and is_skill_active == false:
 		if ((not is_skill_sargento_canis and is_in_group("cats")) or is_in_group("dogs")):
 			is_skill_active = true
-			$EffectActiveSkill.play()
+			if  is_in_group("dogs"): 
+				$EffectActiveSkillDog.play()
+			elif is_in_group("cats"):
+				$EffectActiveSkillCat.play()
 			$Skill/SkillDuration.start(5)
 			$Skill.visible = true
 		elif (is_skill_sargento_canis and is_in_group("cats")):

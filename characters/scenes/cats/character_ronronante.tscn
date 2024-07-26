@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c57huq0bn6a3h"]
+[gd_scene load_steps=41 format=3 uid="uid://c57huq0bn6a3h"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_oh85r"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_pul81"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="6_0p38e"]
 [ext_resource type="Texture2D" uid="uid://qy37f24yrka5" path="res://screens/assets/icons/Item1.png" id="6_tvbod"]
 [ext_resource type="Texture2D" uid="uid://b6lexifcwsfa5" path="res://characters/assets/skill_estrela.png" id="8_oc2p3"]
+[ext_resource type="AudioStream" uid="uid://cgjbicjugskg6" path="res://characters/assets/effect_active_skill_cat.mp3" id="9_fo5q5"]
 [ext_resource type="AudioStream" uid="uid://cavagoic810ct" path="res://screens/assets/effect_dog_barking.mp3" id="9_g7e0v"]
 [ext_resource type="Texture2D" uid="uid://bo0vuqcj68o4e" path="res://characters/assets/tecla_z.png" id="10_yypf0"]
 
@@ -500,8 +501,9 @@ texture = ExtResource("8_oc2p3")
 
 [node name="SkillDuration" type="Timer" parent="Skill"]
 
-[node name="EffectActiveSkill" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_g7e0v")
+[node name="EffectActiveSkillCat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_fo5q5")
+volume_db = -8.0
 
 [node name="InfoTeclaZ" type="Panel" parent="."]
 visible = false
@@ -526,6 +528,9 @@ theme_override_font_sizes/font_size = 53
 theme_override_styles/normal = SubResource("StyleBoxFlat_68010")
 text = " Pressione para descongelar: "
 horizontal_alignment = 1
+
+[node name="EffectActiveSkillDog" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_g7e0v")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]

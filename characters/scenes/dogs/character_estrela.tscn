@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b8aemaewu78hi"]
+[gd_scene load_steps=36 format=3 uid="uid://b8aemaewu78hi"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_duxev"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_e3mmg"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="5_klmuj"]
 [ext_resource type="Texture2D" uid="uid://b6lexifcwsfa5" path="res://characters/assets/skill_estrela.png" id="6_puylm"]
 [ext_resource type="AudioStream" uid="uid://cavagoic810ct" path="res://screens/assets/effect_dog_barking.mp3" id="7_dwi22"]
+[ext_resource type="AudioStream" uid="uid://cgjbicjugskg6" path="res://characters/assets/effect_active_skill_cat.mp3" id="8_ofwgp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ckanl"]
 radius = 8.0
@@ -424,11 +425,14 @@ texture = ExtResource("6_puylm")
 
 [node name="SkillDuration" type="Timer" parent="Skill"]
 
-[node name="EffectActiveSkill" type="AudioStreamPlayer" parent="."]
+[node name="EffectActiveSkillDog" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_dwi22")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_lln83")
+
+[node name="EffectActiveSkillCat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ofwgp")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]

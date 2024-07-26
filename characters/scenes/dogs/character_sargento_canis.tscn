@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c3o81eaherchw"]
+[gd_scene load_steps=36 format=3 uid="uid://c3o81eaherchw"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_kdyp8"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_5tpor"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="5_whqoq"]
 [ext_resource type="Texture2D" uid="uid://b6lexifcwsfa5" path="res://characters/assets/skill_estrela.png" id="6_vjj0k"]
 [ext_resource type="AudioStream" uid="uid://cavagoic810ct" path="res://screens/assets/effect_dog_barking.mp3" id="7_ttmjq"]
+[ext_resource type="AudioStream" uid="uid://cgjbicjugskg6" path="res://characters/assets/effect_active_skill_cat.mp3" id="8_i6emk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1plq2"]
 radius = 8.0
@@ -381,9 +382,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_uu4xc")
-}
 tree_root = SubResource("AnimationNodeStateMachine_yrob6")
 anim_player = NodePath("../Animation")
 parameters/Idle/blend_position = Vector2(0, 0)
@@ -430,8 +428,11 @@ texture = ExtResource("6_vjj0k")
 
 [node name="SkillDuration" type="Timer" parent="Skill"]
 
-[node name="EffectActiveSkill" type="AudioStreamPlayer" parent="."]
+[node name="EffectActiveSkillDog" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ttmjq")
+
+[node name="EffectActiveSkillCat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_i6emk")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]
