@@ -7,6 +7,8 @@ var is_create_room = false
 var empty_room = false
 @export var max_dogs_players: int
 @export var max_cats_players: int
+var frame_texture_cats = [70, 67, 64]
+var frame_texture_dogs = [13, 19, 22]
 
 
 func _ready():
@@ -213,3 +215,11 @@ func get_max_team_dogs_cats():
 		is_max_team[1] = true
 	return is_max_team
 
+func update_texture_choice_character(team, num):
+	print(team)
+	print(num)
+	if team == "cats":
+		$ContainerChoiceCharacter/TextureChoiceCharacter.frame = frame_texture_cats[num]
+	elif team == "dogs":
+		$ContainerChoiceCharacter/TextureChoiceCharacter.frame = frame_texture_dogs[num]
+	$ContainerChoiceCharacter/TextureChoiceCharacter.visible = true

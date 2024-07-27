@@ -448,6 +448,7 @@ text = "Jogador"
 placeholder_text = "Jogador"
 
 [node name="LabelName" type="Label" parent="NameEdit"]
+visible = false
 layout_mode = 0
 offset_left = -132.0
 offset_top = -1.0
@@ -482,12 +483,12 @@ offset_bottom = 574.0
 
 [node name="TextureChoiceCharacter" type="Sprite2D" parent="ContainerChoiceCharacter"]
 visible = false
-position = Vector2(110, 82)
+position = Vector2(-122, 129)
 scale = Vector2(0.551758, 0.594726)
 texture = ExtResource("4_qc0du")
 hframes = 12
 vframes = 8
-frame = 68
+frame = 64
 
 [node name="Panel" type="Panel" parent="."]
 visible = false

@@ -93,11 +93,11 @@ func _physics_process(delta):
 		get_parent().get_node("CharacterSelectionScreen").queue_free()
 		
 		
-
 func _on_select_button_0_pressed():
 	get_parent().click_sound.play()
 	var scene = get_parent().game_scene
 	scene.set_character(team, 0)
+	get_parent().get_node("LAN").update_texture_choice_character(team, 0)
 	get_parent().get_node("CharacterSelectionScreen").queue_free()
 	
 
@@ -105,6 +105,7 @@ func _on_select_button_1_pressed():
 	get_parent().click_sound.play()
 	var scene = get_parent().game_scene
 	scene.set_character(team, 1)
+	get_parent().get_node("LAN").update_texture_choice_character(team, 1)
 	get_parent().get_node("CharacterSelectionScreen").queue_free()
 
 
@@ -112,6 +113,7 @@ func _on_select_button_2_pressed():
 	get_parent().click_sound.play()
 	var scene = get_parent().game_scene
 	scene.set_character(team, 2)
+	get_parent().get_node("LAN").update_texture_choice_character(team, 2)
 	get_parent().get_node("CharacterSelectionScreen").queue_free()
 	
 	
