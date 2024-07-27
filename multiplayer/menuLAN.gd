@@ -216,8 +216,6 @@ func get_max_team_dogs_cats():
 	return is_max_team
 
 func update_texture_choice_character(team, num):
-	print(team)
-	print(num)
 	if team == "cats":
 		$ContainerChoiceCharacter/TextureChoiceCharacter.frame = frame_texture_cats[num]
 	elif team == "dogs":

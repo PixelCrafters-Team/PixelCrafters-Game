@@ -95,7 +95,11 @@ func _physics_process(delta):
 				check_and_unfreeze_nearby_cats()
 				
 		if Input.is_key_pressed(KEY_X):
-			activate_skill()	
+			activate_skill()
+			
+		if multiplayer.is_server():
+			if get_parent().num_glace_cats == get_parent().num_total_cats:
+				rpc("end_game")	
 		
 		
 func move() -> void:
@@ -145,10 +149,6 @@ func glace_cat(player_glace=self.nickname, play_effect=true):
 			
 			if player_glace == get_name_player() or play_effect == true:
 				get_parent().get_node(player_glace+'/EffectGlace').play()
-				
-	if multiplayer.is_server():
-		if get_parent().num_glace_cats == get_parent().num_total_cats:
-			rpc("end_game")
 
 
 @rpc

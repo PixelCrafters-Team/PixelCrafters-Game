@@ -448,7 +448,6 @@ text = "Jogador"
 placeholder_text = "Jogador"
 
 [node name="LabelName" type="Label" parent="NameEdit"]
-visible = false
 layout_mode = 0
 offset_left = -132.0
 offset_top = -1.0
