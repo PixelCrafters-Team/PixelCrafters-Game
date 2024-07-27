@@ -150,6 +150,7 @@ func reset_conection(error_server = 0):
 
 func _on_return_button_pressed():
 	get_parent().click_sound.play()
+	$ContainerChoiceCharacter/TextureChoiceCharacter.visible = false
 	if $CreateRoom/Start.visible == true and is_create_room:
 		rpc("reset_conection", 1)
 		get_parent().click_sound.play()

@@ -40,7 +40,7 @@ func connection_fail():
 
 
 func server_crash():
-	if not get_tree().current_scene.name == "LAN":
+	if not get_tree().current_scene.name == "LAN" and get_parent().get_node("Main").get_node("EndGameScreen") == null:
 		var main = get_tree().root.get_node("Main")
 		main.get_node("Game").queue_free()
 		var menu_scene = preload("res://screens/scenes/menu_screen.tscn")

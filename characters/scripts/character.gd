@@ -196,37 +196,42 @@ func activate_skill():
 				$EffectActiveSkillDog.play()
 			elif is_in_group("cats"):
 				$EffectActiveSkillCat.play()
-			$Skill/SkillDuration.start(5)
 			$Skill.visible = true
 		elif (is_skill_sargento_canis and is_in_group("cats")):
 			var hud_message = "Não é possível ativar habilidades enquanto Latido sônico estiver ativado."
 			set_message_game_hud(hud_message, false)
 		if is_in_group("estrela") and is_in_group("dogs"):
+			$Skill/SkillDuration.start(3)
 			is_skill_estrela = true
 			set_message_game_hud( "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes", false)
 			rpc("set_message_game_hud", "Jogador " + $namePlayer.text + " - Ativou habilidade: Patas Saltitantes")
 		if is_in_group("ronronante") and not is_skill_sargento_canis:
+			$Skill/SkillDuration.start(5)
 			is_skill_ronronante = true
 			rpc("update_ronronante_skill", true)
 			var message_ronronante = "Jogador " + $namePlayer.text + " - Ativou habilidade: Ronronar calmante"
 			set_message_game_hud(message_ronronante, false)
 			rpc("set_message_game_hud", message_ronronante)
 		if is_in_group("boladepelos")  and not is_skill_sargento_canis:
+			$Skill/SkillDuration.start(5)
 			is_skill_boladepelos = true
 			rpc("update_boladepelos_skill", true)
 			var message_boladepelos = "Jogador " + $namePlayer.text + " - Ativou habilidade: Ataque de pelos"
 			set_message_game_hud(message_boladepelos, false)
 		if is_in_group("sombra") and not is_skill_sargento_canis:
+			$Skill/SkillDuration.start(5)
 			is_skill_sombra = true
 			rpc("update_sombra_skill", true)
 			var message_sombra = "Jogador " + $namePlayer.text + " - Ativou habilidade: Esconderijo felino"
 			set_message_game_hud(message_sombra, false)
 		if is_in_group("sargentocanis"):
+			$Skill/SkillDuration.start(5)
 			is_skill_sargento_canis = true
 			rpc("update_sargento_canis_skill", true)
 			var message_sagento_canis = "Jogador " + $namePlayer.text + " - Ativou habilidade: Latido sônico"
 			set_message_game_hud(message_sagento_canis, false)
 		if is_in_group("brutus"):
+			$Skill/SkillDuration.start(5)
 			is_skill_brutus = true
 			rpc("update_brutus_skill", true)
 			var message_brutus = "Jogador " + $namePlayer.text + " - Ativou habilidade: Resistência canina"
@@ -384,7 +389,7 @@ func end_game():
 		endGameScreen.get_node("TotalPlayers/Cats").text = str(get_parent().num_total_cats) + " Gatos"
 		endGameScreen.get_node("TotalPlayers/Dogs").text = str(get_parent().num_total_dogs) + " Cachorros"
 
-		var time_in_minutes = get_parent().get_node("HUD/Timer").time_left / 60.0
+		var time_in_minutes = (get_parent().time_match  - get_parent().get_node("HUD/Timer").time_left) / 60.0
 		var formatted_time = "%0.2f" % time_in_minutes
 		endGameScreen.get_node("MatchTime/Time").text = formatted_time + " Minutos"
 
@@ -400,7 +405,7 @@ func end_game():
 		endGameScreen.get_node("TotalPlayers/Cats").text = str(get_parent().num_total_cats) + " Gatos"
 		endGameScreen.get_node("TotalPlayers/Dogs").text = str(get_parent().num_total_dogs) + " Cachorros"
 		
-		var time_in_minutes = get_parent().get_node("HUD/Timer").time_left / 60.0
+		var time_in_minutes = (get_parent().time_match  - get_parent().get_node("HUD/Timer").time_left) / 60.0
 		var formatted_time = "%0.2f" % time_in_minutes
 		endGameScreen.get_node("MatchTime/Time").text = formatted_time + " Minutos"
 
@@ -412,8 +417,8 @@ func end_game():
 		endGameScreen.get_node("IWasGlace/Label").text = str(get_parent().get_node(get_name_player()).num_my_was_glace)	
 		endGameScreen.get_node("VictoryDefeat").frame = 0
 		endGameScreen.audio_victory_defeat = 0
-	get_parent().get_parent().add_child(endGameScreen)
 	
+	get_parent().get_parent().add_child(endGameScreen)
 	get_parent().get_parent().get_node("Game").queue_free()
 	pass
 	
