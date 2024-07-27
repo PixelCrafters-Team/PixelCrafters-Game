@@ -148,6 +148,7 @@ func glace_cat(player_glace=self.nickname, play_effect=true):
 		if player_glace == list_players[i][1]:
 			if get_parent().get_node(player_glace+'/TextureGlace').visible == false:
 				get_parent().num_glace_cats += 1
+				get_parent().num_total_glace_cats += 1
 				get_parent().get_node(player_glace).num_my_was_glace += 1 
 				get_parent().get_node(player_glace+'/TextureGlace').visible = true
 				get_parent().get_node(player_glace+'/Texture').visible = false
@@ -383,12 +384,14 @@ func end_game():
 		endGameScreen.get_node("GlaceCats").visible = true
 		endGameScreen.get_node("SaveCats").visible = false
 		endGameScreen.get_node("GlaceCats/LabelMyGlaceCats").text = str(get_parent().get_node(get_name_player()).num_my_glace_cats)
+		endGameScreen.get_node("GlaceCats/LabelTotalGlaceCats").text = str(get_parent().num_total_glace_cats)
 	if get_parent().get_node(get_name_player()).is_in_group("cats"):
 		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Cachorros Hackers!"
 		endGameScreen.get_node("IWasGlace").visible = true
 		endGameScreen.get_node("GlaceCats").visible = false
 		endGameScreen.get_node("SaveCats").visible = true
 		endGameScreen.get_node("SaveCats/LabelMySaveCats").text = str(get_parent().get_node(get_name_player()).num_my_save_cats)	
+		endGameScreen.get_node("SaveCats/LabelTotalGlaceCats").text = str(get_parent().num_total_glace_cats)
 		endGameScreen.get_node("IWasGlace/Label").text = str(get_parent().get_node(get_name_player()).num_my_was_glace)	
 	get_parent().get_parent().add_child(endGameScreen)
 	

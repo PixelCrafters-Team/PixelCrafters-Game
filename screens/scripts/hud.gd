@@ -128,10 +128,11 @@ func _on_timer_charge_timeout():
 		$SkillCharge/TimerCharge.stop()
 		charge_skill = 0
 		$SkillCharge/TimerCharge/EffectCharge.play()
-		message_game("Habilidade recarregada", false)
 		if first_charge == true:
 			first_charge = false
-			get_parent().get_node(get_name_player()).activate_info_tecla_x()		
+			get_parent().get_node(get_name_player()).activate_info_tecla_x()	
+		else: 
+			message_game("Habilidade recarregada", false)	
 			
 		
 func start_timer():
