@@ -168,7 +168,8 @@ func unfreeze_cat(player_glace=self.nickname, play_effect=true):
 				get_parent().get_node(player_glace+'/TextureGlace').visible = false
 				get_parent().get_node(player_glace+'/Texture').visible = true
 				get_parent().get_node(player_glace).is_glace = false
-			
+				get_parent().get_node(player_glace+'/IconHeart').visible = true
+				get_parent().get_node(player_glace+'/IconHeart/TimerIconHeart').start(2)
 			if player_glace == get_name_player() or play_effect == true:
 				get_parent().get_node(player_glace+'/EffectGlace').play()
 
@@ -406,3 +407,15 @@ func activate_info_tecla_x():
 func _on_timer_info_tecla_x_timeout():
 	$InfoTeclaX/TimerInfoTeclaX.stop()
 	$InfoTeclaX.visible = false
+
+
+func _on_timer_icon_heart_timeout():
+	$IconHeart/TimerIconHeart.stop()
+	$IconHeart.visible = false
+	rpc("update_icon_heart", get_name_player())
+	
+@rpc()
+func update_icon_heart(player):
+	get_parent().get_node(player+'/IconHeart').visible = false
+	
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://btty3dsxkbo88"]
+[gd_scene load_steps=43 format=3 uid="uid://btty3dsxkbo88"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_egjrr"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_rvvcd"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bo0vuqcj68o4e" path="res://characters/assets/tecla_z.png" id="10_8gk0t"]
 [ext_resource type="AudioStream" uid="uid://cgjbicjugskg6" path="res://characters/assets/effect_active_skill_cat.mp3" id="10_dkfhu"]
 [ext_resource type="Texture2D" uid="uid://cm870m0ap7a00" path="res://characters/assets/tecla_x.png" id="12_x71ip"]
+[ext_resource type="Texture2D" uid="uid://cq4subi1da3j4" path="res://screens/assets/icons/Icon_Heart.png" id="13_mosll"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daw1v"]
 radius = 5.0
@@ -558,8 +559,17 @@ horizontal_alignment = 1
 
 [node name="TimerInfoTeclaX" type="Timer" parent="InfoTeclaX"]
 
+[node name="IconHeart" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -45)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("13_mosll")
+
+[node name="TimerIconHeart" type="Timer" parent="IconHeart"]
+
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]
 [connection signal="area_exited" from="AreaCollision" to="." method="_on_area_collision_area_exited"]
 [connection signal="timeout" from="Skill/SkillDuration" to="." method="_on_skill_duration_timeout_boladepelos"]
 [connection signal="timeout" from="InfoTeclaX/TimerInfoTeclaX" to="." method="_on_timer_info_tecla_x_timeout"]
+[connection signal="timeout" from="IconHeart/TimerIconHeart" to="." method="_on_timer_icon_heart_timeout"]
