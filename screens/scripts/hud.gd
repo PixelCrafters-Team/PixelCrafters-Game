@@ -1,12 +1,12 @@
 extends CanvasLayer
 
-var endGameScreen = preload("res://screens/scenes/end_game_screen.tscn").instantiate()
 @export var equipe: String = "-"
 @onready var camera = $MiniMap/SubViewport/Camera2D
 @onready var timer = $Timer
 @onready var pause_menu = $PauseMenu
 var paused = false
 var charge_skill
+var endGameScreen
 
 func _ready():
 	charge_skill = 0
@@ -84,11 +84,16 @@ func _on_button_pressed():
 
 func _on_timer_timeout():
 	timer.stop()
-	print(get_name())
+	if multiplayer.is_server():
+		rpc('end_game')
+	
+@rpc("authority", "call_local")
+func end_game():
+	var endGameScreen = preload("res://screens/scenes/end_game_screen.tscn").instantiate()
 	get_parent().get_parent().add_child(endGameScreen)
 	get_parent().get_parent().get_node("Game").queue_free()
-	
-	
+	pass
+		
 func pauseMenu():
 	if paused:
 		pause_menu.hide()
