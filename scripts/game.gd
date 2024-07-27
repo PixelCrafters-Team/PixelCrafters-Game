@@ -11,6 +11,7 @@ var num_character
 var num_map
 var num_total_cats = 0
 var num_glace_cats = 0
+var num_total_glace_cats = 0
 
 
 var list_characters_cats = [ 
