@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bh5otqaqtm0bj"]
+[gd_scene load_steps=22 format=3 uid="uid://bh5otqaqtm0bj"]
 
 [ext_resource type="Script" path="res://screens/scenes/end_game_screen.gd" id="1_xvxl0"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_aofrj"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="8_thsv4"]
 [ext_resource type="Texture2D" uid="uid://da1ddn7h8hrs8" path="res://screens/assets/icons/Icon_Star.png" id="9_730mf"]
 [ext_resource type="Texture2D" uid="uid://cq4subi1da3j4" path="res://screens/assets/icons/Icon_Heart.png" id="9_tudb7"]
+[ext_resource type="Texture2D" uid="uid://d0himja8c8ayp" path="res://screens/assets/victory_defeat.png" id="10_dal5f"]
+[ext_resource type="AudioStream" uid="uid://bcnip58ufo54k" path="res://screens/assets/sfx_victory.mp3" id="11_cmjas"]
+[ext_resource type="AudioStream" uid="uid://b7gpr77afnkmf" path="res://screens/assets/sfx_defeat.mp3" id="12_fwxpd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o446p"]
 
@@ -80,10 +83,10 @@ text = "Vitoria dos Gatos Hackers!"
 label_settings = SubResource("LabelSettings_cdqti")
 
 [node name="SelectButton" type="Button" parent="."]
-offset_left = 893.0
-offset_top = 531.0
-offset_right = 1106.0
-offset_bottom = 574.0
+offset_left = 606.0
+offset_top = 607.0
+offset_right = 819.0
+offset_bottom = 650.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = SubResource("Theme_6fg3i")
@@ -299,5 +302,16 @@ scale = Vector2(0.594595, 0.564)
 texture = ExtResource("7_vdqyb")
 hframes = 3
 frame = 1
+
+[node name="VictoryDefeat" type="Sprite2D" parent="."]
+position = Vector2(1050, 593)
+texture = ExtResource("10_dal5f")
+hframes = 2
+
+[node name="AudioVictory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_cmjas")
+
+[node name="AudioDefeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_fwxpd")
 
 [connection signal="pressed" from="SelectButton" to="." method="_on_select_button_continue_pressed"]
