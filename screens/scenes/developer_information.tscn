@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dakpoghceg01b"]
+[gd_scene load_steps=17 format=3 uid="uid://dakpoghceg01b"]
 
 [ext_resource type="Script" path="res://screens/scripts/developer_information.gd" id="1_hhaig"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="1_nrxox"]
@@ -10,6 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://bpid5spowxjl1" path="res://screens/assets/logo_ufpel.png" id="7_uwpwd"]
 [ext_resource type="Texture2D" uid="uid://cs460gif1y5s1" path="res://screens/assets/logo_computação.png" id="8_x5chq"]
 [ext_resource type="Texture2D" uid="uid://b7cfub8gyhs5i" path="res://screens/assets/icons/Icon_ArrowLeft.png" id="9_qu4gq"]
+[ext_resource type="Texture2D" uid="uid://osgd0sjm5ldc" path="res://screens/assets/pixel_crafters_team_logo.png" id="11_f60rk"]
+
+[sub_resource type="SystemFont" id="SystemFont_sq7kn"]
+font_names = PackedStringArray("Lucida Sans Unicode")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kiqp"]
+bg_color = Color(0.184314, 0.180392, 0.14902, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0af4j"]
 texture = ExtResource("9_qu4gq")
@@ -62,13 +69,33 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 
-[node name="LabelTitlle" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelTitlle" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_xjwvk")
 theme_override_font_sizes/font_size = 45
 text = "DESENVOLVEDORAS
 "
 horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ufpel" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("7_uwpwd")
+expand_mode = 1
+
+[node name="Computação" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("8_x5chq")
+expand_mode = 1
 
 [node name="MarginTop2" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
@@ -175,21 +202,27 @@ theme_override_font_sizes/font_size = 25
 text = "Jogo desenvolvido para a disciplina de jogos
 Professor Orientador: Rafael Torchelsen"
 
-[node name="Ufpel" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-texture = ExtResource("7_uwpwd")
-expand_mode = 1
-
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
-[node name="Computação" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(70, 70)
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(350, 100)
 layout_mode = 2
-texture = ExtResource("8_x5chq")
+texture = ExtResource("11_f60rk")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/TextureRect"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 68.0
+offset_right = 345.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(0.537255, 0.403922, 0.666667, 1)
+theme_override_fonts/font = SubResource("SystemFont_sq7kn")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_5kiqp")
+text = "Crafters Team"
 
 [node name="BackButton" type="Button" parent="."]
 custom_minimum_size = Vector2(80, 80)
