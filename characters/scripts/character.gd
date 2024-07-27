@@ -145,6 +145,11 @@ func glace_cat(player_glace=self.nickname, play_effect=true):
 			
 			if player_glace == get_name_player() or play_effect == true:
 				get_parent().get_node(player_glace+'/EffectGlace').play()
+				
+	if multiplayer.is_server():
+		if get_parent().num_glace_cats == get_parent().num_total_cats:
+			rpc("end_game")
+
 
 @rpc
 func unfreeze_cat(player_glace=self.nickname, play_effect=true):
@@ -359,3 +364,11 @@ func _on_skill_duration_timeout_brutus():
 func _on_area_collision_area_exited(area):
 	if is_in_group("cats"):
 		$InfoTeclaZ.visible = false
+		
+		
+@rpc("authority", "call_local")
+func end_game():
+	var endGameScreen = preload("res://screens/scenes/end_game_screen.tscn").instantiate()
+	get_parent().get_parent().add_child(endGameScreen)
+	get_parent().get_parent().get_node("Game").queue_free()
+	pass
