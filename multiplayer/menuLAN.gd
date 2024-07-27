@@ -194,19 +194,20 @@ func _on_wait_timeout():
 func enable_start_button():
 	$CreateRoom/Start.disabled = false
 
-
-func get_max_team_dogs_cats():
-	var cont_cats = 0
-	var cont_dogs = 0
-	
+func get_cont_playes_team(name_team):
+	var cont_team = 0
 	var players = Networking.return_list()
 	for i in range(players.size()):
 		if players[i][2] != null:
-			if "cats" in players[i][2]:
-				cont_cats += 1
-			elif "dogs" in players[i][2]:
-				cont_dogs += 1
-	
+			if name_team in players[i][2]:
+				cont_team += 1
+			elif name_team in players[i][2]:
+				cont_team += 1	
+	return cont_team
+
+func get_max_team_dogs_cats():
+	var cont_cats = get_cont_playes_team("cats")
+	var cont_dogs = get_cont_playes_team("dogs")	
 	var is_max_team = [false,false]
 
 	if cont_dogs >= max_dogs_players:

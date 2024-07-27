@@ -10,8 +10,10 @@ var character_position_dogs
 var num_character
 var num_map
 var num_total_cats = 0
+var num_total_dogs = 0
 var num_glace_cats = 0
 var num_total_glace_cats = 0
+var time_match = 0
 
 
 var list_characters_cats = [ 
@@ -63,7 +65,7 @@ func set_character(team, num):
 			Networking.rpc("update_list_character", i, list_players[i][2])
 		
 		
-func create_game(scene, map, time_match):
+func create_game(scene, map, set_time_match):
 	#select_map(scene, [0,1].pick_random())
 	select_map(scene, map)
 	var list_players = Networking.return_list()
@@ -74,6 +76,7 @@ func create_game(scene, map, time_match):
 			Character.global_position = character_position_cats
 			num_total_cats += 1
 		else: 
+			num_total_dogs += 1
 			Character.global_position = character_position_dogs
 			
 		Character.name = str(list_players[i][1])
@@ -82,6 +85,7 @@ func create_game(scene, map, time_match):
 		
 	add_child(Hud)
 	$HUD.build_uhd(num_total_cats)
+	time_match = set_time_match
 	$HUD/Timer.set_wait_time(float(time_match))
 
 func _on_music_game_finished():

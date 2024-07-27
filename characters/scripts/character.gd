@@ -380,14 +380,28 @@ func _on_area_collision_area_exited(area):
 func end_game():
 	var endGameScreen = preload("res://screens/scenes/end_game_screen.tscn").instantiate()
 	if get_parent().get_node(get_name_player()).is_in_group("dogs") :
-		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Cachorros Hackers!"
+		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Cachorros Vigilantes!"
+		endGameScreen.get_node("TotalPlayers/Cats").text = str(get_parent().num_total_cats) + " Gatos"
+		endGameScreen.get_node("TotalPlayers/Dogs").text = str(get_parent().num_total_dogs) + " Cachorros"
+
+		var time_in_minutes = get_parent().get_node("HUD/Timer").time_left / 60.0
+		var formatted_time = "%0.2f" % time_in_minutes
+		endGameScreen.get_node("MatchTime/Time").text = formatted_time + " Minutos"
+
 		endGameScreen.get_node("IWasGlace").visible = false
 		endGameScreen.get_node("GlaceCats").visible = true
 		endGameScreen.get_node("SaveCats").visible = false
 		endGameScreen.get_node("GlaceCats/LabelMyGlaceCats").text = str(get_parent().get_node(get_name_player()).num_my_glace_cats)
 		endGameScreen.get_node("GlaceCats/LabelTotalGlaceCats").text = str(get_parent().num_total_glace_cats)
 	if get_parent().get_node(get_name_player()).is_in_group("cats"):
-		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Cachorros Hackers!"
+		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Cachorros Vigilantes!"
+		endGameScreen.get_node("TotalPlayers/Cats").text = str(get_parent().num_total_cats) + " Gatos"
+		endGameScreen.get_node("TotalPlayers/Dogs").text = str(get_parent().num_total_dogs) + " Cachorros"
+		
+		var time_in_minutes = get_parent().get_node("HUD/Timer").time_left / 60.0
+		var formatted_time = "%0.2f" % time_in_minutes
+		endGameScreen.get_node("MatchTime/Time").text = formatted_time + " Minutos"
+
 		endGameScreen.get_node("IWasGlace").visible = true
 		endGameScreen.get_node("GlaceCats").visible = false
 		endGameScreen.get_node("SaveCats").visible = true
