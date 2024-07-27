@@ -98,6 +98,8 @@ func _physics_process(delta):
 				check_and_unfreeze_nearby_cats()
 				
 		if Input.is_key_pressed(KEY_X):
+			if $InfoTeclaX.visible == true:
+				$InfoTeclaX.visible = false
 			activate_skill()
 			
 		if multiplayer.is_server():
@@ -392,3 +394,12 @@ func end_game():
 	
 	get_parent().get_parent().get_node("Game").queue_free()
 	pass
+	
+func activate_info_tecla_x():
+	$InfoTeclaX.visible = true
+	$InfoTeclaX/TimerInfoTeclaX.start(3)
+
+
+func _on_timer_info_tecla_x_timeout():
+	$InfoTeclaX/TimerInfoTeclaX.stop()
+	$InfoTeclaX.visible = false

@@ -63,7 +63,7 @@ func _on_connect_pressed():
 	$NameEdit.visible = false
 	$EnterRoom/Connect.visible = false
 	$EnterRoom/Label.visible = true
-	$Wait.start(0.5)
+	$Wait.start(1.0)
 
 @rpc("any_peer")
 func get_num_max_players(new_max_cats_players, new_max_dogs_players):

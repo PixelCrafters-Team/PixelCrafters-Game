@@ -7,10 +7,13 @@ extends CanvasLayer
 var paused = false
 var charge_skill
 var endGameScreen
+var first_charge
 
 func _ready():
-	charge_skill = 0
-	$SkillCharge/Animation.play("charge_complete")
+	$SkillCharge/Animation.play("charge_0")
+	$SkillCharge/TimerCharge.start(5)
+	charge_skill = 1
+	first_charge = true
 	$Team/MarginContainer/VBoxContainer/GamMessages.text = " "
 	
 	if get_parent().get_node(get_parent().get_parent().player_name).is_in_group("estrela"):
@@ -126,7 +129,10 @@ func _on_timer_charge_timeout():
 		charge_skill = 0
 		$SkillCharge/TimerCharge/EffectCharge.play()
 		message_game("Habilidade recarregada", false)
-	
+		if first_charge == true:
+			first_charge = false
+			get_parent().get_node(get_name_player()).activate_info_tecla_x()		
+			
 		
 func start_timer():
 	$SkillCharge/Animation.play("charge_0")
@@ -144,3 +150,13 @@ func message_game(text, som=true):
 
 func _on_timer_message_timeout():
 	$Team/MarginContainer/VBoxContainer/GamMessages.text = " "
+	
+
+func get_name_player() -> String:
+	var id = Networking.get_player_id()
+	var list_players = Networking.return_list()
+	var name_player = null
+	for i in range(list_players.size()):
+		if id == list_players[i][0]:
+			name_player = list_players[i][1]
+	return name_player

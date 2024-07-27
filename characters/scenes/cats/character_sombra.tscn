@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://co4itvpd7wcc"]
+[gd_scene load_steps=43 format=3 uid="uid://co4itvpd7wcc"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_0tov6"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_ed6tt"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cavagoic810ct" path="res://screens/assets/effect_dog_barking.mp3" id="9_51gdh"]
 [ext_resource type="Texture2D" uid="uid://bo0vuqcj68o4e" path="res://characters/assets/tecla_z.png" id="10_bsbb2"]
 [ext_resource type="AudioStream" uid="uid://cgjbicjugskg6" path="res://characters/assets/effect_active_skill_cat.mp3" id="10_v4t5k"]
+[ext_resource type="Texture2D" uid="uid://cm870m0ap7a00" path="res://characters/assets/tecla_x.png" id="12_kte43"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ss5h"]
 radius = 6.0
@@ -420,6 +421,13 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urgsb"]
+bg_color = Color(0.745098, 0.737255, 0.654902, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Character_sombra" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree") groups=["cats", "sombra"]]
 collision_layer = 0
 script = ExtResource("1_0tov6")
@@ -532,7 +540,34 @@ volume_db = -8.0
 [node name="EffectActiveSkillDog" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_51gdh")
 
+[node name="InfoTeclaX" type="Panel" parent="."]
+visible = false
+offset_left = -44.0
+offset_top = -90.0
+offset_right = 49.0
+offset_bottom = -43.0
+
+[node name="TeclaX" type="Sprite2D" parent="InfoTeclaX"]
+position = Vector2(44, 29)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_kte43")
+
+[node name="Label" type="Label" parent="InfoTeclaX/TeclaX"]
+offset_left = -390.0
+offset_top = -230.0
+offset_right = 436.0
+offset_bottom = -157.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_3tg33")
+theme_override_font_sizes/font_size = 53
+theme_override_styles/normal = SubResource("StyleBoxFlat_urgsb")
+text = " Pressione para ativar habilidade:"
+horizontal_alignment = 1
+
+[node name="TimerInfoTeclaX" type="Timer" parent="InfoTeclaX"]
+
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]
 [connection signal="area_exited" from="AreaCollision" to="." method="_on_area_collision_area_exited"]
 [connection signal="timeout" from="Skill/SkillDuration" to="." method="_on_skill_duration_timeout_sombra"]
+[connection signal="timeout" from="InfoTeclaX/TimerInfoTeclaX" to="." method="_on_timer_info_tecla_x_timeout"]
