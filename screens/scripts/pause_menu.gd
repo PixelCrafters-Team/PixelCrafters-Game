@@ -10,8 +10,9 @@ func _on_resume_pressed():
 
 
 func _on_quit_pressed():
+	get_parent().get_parent().get_parent().get_node("Game").queue_free()
+	Networking.reset_connection()
 	get_tree().quit()
-
 
 func _on_controls_pressed():
 	print(get_parent())
