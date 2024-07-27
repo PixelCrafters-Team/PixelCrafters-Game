@@ -1,10 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bh5otqaqtm0bj"]
+[gd_scene load_steps=19 format=3 uid="uid://bh5otqaqtm0bj"]
 
 [ext_resource type="Script" path="res://screens/scenes/end_game_screen.gd" id="1_xvxl0"]
 [ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="2_aofrj"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="3_owiu7"]
 [ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="5_kfakm"]
-[ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="6_0tqln"]
 [ext_resource type="Texture2D" uid="uid://ced7kg74e8w7x" path="res://screens/assets/bone_hud.png" id="6_8auxe"]
 [ext_resource type="Texture2D" uid="uid://lxvdee5241cr" path="res://characters/assets/glace.png" id="7_vdqyb"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="8_thsv4"]
@@ -16,22 +15,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_cdqti"]
 font = ExtResource("3_owiu7")
 font_size = 42
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0drw"]
-texture = ExtResource("6_0tqln")
-modulate_color = Color(0.513726, 0, 0, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_maoqi"]
-texture = ExtResource("6_0tqln")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy6u5"]
-texture = ExtResource("6_0tqln")
-modulate_color = Color(0.313726, 0.670588, 0.847059, 1)
-
-[sub_resource type="Theme" id="Theme_ed6e1"]
-Button/styles/hover = SubResource("StyleBoxTexture_t0drw")
-Button/styles/normal = SubResource("StyleBoxTexture_maoqi")
-Button/styles/pressed = SubResource("StyleBoxTexture_xy6u5")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhhwu"]
 texture = ExtResource("5_kfakm")
@@ -66,6 +49,9 @@ font_names = PackedStringArray("Comic Sans MS")
 [sub_resource type="SystemFont" id="SystemFont_50bsg"]
 font_names = PackedStringArray("Comic Sans MS")
 
+[sub_resource type="SystemFont" id="SystemFont_mctmk"]
+font_names = PackedStringArray("Comic Sans MS")
+
 [node name="EndGameScreen" type="Node2D"]
 script = ExtResource("1_xvxl0")
 
@@ -93,16 +79,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_o446p")
 text = "Vitoria dos Gatos Hackers!"
 label_settings = SubResource("LabelSettings_cdqti")
 
-[node name="ExitButton" type="Button" parent="."]
-offset_left = 1322.0
-offset_top = 51.0
-offset_right = 1403.0
-offset_bottom = 130.0
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme = SubResource("Theme_ed6e1")
-theme_override_font_sizes/font_size = 59
-
 [node name="SelectButton" type="Button" parent="."]
 offset_left = 823.0
 offset_top = 522.0
@@ -113,7 +89,7 @@ size_flags_vertical = 0
 theme = SubResource("Theme_6fg3i")
 text = "Continuar"
 
-[node name="TempoPartida" type="Label" parent="."]
+[node name="MatchTime" type="Label" parent="."]
 offset_left = 790.0
 offset_top = 321.0
 offset_right = 1072.0
@@ -126,7 +102,7 @@ text = "Tempo da partida"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="TempoPartida"]
+[node name="Time" type="Label" parent="MatchTime"]
 layout_mode = 0
 offset_left = 68.0
 offset_top = 81.0
@@ -189,15 +165,15 @@ text = "33
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="CatsDogs" type="Sprite2D" parent="."]
-position = Vector2(282, 543)
+[node name="SaveCats" type="Sprite2D" parent="."]
+position = Vector2(291, 497)
 scale = Vector2(0.339518, 0.321655)
 texture = ExtResource("8_thsv4")
 hframes = 12
 vframes = 6
 frame = 47
 
-[node name="Label" type="Label" parent="CatsDogs"]
+[node name="Label" type="Label" parent="SaveCats"]
 offset_left = 162.0
 offset_top = -112.0
 offset_right = 951.0
@@ -207,7 +183,7 @@ theme_override_font_sizes/font_size = 70
 text = "Quantidade de Gatos Salvos:"
 autowrap_mode = 2
 
-[node name="LabelMySaveCats" type="Label" parent="CatsDogs"]
+[node name="LabelMySaveCats" type="Label" parent="SaveCats"]
 offset_left = 453.584
 offset_top = -9.32697
 offset_right = 524.584
@@ -219,7 +195,7 @@ text = "12
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="LabelTotalGlaceCats" type="Label" parent="CatsDogs"]
+[node name="LabelTotalGlaceCats" type="Label" parent="SaveCats"]
 offset_left = 662.704
 offset_top = -9.32694
 offset_right = 733.704
@@ -231,7 +207,7 @@ text = "33
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label_" type="Label" parent="CatsDogs"]
+[node name="Label_" type="Label" parent="SaveCats"]
 offset_left = 577.289
 offset_top = -18.6538
 offset_right = 622.289
@@ -242,7 +218,7 @@ text = "/"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="IconHeart" type="Sprite2D" parent="CatsDogs"]
+[node name="IconHeart" type="Sprite2D" parent="SaveCats"]
 position = Vector2(-76.5792, -92.8793)
 scale = Vector2(0.437823, 0.384879)
 texture = ExtResource("9_tudb7")
@@ -258,6 +234,7 @@ text = "--- Total de Jogadores ---
 "
 
 [node name="Cats" type="Label" parent="TotalPlayers"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 60.0
 offset_right = 135.0
@@ -273,6 +250,7 @@ scale = Vector2(0.131696, 0.143182)
 texture = ExtResource("9_730mf")
 
 [node name="Dogs" type="Label" parent="TotalPlayers"]
+layout_mode = 0
 offset_left = 187.0
 offset_top = 61.0
 offset_right = 344.0
@@ -286,5 +264,26 @@ text = "2 Cachorros
 position = Vector2(-21, 17)
 scale = Vector2(0.131696, 0.143182)
 texture = ExtResource("9_730mf")
+
+[node name="IWasGlace" type="Label" parent="."]
+offset_left = 263.0
+offset_top = 570.0
+offset_right = 598.0
+offset_bottom = 632.0
+theme_override_fonts/font = ExtResource("3_owiu7")
+theme_override_font_sizes/font_size = 22
+text = "Quantidade de vezes que você foi congelado:"
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="IWasGlace"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 35.0
+offset_right = 209.0
+offset_bottom = 67.0
+theme_override_fonts/font = SubResource("SystemFont_mctmk")
+theme_override_font_sizes/font_size = 21
+text = "3
+"
 
 [connection signal="pressed" from="SelectButton" to="." method="_on_select_button_continue_pressed"]

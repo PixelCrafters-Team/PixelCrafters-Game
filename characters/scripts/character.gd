@@ -21,6 +21,9 @@ var is_skill_sombra = false
 var is_skill_boladepelos = false
 var is_skill_sargento_canis = false
 var is_skill_brutus = false
+var num_my_glace_cats = 0 # Se sou cachorro
+var num_my_save_cats = 0  # Se sou gato
+var num_my_was_glace = 0  # Se sou gato
 
 var list_positions_teleport = [
 	Vector2(480, 676), 
@@ -143,6 +146,7 @@ func glace_cat(player_glace=self.nickname, play_effect=true):
 		if player_glace == list_players[i][1]:
 			if get_parent().get_node(player_glace+'/TextureGlace').visible == false:
 				get_parent().num_glace_cats += 1
+				get_parent().get_node(player_glace).num_my_was_glace += 1 
 				get_parent().get_node(player_glace+'/TextureGlace').visible = true
 				get_parent().get_node(player_glace+'/Texture').visible = false
 				get_parent().get_node(player_glace).is_glace = true
@@ -175,6 +179,7 @@ func check_and_unfreeze_nearby_cats():
 			$InfoTeclaZ.visible = false
 			unfreeze_cat(player_glace)
 			rpc('unfreeze_cat', player_glace, false)
+			num_my_save_cats += 1 
 			set_message_game_hud( "Jogador " + $namePlayer.text + " descongelou jogador " +  player_glace, false)
 			rpc("set_message_game_hud", "Jogador " +  $namePlayer.text + " descongelou jogador " +  player_glace)
 
@@ -207,7 +212,7 @@ func activate_skill():
 			rpc("update_boladepelos_skill", true)
 			var message_boladepelos = "Jogador " + $namePlayer.text + " - Ativou habilidade: Ataque de pelos"
 			set_message_game_hud(message_boladepelos, false)
-		if is_in_group("sombra") and is_skill_sargento_canis:
+		if is_in_group("sombra") and not is_skill_sargento_canis:
 			is_skill_sombra = true
 			rpc("update_sombra_skill", true)
 			var message_sombra = "Jogador " + $namePlayer.text + " - Ativou habilidade: Esconderijo felino"
@@ -299,6 +304,7 @@ func _on_area_collision_area_entered(area):
 	if area.name == 'AreaCollision':	# colisão com um personagem
 		var player_glace = area.get_parent().nickname
 		if area.get_parent().is_in_group("cats") and self.is_in_group("dogs") and get_parent().get_node(player_glace+'/TextureGlace').visible == false:
+			num_my_glace_cats += 1
 			glace_cat(player_glace)
 			rpc('glace_cat', player_glace, false)
 			set_message_game_hud("Jogador " + $namePlayer.text + " congelou jogador " + player_glace, false)
@@ -369,6 +375,20 @@ func _on_area_collision_area_exited(area):
 @rpc("authority", "call_local")
 func end_game():
 	var endGameScreen = preload("res://screens/scenes/end_game_screen.tscn").instantiate()
+	if get_parent().get_node(get_name_player()).is_in_group("dogs") :
+		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Cachorros Hackers!"
+		endGameScreen.get_node("IWasGlace").visible = false
+		endGameScreen.get_node("GlaceCats").visible = true
+		endGameScreen.get_node("SaveCats").visible = false
+		endGameScreen.get_node("GlaceCats/LabelMyGlaceCats").text = str(get_parent().get_node(get_name_player()).num_my_glace_cats)
+	if get_parent().get_node(get_name_player()).is_in_group("cats"):
+		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Cachorros Hackers!"
+		endGameScreen.get_node("IWasGlace").visible = true
+		endGameScreen.get_node("GlaceCats").visible = false
+		endGameScreen.get_node("SaveCats").visible = true
+		endGameScreen.get_node("SaveCats/LabelMySaveCats").text = str(get_parent().get_node(get_name_player()).num_my_save_cats)	
+		endGameScreen.get_node("IWasGlace/Label").text = str(get_parent().get_node(get_name_player()).num_my_was_glace)	
 	get_parent().get_parent().add_child(endGameScreen)
+	
 	get_parent().get_parent().get_node("Game").queue_free()
 	pass
