@@ -45,16 +45,6 @@ Button/styles/pressed = SubResource("StyleBoxTexture_ahkba")
 [sub_resource type="SystemFont" id="SystemFont_kajlj"]
 font_names = PackedStringArray("Comic Sans MS")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47pql"]
-bg_color = Color(0.796078, 0.768627, 0.682353, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 6
-border_color = Color(0.156863, 0.105882, 0.027451, 1)
-shadow_size = 5
-shadow_offset = Vector2(3, 3)
-
 [sub_resource type="SystemFont" id="SystemFont_fo2f6"]
 font_names = PackedStringArray("Comic Sans MS")
 font_weight = 600
@@ -180,6 +170,18 @@ bg_color = Color(0.745098, 0.737255, 0.654902, 1)
 corner_radius_top_left = 51
 corner_radius_top_right = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1lom"]
+bg_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_j0pl6")
 
@@ -269,50 +271,6 @@ horizontal_alignment = 1
 stream = ExtResource("5_rjj8a")
 
 [node name="TimerMessage" type="Timer" parent="Team/MarginContainer/VBoxContainer/GamMessages"]
-
-[node name="PanelMiniMap" type="Panel" parent="."]
-offset_left = -1.0
-offset_top = 604.0
-offset_right = 205.0
-offset_bottom = 817.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_47pql")
-
-[node name="MiniMap" type="SubViewportContainer" parent="."]
-offset_left = 2.0
-offset_top = 608.0
-offset_right = 202.0
-offset_bottom = 808.0
-
-[node name="SubViewport" type="SubViewport" parent="MiniMap"]
-handle_input_locally = false
-size = Vector2i(200, 200)
-render_target_update_mode = 4
-
-[node name="CentroDePesquisa" type="Sprite2D" parent="MiniMap/SubViewport"]
-rotation = 0.441568
-scale = Vector2(0.581, 0.581)
-texture = ExtResource("6_fb3q1")
-
-[node name="PracaCentral" type="Sprite2D" parent="MiniMap/SubViewport"]
-visible = false
-position = Vector2(-259, -1280)
-rotation = 0.00523599
-scale = Vector2(0.581, 0.581)
-texture = ExtResource("7_isbgt")
-
-[node name="Camera2D" type="Camera2D" parent="MiniMap/SubViewport"]
-zoom = Vector2(0.2, 0.2)
-
-[node name="Label" type="Label" parent="."]
-offset_left = 2.0
-offset_top = 610.0
-offset_right = 203.0
-offset_bottom = 807.0
-theme_override_colors/font_color = Color(0.0117647, 0.203922, 1, 1)
-theme_override_font_sizes/font_size = 100
-text = ".
-"
-horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 600.0
@@ -455,6 +413,59 @@ theme_override_font_sizes/font_size = 38
 text = " 8"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MiniMap" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 200.0
+grow_vertical = 0
+
+[node name="BG" type="Panel" parent="MiniMap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q1lom")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MiniMap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="MiniMap/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="CentroDePesquisa" type="Sprite2D" parent="MiniMap/SubViewportContainer/SubViewport"]
+rotation = 0.441568
+scale = Vector2(0.581, 0.581)
+texture = ExtResource("6_fb3q1")
+
+[node name="PracaCentral" type="Sprite2D" parent="MiniMap/SubViewportContainer/SubViewport"]
+position = Vector2(-259, -1280)
+rotation = 0.00523599
+scale = Vector2(0.581, 0.581)
+texture = ExtResource("7_isbgt")
+
+[node name="Camera2D" type="Camera2D" parent="MiniMap/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.2, 0.2)
 
 [connection signal="pressed" from="Team/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Team/MarginContainer/VBoxContainer/GamMessages/TimerMessage" to="." method="_on_timer_message_timeout"]

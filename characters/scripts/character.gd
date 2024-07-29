@@ -10,8 +10,10 @@ const SPEED_WALK = 64.0
 @export_category("Objects")
 @export var animation_tree: AnimationTree = null
 
+@export var player_pin_scene: PackedScene = preload("res://characters/scenes/player_pin.tscn")
+
 var nickname = ""
-var state_machine
+var state_machine 
 var is_walking: bool = false
 var is_glace: bool = false
 var is_skill_active = false
@@ -47,6 +49,8 @@ func _ready():
 	
 	if is_in_group("cats"):
 		$InfoTeclaZ.visible = false
+		
+	
 
 func _physics_process(delta):
 	if is_multiplayer_authority():
@@ -106,7 +110,8 @@ func _physics_process(delta):
 			if get_parent().num_glace_cats == get_parent().num_total_cats:
 				rpc("end_game")	
 		
-		
+	
+			
 func move() -> void:
 	var direction: Vector2 = Vector2(
 		Input.get_axis("move_left", "move_right"),
@@ -307,6 +312,18 @@ func get_name_player() -> String:
 		if id == list_players[i][0]:
 			name_player = list_players[i][1]
 	return name_player
+	
+func get_position_player() -> Vector2:
+	var player_node = get_parent().get_node(self.get_name_player())
+	if player_node:
+		return player_node.global_position
+	return Vector2.ZERO 
+	
+func get_position_player_pin(player_name: String) -> Vector2:
+	var player_node = get_parent().get_node(player_name)
+	if player_node:
+		return player_node.global_position
+	return Vector2.ZERO 
 	
 	
 func _on_area_collision_area_entered(area):
