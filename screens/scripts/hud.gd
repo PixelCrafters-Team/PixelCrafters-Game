@@ -76,33 +76,37 @@ func _process(delta):
 func add_player_pins():
 	var player_list = Networking.return_list()
 	clear_existing_pins()
-	
+
 	var current_player = get_parent().get_node(get_name_player())
 	var is_current_player_cat = current_player.is_in_group("cats")
-	
+
 	for player in player_list:
 		var player_pin = preload("res://characters/scenes/player_pin.tscn").instantiate()
-		
 		player_pin.name = "PlayerPin_" + player[1]
 		player_pin.position = get_parent().Character.get_position_player_pin(player[1])
-		print("Pin: ", player_pin.name, " Current PLayer: ", current_player.name)
+
 		var player_node = get_parent().get_node(player[1])
 		if is_current_player_cat:
 			if player_node.is_in_group("dogs"):
-				set_pin_color(player_pin, Color.RED)
-		else:
+				set_pin_color2(player_pin, Color.ORANGE)
+			else:
 				set_pin_color(player_pin, Color.BLUE)  
 		else:
-			
+
 			if player_node.is_in_group("cats"):
-				set_pin_color(player_pin, Color.RED) 
+				set_pin_color2(player_pin, Color.ORANGE) 
 			else:
 				set_pin_color(player_pin, Color.BLUE) 
-		
+
 		map1.add_child(player_pin)
 		map2.add_child(player_pin)
-	
+
 func set_pin_color(pin: Node2D, color: Color):
+	var panel = pin.get_node("Panel")
+	if panel:
+		panel.modulate = color
+		
+func set_pin_color2(pin: Node2D, color: Color):
 	var panel = pin.get_node("Panel")
 	if panel:
 		var stylebox = panel.get_theme_stylebox("panel")
@@ -123,7 +127,7 @@ func clear_existing_pins():
 	
 func _physics_process(delta):
 	if get_parent().Character:
-		camera.position = get_parent().Character.get_position_player()/2
+		camera.position = get_parent().Character.get_position_player()
 
 
 func build_uhd(num_total_cats):
