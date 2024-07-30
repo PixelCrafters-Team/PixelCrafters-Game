@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @export var equipe: String = "-"
-@onready var camera = $MiniMap/SubViewportContainer/SubViewport/Camera2D
+@onready var camera = $MiniMap/SubViewportContainer/SubViewport/Map/Camera2D
 @onready var timer = $Timer
 @onready var pause_menu = $PauseMenu
 var paused = false
@@ -9,8 +9,8 @@ var charge_skill
 var endGameScreen
 var first_charge
 
-@onready var map1 = $MiniMap/SubViewportContainer/SubViewport/CentroDePesquisa
-@onready var map2 = $MiniMap/SubViewportContainer/SubViewport/PracaCentral
+@onready var map1 = $MiniMap/SubViewportContainer/SubViewport
+@onready var map2 = $MiniMap/SubViewportContainer/SubViewport
 
 var game_world_size = Vector2(3744, 3303) # Example size, replace with your actual game world size
 var minimap_size = Vector2(200, 200)
@@ -75,7 +75,6 @@ func _process(delta):
 	
 func add_player_pins():
 	var player_list = Networking.return_list()
-	# Remove existing player pins
 	clear_existing_pins()
 	
 	var current_player = get_parent().get_node(get_name_player())
@@ -83,14 +82,15 @@ func add_player_pins():
 	
 	for player in player_list:
 		var player_pin = preload("res://characters/scenes/player_pin.tscn").instantiate()
+		
 		player_pin.name = "PlayerPin_" + player[1]
 		player_pin.position = get_parent().Character.get_position_player_pin(player[1])
-		
+		print("Pin: ", player_pin.name, " Current PLayer: ", current_player.name)
 		var player_node = get_parent().get_node(player[1])
 		if is_current_player_cat:
 			if player_node.is_in_group("dogs"):
 				set_pin_color(player_pin, Color.RED)
-			else:
+		else:
 				set_pin_color(player_pin, Color.BLUE)  
 		else:
 			
@@ -105,7 +105,10 @@ func add_player_pins():
 func set_pin_color(pin: Node2D, color: Color):
 	var panel = pin.get_node("Panel")
 	if panel:
-		panel.modulate = color
+		var stylebox = panel.get_theme_stylebox("panel")
+		if stylebox and stylebox is StyleBoxFlat:
+			stylebox.bg_color = color
+			panel.add_theme_stylebox_override("panel", stylebox)
 
 func clear_existing_pins():
 	for pin in map1.get_children():
@@ -120,7 +123,7 @@ func clear_existing_pins():
 	
 func _physics_process(delta):
 	if get_parent().Character:
-		camera.position = get_parent().Character.get_position_player()
+		camera.position = get_parent().Character.get_position_player()/2
 
 
 func build_uhd(num_total_cats):

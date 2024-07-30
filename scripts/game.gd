@@ -38,16 +38,16 @@ func select_map(scene, map): # MAPA: 0 (centro de pesquisa) e 1 (praca central)
 		scene.add_child(Map)
 		Map.get_node("CentroDePesquisa").visible = true
 		Map.get_node("PracaCentral").visible = false
-		Hud.get_node("MiniMap/SubViewportContainer/SubViewport/CentroDePesquisa").visible = true
-		Hud.get_node("MiniMap/SubViewportContainer/SubViewport/PracaCentral").visible = false
+		Hud.get_node("MiniMap/SubViewportContainer/SubViewport/Map/CentroDePesquisa").visible = true
+		Hud.get_node("MiniMap/SubViewportContainer/SubViewport/Map/PracaCentral").visible = false
 		character_position_cats = Vector2(480, 688)
 		character_position_dogs = Vector2(-579, 121)
 	else:
 		scene.add_child(Map)
 		Map.get_node("CentroDePesquisa").visible = false
 		Map.get_node("PracaCentral").visible = true
-		Hud.get_node("MiniMap/SubViewportContainer/SubViewport/CentroDePesquisa").visible = false
-		Hud.get_node("MiniMap/SubViewportContainer/SubViewport/PracaCentral").visible = true
+		Hud.get_node("MiniMap/SubViewportContainer/SubViewport/Map/CentroDePesquisa").visible = false
+		Hud.get_node("MiniMap/SubViewportContainer/SubViewport/Map/PracaCentral").visible = true
 		character_position_cats = Vector2(-720, -568)
 		character_position_dogs = Vector2(271, -1053)
 	

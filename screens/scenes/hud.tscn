@@ -453,18 +453,19 @@ handle_input_locally = false
 size = Vector2i(200, 200)
 render_target_update_mode = 4
 
-[node name="CentroDePesquisa" type="Sprite2D" parent="MiniMap/SubViewportContainer/SubViewport"]
-rotation = 0.441568
+[node name="Map" type="Node2D" parent="MiniMap/SubViewportContainer/SubViewport"]
+
+[node name="CentroDePesquisa" type="Sprite2D" parent="MiniMap/SubViewportContainer/SubViewport/Map"]
+rotation = 0.442422
 scale = Vector2(0.581, 0.581)
 texture = ExtResource("6_fb3q1")
 
-[node name="PracaCentral" type="Sprite2D" parent="MiniMap/SubViewportContainer/SubViewport"]
-position = Vector2(-259, -1280)
-rotation = 0.00523599
+[node name="PracaCentral" type="Sprite2D" parent="MiniMap/SubViewportContainer/SubViewport/Map"]
+rotation = 0.00498426
 scale = Vector2(0.581, 0.581)
 texture = ExtResource("7_isbgt")
 
-[node name="Camera2D" type="Camera2D" parent="MiniMap/SubViewportContainer/SubViewport"]
+[node name="Camera2D" type="Camera2D" parent="MiniMap/SubViewportContainer/SubViewport/Map"]
 zoom = Vector2(0.2, 0.2)
 
 [connection signal="pressed" from="Team/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_button_pressed"]
