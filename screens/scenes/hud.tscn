@@ -461,6 +461,7 @@ scale = Vector2(0.581, 0.581)
 texture = ExtResource("6_fb3q1")
 
 [node name="PracaCentral" type="Sprite2D" parent="MiniMap/SubViewportContainer/SubViewport/Map"]
+position = Vector2(-259, -1280)
 rotation = 0.00498426
 scale = Vector2(0.581, 0.581)
 texture = ExtResource("7_isbgt")
