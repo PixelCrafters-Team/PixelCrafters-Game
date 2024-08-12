@@ -311,6 +311,8 @@ func get_name_player() -> String:
 	for i in range(list_players.size()):
 		if id == list_players[i][0]:
 			name_player = list_players[i][1]
+	if name_player == null:
+		return ""
 	return name_player
 	
 func get_position_player() -> Vector2:
