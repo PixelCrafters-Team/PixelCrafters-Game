@@ -70,7 +70,6 @@ func _process(delta):
 	$NumGlaceCats/GlaceCats.text = str(get_parent().num_glace_cats)
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
-		
 	add_player_pins()
 	
 func add_player_pins():
@@ -78,6 +77,8 @@ func add_player_pins():
 	clear_existing_pins()
 
 	var current_player = get_parent().get_node(get_name_player())
+	if not current_player:
+		return
 	var is_current_player_cat = current_player.is_in_group("cats")
 
 	for player in player_list:
@@ -86,6 +87,9 @@ func add_player_pins():
 		player_pin.position = get_parent().Character.get_position_player_pin(player[1])
 
 		var player_node = get_parent().get_node(player[1])
+		if player_node == null:
+			print("No player node found for ID: ", player[1])
+			continue
 		if is_current_player_cat:
 			if player_node.is_in_group("dogs"):
 				set_pin_color2(player_pin, Color.ORANGE)
@@ -124,9 +128,9 @@ func clear_existing_pins():
 			map2.remove_child(pin)
 			pin.queue_free()
 	
-	
+
 func _physics_process(delta):
-	if get_parent().Character:
+	if get_parent().Character and get_parent().Character.get_position_player():
 		camera.position = get_parent().Character.get_position_player()
 
 
@@ -251,6 +255,8 @@ func get_name_player() -> String:
 	var id = Networking.get_player_id()
 	var list_players = Networking.return_list()
 	var name_player = null
+	if not id or not list_players:
+		return "erro"
 	for i in range(list_players.size()):
 		if id == list_players[i][0]:
 			name_player = list_players[i][1]
