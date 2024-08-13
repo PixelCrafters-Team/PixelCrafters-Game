@@ -40,6 +40,8 @@ func connection_fail():
 
 
 func server_crash():
+	if get_tree().root.get_node("Main").get_node("Game").get_node("HUD").get_node("PauseMenu"):
+		get_tree().root.get_node("Main").get_node("Game").queue_free()
 	if not get_tree().current_scene.name == "LAN" and get_parent().get_node("Main").get_node("EndGameScreen") == null:
 		var main = get_tree().root.get_node("Main")
 		main.get_node("Game").queue_free()

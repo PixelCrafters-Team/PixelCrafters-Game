@@ -75,10 +75,10 @@ func _process(delta):
 func add_player_pins():
 	var player_list = Networking.return_list()
 	clear_existing_pins()
-
-	var current_player = get_parent().get_node(get_name_player())
-	if not current_player:
+	
+	if not get_parent().get_node(get_name_player()):
 		return
+	var current_player = get_parent().get_node(get_name_player())
 	var is_current_player_cat = current_player.is_in_group("cats")
 
 	for player in player_list:
