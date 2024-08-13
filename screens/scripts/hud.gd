@@ -176,7 +176,7 @@ func end_game():
 		endGameScreen.audio_victory_defeat = 0
 		
 	if get_parent().get_node(get_name_player()).is_in_group("cats"):
-		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Cachorros Hackers!"
+		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Cachorros Vigilantes!"
 		endGameScreen.get_node("TotalPlayers/Cats").text = str(get_parent().num_total_cats) + " Gatos"
 		endGameScreen.get_node("TotalPlayers/Dogs").text = str(get_parent().num_total_dogs) + " Cachorros"
 		
