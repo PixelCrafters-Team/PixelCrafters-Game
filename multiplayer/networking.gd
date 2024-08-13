@@ -40,15 +40,20 @@ func connection_fail():
 
 
 func server_crash():
-	if get_tree().root.get_node("Main").get_node("Game").get_node("HUD").get_node("PauseMenu"):
-		get_tree().root.get_node("Main").get_node("Game").queue_free()
-	if not get_tree().current_scene.name == "LAN" and get_parent().get_node("Main").get_node("EndGameScreen") == null:
-		var main = get_tree().root.get_node("Main")
-		main.get_node("Game").queue_free()
+	var main_node = get_tree().root.get_node("Main")
+	
+	if main_node.has_node("Game/HUD/PauseMenu"):
+		main_node.get_node("Game").queue_free()
+
+	if not get_tree().current_scene.name == "LAN" and not main_node.has_node("EndGameScreen"):
+		if main_node.has_node("Game"):
+			main_node.get_node("Game").queue_free()
 		var menu_scene = preload("res://screens/scenes/menu_screen.tscn")
-		main.add_child(menu_scene.instantiate())
-		main.get_node("Menu_screen").error_server = 1
-		main.create_scene()
+		var menu_instance = menu_scene.instantiate()
+		main_node.add_child(menu_instance)
+		main_node.get_node("Menu_screen").error_server = 1
+		main_node.create_scene()
+
 	id_room_creator = null
 	update_id_room_creator(id_room_creator)
 	reset_connection()
