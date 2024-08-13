@@ -131,7 +131,8 @@ func clear_existing_pins():
 	
 
 func _physics_process(delta):
-	if get_parent().Character and get_parent().Character.get_position_player():
+	var main_node = get_tree().root.get_node("Main")
+	if main_node.has_node("Game/" + get_name_player()):
 		camera.position = get_parent().Character.get_position_player()
 
 

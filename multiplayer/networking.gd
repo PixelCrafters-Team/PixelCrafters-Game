@@ -31,6 +31,7 @@ func connected_server():
 
 func pair_disconnected(id):
 	rpc("remove_player", id)
+	remove_player(id)
 	pass
 
 
@@ -41,7 +42,6 @@ func connection_fail():
 
 func server_crash():
 	var main_node = get_tree().root.get_node("Main")
-	
 	if main_node.has_node("Game/HUD/PauseMenu"):
 		main_node.get_node("Game").queue_free()
 
@@ -84,6 +84,15 @@ func register_player(id, name, character=null, room_creator=id_room_creator):
 func remove_player(id):
 	for i in range(players.size()):
 		if players[i][0] == id:
+			var main_node = get_tree().root.get_node("Main")
+			if main_node.has_node("Game/HUD"):
+				var caminho = "Game/" + players[i][1] + ""
+				if main_node.has_node(caminho):
+					if main_node.get_node(caminho).is_in_group("cats"):
+						main_node.get_node("Game").num_total_cats -= 1
+						main_node.get_node("Game/HUD/NumGlaceCats/TotalGlaceCats").text = str(main_node.get_node("Game").num_total_cats)
+					main_node.get_node("Game/" + main_node.get_node("Game/HUD").get_name_player()).set_message_game_hud("Jogador " + players[i][1] + " se desconectou do jogo ")
+					main_node.get_node(caminho).queue_free()
 			players.remove_at(i)
 			emit_signal("list_changed")
 			return
