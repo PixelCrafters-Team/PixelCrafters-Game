@@ -243,6 +243,12 @@ func activate_skill():
 			var message_brutus = "Jogador " + $namePlayer.text + " - Ativou habilidade: Resistência canina"
 			set_message_game_hud(message_brutus, false)
 			
+			var list_players = Networking.return_list()
+			for i in range(list_players.size()):
+				if get_parent().get_node(get_name_player()).get_parent().get_node(list_players[i][1]).is_in_group("sombra"):
+					get_parent().get_node(get_name_player()).get_parent().get_node(list_players[i][1]).visible = true
+			get_parent().get_node(get_name_player()).get_parent().get_node("Map").visible = true
+			
 @rpc
 func set_message_game_hud(text, play_effect=true):
 	get_parent().get_node("HUD").message_game(text, play_effect)
