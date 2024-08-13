@@ -205,6 +205,7 @@ func activate_skill():
 		elif (is_skill_sargento_canis and is_in_group("cats")):
 			var hud_message = "Não é possível ativar habilidades enquanto Latido sônico estiver ativado."
 			set_message_game_hud(hud_message, false)
+		
 		if is_in_group("estrela") and is_in_group("dogs"):
 			$Skill/SkillDuration.start(3)
 			is_skill_estrela = true
@@ -282,7 +283,7 @@ func update_ronronante_skill(is_active: bool):
 func update_sombra_skill(is_active: bool):
 	var name_player = get_name_player()
 	if (get_parent().get_node(name_player).is_in_group("dogs") and is_active):
-		if (get_parent().get_node(name_player).is_in_group("brutus")):
+		if (get_parent().get_node(name_player).is_in_group("brutus") and get_parent().get_node(name_player).is_skill_brutus):
 			get_parent().get_node(self.nickname).visible = true
 		else:
 			get_parent().get_node(self.nickname).visible = false
@@ -295,7 +296,7 @@ func update_sombra_skill(is_active: bool):
 func update_boladepelos_skill(is_active: bool):
 	var name_player = get_name_player()	
 	if (get_parent().get_node(name_player).is_in_group("dogs") and is_active):
-		if (get_parent().get_node(name_player).is_in_group("brutus")):
+		if (get_parent().get_node(name_player).is_in_group("brutus") and get_parent().get_node(name_player).is_skill_brutus):
 			get_parent().get_node("Map").visible = true
 		else:
 			get_parent().get_node("Map").visible = false
