@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=44 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cxwe51ievgvgb" path="res://screens/assets/timer_charge.mp3" id="9_qx2rj"]
 [ext_resource type="Texture2D" uid="uid://bnyb78rtab6ta" path="res://screens/assets/skill_estrela.png" id="10_5ttmg"]
 [ext_resource type="Texture2D" uid="uid://3v1dpdiu6tbv" path="res://screens/assets/glacecats.png" id="18_x6n6k"]
+[ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="19_sr8al"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
 content_margin_left = 50.0
@@ -181,6 +182,45 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0q3l"]
+bg_color = Color(0.164706, 0.0862745, 0.054902, 0.792157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61kxw"]
+bg_color = Color(0, 0, 0, 0.780392)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2f5g7"]
+line_spacing = 10.0
+font = ExtResource("2_bw5gp")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltx4x"]
+line_spacing = 10.0
+font_size = 22
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c631e"]
+texture = ExtResource("19_sr8al")
+expand_margin_left = 15.0
+expand_margin_top = 5.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lpghk"]
+texture = ExtResource("19_sr8al")
+expand_margin_left = 15.0
+expand_margin_top = 5.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.37881, 0.125048, 0.064938, 1)
+
+[sub_resource type="Theme" id="Theme_uk7q8"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.184314, 0.180392, 0.14902, 1)
+Button/font_sizes/font_size = 27
+Button/fonts/font = ExtResource("2_bw5gp")
+Button/styles/hover = SubResource("StyleBoxTexture_c631e")
+Button/styles/normal = SubResource("StyleBoxTexture_lpghk")
+Button/styles/pressed = SubResource("StyleBoxTexture_lpghk")
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_j0pl6")
@@ -469,7 +509,105 @@ texture = ExtResource("7_isbgt")
 [node name="Camera2D" type="Camera2D" parent="MiniMap/SubViewportContainer/SubViewport/Map"]
 zoom = Vector2(0.2, 0.2)
 
+[node name="InfoGame" type="Panel" parent="."]
+visible = false
+offset_left = 338.0
+offset_top = 246.0
+offset_right = 1196.0
+offset_bottom = 592.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t0q3l")
+
+[node name="Panel" type="Panel" parent="InfoGame"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 852.0
+offset_bottom = 341.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_61kxw")
+
+[node name="Title" type="Label" parent="InfoGame"]
+offset_top = 2.0
+offset_right = 854.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.411765, 0.647059, 0.788235, 1)
+theme_override_fonts/font = ExtResource("2_bw5gp")
+text = "Bem Vindo a CAT-CH ME!
+"
+label_settings = SubResource("LabelSettings_2f5g7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AboutGame" type="Label" parent="InfoGame"]
+offset_left = 21.0
+offset_top = 87.0
+offset_right = 846.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.411765, 0.647059, 0.788235, 1)
+theme_override_fonts/font = SubResource("SystemFont_kajlj")
+theme_override_font_sizes/font_size = 26
+text = "Este é um jogo inspirado na brincadeira de pega-pega congelar"
+horizontal_alignment = 1
+
+[node name="AboutCatsDogs" type="Label" parent="InfoGame"]
+offset_left = 54.0
+offset_top = 157.0
+offset_right = 842.0
+offset_bottom = 271.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_kajlj")
+theme_override_font_sizes/font_size = 25
+text = "Cachorros: Persiga os gatos e congele-os!
+Gatos: Fuja dos cachorros e liberte seus amigos congelados!"
+label_settings = SubResource("LabelSettings_ltx4x")
+
+[node name="AboutCatsDogs" type="Label" parent="InfoGame/AboutCatsDogs"]
+offset_left = -1.0
+offset_top = 6.0
+offset_right = 119.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_kajlj")
+theme_override_font_sizes/font_size = 25
+text = "________"
+label_settings = SubResource("LabelSettings_ltx4x")
+
+[node name="AboutCatsDogs" type="Label" parent="InfoGame/AboutCatsDogs/AboutCatsDogs"]
+offset_left = 5.0
+offset_top = 43.0
+offset_right = 125.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_kajlj")
+theme_override_font_sizes/font_size = 25
+text = "____"
+label_settings = SubResource("LabelSettings_ltx4x")
+
+[node name="AboutGame2" type="Label" parent="InfoGame"]
+offset_left = 548.0
+offset_top = 293.0
+offset_right = 850.0
+offset_bottom = 334.0
+theme_override_colors/font_color = Color(0.627695, 0.394474, 0.295116, 1)
+theme_override_fonts/font = SubResource("SystemFont_kajlj")
+theme_override_font_sizes/font_size = 19
+text = "Divirta-se e boa sorte!"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="InfoGame"]
+offset_left = 306.0
+offset_top = 283.0
+offset_right = 519.0
+offset_bottom = 326.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource("Theme_uk7q8")
+text = "Continuar"
+
+[node name="TimerInfoGame" type="Timer" parent="InfoGame"]
+
 [connection signal="pressed" from="Team/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Team/MarginContainer/VBoxContainer/GamMessages/TimerMessage" to="." method="_on_timer_message_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="SkillCharge/TimerCharge" to="." method="_on_timer_charge_timeout"]
+[connection signal="pressed" from="InfoGame/Continue" to="." method="_on_continue_pressed"]
+[connection signal="timeout" from="InfoGame/TimerInfoGame" to="." method="_on_timer_info_game_timeout"]

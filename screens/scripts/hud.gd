@@ -21,6 +21,7 @@ func _ready():
 	charge_skill = 1
 	first_charge = true
 	$Team/MarginContainer/VBoxContainer/GamMessages.text = " "
+	$InfoGame/TimerInfoGame.start()
 	
 	if get_parent().get_node(get_parent().get_parent().player_name).is_in_group("estrela"):
 		$SkillCharge/SkillEstrela.visible = true
@@ -261,3 +262,14 @@ func get_name_player() -> String:
 		if id == list_players[i][0]:
 			name_player = list_players[i][1]
 	return name_player
+
+
+func _on_continue_pressed():
+	$InfoGame.visible = false
+	pass 
+
+
+func _on_timer_info_game_timeout():
+	$InfoGame/TimerInfoGame.stop()
+	$InfoGame.visible = true
+	pass 
