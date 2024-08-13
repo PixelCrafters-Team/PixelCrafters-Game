@@ -95,6 +95,8 @@ func start_game(map, time_match):
 	scene.create_game(scene, map, time_match)
 	get_parent().get_node("MusicMenu").stream_paused = true
 	get_parent().add_child(scene)
+	if get_parent().get_node("CharacterSelectionScreen"):
+		get_parent().get_node("CharacterSelectionScreen").queue_free()
 	get_parent().get_node("LAN").queue_free()
 	pass
 

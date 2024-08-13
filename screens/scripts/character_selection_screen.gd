@@ -2,7 +2,6 @@ extends Control
 
 var team
 var game_scene = preload("res://game/scenes/Game.tscn")
-var create_room_scene = preload("res://screens/scenes/create_room_screen.tscn")
 
 var selected_panel = -1
 var texture_resource_panel = [
