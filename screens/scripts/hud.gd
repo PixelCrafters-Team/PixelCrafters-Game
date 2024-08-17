@@ -172,11 +172,11 @@ func end_game():
 		endGameScreen.get_node("SaveCats").visible = false
 		endGameScreen.get_node("GlaceCats/LabelMyGlaceCats").text = str(get_parent().get_node(get_name_player()).num_my_glace_cats)
 		endGameScreen.get_node("GlaceCats/LabelTotalGlaceCats").text = str(get_parent().num_total_glace_cats)
-		endGameScreen.get_node("VictoryDefeat").frame = 1
+		endGameScreen.get_node("VictoryDefeat").frame = 0
 		endGameScreen.audio_victory_defeat = 0
 		
 	if get_parent().get_node(get_name_player()).is_in_group("cats"):
-		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Cachorros Vigilantes!"
+		endGameScreen.get_node("VBoxContainer/LabelTeam").text = "Vitoria dos Gatos Hackers!"
 		endGameScreen.get_node("TotalPlayers/Cats").text = str(get_parent().num_total_cats) + " Gatos"
 		endGameScreen.get_node("TotalPlayers/Dogs").text = str(get_parent().num_total_dogs) + " Cachorros"
 		
@@ -190,7 +190,7 @@ func end_game():
 		endGameScreen.get_node("SaveCats/LabelMySaveCats").text = str(get_parent().get_node(get_name_player()).num_my_save_cats)	
 		endGameScreen.get_node("SaveCats/LabelTotalGlaceCats").text = str(get_parent().num_total_glace_cats)
 		endGameScreen.get_node("IWasGlace/Label").text = str(get_parent().get_node(get_name_player()).num_my_was_glace)	
-		endGameScreen.get_node("VictoryDefeat").frame = 0
+		endGameScreen.get_node("VictoryDefeat").frame = 1
 		endGameScreen.audio_victory_defeat = 1
 		
 	get_parent().get_parent().add_child(endGameScreen)

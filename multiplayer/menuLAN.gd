@@ -143,6 +143,8 @@ func reset_conection(error_server = 0):
 	var menu_scene = preload("res://screens/scenes/menu_screen.tscn")
 	get_parent().add_child(menu_scene.instantiate())
 	connection_reset()
+	if get_parent().has_node("CharacterSelectionScreen"):
+		get_parent().get_node("CharacterSelectionScreen").queue_free()
 	get_parent().get_node("LAN").queue_free()
 	if(error_server == 1):
 		get_parent().get_node("Menu_screen").error_server = 1
