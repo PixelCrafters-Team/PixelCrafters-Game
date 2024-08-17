@@ -120,7 +120,7 @@ func _on_text_player_text_changed():
 	var filtered_text = ""
 	var new_text = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/TextPlayer.text
 	for char in new_text:
-		if char in digits or char in letters:
+		if char in digits or char in letters or char in ["-"]:
 			filtered_text += char
 			
 	if filtered_text != new_text:

@@ -142,7 +142,7 @@ func _on_name_edit_text_changed(new_text):
 	var main = get_tree().root.get_node("Main")
 	var filtered_text = ""
 	for char in new_text:
-		if char in digits or char in letters:
+		if char in digits or char in letters or char in ["-"]:
 			filtered_text += char
 			
 	if filtered_text != new_text:
