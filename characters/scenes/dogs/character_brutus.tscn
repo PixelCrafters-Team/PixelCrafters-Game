@@ -1,6 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://d1c5crkq3jomc"]
+[gd_scene load_steps=39 format=3 uid="uid://d1c5crkq3jomc"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_0esyq"]
+[ext_resource type="Texture2D" uid="uid://b4kkc66cf2bti" path="res://characters/assets/shield.png" id="2_fwjbm"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_hyp3o"]
 [ext_resource type="AudioStream" uid="uid://cxji3m3dne5us" path="res://characters/assets/effect_walk.wav" id="3_wo0qf"]
 [ext_resource type="Texture2D" uid="uid://qy37f24yrka5" path="res://screens/assets/icons/Item1.png" id="4_b30au"]
@@ -370,6 +371,12 @@ corner_radius_bottom_left = 20
 collision_layer = 0
 script = ExtResource("1_0esyq")
 animation_tree = NodePath("AnimationTree")
+
+[node name="Shield" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-8.47033e-22, -17)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_fwjbm")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 show_behind_parent = true

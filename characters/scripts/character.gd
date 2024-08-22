@@ -244,6 +244,7 @@ func activate_skill():
 			rpc("update_brutus_skill", true)
 			var message_brutus = "Jogador " + $namePlayer.text + " - Ativou habilidade: Resistência canina"
 			set_message_game_hud(message_brutus, false)
+			$Shield.visible = true
 			
 			var list_players = Networking.return_list()
 			for i in range(list_players.size()):
@@ -276,15 +277,23 @@ func update_animation_state(direction: Vector2, state: String) -> void:
 func update_sargento_canis_skill(is_active: bool):
 	var name_player = get_name_player()	
 	get_parent().get_node(name_player).is_skill_sargento_canis = is_active
-	if is_active:
+	if is_active and get_parent().get_node(name_player).is_in_group('cats'):
 		get_parent().get_node(name_player).get_parent().get_node('HUD/Blocking').visible = true
-	else:
+	elif get_parent().get_node(name_player).is_in_group('cats'):
 		get_parent().get_node(name_player).get_parent().get_node('HUD/Blocking').visible = false
 	
 @rpc
 func update_brutus_skill(is_active: bool):
 	var name_player = get_name_player()	
 	get_parent().get_node(name_player).is_skill_brutus = is_active
+	
+	var list_players = Networking.return_list()
+	for i in range(list_players.size()):			
+		if is_active and get_parent().get_node(list_players[i][1]).is_in_group("brutus"):
+			get_parent().get_node(list_players[i][1]+'/Shield').visible = true
+		elif get_parent().get_node(list_players[i][1]).is_in_group("brutus"):
+			get_parent().get_node(list_players[i][1]+'/Shield').visible = false
+		
 	
 @rpc
 func update_ronronante_skill(is_active: bool):
@@ -408,6 +417,7 @@ func _on_skill_duration_timeout_brutus():
 	rpc("update_brutus_skill", false)
 	get_parent().get_node("HUD").start_timer()
 	$Skill/SkillDuration.stop()
+	$Shield.visible = false
 
 
 func _on_area_collision_area_exited(area):
