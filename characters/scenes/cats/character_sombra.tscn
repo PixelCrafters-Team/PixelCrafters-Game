@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://co4itvpd7wcc"]
+[gd_scene load_steps=45 format=3 uid="uid://co4itvpd7wcc"]
 
 [ext_resource type="Script" path="res://characters/scripts/character.gd" id="1_0tov6"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="2_ed6tt"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cgjbicjugskg6" path="res://characters/assets/effect_active_skill_cat.mp3" id="10_v4t5k"]
 [ext_resource type="Texture2D" uid="uid://cm870m0ap7a00" path="res://characters/assets/tecla_x.png" id="12_kte43"]
 [ext_resource type="Texture2D" uid="uid://cq4subi1da3j4" path="res://screens/assets/icons/Icon_Heart.png" id="13_5qbk6"]
+[ext_resource type="Texture2D" uid="uid://btrjdn1dq2sax" path="res://characters/assets/ghost.png" id="14_bxs7d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ss5h"]
 radius = 6.0
@@ -574,6 +575,12 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("13_5qbk6")
 
 [node name="TimerIconHeart" type="Timer" parent="IconHeart"]
+
+[node name="TextureGhost" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3, -16)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("14_bxs7d")
 
 [connection signal="timeout" from="TimerWalk" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="AreaCollision" to="." method="_on_area_collision_area_entered"]

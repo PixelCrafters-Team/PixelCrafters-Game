@@ -230,6 +230,8 @@ func activate_skill():
 			rpc("update_sombra_skill", true)
 			var message_sombra = "Jogador " + $namePlayer.text + " - Ativou habilidade: Esconderijo felino"
 			set_message_game_hud(message_sombra, false)
+			$Texture.visible = false
+			$TextureGhost.visible = true
 		if is_in_group("sargentocanis"):
 			$Skill/SkillDuration.start(5)
 			is_skill_sargento_canis = true
@@ -373,6 +375,8 @@ func _on_skill_duration_timeout_sombra():
 	rpc("update_sombra_skill", false)
 	get_parent().get_node("HUD").start_timer()
 	$Skill/SkillDuration.stop()
+	$Texture.visible = true
+	$TextureGhost.visible = false
 
 
 func _on_skill_duration_timeout_boladepelos():
