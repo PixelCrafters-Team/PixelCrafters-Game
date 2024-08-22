@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bjycgsoyyytro"]
+[gd_scene load_steps=45 format=3 uid="uid://bjycgsoyyytro"]
 
 [ext_resource type="Script" path="res://screens/scripts/hud.gd" id="1_j0pl6"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="2_bw5gp"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bnyb78rtab6ta" path="res://screens/assets/skill_estrela.png" id="10_5ttmg"]
 [ext_resource type="Texture2D" uid="uid://3v1dpdiu6tbv" path="res://screens/assets/glacecats.png" id="18_x6n6k"]
 [ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="19_sr8al"]
+[ext_resource type="Texture2D" uid="uid://dm4pltyk5dhha" path="res://characters/assets/blocking.png" id="20_7i6yl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyg4"]
 content_margin_left = 50.0
@@ -526,6 +527,7 @@ offset_bottom = 341.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_61kxw")
 
 [node name="Title" type="Label" parent="InfoGame"]
+layout_mode = 0
 offset_top = 2.0
 offset_right = 854.0
 offset_bottom = 86.0
@@ -538,6 +540,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AboutGame" type="Label" parent="InfoGame"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 87.0
 offset_right = 846.0
@@ -549,6 +552,7 @@ text = "Este é um jogo inspirado na brincadeira de pega-pega congelar"
 horizontal_alignment = 1
 
 [node name="AboutCatsDogs" type="Label" parent="InfoGame"]
+layout_mode = 0
 offset_left = 54.0
 offset_top = 157.0
 offset_right = 842.0
@@ -561,6 +565,7 @@ Gatos: Fuja dos cachorros e liberte seus amigos congelados!"
 label_settings = SubResource("LabelSettings_ltx4x")
 
 [node name="AboutCatsDogs" type="Label" parent="InfoGame/AboutCatsDogs"]
+layout_mode = 0
 offset_left = -1.0
 offset_top = 6.0
 offset_right = 119.0
@@ -572,6 +577,7 @@ text = "________"
 label_settings = SubResource("LabelSettings_ltx4x")
 
 [node name="AboutCatsDogs" type="Label" parent="InfoGame/AboutCatsDogs/AboutCatsDogs"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 43.0
 offset_right = 125.0
@@ -583,6 +589,7 @@ text = "____"
 label_settings = SubResource("LabelSettings_ltx4x")
 
 [node name="AboutGame2" type="Label" parent="InfoGame"]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 293.0
 offset_right = 850.0
@@ -594,6 +601,7 @@ text = "Divirta-se e boa sorte!"
 horizontal_alignment = 1
 
 [node name="Continue" type="Button" parent="InfoGame"]
+layout_mode = 0
 offset_left = 306.0
 offset_top = 283.0
 offset_right = 519.0
@@ -604,6 +612,12 @@ theme = SubResource("Theme_uk7q8")
 text = "Continuar"
 
 [node name="TimerInfoGame" type="Timer" parent="InfoGame"]
+
+[node name="Blocking" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1349, 232)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("20_7i6yl")
 
 [connection signal="pressed" from="Team/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Team/MarginContainer/VBoxContainer/GamMessages/TimerMessage" to="." method="_on_timer_message_timeout"]

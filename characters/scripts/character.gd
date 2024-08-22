@@ -276,6 +276,10 @@ func update_animation_state(direction: Vector2, state: String) -> void:
 func update_sargento_canis_skill(is_active: bool):
 	var name_player = get_name_player()	
 	get_parent().get_node(name_player).is_skill_sargento_canis = is_active
+	if is_active:
+		get_parent().get_node(name_player).get_parent().get_node('HUD/Blocking').visible = true
+	else:
+		get_parent().get_node(name_player).get_parent().get_node('HUD/Blocking').visible = false
 	
 @rpc
 func update_brutus_skill(is_active: bool):
