@@ -88,6 +88,8 @@ func remove_player(id):
 			if main_node.has_node("Game/HUD"):
 				var caminho = "Game/" + players[i][1] + ""
 				if main_node.has_node(caminho):
+					if main_node.get_node(caminho).is_in_group("dogs"):
+						main_node.get_node("Game").num_total_dogs -= 1
 					if main_node.get_node(caminho).is_in_group("cats"):
 						main_node.get_node("Game").num_total_cats -= 1
 						main_node.get_node("Game/HUD/NumGlaceCats/TotalGlaceCats").text = str(main_node.get_node("Game").num_total_cats)

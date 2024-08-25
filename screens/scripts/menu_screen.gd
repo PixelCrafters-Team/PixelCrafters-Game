@@ -31,6 +31,11 @@ func _physics_process(delta):
 		error_server = 0
 		$Panel/ErroPanel/Label.text = "Erro não foi possível criar a sala"
 		$Panel.visible = true
+	
+	if error_server == 3:
+		error_server = 0
+		$Panel/ErroPanel/Label.text = "Erro a sala está cheia!"
+		$Panel.visible = true
 
 		
 func _on_quit_buton_pressed():

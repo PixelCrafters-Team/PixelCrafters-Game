@@ -163,7 +163,8 @@ func reset_conection(error_server = 0):
 		get_parent().get_node("Menu_screen").error_server = 1
 	if(error_server == 2):
 		get_parent().get_node("Menu_screen").error_server = 2
-
+	if(error_server == 3):
+		get_parent().get_node("Menu_screen").error_server = 3
 
 func _on_return_button_pressed():
 	get_parent().click_sound.play()
@@ -202,8 +203,11 @@ func _on_wait_timeout():
 		var id = Networking.get_id_room_creator()
 		rpc_id(id, "get_num_max_players", max_cats_players, max_dogs_players)
 		var list = Networking.return_list()
-		if list.size() >= (max_dogs_players + max_cats_players):
+		if list.size() == (max_dogs_players + max_cats_players):
 			rpc("enable_start_button")
+		elif list.size() > (max_dogs_players + max_cats_players):
+			reset_conection(3)
+		
 	pass
 	$Wait.stop()
 	
