@@ -103,8 +103,10 @@ func add_player_pins():
 			else:
 				set_pin_color(player_pin, Color.BLUE) 
 
-		map1.add_child(player_pin)
-		map2.add_child(player_pin)
+		if get_parent().num_map == 0:
+			map1.add_child(player_pin)
+		else: 
+			map2.add_child(player_pin)
 
 func set_pin_color(pin: Node2D, color: Color):
 	var panel = pin.get_node("Panel")
@@ -122,12 +124,12 @@ func set_pin_color2(pin: Node2D, color: Color):
 func clear_existing_pins():
 	for pin in map1.get_children():
 		if pin.name.begins_with("PlayerPin_"):
-			map1.remove_child(pin)
 			pin.queue_free()
+			map1.remove_child(pin)
 	for pin in map2.get_children():
 		if pin.name.begins_with("PlayerPin_"):
-			map2.remove_child(pin)
 			pin.queue_free()
+			map1.remove_child(pin)
 	
 
 func _physics_process(delta):
