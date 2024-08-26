@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://y61hurvn4hcq"]
+[gd_scene load_steps=50 format=3 uid="uid://y61hurvn4hcq"]
 
 [ext_resource type="Script" path="res://screens/scripts/menu_screen.gd" id="1_vi22p"]
 [ext_resource type="Texture2D" uid="uid://n8lc4gychwg3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
@@ -6,10 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://bett4pg0uvd06" path="res://screens/assets/icons/Icon_DotsVertical.png" id="5_i8he3"]
 [ext_resource type="Texture2D" uid="uid://binbu4h6ddy41" path="res://screens/assets/icons/Icon_X.png" id="5_wpywn"]
 [ext_resource type="Texture2D" uid="uid://dwg1hroebhex" path="res://screens/assets/icons/Item5.png" id="6_wcspm"]
+[ext_resource type="Texture2D" uid="uid://dw7ox6cxhuq6v" path="res://screens/assets/icons/Icon_Question.png" id="7_3r0t5"]
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="7_bjknq"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="8_gfutr"]
 [ext_resource type="Texture2D" uid="uid://o17gt7glmmr4" path="res://screens/assets/bone.png" id="9_5mpjb"]
 [ext_resource type="VideoStream" path="res://screens/assets/how_to_play.ogv" id="10_ltm0v"]
+[ext_resource type="Texture2D" uid="uid://c6hryfrcuwu7c" path="res://screens/assets/character_selection_screen.png" id="10_pxybm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rqhil"]
 texture = ExtResource("6_wcspm")
@@ -37,6 +39,17 @@ modulate_color = Color(0.992157, 0.968627, 0.941176, 1)
 Button/styles/hover = SubResource("StyleBoxTexture_sptey")
 Button/styles/normal = SubResource("StyleBoxTexture_s10h0")
 Button/styles/pressed = SubResource("StyleBoxTexture_sptey")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1nwcn"]
+texture = ExtResource("7_3r0t5")
+modulate_color = Color(0.411765, 0.647059, 0.788235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1acwn"]
+texture = ExtResource("7_3r0t5")
+
+[sub_resource type="Theme" id="Theme_trcnx"]
+Button/styles/hover = SubResource("StyleBoxTexture_1nwcn")
+Button/styles/normal = SubResource("StyleBoxTexture_1acwn")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0drw"]
 texture = ExtResource("5_wpywn")
@@ -143,9 +156,9 @@ _data = {
 
 [sub_resource type="Curve2D" id="Curve2D_lht55"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1522, 209, 0, 0, 0, 0, 1419, 200, 0, 0, 0, 0, 1263, 82, 0, 0, 0, 0, 172, 82, 0, 0, 0, 0, 18, 214, 0, 0, 0, 0, -169, 196)
+"points": PackedVector2Array(0, 0, 0, 0, 1522, 209, 0, 0, 0, 0, 1419, 200, 0, 0, 0, 0, 1263, 82, 0, 0, 0, 0, 1110, 56, 0, 0, 0, 0, 1083, 61, 0, 0, 0, 0, 172, 82, 0, 0, 0, 0, 18, 214, 0, 0, 0, 0, -169, 196)
 }
-point_count = 6
+point_count = 8
 
 [sub_resource type="Animation" id="Animation_v5mks"]
 length = 0.001
@@ -286,7 +299,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uh5yk"]
-bg_color = Color(0.796078, 0.768627, 0.682353, 1)
+bg_color = Color(0.258824, 0.262745, 0.223529, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -335,6 +348,12 @@ Button/styles/hover = SubResource("StyleBoxFlat_s6cdh")
 Button/styles/normal = SubResource("StyleBoxFlat_a4jqf")
 Button/styles/pressed = SubResource("StyleBoxFlat_a4jqf")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q2ro6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_on1xa"]
+font = ExtResource("7_bjknq")
+font_size = 42
+
 [node name="Menu_screen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -343,6 +362,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vi22p")
+
+[node name="BackgroundHowToPlay" type="TextureRect" parent="."]
+visible = false
+offset_left = -3.05176e-05
+offset_top = -1.52588e-05
+offset_right = 1440.0
+offset_bottom = 810.0
+texture = ExtResource("10_pxybm")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
@@ -382,12 +409,14 @@ rotation = 1.5553
 theme = SubResource("Theme_8xfod")
 
 [node name="HowToPlayButton" type="Button" parent="."]
-offset_left = 1122.0
-offset_top = 53.0
-offset_right = 1172.0
-offset_bottom = 177.0
-rotation = 1.57487
-theme = SubResource("Theme_8xfod")
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 42.0
+offset_right = 1140.0
+offset_bottom = 166.0
+rotation = -0.0148307
+scale = Vector2(0.981012, 0.610628)
+theme = SubResource("Theme_trcnx")
 
 [node name="ExitButton" type="Button" parent="."]
 custom_minimum_size = Vector2(80, 80)
@@ -545,24 +574,35 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(1440, 810)
 layout_mode = 0
-offset_left = 296.0
-offset_top = 162.0
-offset_right = 2216.0
-offset_bottom = 1250.0
+offset_left = 288.0
+offset_top = 164.0
+offset_right = 2208.0
+offset_bottom = 1252.0
 scale = Vector2(0.45, 0.45)
 stream = ExtResource("10_ltm0v")
 
-[node name="CloseButton" type="Button" parent="VideoStreamPlayer"]
+[node name="PanelHowToPlay" type="Panel" parent="."]
 visible = false
-custom_minimum_size = Vector2(80, 80)
-offset_left = 1800.0
-offset_top = 35.5555
-offset_right = 1880.0
-offset_bottom = 115.556
-size_flags_horizontal = 8
-size_flags_vertical = 4
-theme = SubResource("Theme_ctwlu")
-theme_override_font_sizes/font_size = 59
+modulate = Color(1, 1, 1, 0.843137)
+layout_mode = 0
+offset_left = 369.0
+offset_top = 683.0
+offset_right = 1119.0
+offset_bottom = 774.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uh5yk")
+
+[node name="TitleHowToPlay" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 130)
+offset_left = 415.0
+offset_top = 696.0
+offset_right = 1066.0
+offset_bottom = 826.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_q2ro6")
+text = "Explorando o Jogo: vídeo tutorial"
+label_settings = SubResource("LabelSettings_on1xa")
 
 [connection signal="pressed" from="CreateRoom" to="." method="_on_create_room_pressed"]
 [connection signal="pressed" from="StartButton2" to="." method="_on_start_button_pressed"]
@@ -570,4 +610,3 @@ theme_override_font_sizes/font_size = 59
 [connection signal="pressed" from="HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Panel/ErroPanel/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VideoStreamPlayer/CloseButton" to="." method="_on_close_button_pressed"]

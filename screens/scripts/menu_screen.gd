@@ -4,7 +4,7 @@ var character_select_scene = preload("res://screens/scenes/character_selection_s
 var settings_scene = preload("res://screens/scenes/settings_screen.tscn")
 var room_scene = preload("res://multiplayer/MenuLAN.tscn")
 var error_server = 0
-@onready var video_player = $VideoStreamPlayer
+@onready var video_player = %VideoStreamPlayer
 
 func _ready():
 	$AnimationDog/AnimationRoute.play("animationDog")
@@ -64,6 +64,15 @@ func _on_setting_button_pressed():
 	get_parent().click_sound.play()
 	get_parent().add_child(settings_scene.instantiate())
 	get_parent().get_node("Menu_screen").queue_free()
+	
+	if video_player.visible == true:
+		video_player.visible = false
+		video_player.stop()
+		get_parent().music_menu.play()
+		$BackgroundHowToPlay.visible = false
+		$Background.visible = true
+		$TitleHowToPlay.visible = false
+		$PanelHowToPlay.visible = false
 
 
 func _on_create_room_pressed():
@@ -87,14 +96,20 @@ func _on_button_pressed():
 
 
 func _on_how_to_play_button_pressed():
-	$VideoStreamPlayer/CloseButton.visible = true
-	video_player.visible = true
-	if not video_player.is_playing():
-		get_parent().music_menu.stop()
-		video_player.play()
-
-
-func _on_close_button_pressed():
-	video_player.visible = false
-	video_player.stop()
-	get_parent().music_menu.play()
+	if video_player.visible == true:
+		video_player.visible = false
+		video_player.stop()
+		get_parent().music_menu.play()
+		$BackgroundHowToPlay.visible = false
+		$Background.visible = true
+		$TitleHowToPlay.visible = false
+		$PanelHowToPlay.visible = false
+	else:
+		video_player.visible = true
+		$BackgroundHowToPlay.visible = true
+		$Background.visible = false
+		$TitleHowToPlay.visible = true
+		$PanelHowToPlay.visible = true
+		if not video_player.is_playing():
+			get_parent().music_menu.stop()
+			video_player.play()
