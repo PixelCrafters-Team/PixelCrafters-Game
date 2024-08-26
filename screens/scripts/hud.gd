@@ -85,7 +85,9 @@ func add_player_pins():
 	for player in player_list:
 		var player_pin = preload("res://characters/scenes/player_pin.tscn").instantiate()
 		player_pin.name = "PlayerPin_" + player[1]
-		player_pin.position = get_parent().Character.get_position_player_pin(player[1])
+		
+		
+		player_pin.position = get_parent().get_node(get_name_player()).get_position_player_pin(player[1])
 
 		var player_node = get_parent().get_node(player[1])
 		if player_node == null:
@@ -135,14 +137,17 @@ func clear_existing_pins():
 func _physics_process(delta):
 	var main_node = get_tree().root.get_node("Main")
 	if main_node.has_node("Game/" + get_name_player()):
-		camera.position = get_parent().Character.get_position_player()
+		var character = get_parent().get_node(get_name_player())
+		
+		if is_instance_valid(character):
+			camera.position = character.get_position_player()
 
 
 func build_uhd(num_total_cats):
 	$NumGlaceCats/TotalGlaceCats.text = str(num_total_cats)
-	if get_parent().Character.is_in_group("cats"):
+	if get_parent().get_node(get_name_player()).is_in_group("cats"):
 		equipe = "Gatos Hackers"
-	elif get_parent().Character.is_in_group("dogs"):
+	elif get_parent().get_node(get_name_player()).is_in_group("dogs"):
 		equipe = "Cachorros Vigilantes"	
 	$Team/MarginContainer/VBoxContainer/HBoxContainer/NameTeam.text = equipe
 	
