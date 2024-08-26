@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://y61hurvn4hcq"]
+[gd_scene load_steps=43 format=3 uid="uid://y61hurvn4hcq"]
 
 [ext_resource type="Script" path="res://screens/scripts/menu_screen.gd" id="1_vi22p"]
 [ext_resource type="Texture2D" uid="uid://n8lc4gychwg3" path="res://screens/assets/menu_screen.png" id="1_vvb14"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://be5qc06kpexri" path="res://screens/assets/font_hey_comic.ttf" id="7_bjknq"]
 [ext_resource type="Texture2D" uid="uid://c7016hjaugxcy" path="res://characters/assets/cats_dogs.png" id="8_gfutr"]
 [ext_resource type="Texture2D" uid="uid://o17gt7glmmr4" path="res://screens/assets/bone.png" id="9_5mpjb"]
+[ext_resource type="VideoStream" path="res://screens/assets/how_to_play.ogv" id="10_ltm0v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rqhil"]
 texture = ExtResource("6_wcspm")
@@ -380,6 +381,14 @@ offset_bottom = 175.0
 rotation = 1.5553
 theme = SubResource("Theme_8xfod")
 
+[node name="HowToPlayButton" type="Button" parent="."]
+offset_left = 1122.0
+offset_top = 53.0
+offset_right = 1172.0
+offset_bottom = 177.0
+rotation = 1.57487
+theme = SubResource("Theme_8xfod")
+
 [node name="ExitButton" type="Button" parent="."]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -487,6 +496,7 @@ libraries = {
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 49.0
 offset_top = 42.0
 offset_right = 1395.0
@@ -530,8 +540,34 @@ theme_override_fonts/font = ExtResource("7_bjknq")
 theme_override_font_sizes/font_size = 28
 text = "Confirmar"
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(1440, 810)
+layout_mode = 0
+offset_left = 296.0
+offset_top = 162.0
+offset_right = 2216.0
+offset_bottom = 1250.0
+scale = Vector2(0.45, 0.45)
+stream = ExtResource("10_ltm0v")
+
+[node name="CloseButton" type="Button" parent="VideoStreamPlayer"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+offset_left = 1800.0
+offset_top = 35.5555
+offset_right = 1880.0
+offset_bottom = 115.556
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = SubResource("Theme_ctwlu")
+theme_override_font_sizes/font_size = 59
+
 [connection signal="pressed" from="CreateRoom" to="." method="_on_create_room_pressed"]
 [connection signal="pressed" from="StartButton2" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Panel/ErroPanel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VideoStreamPlayer/CloseButton" to="." method="_on_close_button_pressed"]
