@@ -2,7 +2,7 @@ extends Node
 
 const IPSTANDARD = "127.0.0.1"
 const PORT = 6007
-const MAXPLAYERS = 6
+const MAXPLAYERS = 10
 
 var ip = IPSTANDARD
 var id = 0

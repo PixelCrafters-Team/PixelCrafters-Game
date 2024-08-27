@@ -14,8 +14,8 @@ config/name="catch_me"
 config/description="Jogo de Pega Pega Multiplayer"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://logo.png"
-config/windows_native_icon="res://logo-catchme.ico"
+config/icon="res://logo/logo.png"
+config/windows_native_icon="res://logo/logo-catchme.ico"
 
 [autoload]
 

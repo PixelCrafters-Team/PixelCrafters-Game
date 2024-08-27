@@ -382,24 +382,23 @@ expand_mode = 2
 
 [node name="CreateRoom" type="Button" parent="."]
 layout_mode = 2
-offset_left = 409.0
-offset_top = 497.0
+offset_left = 389.0
+offset_top = 496.0
 offset_right = 709.0
 offset_bottom = 575.0
 theme = SubResource("Theme_nuk4w")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 39
 text = "Criar Sala"
 
 [node name="StartButton2" type="Button" parent="."]
 layout_mode = 2
 offset_left = 747.0
-offset_top = 499.0
-offset_right = 1047.0
+offset_top = 496.0
+offset_right = 1082.0
 offset_bottom = 577.0
 theme = SubResource("Theme_nuk4w")
-theme_override_font_sizes/font_size = 40
-text = "Entrar Sala
-"
+theme_override_font_sizes/font_size = 39
+text = "Entrar Sala"
 
 [node name="SettingButton" type="Button" parent="."]
 layout_mode = 0

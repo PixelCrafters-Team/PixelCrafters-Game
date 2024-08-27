@@ -83,17 +83,21 @@ horizontal_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
 
 [node name="Ufpel" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 texture = ExtResource("7_uwpwd")
 expand_mode = 1
 
 [node name="Computação" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 texture = ExtResource("8_x5chq")
 expand_mode = 1
 
@@ -112,7 +116,8 @@ layout_mode = 2
 [node name="Picture" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Bianca"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("3_75cpd")
 expand_mode = 1
 
@@ -134,7 +139,8 @@ layout_mode = 2
 clip_contents = true
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("4_xjxn1")
 expand_mode = 1
 
@@ -155,7 +161,8 @@ layout_mode = 2
 [node name="Picture" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Gabriela"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("5_c1dvs")
 expand_mode = 1
 
@@ -176,7 +183,8 @@ layout_mode = 2
 [node name="Picture" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Yasmin"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("6_bduu1")
 expand_mode = 1
 
@@ -197,9 +205,10 @@ layout_mode = 2
 
 [node name="LabelProfessor" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 25
-text = "Jogo desenvolvido para a disciplina de jogos
+text = "Jogo desenvolvido para a disciplina de jogos.
 Professor Orientador: Rafael Torchelsen"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]

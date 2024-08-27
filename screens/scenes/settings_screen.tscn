@@ -154,6 +154,8 @@ label_settings = SubResource("LabelSettings_ptbje")
 [node name="ButtonMusic" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 theme = SubResource("Theme_e617f")
 
 [node name="HSliderMusic" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -216,6 +218,8 @@ label_settings = SubResource("LabelSettings_ptbje")
 [node name="ButtonSound" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 theme = SubResource("Theme_pyqah")
 
 [node name="HSliderSound" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]

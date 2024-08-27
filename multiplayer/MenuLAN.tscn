@@ -190,10 +190,10 @@ offset_bottom = 40.0
 [node name="Create" type="Button" parent="CreateRoom"]
 visible = false
 layout_mode = 1
-offset_left = 771.0
-offset_top = 553.0
-offset_right = 1026.0
-offset_bottom = 603.0
+offset_left = 759.0
+offset_top = 579.0
+offset_right = 1027.0
+offset_bottom = 629.0
 theme = SubResource("Theme_jxcg2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ce388")
@@ -231,7 +231,7 @@ vertical_alignment = 1
 [node name="Start" type="Button" parent="CreateRoom"]
 visible = false
 layout_mode = 1
-offset_left = 747.0
+offset_left = 727.0
 offset_top = 574.0
 offset_right = 995.0
 offset_bottom = 624.0
@@ -355,9 +355,9 @@ autowrap_mode = 2
 [node name="Label" type="Label" parent="CreateRoom"]
 visible = false
 layout_mode = 0
-offset_left = 745.0
+offset_left = 730.0
 offset_top = 311.0
-offset_right = 1183.0
+offset_right = 1168.0
 offset_bottom = 419.0
 theme_override_font_sizes/font_size = 24
 text = "Escolha o seu personagem e aguarde demais jogadores. Quando todos estiverem prontos comece a partida!"
@@ -403,9 +403,9 @@ vertical_alignment = 1
 [node name="Label" type="Label" parent="EnterRoom"]
 visible = false
 layout_mode = 0
-offset_left = 745.0
+offset_left = 731.0
 offset_top = 311.0
-offset_right = 1183.0
+offset_right = 1169.0
 offset_bottom = 419.0
 theme_override_font_sizes/font_size = 24
 text = "Escolha o seu personagem e aguarde o moderador da sala começar a partida!"
@@ -462,15 +462,15 @@ vertical_alignment = 1
 [node name="ChoiceCharacter" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 750.0
-offset_top = 452.0
-offset_right = 1000.0
-offset_bottom = 533.0
+offset_left = 726.0
+offset_top = 438.0
+offset_right = 990.0
+offset_bottom = 537.0
 theme = SubResource("Theme_jxcg2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_ce388")
 theme_override_font_sizes/font_size = 28
-text = "Escolher 
+text = "Escolher
 Personagem"
 
 [node name="ContainerChoiceCharacter" type="MarginContainer" parent="."]
